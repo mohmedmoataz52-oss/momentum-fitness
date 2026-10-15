@@ -544,7 +544,21 @@
             box-shadow: none !important;
             background-image: none !important;
         }
-    </style>
+    
+/* Responsive corrections: preserve the original desktop design and functionality. */
+@media (max-width: 700px) {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { max-width: 100%; overflow-x: hidden; }
+  img, video, canvas, svg { max-width: 100%; }
+  input, select, textarea, button { max-width: 100%; }
+  table { max-width: 100%; }
+  .container, .content, .page, .main, .main-content, .app { min-width: 0; }
+  .content, .grid, .formgrid, .summary-grid, .photos-grid, .athlete-grid, .quick-grid, .today-grid, .role-container, .steps { min-width: 0; }
+  .content > *, .grid > *, .formgrid > *, .summary-grid > *, .photos-grid > *, .athlete-grid > *, .quick-grid > *, .today-grid > * { min-width: 0; }
+  h1, h2, h3, p, a, button, label, .card, .stat-card { overflow-wrap: anywhere; }
+}
+
+</style>
 </head>
 
 <head>
@@ -841,33 +855,6 @@
         });
 
     </script>
-
-
-
-<style id="mobile-layout-refinement">
-/* Mobile-only layout refinement. Desktop styles remain untouched. */
-@media (max-width: 600px) {
-  .navbar { padding: 16px 5%; gap: 10px; }
-  .logo { font-size: clamp(18px, 5vw, 23px); letter-spacing: 0; white-space: nowrap; }
-  .nav-actions { gap: 7px; }
-  .whatsapp-btn { padding: 9px 10px; font-size: 11px; white-space: nowrap; }
-  .whatsapp-btn i { font-size: 16px; }
-  .nav-login { padding: 10px 12px; font-size: 12px; white-space: nowrap; }
-  .hero { min-height: 100svh; padding: 112px 5% 48px; background-position: 62% center; }
-  .hero-content { width: 100%; max-width: 100%; }
-  .small-title { font-size: 11px; line-height: 1.6; letter-spacing: 2.5px; margin-bottom: 14px; }
-  .hero h1 { font-size: clamp(42px, 11.5vw, 58px); line-height: .98; letter-spacing: -1.8px; overflow-wrap: normal; }
-  .hero h2 { font-size: clamp(18px, 5vw, 23px); line-height: 1.35; margin-bottom: 13px; }
-  .hero p { font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
-  .hero-buttons { gap: 10px; }
-  .main-button, .outline-button { padding: 13px 17px; font-size: 14px; }
-}
-@media (max-width: 360px) {
-  .whatsapp-btn { font-size: 0; gap: 0; padding: 10px; }
-  .whatsapp-btn i { font-size: 18px; }
-  .hero h1 { font-size: 39px; letter-spacing: -1.4px; }
-}
-</style>
 
 </body>
 
