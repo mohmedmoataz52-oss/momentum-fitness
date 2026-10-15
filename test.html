@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MoMentum - Sign In</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: #07131c;
+        }
+
+
+        /* ================================
+           FULL SCREEN PAGE
+        ================================= */
+
+        .page {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(3, 13, 19, .08) 0%,
+                    rgba(3, 13, 19, .08) 35%,
+                    rgba(3, 13, 19, .30) 52%,
+                    rgba(3, 13, 19, .82) 75%,
+                    #07131c 100%
+                ),
+                url("https://static.vecteezy.com/system/resources/thumbnails/037/235/157/small_2x/ai-generated-gym-with-many-equipments-free-photo.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+        /* ================================
+           TOP LOGO
+        ================================= */
+
+        .logo {
+            position: absolute;
+            top: 34px;
+            left: 55px;
+
+            display: flex;
+            align-items: center;
+
+            z-index: 20;
+
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo i {
+            color: #39d98a;
+            font-size: 27px;
+            margin-right: 10px;
+        }
+
+        .logo .white {
+            color: #ffffff;
+        }
+
+        .logo .green {
+            color: #39d98a;
+        }
+
+
+        /* ================================
+           LEFT HERO
+        ================================= */
+
+        .hero {
+            position: absolute;
+
+            left: 55px;
+            top: 50%;
+
+            transform: translateY(-35%);
+
+            width: 500px;
+
+            z-index: 10;
+        }
+
+        .hero h2 {
+            font-size: 54px;
+            line-height: 1.05;
+
+            font-weight: 800;
+
+            margin-bottom: 22px;
+
+            text-shadow:
+                0 5px 25px rgba(0, 0, 0, .65);
+        }
+
+        .hero h2 span {
+            color: #39d98a;
+        }
+
+        .hero p {
+            width: 440px;
+
+            color: #e3eaed;
+
+            font-size: 17px;
+            line-height: 1.7;
+
+            text-shadow:
+                0 3px 15px rgba(0, 0, 0, .8);
+        }
+
+
+        /* ================================
+           LOGIN AREA
+        ================================= */
+
+        .login-area {
+            position: absolute;
+
+            top: 50%;
+            right: 7%;
+
+            transform: translateY(-50%);
+
+            width: 420px;
+
+            z-index: 20;
+        }
+
+
+        /* ================================
+           WELCOME
+        ================================= */
+
+        .login-area h1 {
+            font-size: 46px;
+            line-height: 1.1;
+
+            margin-bottom: 10px;
+
+            font-weight: 800;
+        }
+
+        .login-area h1 span {
+            color: #39d98a;
+        }
+
+        .subtitle {
+            color: #a5b1b7;
+
+            font-size: 15px;
+            line-height: 1.6;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* ================================
+           ROLE
+        ================================= */
+
+        .role-title {
+            color: #8f9ca3;
+
+            font-size: 13px;
+
+            margin-bottom: 9px;
+        }
+
+        .roles {
+            display: flex;
+            gap: 10px;
+
+            margin-bottom: 20px;
+        }
+
+        .role-btn {
+            flex: 1;
+
+            height: 47px;
+
+            border: 1px solid #3a505b;
+            border-radius: 10px;
+
+            background: rgba(7, 25, 34, .78);
+
+            color: #b2bdc2;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+        .role-btn i {
+            margin-right: 7px;
+        }
+
+        .role-btn:hover {
+            border-color: #39d98a;
+            color: #ffffff;
+        }
+
+        .role-btn.active {
+            background: #39d98a;
+            border-color: #39d98a;
+
+            color: #06151c;
+
+            box-shadow:
+                0 8px 25px rgba(57, 217, 138, .12);
+        }
+
+
+        /* ================================
+           INPUTS
+        ================================= */
+
+        .input-box {
+            position: relative;
+
+            width: 100%;
+
+            margin-bottom: 15px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 55px;
+
+            padding: 0 48px;
+
+            border: 1px solid #354c57;
+            border-radius: 10px;
+
+            outline: none;
+
+            background: rgba(7, 25, 34, .88);
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            transition: .25s;
+        }
+
+        .input-box input::placeholder {
+            color: #71818a;
+        }
+
+        .input-box input:focus {
+            border-color: #39d98a;
+
+            box-shadow:
+                0 0 0 3px rgba(57, 217, 138, .08);
+        }
+
+        .input-box > i:first-child {
+            position: absolute;
+
+            left: 16px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #39d98a;
+
+            z-index: 2;
+        }
+
+
+        /* ================================
+           PASSWORD EYE
+        ================================= */
+
+        .password-box input {
+            padding-right: 52px;
+        }
+
+        .password-box .eye {
+            position: absolute;
+
+            left: auto !important;
+            right: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 21px;
+
+            color: #71818a;
+
+            cursor: pointer;
+
+            text-align: center;
+
+            z-index: 5;
+
+            transition: .2s;
+        }
+
+        .password-box .eye:hover {
+            color: #39d98a;
+        }
+
+
+        /* ================================
+           OPTIONS
+        ================================= */
+
+        .options {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin: 5px 0 22px;
+
+            font-size: 13px;
+        }
+
+        .remember {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #8999a2;
+
+            cursor: pointer;
+        }
+
+        .remember input {
+            accent-color: #39d98a;
+
+            cursor: pointer;
+        }
+
+        .forgot {
+            color: #39d98a;
+
+            cursor: pointer;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ================================
+           SIGN IN
+        ================================= */
+
+        .login-btn {
+            width: 100%;
+            height: 55px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: #39d98a;
+
+            color: #06151c;
+
+            font-size: 16px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+        .login-btn:hover {
+            background: #51e99d;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px rgba(57, 217, 138, .22);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+
+        /* ================================
+           MESSAGE
+        ================================= */
+
+        #message {
+            min-height: 20px;
+
+            margin-top: 15px;
+
+            font-size: 14px;
+        }
+
+
+        /* ================================
+           CREATE ACCOUNT
+        ================================= */
+
+        .create-account {
+            margin-top: 19px;
+
+            color: #8999a2;
+
+            font-size: 14px;
+        }
+
+        .create-account a {
+            color: #39d98a;
+
+            text-decoration: none;
+
+            font-weight: 700;
+        }
+
+        .create-account a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ================================
+           TABLET
+        ================================= */
+
+        @media (max-width: 1050px) {
+
+            .login-area {
+                right: 5%;
+                width: 390px;
+            }
+
+            .hero {
+                left: 40px;
+                width: 400px;
+            }
+
+            .hero h2 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                width: 370px;
+                font-size: 15px;
+            }
+
+            .logo {
+                left: 40px;
+            }
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 750px) {
+
+            body {
+                overflow-y: auto;
+            }
+
+            .page {
+                min-height: 100vh;
+
+                background:
+                    linear-gradient(
+                        rgba(3, 13, 19, .72),
+                        rgba(3, 13, 19, .94)
+                    ),
+                    url("gym.jpg");
+
+                background-size: cover;
+                background-position: center;
+            }
+
+            .logo {
+                position: relative;
+
+                top: auto;
+                left: auto;
+
+                padding: 28px 25px 0;
+
+                font-size: 27px;
+            }
+
+            .logo i {
+                font-size: 24px;
+            }
+
+            .hero {
+                position: relative;
+
+                top: auto;
+                left: auto;
+
+                transform: none;
+
+                width: auto;
+
+                margin: 70px 25px 45px;
+            }
+
+            .hero h2 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                width: auto;
+
+                font-size: 15px;
+            }
+
+            .login-area {
+                position: relative;
+
+                top: auto;
+                right: auto;
+
+                transform: none;
+
+                width: auto;
+
+                margin: 0 25px 50px;
+            }
+
+            .login-area h1 {
+                font-size: 37px;
+            }
+        }
+
+
+        @media (max-width: 420px) {
+
+            .hero {
+                margin-top: 55px;
+            }
+
+            .hero h2 {
+                font-size: 34px;
+            }
+
+            .login-area h1 {
+                font-size: 34px;
+            }
+
+            .role-btn {
+                font-size: 13px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- ================================
+         LOGO
+    ================================= -->
+
+    <div class="logo">
+
+        <i class="fa-solid fa-dumbbell"></i>
+
+        <span class="white">MOMENT</span>
+        <span class="green">UM</span>
+
+    </div>
+
+
+    <!-- ================================
+         LEFT SIDE
+    ================================= -->
+
+    <div class="hero">
+
+        <h2>
+            Build Your
+            <span>Strongest</span>
+            Self.
+        </h2>
+
+        <p>
+            Every workout is a step forward.
+            Stay focused, stay consistent,
+            and become stronger every day.
+        </p>
+
+    </div>
+
+
+    <!-- ================================
+         RIGHT LOGIN
+    ================================= -->
+
+    <div class="login-area">
+
+        <h1>
+            Welcome <span>Back.</span>
+        </h1>
+
+        <p class="subtitle">
+            Sign in to continue your fitness journey
+            and reach your goals.
+        </p>
+
+
+        <!-- ROLE -->
+
+        <div class="role-title">
+            Sign in as
+        </div>
+
+        <div class="roles">
+
+            <button
+                type="button"
+                class="role-btn active"
+                id="athleteBtn"
+                onclick="selectRole('athlete')">
+
+                <i class="fa-solid fa-person-running"></i>
+                Athlete
+
+            </button>
+
+
+            <button
+                type="button"
+                class="role-btn"
+                id="trainerBtn"
+                onclick="selectRole('trainer')">
+
+                <i class="fa-solid fa-user-tie"></i>
+                Trainer
+
+            </button>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+
+        <form id="loginForm">
+
+
+            <!-- EMAIL -->
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email address"
+                    autocomplete="email"
+                    required>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-box password-box">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    autocomplete="current-password"
+                    required>
+
+                <i
+                    class="fa-solid fa-eye eye"
+                    id="passwordEye"
+                    onclick="togglePassword()">
+                </i>
+
+            </div>
+
+
+            <!-- OPTIONS -->
+
+            <div class="options">
+
+                <label class="remember">
+
+                    <input
+                        type="checkbox"
+                        id="remember">
+
+                    Remember me
+
+                </label>
+
+
+                <span
+                    class="forgot"
+                    onclick="forgotPassword()">
+
+                    Forgot password?
+
+                </span>
+
+            </div>
+
+
+            <!-- SIGN IN -->
+
+            <button
+                type="submit"
+                class="login-btn">
+
+                Sign In
+
+            </button>
+
+        </form>
+
+
+        <!-- MESSAGE -->
+
+        <div id="message"></div>
+
+
+        <!-- CREATE ACCOUNT -->
+
+        <div class="create-account">
+
+            Don't have an account?
+
+            <a
+                id="createLink"
+                href="test2.html">
+
+                Create Account
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+    /* ================================
+       SELECTED ROLE
+    ================================= */
+
+    let selectedRole = "athlete";
+
+
+    function selectRole(role) {
+
+        selectedRole = role;
+
+
+        document
+            .getElementById("athleteBtn")
+            .classList.toggle(
+                "active",
+                role === "athlete"
+            );
+
+
+        document
+            .getElementById("trainerBtn")
+            .classList.toggle(
+                "active",
+                role === "trainer"
+            );
+
+
+        document.getElementById("createLink").href =
+            "test2.html?role=" + role;
+    }
+
+
+    /* ================================
+       URL ROLE
+    ================================= */
+
+    const urlParams =
+        new URLSearchParams(window.location.search);
+
+    const urlRole =
+        urlParams.get("role");
+
+
+    if (
+        urlRole === "trainer" ||
+        urlRole === "athlete"
+    ) {
+
+        selectRole(urlRole);
+
+    }
+
+
+    /* ================================
+       PASSWORD SHOW / HIDE
+    ================================= */
+
+    function togglePassword() {
+
+        const password =
+            document.getElementById("password");
+
+        const eye =
+            document.getElementById("passwordEye");
+
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            eye.classList.remove("fa-eye");
+
+            eye.classList.add("fa-eye-slash");
+
+        } else {
+
+            password.type = "password";
+
+            eye.classList.remove("fa-eye-slash");
+
+            eye.classList.add("fa-eye");
+
+        }
+    }
+
+
+    /* ================================
+       LOGIN
+    ================================= */
+
+    document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            const message =
+                document.getElementById("message");
+
+
+            const users =
+                JSON.parse(
+                    localStorage.getItem("users") || "[]"
+                );
+
+
+            const user =
+                users.find(u =>
+                    String(u.userEmail)
+                        .toLowerCase() === email
+                    &&
+                    u.userPassword === password
+                );
+
+
+            /* USER NOT FOUND */
+
+            if (!user) {
+
+                message.style.color = "#ff6b6b";
+
+                message.textContent =
+                    "Email or password is incorrect.";
+
+                return;
+            }
+
+
+            /* WRONG ROLE */
+
+            if (user.userRole !== selectedRole) {
+
+                message.style.color = "#ff6b6b";
+
+                message.textContent =
+                    "This account is registered as " +
+                    user.userRole + ".";
+
+                return;
+            }
+
+
+            /* ================================
+               SAVE USER DATA
+            ================================= */
+
+            localStorage.setItem(
+                "userID",
+                user.userID
+            );
+
+            localStorage.setItem(
+                "userName",
+                user.userName
+            );
+
+            localStorage.setItem(
+                "userRole",
+                user.userRole
+            );
+
+            localStorage.setItem(
+                "userEmail",
+                user.userEmail
+            );
+
+            localStorage.setItem(
+                "userPhone",
+                user.userPhone
+            );
+
+            localStorage.setItem(
+                "userAge",
+                user.userAge
+            );
+
+            localStorage.setItem(
+                "userWeight",
+                user.userWeight
+            );
+
+            localStorage.setItem(
+                "userHeight",
+                user.userHeight
+            );
+
+            localStorage.setItem(
+                "isLoggedIn",
+                "true"
+            );
+
+
+            /* SUCCESS MESSAGE */
+
+            message.style.color = "#39d98a";
+
+            message.textContent =
+                "Login successful!";
+
+
+            /* ================================
+               REDIRECT
+            ================================= */
+
+            setTimeout(() => {
+
+                if (user.userRole === "trainer") {
+
+                    window.location.href =
+                        "test4.html";
+
+                } else {
+
+                    window.location.href =
+                        "test3.html";
+
+                }
+
+            }, 700);
+
+        });
+
+
+    /* ================================
+       FORGOT PASSWORD
+    ================================= */
+
+    function forgotPassword() {
+
+        alert(
+            "Please contact your trainer or administrator to reset your password."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
