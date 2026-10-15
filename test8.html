@@ -1449,5 +1449,61 @@
         // }
     </script>
 
+
+<style id="responsive-compatibility">
+
+/* Responsive compatibility fixes: layout and functionality are otherwise unchanged. */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+body {
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+}
+img, video, iframe {
+    max-width: 100%;
+}
+input, select, textarea, button {
+    max-width: 100%;
+}
+@media (max-width: 768px) {
+    .main, .main-content, .content, .container, .app {
+        min-width: 0;
+        max-width: 100%;
+    }
+    .header, .topbar, .gallery-header, .athlete-row, .result-top,
+    .actions, .filters, .nav-actions, .hero-buttons, .confirm-row {
+        flex-wrap: wrap;
+    }
+    .grid, .cards, .gallery, .athlete-grid, .summary-grid, .stats-grid,
+    .role-container, .steps, .exercise-list, .meal-list, .athletes-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .row {
+        flex-wrap: wrap;
+    }
+    table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+@media (max-width: 520px) {
+    .grid, .cards, .gallery, .athlete-grid, .summary-grid, .stats-grid,
+    .role-container, .steps, .exercise-list, .meal-list, .athletes-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .main, .main-content, .content, .container {
+        overflow-wrap: anywhere;
+    }
+    input, select, textarea {
+        min-width: 0;
+    }
+}
+
+</style>
 </body>
 </html>

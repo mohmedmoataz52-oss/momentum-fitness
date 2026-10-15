@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,12 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         * {
@@ -59,21 +61,101 @@
             color: #20e0a0;
         }
 
-        .nav-login {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.25);
-            padding: 11px 22px;
-            border-radius: 30px;
-            transition: 0.3s;
-        }
+    
 
-        .nav-login:hover {
-            background: #20e0a0;
-            color: #05070a;
-            border-color: #20e0a0;
-        }
+
+.logo {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #39d98a;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    color: #39d98a;
+    background: rgba(57, 217, 138, 0.08);
+    border: 1px solid rgba(57, 217, 138, 0.3);
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.whatsapp-btn i {
+    font-size: 20px;
+}
+
+.whatsapp-btn:hover {
+    background: #39d98a;
+    color: #0b0f0d;
+    border-color: #39d98a;
+    transform: translateY(-2px);
+}
+
+.nav-login {
+    padding: 11px 22px;
+    background: #39d98a;
+    color: #0b0f0d;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+}
+
+.nav-login:hover {
+    background: #27c779;
+    transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 15px 4%;
+    }
+
+    .logo {
+        font-size: 19px;
+        letter-spacing: 0;
+    }
+
+    .nav-actions {
+        gap: 8px;
+    }
+
+    .whatsapp-btn {
+        padding: 9px 10px;
+        gap: 5px;
+        font-size: 12px;
+    }
+
+    .whatsapp-btn i {
+        font-size: 18px;
+    }
+
+    .nav-login {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+}
+
+
 
         /* ================= HERO ================= */
 
@@ -85,11 +167,10 @@
             padding: 120px 7% 70px;
             background:
                 linear-gradient(90deg,
-                    rgba(5,7,10,0.98) 0%,
-                    rgba(5,7,10,0.88) 42%,
-                    rgba(5,7,10,0.40) 100%),
-                url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=2000&q=85")
-                center/cover no-repeat;
+                    rgba(5, 7, 10, 0.98) 0%,
+                    rgba(5, 7, 10, 0.88) 42%,
+                    rgba(5, 7, 10, 0.40) 100%),
+                url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=2000&q=85") center/cover no-repeat;
         }
 
         .hero::after {
@@ -97,7 +178,7 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(circle at 75% 50%, rgba(32,224,160,0.12), transparent 30%);
+                radial-gradient(circle at 75% 50%, rgba(32, 224, 160, 0.12), transparent 30%);
             pointer-events: none;
         }
 
@@ -168,16 +249,16 @@
 
         .main-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(32,224,160,0.22);
+            box-shadow: 0 10px 30px rgba(32, 224, 160, 0.22);
         }
 
         .outline-button {
             color: white;
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .outline-button:hover {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             transform: translateY(-3px);
         }
 
@@ -236,7 +317,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 18px;
-            border: 1px solid rgba(255,255,255,0.10);
+            border: 1px solid rgba(255, 255, 255, 0.10);
             background-size: cover;
             background-position: center;
             display: flex;
@@ -246,18 +327,18 @@
 
         .role-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(32,224,160,0.5);
+            border-color: rgba(32, 224, 160, 0.5);
         }
 
         .athlete-card {
             background-image:
-                linear-gradient(0deg, rgba(5,7,10,0.98), rgba(5,7,10,0.05)),
+                linear-gradient(0deg, rgba(5, 7, 10, 0.98), rgba(5, 7, 10, 0.05)),
                 url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80");
         }
 
         .trainer-card {
             background-image:
-                linear-gradient(0deg, rgba(5,7,10,0.98), rgba(5,7,10,0.05)),
+                linear-gradient(0deg, rgba(5, 7, 10, 0.98), rgba(5, 7, 10, 0.05)),
                 url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80");
         }
 
@@ -334,7 +415,7 @@
 
         .step {
             padding: 35px 25px;
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             background: #090d12;
             border-radius: 15px;
         }
@@ -363,7 +444,7 @@
         footer {
             padding: 30px 7%;
             background: #030507;
-            border-top: 1px solid rgba(255,255,255,0.07);
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -392,9 +473,10 @@
             .navbar {
                 padding: 20px 5%;
             }
+
             @media (max-width: 768px) {
-    /* mobile styles */
-}
+                /* mobile styles */
+            }
 
             .hero {
                 padding: 120px 5% 70px;
@@ -449,27 +531,56 @@
                 padding: 25px;
             }
         }
+
+        .logo,
+        .logo a,
+        .logo span,
+        .logo::before,
+        .logo::after,
+        .logo a::before,
+        .logo a::after {
+            border-bottom: none !important;
+            text-decoration: none !important;
+            box-shadow: none !important;
+            background-image: none !important;
+        }
     </style>
 </head>
+
 <head>
     <a>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        </a>
+    </a>
 </head>
+
 <body>
 
     <!-- ================= NAVBAR ================= -->
 
-    <nav class="navbar">
-        <div class="logo">
-            MOMENT<span>UM</span>
-        </div>
+<nav class="navbar">
+    <div class="logo">
+        MO<span>MENTUM</span>
+    </div>
+
+    <div class="nav-actions">
+
+        <a href="https://wa.me/201096293007"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="whatsapp-btn"
+           aria-label="Contact us on WhatsApp">
+
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+
+        </a>
 
         <a href="test.html" class="nav-login">
             Sign In
         </a>
-        
-    </nav>
+
+    </div>
+</nav>
 
 
     <!-- ================= HERO ================= -->
@@ -714,9 +825,9 @@
 
         const roleButtons = document.querySelectorAll(".role-button");
 
-        roleButtons.forEach(function(button) {
+        roleButtons.forEach(function (button) {
 
-            button.addEventListener("click", function() {
+            button.addEventListener("click", function () {
 
                 const url = new URL(button.href);
                 const role = url.searchParams.get("role");
@@ -731,5 +842,62 @@
 
     </script>
 
+
+<style id="responsive-compatibility">
+
+/* Responsive compatibility fixes: layout and functionality are otherwise unchanged. */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+body {
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+}
+img, video, iframe {
+    max-width: 100%;
+}
+input, select, textarea, button {
+    max-width: 100%;
+}
+@media (max-width: 768px) {
+    .main, .main-content, .content, .container, .app {
+        min-width: 0;
+        max-width: 100%;
+    }
+    .header, .topbar, .gallery-header, .athlete-row, .result-top,
+    .actions, .filters, .nav-actions, .hero-buttons, .confirm-row {
+        flex-wrap: wrap;
+    }
+    .grid, .cards, .gallery, .athlete-grid, .summary-grid, .stats-grid,
+    .role-container, .steps, .exercise-list, .meal-list, .athletes-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .row {
+        flex-wrap: wrap;
+    }
+    table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+@media (max-width: 520px) {
+    .grid, .cards, .gallery, .athlete-grid, .summary-grid, .stats-grid,
+    .role-container, .steps, .exercise-list, .meal-list, .athletes-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .main, .main-content, .content, .container {
+        overflow-wrap: anywhere;
+    }
+    input, select, textarea {
+        min-width: 0;
+    }
+}
+
+</style>
 </body>
+
 </html>
