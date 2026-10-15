@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1280, initial-scale=0.25">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOMENTUM | Settings</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -600,6 +600,12 @@
     </main>
     <script>document.getElementById('logout').addEventListener('click', e => { e.preventDefault(); if (confirm('Log out?')) { localStorage.removeItem('isLoggedIn'); localStorage.removeItem('userRole'); location.href = 'test.html' } });</script>
     <script>const KEY = 'momentumTrainerSettings'; const fields = ['trainerName', 'trainerEmail', 'trainerPhone', 'trainerBio', 'water', 'visibility', 'units', 'note']; function load() { let d = {}; try { d = JSON.parse(localStorage.getItem(KEY) || '{}') } catch (e) { } fields.forEach(id => { let el = document.getElementById(id); if (d[id] !== undefined) el.value = d[id]; else if (id === 'water') el.value = 3000; else if (id === 'visibility') el.value = 'draft'; else if (id === 'units') el.value = 'metric' }) } function save() { let d = {}; fields.forEach(id => d[id] = document.getElementById(id).value); localStorage.setItem(KEY, JSON.stringify(d)); let n = d.trainerName.trim(); if (n) { document.getElementById('message').textContent = 'Settings saved in this browser.'; localStorage.setItem('momentumTrainerDisplayName', n) } else document.getElementById('message').textContent = 'Settings saved in this browser.' } document.getElementById('save').addEventListener('click', save); document.getElementById('reset').addEventListener('click', () => { if (confirm('Reset this form to saved/default settings?')) { load(); document.getElementById('message').textContent = 'Form restored.' } }); load();</script>
+
+<style id="mobile-overflow-guard">
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@media (max-width: 600px) { body { max-width: 100%; } img, video, iframe { max-width: 100%; } input, select, textarea, button { max-width: 100%; } }
+</style>
+
 </body>
 
 </html>
