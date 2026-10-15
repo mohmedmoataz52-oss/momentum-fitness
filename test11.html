@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1280, initial-scale=0.25">
     <title>MOMENTUM | Athlete Progress</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -601,62 +601,6 @@
     </main>
     <script>document.getElementById('logout').addEventListener('click', e => { e.preventDefault(); if (confirm('Log out?')) { localStorage.removeItem('isLoggedIn'); localStorage.removeItem('userRole'); location.href = 'test.html' } });</script>
     <script>const KEY = 'momentumAthletes', SEL = 'momentumSelectedAthleteId'; let athletes = []; try { athletes = JSON.parse(localStorage.getItem(KEY) || '[]') || [] } catch (e) { } function esc(s = '') { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) } function workCount(a) { return (a.workPlan || []).reduce((n, d) => n + (d.exercises || []).length, 0) } function mealCount(a) { return (a.dietPlan || []).reduce((n, d) => n + (d.meals || []).length, 0) } function select(id) { localStorage.setItem(SEL, id); let a = athletes.find(x => x.id === id); if (!a) return; document.getElementById('athleteSelect').value = id; document.getElementById('name').textContent = a.name || 'Unnamed Athlete'; document.getElementById('meta').textContent = (a.id || 'No ID') + ' · ' + (a.goal || 'Goal not set') + ' · ' + (a.status || 'Status not set'); document.getElementById('weight').textContent = a.weight ? (a.weight + ' kg') : '—'; document.getElementById('exerciseCount').textContent = workCount(a); document.getElementById('mealCount').textContent = mealCount(a); document.getElementById('visibility').textContent = a.visibility || 'draft'; document.getElementById('workStatus').textContent = workCount(a) + ' exercises across ' + (a.workPlan || []).filter(d => !d.isRest).length + ' training days.'; document.getElementById('dietStatus').textContent = mealCount(a) + ' meals configured across ' + (a.dietPlan || []).length + ' days.'; document.getElementById('subscription').textContent = (a.start || 'Start not set') + ' → ' + (a.end || 'End not set'); document.getElementById('edit').onclick = () => location.href = 'test9.html'; document.getElementById('viewWork').onclick = () => { localStorage.setItem('momentumPlanPreviewMode', 'coach'); location.href = 'test6.html' }; document.getElementById('viewDiet').onclick = () => { localStorage.setItem('momentumPlanPreviewMode', 'coach'); location.href = 'test7.html' } } document.getElementById('athleteSelect').innerHTML = athletes.length ? athletes.map(a => `<option value="${esc(a.id)}">${esc(a.name)} — ${esc(a.id)}</option>`).join('') : '<option value="">No athletes saved yet</option>'; document.getElementById('athleteSelect').addEventListener('change', e => select(e.target.value)); document.getElementById('athleteList').innerHTML = athletes.length ? athletes.map(a => `<article class="item"><div class="avatar"><i class="fa-solid fa-user"></i></div><div class="grow"><h3>${esc(a.name || 'Unnamed Athlete')}</h3><p>${esc(a.id || 'No ID')} · ${esc(a.goal || 'Goal not set')}<br>${workCount(a)} exercises · ${mealCount(a)} meals</p></div><button class="btn" data-open="${esc(a.id)}">View</button></article>`).join('') : '<div class="empty">No athletes found in local demo data. Add one from Edit Athletes.</div>'; document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => select(b.dataset.open))); let saved = localStorage.getItem(SEL); if (athletes.length) select(athletes.some(a => a.id === saved) ? saved : athletes[0].id);</script>
-
-<style id="responsive-compatibility">
-
-/* Responsive compatibility fixes: layout and functionality are otherwise unchanged. */
-html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-}
-body {
-    max-width: 100%;
-    min-width: 0;
-    overflow-x: hidden;
-}
-img, video, iframe {
-    max-width: 100%;
-}
-input, select, textarea, button {
-    max-width: 100%;
-}
-@media (max-width: 768px) {
-    .main, .main-content, .content, .container, .app {
-        min-width: 0;
-        max-width: 100%;
-    }
-    .header, .topbar, .gallery-header, .athlete-row, .result-top,
-    .actions, .filters, .nav-actions, .hero-buttons, .confirm-row {
-        flex-wrap: wrap;
-    }
-    .grid, .cards, .gallery, .athlete-grid, .summary-grid, .stats-grid,
-    .role-container, .steps, .exercise-list, .meal-list, .athletes-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .row {
-        flex-wrap: wrap;
-    }
-    table {
-        display: block;
-        max-width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-@media (max-width: 520px) {
-    .grid, .cards, .gallery, .athlete-grid, .summary-grid, .stats-grid,
-    .role-container, .steps, .exercise-list, .meal-list, .athletes-list {
-        grid-template-columns: minmax(0, 1fr);
-    }
-    .main, .main-content, .content, .container {
-        overflow-wrap: anywhere;
-    }
-    input, select, textarea {
-        min-width: 0;
-    }
-}
-
-</style>
 </body>
 
 </html>
