@@ -513,7 +513,47 @@
     box-shadow: none !important;
     background-image: none !important;
 }
-    </style>
+    
+/* MOMENTUM RESPONSIVE SAFETY LAYER */
+html { max-width: 100%; overflow-x: hidden; }
+body { max-width: 100%; overflow-x: hidden; }
+img, video, canvas, iframe { max-width: 100%; }
+input, select, textarea, button { max-width: 100%; }
+table { max-width: 100%; }
+@media (max-width: 900px) {
+  .container, .main, main, .content, .page-content, .dashboard-content {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .container { box-sizing: border-box; }
+  .main { box-sizing: border-box; }
+  .stats-grid, .stat-grid, .cards-grid, .card-grid, .dashboard-grid,
+  .feature-grid, .meal-grid, .exercise-grid, .athlete-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .table-wrap, .table-container, .responsive-table { max-width: 100%; overflow-x: auto; }
+}
+@media (max-width: 650px) {
+  h1 { overflow-wrap: anywhere; }
+  .container, .main, main, .content, .page-content, .dashboard-content {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+  .stats-grid, .stat-grid, .cards-grid, .card-grid, .dashboard-grid,
+  .feature-grid, .meal-grid, .exercise-grid, .athlete-grid,
+  .form-grid, .grid, .two-columns, .row {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .header, .page-header, .topbar, .section-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .modal, .panel, .card { max-width: 100%; box-sizing: border-box; }
+  .table-wrap, .table-container, .responsive-table { overflow-x: auto; }
+  input, select, textarea { min-width: 0; }
+}
+
+</style>
 </head>
 
 <body>

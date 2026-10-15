@@ -1051,7 +1051,47 @@
             }
         }
 
-    </style>
+    
+/* MOMENTUM RESPONSIVE SAFETY LAYER */
+html { max-width: 100%; overflow-x: hidden; }
+body { max-width: 100%; overflow-x: hidden; }
+img, video, canvas, iframe { max-width: 100%; }
+input, select, textarea, button { max-width: 100%; }
+table { max-width: 100%; }
+@media (max-width: 900px) {
+  .container, .main, main, .content, .page-content, .dashboard-content {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .container { box-sizing: border-box; }
+  .main { box-sizing: border-box; }
+  .stats-grid, .stat-grid, .cards-grid, .card-grid, .dashboard-grid,
+  .feature-grid, .meal-grid, .exercise-grid, .athlete-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .table-wrap, .table-container, .responsive-table { max-width: 100%; overflow-x: auto; }
+}
+@media (max-width: 650px) {
+  h1 { overflow-wrap: anywhere; }
+  .container, .main, main, .content, .page-content, .dashboard-content {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+  .stats-grid, .stat-grid, .cards-grid, .card-grid, .dashboard-grid,
+  .feature-grid, .meal-grid, .exercise-grid, .athlete-grid,
+  .form-grid, .grid, .two-columns, .row {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .header, .page-header, .topbar, .section-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .modal, .panel, .card { max-width: 100%; box-sizing: border-box; }
+  .table-wrap, .table-container, .responsive-table { overflow-x: auto; }
+  input, select, textarea { min-width: 0; }
+}
+
+</style>
 </head>
 
 
@@ -1360,12 +1400,17 @@
                 </div>
 
 
-                <div class="connected-badge">
-
-                    <i class="fa-solid fa-circle-check"></i>
-
-                    Connected
-
+                <div class="trainer-contact-actions" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                    <a id="trainerWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
+                       aria-label="Chat with your trainer on WhatsApp"
+                       title="Chat with your trainer on WhatsApp"
+                       style="display:none;width:44px;height:44px;border-radius:50%;align-items:center;justify-content:center;background:#25d366;color:#fff;text-decoration:none;font-size:24px">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <div class="connected-badge">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Connected
+                    </div>
                 </div>
 
             </div>
@@ -1858,6 +1903,18 @@
                 }
 
 
+                // Pull the latest trainer contact details from the trainer directory.
+                let trainerDirectory = [];
+                try { trainerDirectory = JSON.parse(localStorage.getItem("trainers") || "[]"); } catch (e) { trainerDirectory = []; }
+                const directoryTrainer = trainerDirectory.find(item =>
+                    String(item.id || "").toUpperCase() === String(trainer.id || "").toUpperCase()
+                );
+                if (directoryTrainer) {
+                    trainer.phone = trainer.phone || directoryTrainer.phone || directoryTrainer.userPhone || "";
+                    trainer.name = trainer.name || directoryTrainer.name || "";
+                    trainer.photo = trainer.photo || directoryTrainer.photo || "";
+                }
+
                 document.getElementById(
                     "trainerName"
                 ).textContent =
@@ -1898,6 +1955,21 @@
 
                 trainerCard.style.display =
                     "flex";
+
+                const trainerWhatsApp = document.getElementById("trainerWhatsApp");
+                if (trainerWhatsApp) {
+                    const digits = String(trainer.phone || trainer.userPhone || "").replace(/\D/g, "");
+                    if (digits.length >= 10) {
+                        const international = digits.startsWith("00") ? digits.slice(2) :
+                            (digits.startsWith("0") ? "20" + digits.slice(1) :
+                            (digits.startsWith("20") ? digits : digits));
+                        trainerWhatsApp.href = "https://wa.me/" + international;
+                        trainerWhatsApp.style.display = "flex";
+                    } else {
+                        trainerWhatsApp.style.display = "none";
+                        trainerWhatsApp.removeAttribute("href");
+                    }
+                }
 
                 trainerStatus.textContent =
                     "CONNECTED";
