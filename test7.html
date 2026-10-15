@@ -487,44 +487,123 @@
     background-image: none !important;
 }
 
-    
-/* MOMENTUM RESPONSIVE SAFETY LAYER */
-html { max-width: 100%; overflow-x: hidden; }
-body { max-width: 100%; overflow-x: hidden; }
-img, video, canvas, iframe { max-width: 100%; }
-input, select, textarea, button { max-width: 100%; }
-table { max-width: 100%; }
-@media (max-width: 900px) {
-  .container, .main, main, .content, .page-content, .dashboard-content {
-    min-width: 0;
+    </style>
+<style>
+
+/* MOMENTUM responsive navigation patch */
+@media (max-width: 768px) {
+  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+  body { background-attachment: scroll !important; }
+  .sidebar {
+    position: fixed !important;
+    inset: 0 auto 0 0 !important;
+    width: min(82vw, 290px) !important;
+    min-width: 0 !important;
+    max-width: 86vw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 22px 14px 28px !important;
+    transform: translateX(-105%);
+    transition: transform .25s ease;
+    z-index: 1201 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    visibility: visible !important;
+  }
+  .sidebar.open { transform: translateX(0) !important; }
+  .sidebar .side-logo, .sidebar .logo, .sidebar .side-logo h2 {
     max-width: 100%;
+    overflow-wrap: anywhere;
   }
-  .container { box-sizing: border-box; }
-  .main { box-sizing: border-box; }
-  .stats-grid, .stat-grid, .cards-grid, .card-grid, .dashboard-grid,
-  .feature-grid, .meal-grid, .exercise-grid, .athlete-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .sidebar .nav, .sidebar nav, .sidebar .nav-links {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 7px !important;
   }
-  .table-wrap, .table-container, .responsive-table { max-width: 100%; overflow-x: auto; }
-}
-@media (max-width: 650px) {
-  h1 { overflow-wrap: anywhere; }
-  .container, .main, main, .content, .page-content, .dashboard-content {
-    padding-left: 14px !important;
-    padding-right: 14px !important;
+  .sidebar .nav-item, .sidebar .nav-link, .sidebar .nav-links a,
+  .sidebar nav a {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    justify-content: flex-start !important;
+    white-space: normal !important;
   }
-  .stats-grid, .stat-grid, .cards-grid, .card-grid, .dashboard-grid,
-  .feature-grid, .meal-grid, .exercise-grid, .athlete-grid,
-  .form-grid, .grid, .two-columns, .row {
+  .momentum-mobile-bar {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 58px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    z-index: 1100;
+    background: rgba(3, 12, 19, .96);
+    border-bottom: 1px solid rgba(48, 220, 169, .22);
+    backdrop-filter: blur(14px);
+  }
+  .momentum-menu-toggle {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(48, 220, 169, .45);
+    border-radius: 12px;
+    color: #31dba8;
+    background: rgba(27, 211, 159, .12);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .momentum-mobile-brand {
+    color: #f5faf8;
+    font-weight: 800;
+    font-size: 19px;
+    letter-spacing: -.4px;
+  }
+  .momentum-mobile-brand span { color: #31dba8; }
+  .momentum-sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .62);
+    z-index: 1200;
+  }
+  .momentum-sidebar-overlay.show { display: block; }
+  .main {
+    margin-left: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 78px 15px 30px !important;
+  }
+  .page, .app, .container, .content, .dashboard, .main-content {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .page { overflow-x: clip; }
+  .main > *, .page > *, .container > * { min-width: 0; }
+  img, video, canvas, iframe { max-width: 100%; }
+  input, select, textarea, button { max-width: 100%; box-sizing: border-box; }
+  table { max-width: 100%; }
+  .summary-grid, .stats-grid, .stat-grid, .cards-grid, .card-grid,
+  .gallery, .athlete-grid, .support-layout, .workout-grid, .diet-grid {
     grid-template-columns: minmax(0, 1fr) !important;
   }
-  .header, .page-header, .topbar, .section-header {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .modal, .panel, .card { max-width: 100%; box-sizing: border-box; }
-  .table-wrap, .table-container, .responsive-table { overflow-x: auto; }
-  input, select, textarea { min-width: 0; }
+  .daily-progress-card { flex-wrap: wrap; }
+}
+@media (min-width: 769px) {
+  .momentum-mobile-bar, .momentum-sidebar-overlay { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sidebar { transition: none !important; }
 }
 
 </style>
@@ -583,6 +662,55 @@ table { max-width: 100%; }
         </p>
     </main>
     <script>const KEY = 'momentumAthletes', SEL = 'momentumSelectedAthleteId'; const DAYS = ['Push', 'Pull', 'Legs', 'Push', 'Pull', 'Legs', 'Rest']; const names = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7']; let idx = 0; function esc(s = '') { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) } let athletes = []; try { athletes = JSON.parse(localStorage.getItem(KEY) || '[]') || [] } catch (e) { } let wanted = localStorage.getItem(SEL); let athlete = athletes.find(a => a.id === wanted) || athletes[0]; const isWork = false; function render() { const plan = athlete ? (isWork ? athlete.workPlan : athlete.dietPlan) : null; document.getElementById('athleteName').textContent = athlete ? athlete.name + ' · ' + (isWork ? 'Work Plan' : 'Diet Plan') : 'No athlete selected'; document.getElementById('planStatus').textContent = athlete ? (athlete.visibility === 'published' ? 'Published by your coach' : 'Draft preview — your coach has not published this plan yet') : 'Open Edit Athletes and choose a profile first.'; const total = isWork ? (plan || []).reduce((n, d) => n + (d.exercises || []).length, 0) : (plan || []).reduce((n, d) => n + (d.meals || []).length, 0); const metrics = isWork ? [['Exercises', total], ['Training Days', (plan || []).filter(d => !d.isRest).length], ['Rest Days', (plan || []).filter(d => d.isRest).length], ['Target', 'Coach set']] : [['Meals', total], ['Calories', calories()], ['Protein', macro('protein') + ' g'], ['Water', athlete ? (athlete.waterTarget || 3000) + ' ml' : '—']]; document.getElementById('summary').innerHTML = metrics.map(m => `<div class="metric"><small>${esc(m[0])}</small><strong>${esc(m[1])}</strong></div>`).join(''); document.getElementById('days').innerHTML = names.map((n, i) => `<button class="day ${idx === i ? 'active' : ''}" data-day="${i}"><strong>${n}</strong><small>${isWork ? ((plan && plan[i] && plan[i].isRest) ? 'Rest' : (plan && plan[i] && plan[i].focus) || DAYS[i]) : ((plan && plan[i] && plan[i].meals) || []).length + ' meals'}</small></button>`).join(''); document.querySelectorAll('[data-day]').forEach(b => b.addEventListener('click', () => { idx = Number(b.dataset.day); render() })); const d = plan && plan[idx]; document.getElementById('dayTitle').textContent = names[idx] + ' — ' + (isWork ? (d ? (d.isRest ? 'Rest Day' : d.focus || DAYS[idx]) : DAYS[idx]) : 'Meals'); document.getElementById('dayHint').textContent = isWork ? 'Complete the exercises assigned by your coach and log the actual weight in your workout tracker.' : 'Follow meal quantities and notes from your coach. Confirm whether food quantities are raw or cooked.'; const root = document.getElementById('items'); if (!d) { root.innerHTML = '<div class="empty"><i class="fa-solid fa-folder-open"></i><br>No saved plan was found. Ask your coach to build a plan in Edit Athletes.</div>'; return } if (isWork) { if (d.isRest) { root.innerHTML = '<div class="empty"><i class="fa-solid fa-bed"></i><br>Rest day. Recover, sleep well, and get ready for your next session.</div>'; return } const ex = d.exercises || []; root.innerHTML = ex.length ? ex.map((x, i) => `<article class="item"><div class="icon"><i class="fa-solid fa-dumbbell"></i></div><div class="details"><strong>${i + 1}. ${esc(x.name || 'Exercise')}</strong><p>${esc(x.muscle || 'Muscle group')} · ${esc(x.sets || 3)} sets × ${esc(x.reps || '—')} reps<br>Rest: ${esc(x.rest || 90)} sec${x.notes ? ' · ' + esc(x.notes) : ''}</p></div><div class="target">${Number(x.weight) > 0 ? esc(x.weight) + ' kg' : 'Bodyweight / TBD'}</div></article>`).join('') : '<div class="empty"><i class="fa-solid fa-circle-plus"></i><br>No exercises added for this day yet.</div>' } else { const meals = d.meals || []; root.innerHTML = meals.length ? meals.map((m, i) => { const foods = m.foods || []; const cal = foods.reduce((s, f) => s + (Number(f.calories) || 0), 0); const pro = foods.reduce((s, f) => s + (Number(f.protein) || 0), 0); const carb = foods.reduce((s, f) => s + (Number(f.carbs) || 0), 0); const fat = foods.reduce((s, f) => s + (Number(f.fat) || 0), 0); return `<article class="item"><div class="icon"><i class="fa-solid fa-utensils"></i></div><div class="details"><strong>${i + 1}. ${esc(m.name || 'Meal')}</strong><p>${esc(m.time || 'Time not set')}<br>${foods.map(f => esc(f.name || 'Food') + ' — ' + esc(f.quantity ?? '') + ' ' + esc(f.unit || 'g')).join('<br>') || 'No food items added'}${m.notes ? '<br>Note: ' + esc(m.notes) : ''}</p></div><div class="target">${Math.round(cal)} kcal<br><small>P '+Math.round(pro)+' · C '+Math.round(carb)+' · F '+Math.round(fat)+'</small></div></article>` }).join('') : '<div class="empty"><i class="fa-solid fa-bowl-food"></i><br>No meals added for this day yet.</div>' } } function calories() { return athlete ? (athlete.dietPlan || []).flatMap(d => d.meals || []).flatMap(m => m.foods || []).reduce((s, f) => s + (Number(f.calories) || 0), 0) : 0 } function macro(k) { return athlete ? (athlete.dietPlan || []).flatMap(d => d.meals || []).flatMap(m => m.foods || []).reduce((s, f) => s + (Number(f[k]) || 0), 0) : 0 } if (localStorage.getItem('momentumPlanPreviewMode') === 'coach') { const nav = document.querySelector('.nav'); if (nav) { nav.innerHTML = '<a href="test4.html"><i class="fa-solid fa-house"></i><span>Trainer Dashboard</span></a><a href="test9.html"><i class="fa-solid fa-users-gear"></i><span>Edit Athletes</span></a><a href="test8.html"><i class="fa-solid fa-magnifying-glass"></i><span>Search Athletes</span></a><a href="test10.html"><i class="fa-solid fa-message"></i><span>Complaints</span></a><a href="test11.html"><i class="fa-solid fa-chart-line"></i><span>Athlete Progress</span></a><a href="test12.html"><i class="fa-solid fa-gear"></i><span>Settings</span></a>'; } document.querySelector('.eyebrow').innerHTML = 'Coach Workspace / <span>Preview ' + (isWork ? 'Work Plan' : 'Diet Plan') + '</span>'; document.querySelector('.sub').textContent = 'Coach preview for the selected athlete. Use the Trainer Dashboard or Edit Athletes to return to coach tools.'; const b = document.querySelector('.hero .back'); if (b) { b.href = 'test9.html'; b.innerHTML = '<i class="fa-solid fa-arrow-left"></i> Back to Edit Athletes'; } } else { localStorage.removeItem('momentumPlanPreviewMode'); } render();</script>
+
+<script>
+(function () {
+  const sidebar = document.querySelector('.sidebar');
+  if (!sidebar || document.querySelector('.momentum-mobile-bar')) return;
+
+  const bar = document.createElement('header');
+  bar.className = 'momentum-mobile-bar';
+  bar.innerHTML = '<button class="momentum-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><div class="momentum-mobile-brand">MO<span>MENTUM</span></div>';
+
+  const overlay = document.createElement('div');
+  overlay.className = 'momentum-sidebar-overlay';
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(overlay);
+  document.body.appendChild(bar);
+
+  const toggle = bar.querySelector('.momentum-menu-toggle');
+  function closeMenu() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation');
+    document.body.style.overflow = '';
+  }
+  function openMenu() {
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close navigation');
+    document.body.style.overflow = 'hidden';
+  }
+  toggle.addEventListener('click', function () {
+    sidebar.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  overlay.addEventListener('click', closeMenu);
+  sidebar.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
+    });
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeMenu();
+  });
+  window.addEventListener('resize', function () {
+    if (!window.matchMedia('(max-width: 768px)').matches) closeMenu();
+  });
+})();
+</script>
+
 </body>
 
 </html>

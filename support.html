@@ -1089,44 +1089,123 @@
                 font-size: 17px;
             }
         }
-    
-/* MOMENTUM RESPONSIVE SAFETY LAYER */
-html { max-width: 100%; overflow-x: hidden; }
-body { max-width: 100%; overflow-x: hidden; }
-img, video, canvas, iframe { max-width: 100%; }
-input, select, textarea, button { max-width: 100%; }
-table { max-width: 100%; }
-@media (max-width: 900px) {
-  .container, .main, main, .content, .page-content, .dashboard-content {
-    min-width: 0;
+    </style>
+<style>
+
+/* MOMENTUM responsive navigation patch */
+@media (max-width: 768px) {
+  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+  body { background-attachment: scroll !important; }
+  .sidebar {
+    position: fixed !important;
+    inset: 0 auto 0 0 !important;
+    width: min(82vw, 290px) !important;
+    min-width: 0 !important;
+    max-width: 86vw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 22px 14px 28px !important;
+    transform: translateX(-105%);
+    transition: transform .25s ease;
+    z-index: 1201 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    visibility: visible !important;
+  }
+  .sidebar.open { transform: translateX(0) !important; }
+  .sidebar .side-logo, .sidebar .logo, .sidebar .side-logo h2 {
     max-width: 100%;
+    overflow-wrap: anywhere;
   }
-  .container { box-sizing: border-box; }
-  .main { box-sizing: border-box; }
-  .stats-grid, .stat-grid, .cards-grid, .card-grid, .dashboard-grid,
-  .feature-grid, .meal-grid, .exercise-grid, .athlete-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .sidebar .nav, .sidebar nav, .sidebar .nav-links {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 7px !important;
   }
-  .table-wrap, .table-container, .responsive-table { max-width: 100%; overflow-x: auto; }
-}
-@media (max-width: 650px) {
-  h1 { overflow-wrap: anywhere; }
-  .container, .main, main, .content, .page-content, .dashboard-content {
-    padding-left: 14px !important;
-    padding-right: 14px !important;
+  .sidebar .nav-item, .sidebar .nav-link, .sidebar .nav-links a,
+  .sidebar nav a {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    justify-content: flex-start !important;
+    white-space: normal !important;
   }
-  .stats-grid, .stat-grid, .cards-grid, .card-grid, .dashboard-grid,
-  .feature-grid, .meal-grid, .exercise-grid, .athlete-grid,
-  .form-grid, .grid, .two-columns, .row {
+  .momentum-mobile-bar {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 58px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    z-index: 1100;
+    background: rgba(3, 12, 19, .96);
+    border-bottom: 1px solid rgba(48, 220, 169, .22);
+    backdrop-filter: blur(14px);
+  }
+  .momentum-menu-toggle {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(48, 220, 169, .45);
+    border-radius: 12px;
+    color: #31dba8;
+    background: rgba(27, 211, 159, .12);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .momentum-mobile-brand {
+    color: #f5faf8;
+    font-weight: 800;
+    font-size: 19px;
+    letter-spacing: -.4px;
+  }
+  .momentum-mobile-brand span { color: #31dba8; }
+  .momentum-sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .62);
+    z-index: 1200;
+  }
+  .momentum-sidebar-overlay.show { display: block; }
+  .main {
+    margin-left: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 78px 15px 30px !important;
+  }
+  .page, .app, .container, .content, .dashboard, .main-content {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .page { overflow-x: clip; }
+  .main > *, .page > *, .container > * { min-width: 0; }
+  img, video, canvas, iframe { max-width: 100%; }
+  input, select, textarea, button { max-width: 100%; box-sizing: border-box; }
+  table { max-width: 100%; }
+  .summary-grid, .stats-grid, .stat-grid, .cards-grid, .card-grid,
+  .gallery, .athlete-grid, .support-layout, .workout-grid, .diet-grid {
     grid-template-columns: minmax(0, 1fr) !important;
   }
-  .header, .page-header, .topbar, .section-header {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .modal, .panel, .card { max-width: 100%; box-sizing: border-box; }
-  .table-wrap, .table-container, .responsive-table { overflow-x: auto; }
-  input, select, textarea { min-width: 0; }
+  .daily-progress-card { flex-wrap: wrap; }
+}
+@media (min-width: 769px) {
+  .momentum-mobile-bar, .momentum-sidebar-overlay { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sidebar { transition: none !important; }
 }
 
 </style>
@@ -2091,6 +2170,55 @@ table { max-width: 100%; }
         renderReports();
 
     </script>
+
+
+<script>
+(function () {
+  const sidebar = document.querySelector('.sidebar');
+  if (!sidebar || document.querySelector('.momentum-mobile-bar')) return;
+
+  const bar = document.createElement('header');
+  bar.className = 'momentum-mobile-bar';
+  bar.innerHTML = '<button class="momentum-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><div class="momentum-mobile-brand">MO<span>MENTUM</span></div>';
+
+  const overlay = document.createElement('div');
+  overlay.className = 'momentum-sidebar-overlay';
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(overlay);
+  document.body.appendChild(bar);
+
+  const toggle = bar.querySelector('.momentum-menu-toggle');
+  function closeMenu() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation');
+    document.body.style.overflow = '';
+  }
+  function openMenu() {
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close navigation');
+    document.body.style.overflow = 'hidden';
+  }
+  toggle.addEventListener('click', function () {
+    sidebar.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  overlay.addEventListener('click', closeMenu);
+  sidebar.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
+    });
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeMenu();
+  });
+  window.addEventListener('resize', function () {
+    if (!window.matchMedia('(max-width: 768px)').matches) closeMenu();
+  });
+})();
+</script>
 
 </body>
 
