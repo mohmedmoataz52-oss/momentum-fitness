@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +14,6 @@
         /* =========================
            GLOBAL
         ========================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -34,194 +32,129 @@
             --sidebar-width: 245px;
         }
 
-      body {
+        body {
             margin: 0;
             min-height: 100vh;
             color: #f4f8fb;
             background:
-                linear-gradient(90deg,
-                    rgba(1, 10, 20, 0.82),
-                    rgba(1, 10, 20, 0.58)),
+                linear-gradient(90deg, rgba(1, 10, 20, 0.82), rgba(1, 10, 20, 0.58)),
                 url("https://i.etsystatic.com/23444619/r/il/db93ac/5875799596/il_fullxfull.5875799596_r7m1.jpg") center center / cover fixed no-repeat;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-
-        button,
-        input,
-        select,
-        textarea {
+        button, input, select, textarea {
             font: inherit;
         }
 
-        button,
-        a {
+        button, a {
             -webkit-tap-highlight-color: transparent;
         }
-/* =========================
+
+        /* =========================
            SIDEBAR
         ========================= */
-
-         .sidebar {
-
+        .sidebar {
             width: 235px;
             min-height: 100vh;
-
             background:
-                linear-gradient(
-                    rgba(2, 10, 16, .78),
-                    rgba(2, 10, 16, .94)
-                ),
-                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800")
-                center / cover;
-
+                linear-gradient(rgba(2, 10, 16, .78), rgba(2, 10, 16, .94)),
+                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover;
             border-right: 1px solid #20313d;
-
             padding: 28px 14px;
-
             position: fixed;
             left: 0;
             top: 0;
             bottom: 0;
+            z-index: 1000;
         }
 
-
         .side-logo {
-
             display: flex;
             align-items: center;
             gap: 12px;
-
             padding: 0 15px 30px;
         }
 
-
         .side-logo i {
-
             color: #24e3a3;
             font-size: 34px;
         }
 
-
         .side-logo h2 {
-
             font-size: 21px;
             letter-spacing: 1px;
         }
 
-
         .side-logo p {
-
             color: #82919d;
             font-size: 8px;
             letter-spacing: 2px;
             margin-top: 4px;
         }
 
-
         .nav {
-
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-
         .nav-item {
-
             min-height: 55px;
-
             display: flex;
             align-items: center;
-
             gap: 16px;
-
             padding: 0 17px;
-
             border-radius: 12px;
-
             color: #aebbc7;
-
             text-decoration: none;
-
             transition: .25s;
         }
 
-
         .nav-item i {
-
             width: 20px;
-
             text-align: center;
-
             font-size: 18px;
         }
 
-
         .nav-item:hover {
-
             background: rgba(36, 227, 163, .08);
-
             color: #24e3a3;
         }
 
-
         .nav-item.active {
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(36, 227, 163, .20),
-                    rgba(36, 227, 163, .06)
-                );
-
+            background: linear-gradient(90deg, rgba(36, 227, 163, .20), rgba(36, 227, 163, .06));
             color: #24e3a3;
-
             border-left: 3px solid #24e3a3;
         }
 
-
         .side-quote {
-
             position: absolute;
-
             left: 25px;
             right: 25px;
             bottom: 35px;
-
             color: #73818c;
-
             font-size: 13px;
-
             line-height: 1.7;
-
             font-style: italic;
         }
-
 
         /* =========================
            MAIN
         ========================= */
-
         .main {
-
             margin-left: 235px;
-
             width: calc(100% - 235px);
-
             padding: 22px 28px 40px;
         }
 
         /* =========================
            HEADER
         ========================= */
-
         .topbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
-
             margin-bottom: 30px;
         }
 
@@ -229,9 +162,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-
             margin-bottom: 8px;
-
             color: var(--green);
             font-size: 10px;
             font-weight: 800;
@@ -246,20 +177,21 @@
         .topbar h1 span {
             color: var(--green);
         }
-        .logo{
-    font: size 18px;
-    font-weight:800;
-    letter-spacing:-1.3px;
-    text-decoration:none;
-}
 
-.logo .white{
-    color:#fff;
-}
+        .logo {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -1.3px;
+            text-decoration: none;
+        }
 
-.logo .green{
-    color:#39d98a;
-}
+        .logo .white {
+            color: #fff;
+        }
+
+        .logo .green {
+            color: #39d98a;
+        }
 
         .topbar p {
             margin-top: 8px;
@@ -295,55 +227,40 @@
             width: 43px;
             height: 43px;
             flex-shrink: 0;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             color: var(--green);
             background: #0d1a28;
             border: 1px solid #26394b;
             border-radius: 50%;
-
             font-weight: 800;
         }
 
         /* =========================
            SUPPORT BANNER
         ========================= */
-
         .support-banner {
             position: relative;
             overflow: hidden;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
-
             padding: 25px;
             margin-bottom: 23px;
-
-            background:
-                linear-gradient(
-                    110deg,
-                    rgba(15, 42, 43, 0.98),
-                    rgba(10, 25, 37, 0.98)
-                );
-
+            background: linear-gradient(110deg, rgba(15, 42, 43, 0.98), rgba(10, 25, 37, 0.98));
             border: 1px solid rgba(37, 227, 163, 0.2);
             border-radius: 15px;
         }
 
         .support-banner::after {
             content: "";
-
             position: absolute;
             width: 190px;
             height: 190px;
             right: 30px;
             top: -100px;
-
             background: rgba(37, 227, 163, 0.07);
             border-radius: 50%;
             pointer-events: none;
@@ -370,23 +287,19 @@
             width: 58px;
             height: 58px;
             flex-shrink: 0;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             color: var(--green);
             background: rgba(37, 227, 163, 0.11);
             border: 1px solid rgba(37, 227, 163, 0.18);
             border-radius: 15px;
-
             font-size: 23px;
         }
 
         /* =========================
            SUPPORT LAYOUT
         ========================= */
-
         .support-layout {
             display: grid;
             grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
@@ -397,7 +310,6 @@
         .panel {
             min-width: 0;
             overflow: hidden;
-
             background: rgba(10, 22, 35, 0.97);
             border: 1px solid var(--border);
             border-radius: 14px;
@@ -434,7 +346,6 @@
         /* =========================
            FORM
         ========================= */
-
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -522,7 +433,6 @@
         /* =========================
            PRIORITY
         ========================= */
-
         .priority-options {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -541,19 +451,15 @@
 
         .priority-option label {
             min-height: 43px;
-
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 7px;
-
             padding: 9px;
-
             color: #91a0af;
             background: #07121e;
             border: 1px solid #203449;
             border-radius: 9px;
-
             cursor: pointer;
             font-size: 11px;
             transition: 0.2s;
@@ -577,14 +483,11 @@
         /* =========================
            CONFIRMATION
         ========================= */
-
         .confirm-row {
             display: flex;
             align-items: flex-start;
             gap: 10px;
-
             margin: 21px 0;
-
             color: #8b9baa;
             font-size: 11px;
             line-height: 1.7;
@@ -598,13 +501,11 @@
         /* =========================
            BUTTONS
         ========================= */
-
         .form-actions {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-
             padding-top: 18px;
             border-top: 1px solid var(--border);
         }
@@ -612,15 +513,12 @@
         .reset-btn,
         .submit-btn {
             min-height: 43px;
-
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-
             padding: 0 16px;
             border-radius: 9px;
-
             cursor: pointer;
             font-size: 12px;
             font-weight: 800;
@@ -652,7 +550,6 @@
         /* =========================
            RIGHT COLUMN
         ========================= */
-
         .right-column {
             display: flex;
             flex-direction: column;
@@ -667,7 +564,6 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
-
             padding: 15px 0;
             border-bottom: 1px solid #17293a;
         }
@@ -680,11 +576,9 @@
             width: 37px;
             height: 37px;
             flex-shrink: 0;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             color: var(--green);
             background: var(--green-light);
             border-radius: 10px;
@@ -705,7 +599,6 @@
         /* =========================
            MY REPORTS
         ========================= */
-
         .reports-section {
             margin-top: 30px;
         }
@@ -731,18 +624,14 @@
         .report-count {
             min-width: 34px;
             height: 30px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             padding: 0 9px;
-
             color: var(--green);
             background: var(--green-light);
             border: 1px solid rgba(37, 227, 163, 0.16);
             border-radius: 8px;
-
             font-size: 12px;
             font-weight: 800;
         }
@@ -771,7 +660,6 @@
             display: flex;
             align-items: center;
             gap: 7px;
-
             color: var(--green);
             font-size: 9px;
             font-weight: 800;
@@ -805,10 +693,8 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-
             margin-top: 16px;
             padding-top: 13px;
-
             border-top: 1px solid #17293a;
         }
 
@@ -816,14 +702,11 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-
             padding: 7px 10px;
-
             color: #f2c66d;
             background: rgba(242, 198, 109, 0.08);
             border: 1px solid rgba(242, 198, 109, 0.17);
             border-radius: 20px;
-
             font-size: 10px;
             font-weight: 700;
         }
@@ -844,16 +727,13 @@
             width: 34px;
             height: 34px;
             flex-shrink: 0;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             color: #8796a5;
             background: transparent;
             border: 1px solid #26394b;
             border-radius: 8px;
-
             cursor: pointer;
             transition: 0.2s;
         }
@@ -867,11 +747,9 @@
         /* =========================
            EMPTY STATE
         ========================= */
-
         .empty-reports {
             padding: 45px 20px;
             text-align: center;
-
             background: rgba(10, 22, 35, 0.97);
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -880,13 +758,10 @@
         .empty-reports-icon {
             width: 52px;
             height: 52px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             margin: 0 auto 15px;
-
             color: var(--green);
             background: var(--green-light);
             border-radius: 14px;
@@ -900,7 +775,6 @@
         .empty-reports p {
             max-width: 390px;
             margin: 9px auto 0;
-
             color: var(--muted);
             font-size: 11px;
             line-height: 1.8;
@@ -909,29 +783,21 @@
         /* =========================
            TOAST
         ========================= */
-
         .toast {
             position: fixed;
             right: 25px;
             bottom: 25px;
-
             max-width: calc(100vw - 40px);
-
             display: flex;
             align-items: center;
             gap: 10px;
-
             padding: 14px 18px;
-
             color: #f4f8fb;
             background: #10251f;
             border: 1px solid rgba(37, 227, 163, 0.35);
             border-radius: 10px;
-
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
-
             font-size: 12px;
-
             opacity: 0;
             transform: translateY(12px);
             pointer-events: none;
@@ -949,14 +815,12 @@
         }
 
         /* =========================
-           RESPONSIVE
+           RESPONSIVE (MOBILE FIXES)
         ========================= */
-
         @media (max-width: 1100px) {
             .support-layout {
                 grid-template-columns: 1fr;
             }
-
             .right-column {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -964,251 +828,156 @@
             }
         }
 
-        /* Sidebar matches Work Plan and Diet Plan */
-
-        @media (max-width: 850px) {
+        @media (max-width: 768px) {
+            /* 1. إخفاء السايدبار وتجهيزه للفتح */
             .sidebar {
-                width: 72px;
-                padding: 20px 9px;
-            }
-
-            .brand {
-                justify-content: center;
-                padding: 4px 0;
-            }
-
-            .brand-icon {
-                width: 40px;
-                height: 40px;
-            }
-
-            .brand-name,
-            .brand-subtitle,
-            .nav-item span,
-            .logout-btn span {
-                display: none;
-            }
-
-            .nav-item {
-                justify-content: center;
-                padding: 0;
-            }
-
-            .nav-item i {
-                font-size: 17px;
-            }
-
-            .logout-btn {
-                justify-content: center;
-                padding: 0;
-            }
-
-            .main {
-                margin-left: 82px;
-                width: calc(100% - 82px);
-                padding: 22px 17px 40px;
-            }
-
-            .right-column {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 550px) {
-            .main {
-                padding: 18px 12px 35px;
-            }
-
-            .topbar {
-                align-items: flex-start;
-            }
-
-            .topbar h1 {
-                font-size: 25px;
-            }
-
-            .athlete-text {
-                display: none;
-            }
-
-            .support-banner {
-                padding: 19px;
-            }
-
-            .banner-content h2 {
-                font-size: 16px;
-            }
-
-            .banner-content p {
-                font-size: 11px;
-            }
-
-            .banner-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-
-            .form-body {
-                padding: 17px;
-            }
-
-            .panel-header {
-                padding: 17px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 19px;
-            }
-
-            .priority-options {
-                grid-template-columns: 1fr;
-            }
-
-            .priority-option label {
-                justify-content: flex-start;
-                padding-left: 15px;
-            }
-
-            .form-actions {
-                align-items: stretch;
-                flex-direction: column-reverse;
-            }
-
-            .reset-btn,
-            .submit-btn {
-                width: 100%;
-            }
-
-            .report-top {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 260px !important;
+                min-height: 100vh !important;
+                background: linear-gradient(rgba(2, 10, 16, .95), rgba(2, 10, 16, .98)), url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover !important;
+                transform: translateX(-105%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1050 !important;
+                padding: 28px 14px !important;
+                display: flex !important;
                 flex-direction: column;
             }
 
-            .reports-heading h2 {
-                font-size: 17px;
+            .sidebar.open {
+                transform: translateX(0) !important;
+            }
+
+            /* 2. إظهار النصوص في السايدبار */
+            .nav {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            .nav-item {
+                justify-content: flex-start !important;
+                padding: 0 17px !important;
+                min-height: 55px !important;
+            }
+            .nav-item span {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            .side-quote {
+                display: block !important;
+            }
+
+            /* 3. شريط الموبايل العلوي */
+            .momentum-mobile-bar {
+                display: flex !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 65px;
+                background: rgba(3, 12, 19, 0.85);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(36, 227, 163, 0.15);
+                z-index: 1000;
+                align-items: center;
+                padding: 0 15px;
+                justify-content: space-between;
+            }
+
+            .momentum-menu-toggle {
+                background: rgba(36, 227, 163, 0.1);
+                border: 1px solid rgba(36, 227, 163, 0.3);
+                color: #24e3a3;
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+
+            /* 4. طبقة التعتيم ورا السايدبار */
+            .momentum-sidebar-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1040;
+                backdrop-filter: blur(3px);
+            }
+            .momentum-sidebar-overlay.show {
+                display: block;
+            }
+
+            /* 5. تعديل المساحات للمحتوى الأساسي */
+            .main {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 85px 15px 30px !important;
+            }
+
+            /* 6. إخفاء معلومات اليوزر في الموبايل لتوفير مساحة */
+            .athlete-info {
+                display: none !important; 
+            }
+
+            .topbar {
+                margin-bottom: 20px;
+            }
+            .topbar h1 {
+                font-size: 24px;
+            }
+
+            /* 7. ترتيب الفورم والكروت */
+            .support-layout {
+                grid-template-columns: 1fr !important;
+            }
+            .right-column {
+                grid-template-columns: 1fr !important;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr !important;
+                gap: 15px;
+            }
+            .priority-options {
+                grid-template-columns: 1fr !important;
+            }
+            .priority-option label {
+                justify-content: flex-start !important;
+                padding-left: 15px !important;
+            }
+            .form-actions {
+                flex-direction: column-reverse !important;
+                align-items: stretch !important;
+            }
+            .reset-btn, .submit-btn {
+                width: 100% !important;
+            }
+
+            .support-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
+            .banner-icon {
+                display: none; /* نخفي الأيقونة عشان نوفر مساحة */
+            }
+
+            .report-top {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            .delete-report {
+                align-self: flex-end;
+                margin-top: -30px; /* نرفعها لفوق شوية */
             }
         }
     </style>
-<style>
-
-/* MOMENTUM responsive navigation patch */
-@media (max-width: 768px) {
-  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
-  body { background-attachment: scroll !important; }
-  .sidebar {
-    position: fixed !important;
-    inset: 0 auto 0 0 !important;
-    width: min(82vw, 290px) !important;
-    min-width: 0 !important;
-    max-width: 86vw !important;
-    height: 100dvh !important;
-    min-height: 100dvh !important;
-    box-sizing: border-box !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding: 22px 14px 28px !important;
-    transform: translateX(-105%);
-    transition: transform .25s ease;
-    z-index: 1201 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    visibility: visible !important;
-  }
-  .sidebar.open { transform: translateX(0) !important; }
-  .sidebar .side-logo, .sidebar .logo, .sidebar .side-logo h2 {
-    max-width: 100%;
-    overflow-wrap: anywhere;
-  }
-  .sidebar .nav, .sidebar nav, .sidebar .nav-links {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 7px !important;
-  }
-  .sidebar .nav-item, .sidebar .nav-link, .sidebar .nav-links a,
-  .sidebar nav a {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    justify-content: flex-start !important;
-    white-space: normal !important;
-  }
-  .momentum-mobile-bar {
-    display: flex !important;
-    align-items: center;
-    gap: 12px;
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 58px;
-    padding: 0 15px;
-    box-sizing: border-box;
-    z-index: 1100;
-    background: rgba(3, 12, 19, .96);
-    border-bottom: 1px solid rgba(48, 220, 169, .22);
-    backdrop-filter: blur(14px);
-  }
-  .momentum-menu-toggle {
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(48, 220, 169, .45);
-    border-radius: 12px;
-    color: #31dba8;
-    background: rgba(27, 211, 159, .12);
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
-  }
-  .momentum-mobile-brand {
-    color: #f5faf8;
-    font-weight: 800;
-    font-size: 19px;
-    letter-spacing: -.4px;
-  }
-  .momentum-mobile-brand span { color: #31dba8; }
-  .momentum-sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .62);
-    z-index: 1200;
-  }
-  .momentum-sidebar-overlay.show { display: block; }
-  .main {
-    margin-left: 0 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 78px 15px 30px !important;
-  }
-  .page, .app, .container, .content, .dashboard, .main-content {
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-  }
-  .page { overflow-x: clip; }
-  .main > *, .page > *, .container > * { min-width: 0; }
-  img, video, canvas, iframe { max-width: 100%; }
-  input, select, textarea, button { max-width: 100%; box-sizing: border-box; }
-  table { max-width: 100%; }
-  .summary-grid, .stats-grid, .stat-grid, .cards-grid, .card-grid,
-  .gallery, .athlete-grid, .support-layout, .workout-grid, .diet-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-  .daily-progress-card { flex-wrap: wrap; }
-}
-@media (min-width: 769px) {
-  .momentum-mobile-bar, .momentum-sidebar-overlay { display: none !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sidebar { transition: none !important; }
-}
-
-</style>
 </head>
 
 <body>
@@ -1216,190 +985,107 @@
     <!-- =====================================================
          SIDEBAR
     ====================================================== -->
-
     <aside class="sidebar">
-
         <div class="side-logo">
-
             <i class="fa-solid fa-dumbbell"></i>
-                    <h2><a href="test3.html" class="logo">
-        <span class="white">MO</span><span class="green">MENTUM</span>
-    </a></h2>
-
-
+            <h2>
+                <a href="test3.html" class="logo">
+                    <span class="white">MO</span><span class="green">MENTUM</span>
+                </a>
+            </h2>
         </div>
 
-
         <nav class="nav">
-
             <a href="test3.html" class="nav-item">
-
                 <i class="fa-solid fa-house"></i>
-
                 <span>Home</span>
-
             </a>
-
-
             <a href="test5.html" class="nav-item ">
-
                 <i class="fa-solid fa-dumbbell"></i>
-
                 <span>Exercises</span>
-
             </a>
-
-
             <a href="progress-photos.html" class="nav-item ">
-
                 <i class="fa-solid fa-camera"></i>
-
                 <span>Progress Photos</span>
-
             </a>
-
-
             <a href="work_plan.html" class="nav-item">
-
                 <i class="fa-solid fa-calendar-days"></i>
-
                 <span>Workout Plan</span>
-
             </a>
-
-
             <a href="diet-plan.html" class="nav-item">
-
                 <i class="fa-solid fa-utensils"></i>
-
                 <span>Diet Plan</span>
-
             </a>
-
-
             <a href="support.html" class="nav-item active">
-
                 <i class="fa-solid fa-message"></i>
-
                 <span>Support</span>
-
             </a>
-
-
             <a href="history.html" class="nav-item">
-
                 <i class="fa-solid fa-chart-column"></i>
-
                 <span>Progress / History</span>
-
             </a>
-
         </nav>
 
-
         <div class="side-quote">
-
             "Small steps<br>
             make big<br>
             changes."
-
         </div>
-
     </aside>
 
 
     <!-- =========================
          MAIN CONTENT
     ========================= -->
-
     <main class="main">
 
         <header class="topbar">
-
             <div>
-
                 <div class="page-kicker">
                     <i class="fa-solid fa-headset"></i>
                     ATHLETE SUPPORT
                 </div>
-
-                <h1>
-                    Support <span>& Reports</span>
-                </h1>
-
-                <p>
-                    Report a problem or send feedback about your experience.
-                </p>
-
+                <h1>Support <span>& Reports</span></h1>
+                <p>Report a problem or send feedback about your experience.</p>
             </div>
 
             <div class="athlete-info">
-
                 <div class="athlete-text">
                     <strong id="athleteName">Athlete</strong>
                     <small id="athleteId">ATH-10001</small>
                 </div>
-
                 <div class="avatar" id="avatar">A</div>
-
             </div>
-
         </header>
 
         <!-- SUPPORT BANNER -->
-
         <section class="support-banner">
-
             <div class="banner-content">
-
                 <h2>We're here to help you.</h2>
-
                 <p>
-                    Having trouble with your workout plan, diet plan,
-                    account, or app? Submit a report with the details
-                    and keep track of your submitted reports below.
+                    Having trouble with your workout plan, diet plan, account, or app? 
+                    Submit a report with the details and keep track of your submitted reports below.
                 </p>
-
             </div>
-
             <div class="banner-icon">
                 <i class="fa-solid fa-comments"></i>
             </div>
-
         </section>
 
         <!-- SUPPORT LAYOUT -->
-
         <section class="support-layout">
 
             <!-- REPORT FORM -->
-
             <div class="panel">
-
                 <div class="panel-header">
-
-                    <h2>
-                        <i class="fa-solid fa-file-circle-exclamation"></i>
-                        Submit a Report
-                    </h2>
-
-                    <p>
-                        Fill in the details so your issue can be identified.
-                    </p>
-
+                    <h2><i class="fa-solid fa-file-circle-exclamation"></i> Submit a Report</h2>
+                    <p>Fill in the details so your issue can be identified.</p>
                 </div>
 
                 <form id="reportForm" class="form-body">
-
                     <div class="form-row">
-
                         <div class="field">
-
-                            <label for="category">
-                                Report Category
-                                <span class="required">*</span>
-                            </label>
-
+                            <label for="category">Report Category <span class="required">*</span></label>
                             <select id="category" required>
                                 <option value="">Select category</option>
                                 <option value="Workout Plan">Workout Plan</option>
@@ -1412,402 +1098,178 @@
                                 <option value="Suggestion">Suggestion / Feedback</option>
                                 <option value="Other">Other</option>
                             </select>
-
                         </div>
 
                         <div class="field">
-
-                            <label for="subject">
-                                Subject
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="subject"
-                                maxlength="100"
-                                placeholder="Briefly describe the issue"
-                                required
-                            >
-
+                            <label for="subject">Subject <span class="required">*</span></label>
+                            <input type="text" id="subject" maxlength="100" placeholder="Briefly describe the issue" required>
                         </div>
-
                     </div>
 
                     <!-- PRIORITY -->
-
                     <div class="field">
-
-                        <label>
-                            Priority
-                            <span class="required">*</span>
-                        </label>
-
+                        <label>Priority <span class="required">*</span></label>
                         <div class="priority-options">
-
                             <div class="priority-option">
-
-                                <input
-                                    type="radio"
-                                    name="priority"
-                                    id="priorityLow"
-                                    value="Low"
-                                    checked
-                                >
-
-                                <label for="priorityLow">
-                                    <i class="fa-solid fa-circle-check"></i>
-                                    Low
-                                </label>
-
+                                <input type="radio" name="priority" id="priorityLow" value="Low" checked>
+                                <label for="priorityLow"><i class="fa-solid fa-circle-check"></i> Low</label>
                             </div>
-
                             <div class="priority-option">
-
-                                <input
-                                    type="radio"
-                                    name="priority"
-                                    id="priorityMedium"
-                                    value="Medium"
-                                >
-
-                                <label for="priorityMedium">
-                                    <i class="fa-solid fa-flag"></i>
-                                    Medium
-                                </label>
-
+                                <input type="radio" name="priority" id="priorityMedium" value="Medium">
+                                <label for="priorityMedium"><i class="fa-solid fa-flag"></i> Medium</label>
                             </div>
-
                             <div class="priority-option">
-
-                                <input
-                                    type="radio"
-                                    name="priority"
-                                    id="priorityHigh"
-                                    value="High"
-                                >
-
-                                <label for="priorityHigh">
-                                    <i class="fa-solid fa-triangle-exclamation"></i>
-                                    High
-                                </label>
-
+                                <input type="radio" name="priority" id="priorityHigh" value="High">
+                                <label for="priorityHigh"><i class="fa-solid fa-triangle-exclamation"></i> High</label>
                             </div>
-
                         </div>
-
                     </div>
 
                     <!-- DESCRIPTION -->
-
                     <div class="field">
-
-                        <label for="description">
-                            Describe Your Issue
-                            <span class="required">*</span>
-                        </label>
-
-                        <textarea
-                            id="description"
-                            minlength="10"
-                            maxlength="1500"
-                            placeholder="Explain what happened, what you were trying to do, and any details that may help..."
-                            required
-                        ></textarea>
-
-                        <div class="character-count">
-                            <span id="characterCount">0</span>/1500 characters
-                        </div>
-
+                        <label for="description">Describe Your Issue <span class="required">*</span></label>
+                        <textarea id="description" minlength="10" maxlength="1500" placeholder="Explain what happened, what you were trying to do, and any details that may help..." required></textarea>
+                        <div class="character-count"><span id="characterCount">0</span>/1500 characters</div>
                     </div>
 
                     <!-- CONTACT EMAIL -->
-
                     <div class="field">
-
-                        <label for="contactEmail">
-                            Contact Email
-                            <span style="color:#68798a; font-weight:400;">
-                                (Optional)
-                            </span>
-                        </label>
-
-                        <input
-                            type="email"
-                            id="contactEmail"
-                            maxlength="150"
-                            placeholder="Enter your email address"
-                        >
-
-                        <p class="field-help">
-                            This is saved with your report. Email replies
-                            are not sent automatically.
-                        </p>
-
+                        <label for="contactEmail">Contact Email <span style="color:#68798a; font-weight:400;">(Optional)</span></label>
+                        <input type="email" id="contactEmail" maxlength="150" placeholder="Enter your email address">
+                        <p class="field-help">This is saved with your report. Email replies are not sent automatically.</p>
                     </div>
 
                     <!-- CONFIRMATION -->
-
                     <label class="confirm-row">
-
                         <input type="checkbox" id="confirmReport" required>
-
-                        <span>
-                            I confirm that the information provided is accurate
-                            to the best of my knowledge.
-                        </span>
-
+                        <span>I confirm that the information provided is accurate to the best of my knowledge.</span>
                     </label>
 
                     <!-- ACTIONS -->
-
                     <div class="form-actions">
-
                         <button type="reset" class="reset-btn">
-                            <i class="fa-solid fa-rotate-left"></i>
-                            Clear Form
+                            <i class="fa-solid fa-rotate-left"></i> Clear Form
                         </button>
-
                         <button type="submit" class="submit-btn">
-                            Submit Report
-                            <i class="fa-solid fa-arrow-right"></i>
+                            Submit Report <i class="fa-solid fa-arrow-right"></i>
                         </button>
-
                     </div>
-
                 </form>
-
             </div>
 
             <!-- RIGHT COLUMN -->
-
             <div class="right-column">
-
                 <div class="panel">
-
                     <div class="panel-header">
-
-                        <h2>
-                            <i class="fa-solid fa-circle-info"></i>
-                            Before You Submit
-                        </h2>
-
-                        <p>
-                            A few tips to help you describe your issue.
-                        </p>
-
+                        <h2><i class="fa-solid fa-circle-info"></i> Before You Submit</h2>
+                        <p>A few tips to help you describe your issue.</p>
                     </div>
 
                     <div class="help-list">
-
                         <div class="help-item">
-
-                            <div class="help-icon">
-                                <i class="fa-solid fa-list-check"></i>
-                            </div>
-
+                            <div class="help-icon"><i class="fa-solid fa-list-check"></i></div>
                             <div>
                                 <h3>Choose the right category</h3>
-                                <p>
-                                    Select the section related to your issue
-                                    to make it easier to identify.
-                                </p>
+                                <p>Select the section related to your issue to make it easier to identify.</p>
                             </div>
-
                         </div>
-
                         <div class="help-item">
-
-                            <div class="help-icon">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </div>
-
+                            <div class="help-icon"><i class="fa-solid fa-pen-to-square"></i></div>
                             <div>
                                 <h3>Explain what happened</h3>
-                                <p>
-                                    Include the steps you took and the result
-                                    you expected.
-                                </p>
+                                <p>Include the steps you took and the result you expected.</p>
                             </div>
-
                         </div>
-
                         <div class="help-item">
-
-                            <div class="help-icon">
-                                <i class="fa-solid fa-flag"></i>
-                            </div>
-
+                            <div class="help-icon"><i class="fa-solid fa-flag"></i></div>
                             <div>
                                 <h3>Set the priority</h3>
-                                <p>
-                                    Choose a priority that reflects how much
-                                    the issue affects your experience.
-                                </p>
+                                <p>Choose a priority that reflects how much the issue affects your experience.</p>
                             </div>
-
                         </div>
-
                         <div class="help-item">
-
-                            <div class="help-icon">
-                                <i class="fa-solid fa-shield-halved"></i>
-                            </div>
-
+                            <div class="help-icon"><i class="fa-solid fa-shield-halved"></i></div>
                             <div>
                                 <h3>Keep your report clear</h3>
-                                <p>
-                                    Avoid including passwords or other
-                                    sensitive account information.
-                                </p>
+                                <p>Avoid including passwords or other sensitive account information.</p>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
 
                 <!-- REPORT STATUS -->
-
                 <div class="panel">
-
                     <div class="panel-header">
-
-                        <h2>
-                            <i class="fa-solid fa-clipboard-check"></i>
-                            Report Status
-                        </h2>
-
-                        <p>
-                            Understand the status shown on your reports.
-                        </p>
-
+                        <h2><i class="fa-solid fa-clipboard-check"></i> Report Status</h2>
+                        <p>Understand the status shown on your reports.</p>
                     </div>
 
                     <div class="help-list">
-
                         <div class="help-item">
-
-                            <div class="help-icon">
-                                <i class="fa-solid fa-clock"></i>
-                            </div>
-
+                            <div class="help-icon"><i class="fa-solid fa-clock"></i></div>
                             <div>
                                 <h3>Pending</h3>
-                                <p>
-                                    Your report has been saved locally
-                                    and has not been marked as resolved.
-                                </p>
+                                <p>Your report has been saved locally and has not been marked as resolved.</p>
                             </div>
-
                         </div>
-
                         <div class="help-item">
-
-                            <div class="help-icon">
-                                <i class="fa-solid fa-check"></i>
-                            </div>
-
+                            <div class="help-icon"><i class="fa-solid fa-check"></i></div>
                             <div>
                                 <h3>Resolved</h3>
-                                <p>
-                                    This status can be used when report
-                                    management is connected to the trainer
-                                    or backend system.
-                                </p>
+                                <p>This status can be used when report management is connected to the trainer or backend system.</p>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
 
         <!-- MY REPORTS -->
-
         <section class="reports-section">
-
             <div class="reports-heading">
-
                 <div>
                     <h2>My Reports</h2>
                     <p>Review the reports saved on this device.</p>
                 </div>
-
                 <div class="report-count" id="reportCount">0</div>
-
             </div>
 
             <div id="reportList" class="report-list">
-
                 <div class="empty-reports">
-
                     <div class="empty-reports-icon">
                         <i class="fa-solid fa-inbox"></i>
                     </div>
-
                     <h3>No Reports Yet</h3>
-
-                    <p>
-                        Your submitted reports will appear here.
-                        Use the form above to create your first report.
-                    </p>
-
+                    <p>Your submitted reports will appear here. Use the form above to create your first report.</p>
                 </div>
-
             </div>
-
         </section>
 
     </main>
 
     <!-- TOAST -->
-
     <div id="toast" class="toast" role="status" aria-live="polite">
         <i class="fa-solid fa-circle-check"></i>
         <span id="toastMessage">Report saved successfully.</span>
     </div>
 
+    <!-- =========================================================
+         SUPPORT LOGIC
+    ========================================================= -->
     <script>
-        /* =========================
-           ATHLETE INFORMATION
-        ========================= */
+        const athleteId = localStorage.getItem("athleteId") || "ATH-10001";
+        const athleteName = localStorage.getItem("userName") || "Athlete";
 
-        const athleteId =
-            localStorage.getItem("athleteId") || "ATH-10001";
-
-        const athleteName =
-            localStorage.getItem("userName") || "Athlete";
-
-        document.getElementById("athleteName").textContent =
-            athleteName;
-
-        document.getElementById("athleteId").textContent =
-            athleteId;
-
-        document.getElementById("avatar").textContent =
-            athleteName.charAt(0).toUpperCase() || "A";
-
-
-        /* =========================
-           STORAGE
-        ========================= */
+        document.getElementById("athleteName").textContent = athleteName;
+        document.getElementById("athleteId").textContent = athleteId;
+        document.getElementById("avatar").textContent = athleteName.charAt(0).toUpperCase() || "A";
 
         const REPORT_KEY = "supportReports_" + athleteId;
 
         function getReports() {
             try {
-                const data = JSON.parse(
-                    localStorage.getItem(REPORT_KEY) || "[]"
-                );
-
+                const data = JSON.parse(localStorage.getItem(REPORT_KEY) || "[]");
                 return Array.isArray(data) ? data : [];
-
             } catch (error) {
                 console.error("Unable to load reports:", error);
                 return [];
@@ -1816,275 +1278,138 @@
 
         function saveReports(reports) {
             try {
-                localStorage.setItem(
-                    REPORT_KEY,
-                    JSON.stringify(reports)
-                );
-
+                localStorage.setItem(REPORT_KEY, JSON.stringify(reports));
                 return true;
-
             } catch (error) {
                 console.error("Unable to save reports:", error);
-
-                showToast(
-                    "Could not save. Browser storage may be full.",
-                    true
-                );
-
+                showToast("Could not save. Browser storage may be full.", true);
                 return false;
             }
         }
 
-
-        /* =========================
-           CHARACTER COUNTER
-        ========================= */
-
-        const descriptionInput =
-            document.getElementById("description");
-
+        const descriptionInput = document.getElementById("description");
         descriptionInput.addEventListener("input", function () {
-            document.getElementById("characterCount").textContent =
-                this.value.length;
+            document.getElementById("characterCount").textContent = this.value.length;
         });
 
+        document.getElementById("reportForm").addEventListener("submit", function (event) {
+            event.preventDefault();
 
-        /* =========================
-           SUBMIT REPORT
-        ========================= */
+            const category = document.getElementById("category").value;
+            const subject = document.getElementById("subject").value.trim();
+            const description = descriptionInput.value.trim();
+            const contactEmail = document.getElementById("contactEmail").value.trim();
+            const priorityElement = document.querySelector('input[name="priority"]:checked');
+            const priority = priorityElement ? priorityElement.value : "Low";
 
-        document.getElementById("reportForm").addEventListener(
-            "submit",
-            function (event) {
-
-                event.preventDefault();
-
-                const category =
-                    document.getElementById("category").value;
-
-                const subject =
-                    document.getElementById("subject").value.trim();
-
-                const description =
-                    descriptionInput.value.trim();
-
-                const contactEmail =
-                    document.getElementById("contactEmail").value.trim();
-
-                const priorityElement =
-                    document.querySelector(
-                        'input[name="priority"]:checked'
-                    );
-
-                const priority =
-                    priorityElement ? priorityElement.value : "Low";
-
-                if (
-                    !category ||
-                    !subject ||
-                    description.length < 10
-                ) {
-                    showToast(
-                        "Please complete all required fields.",
-                        true
-                    );
-                    return;
-                }
-
-                const reports = getReports();
-
-                const report = {
-                    id:
-                        Date.now().toString() +
-                        "-" +
-                        Math.random().toString(36).slice(2, 8),
-
-                    athleteId: athleteId,
-                    athleteName: athleteName,
-                    category: category,
-                    subject: subject,
-                    description: description,
-                    priority: priority,
-                    contactEmail: contactEmail,
-                    status: "Pending",
-                    createdAt: new Date().toISOString()
-                };
-
-                reports.unshift(report);
-
-                if (!saveReports(reports)) {
-                    return;
-                }
-
-                renderReports();
-
-                this.reset();
-
-                document.getElementById("characterCount").textContent = "0";
-                document.getElementById("priorityLow").checked = true;
-
-                showToast("Report saved successfully.");
-
-                document.getElementById("reportList").scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+            if (!category || !subject || description.length < 10) {
+                showToast("Please complete all required fields.", true);
+                return;
             }
-        );
-
-
-        /* =========================
-           RENDER REPORTS
-        ========================= */
-
-        function renderReports() {
-
-            const container =
-                document.getElementById("reportList");
 
             const reports = getReports();
+            const report = {
+                id: Date.now().toString() + "-" + Math.random().toString(36).slice(2, 8),
+                athleteId: athleteId,
+                athleteName: athleteName,
+                category: category,
+                subject: subject,
+                description: description,
+                priority: priority,
+                contactEmail: contactEmail,
+                status: "Pending",
+                createdAt: new Date().toISOString()
+            };
 
-            document.getElementById("reportCount").textContent =
-                reports.length;
-
-            if (!reports.length) {
-
-                container.innerHTML = `
-                    <div class="empty-reports">
-                        <div class="empty-reports-icon">
-                            <i class="fa-solid fa-inbox"></i>
-                        </div>
-
-                        <h3>No Reports Yet</h3>
-
-                        <p>
-                            Your submitted reports will appear here.
-                            Use the form above to create your first report.
-                        </p>
-                    </div>
-                `;
-
-                return;
-            }
-
-            container.innerHTML = reports.map(report => {
-
-                const status = report.status || "Pending";
-
-                const statusClass =
-                    status.toLowerCase() === "resolved"
-                        ? "resolved"
-                        : "";
-
-                const statusIcon =
-                    status.toLowerCase() === "resolved"
-                        ? "fa-circle-check"
-                        : "fa-clock";
-
-                return `
-                    <article class="report-card">
-
-                        <div class="report-top">
-
-                            <div>
-
-                                <div class="report-category">
-                                    <i class="fa-solid fa-tag"></i>
-                                    ${escapeHTML(report.category || "Other")}
-                                </div>
-
-                                <h3>
-                                    ${escapeHTML(report.subject || "Untitled Report")}
-                                </h3>
-
-                                <div class="report-date">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    ${formatDate(report.createdAt)}
-                                </div>
-
-                            </div>
-
-                            <button
-                                type="button"
-                                class="delete-report"
-                                data-delete-id="${escapeHTML(report.id)}"
-                                aria-label="Delete report"
-                                title="Delete report"
-                            >
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-
-                        </div>
-
-                        <p class="report-description">${escapeHTML(
-                            report.description || ""
-                        )}</p>
-
-                        <div class="report-footer">
-
-                            <div>
-
-                                <span class="report-status ${statusClass}">
-                                    <i class="fa-solid ${statusIcon}"></i>
-                                    ${escapeHTML(status)}
-                                </span>
-
-                                <span class="report-priority">
-                                    Priority:
-                                    ${escapeHTML(report.priority || "Low")}
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-                `;
-
-            }).join("");
-
-            container
-                .querySelectorAll("[data-delete-id]")
-                .forEach(button => {
-
-                    button.addEventListener("click", function () {
-                        deleteReport(this.dataset.deleteId);
-                    });
-
-                });
-        }
-
-
-        /* =========================
-           DELETE REPORT
-        ========================= */
-
-        function deleteReport(id) {
-
-            const confirmed = confirm(
-                "Are you sure you want to delete this report?"
-            );
-
-            if (!confirmed) {
-                return;
-            }
-
-            const reports = getReports().filter(
-                report => String(report.id) !== String(id)
-            );
+            reports.unshift(report);
 
             if (!saveReports(reports)) {
                 return;
             }
 
             renderReports();
-            showToast("Report deleted.");
+            this.reset();
+            document.getElementById("characterCount").textContent = "0";
+            document.getElementById("priorityLow").checked = true;
+            showToast("Report saved successfully.");
+
+            document.getElementById("reportList").scrollIntoView({
+                behavior: "smooth", block: "start"
+            });
+        });
+
+        function renderReports() {
+            const container = document.getElementById("reportList");
+            const reports = getReports();
+            document.getElementById("reportCount").textContent = reports.length;
+
+            if (!reports.length) {
+                container.innerHTML = `
+                    <div class="empty-reports">
+                        <div class="empty-reports-icon">
+                            <i class="fa-solid fa-inbox"></i>
+                        </div>
+                        <h3>No Reports Yet</h3>
+                        <p>Your submitted reports will appear here. Use the form above to create your first report.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = reports.map(report => {
+                const status = report.status || "Pending";
+                const statusClass = status.toLowerCase() === "resolved" ? "resolved" : "";
+                const statusIcon = status.toLowerCase() === "resolved" ? "fa-circle-check" : "fa-clock";
+
+                return `
+                    <article class="report-card">
+                        <div class="report-top">
+                            <div>
+                                <div class="report-category">
+                                    <i class="fa-solid fa-tag"></i>
+                                    ${escapeHTML(report.category || "Other")}
+                                </div>
+                                <h3>${escapeHTML(report.subject || "Untitled Report")}</h3>
+                                <div class="report-date">
+                                    <i class="fa-regular fa-calendar"></i>
+                                    ${formatDate(report.createdAt)}
+                                </div>
+                            </div>
+                            <button type="button" class="delete-report" data-delete-id="${escapeHTML(report.id)}" aria-label="Delete report" title="Delete report">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                        <p class="report-description">${escapeHTML(report.description || "")}</p>
+                        <div class="report-footer">
+                            <div>
+                                <span class="report-status ${statusClass}">
+                                    <i class="fa-solid ${statusIcon}"></i>
+                                    ${escapeHTML(status)}
+                                </span>
+                                <span class="report-priority">Priority: ${escapeHTML(report.priority || "Low")}</span>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+
+            container.querySelectorAll("[data-delete-id]").forEach(button => {
+                button.addEventListener("click", function () {
+                    deleteReport(this.dataset.deleteId);
+                });
+            });
         }
 
+        function deleteReport(id) {
+            const confirmed = confirm("Are you sure you want to delete this report?");
+            if (!confirmed) return;
 
-        /* =========================
-           HELPERS
-        ========================= */
+            const reports = getReports().filter(report => String(report.id) !== String(id));
+            if (!saveReports(reports)) return;
+
+            renderReports();
+            showToast("Report deleted.");
+        }
 
         function escapeHTML(value) {
             return String(value)
@@ -2096,130 +1421,97 @@
         }
 
         function formatDate(value) {
-
-            if (!value) {
-                return "Unknown date";
-            }
-
+            if (!value) return "Unknown date";
             const date = new Date(value);
-
-            if (isNaN(date.getTime())) {
-                return "Unknown date";
-            }
+            if (isNaN(date.getTime())) return "Unknown date";
 
             return date.toLocaleString("en-US", {
-                month: "short",
-                day: "numeric",
-                year: "numeric",
-                hour: "2-digit",
-                minute: "2-digit"
+                month: "short", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit"
             });
         }
 
-
-        /* =========================
-           TOAST
-        ========================= */
-
         let toastTimer;
-
         function showToast(message, isError = false) {
-
             const toast = document.getElementById("toast");
             const toastMessage = document.getElementById("toastMessage");
             const icon = toast.querySelector("i");
 
             toastMessage.textContent = message;
-
-            icon.className = isError
-                ? "fa-solid fa-circle-exclamation"
-                : "fa-solid fa-circle-check";
-
+            icon.className = isError ? "fa-solid fa-circle-exclamation" : "fa-solid fa-circle-check";
             icon.style.color = isError ? "#ff7373" : "#25e3a3";
-
-            toast.style.borderColor = isError
-                ? "rgba(255, 115, 115, 0.4)"
-                : "rgba(37, 227, 163, 0.35)";
+            toast.style.borderColor = isError ? "rgba(255, 115, 115, 0.4)" : "rgba(37, 227, 163, 0.35)";
 
             toast.classList.add("show");
-
             clearTimeout(toastTimer);
-
-            toastTimer = setTimeout(() => {
-                toast.classList.remove("show");
-            }, 3000);
+            toastTimer = setTimeout(() => { toast.classList.remove("show"); }, 3000);
         }
-
-
-        /* =========================
-           LOGOUT
-        ========================= */
-
-        function logout() {
-            localStorage.removeItem("isLoggedIn");
-            localStorage.removeItem("userRole");
-
-            window.location.href = "test.html";
-        }
-
-
-        /* =========================
-           INITIALIZE
-        ========================= */
 
         renderReports();
-
     </script>
 
+    <!-- =========================================================
+         MOBILE MENU SCRIPT (Clean & Working)
+    ========================================================= -->
+    <script>
+        (function () {
+            const sidebar = document.querySelector('.sidebar');
+            if (!sidebar) return;
 
-<script>
-(function () {
-  const sidebar = document.querySelector('.sidebar');
-  if (!sidebar || document.querySelector('.momentum-mobile-bar')) return;
+            // إنشاء الشريط العلوي
+            const bar = document.createElement('header');
+            bar.className = 'momentum-mobile-bar';
+            bar.innerHTML = `
+                <button class="momentum-menu-toggle" type="button" aria-label="Open navigation">☰</button>
+                <div style="color: #fff; font-weight: bold; font-size: 18px; letter-spacing: 1px;">
+                    <span style="color: #24e3a3;">MO</span>MENTUM
+                </div>
+                <div style="width: 42px;"></div> 
+            `;
 
-  const bar = document.createElement('header');
-  bar.className = 'momentum-mobile-bar';
-  bar.innerHTML = '<button class="momentum-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><div class="momentum-mobile-brand">MO<span>MENTUM</span></div>';
+            // إنشاء طبقة التعتيم
+            const overlay = document.createElement('div');
+            overlay.className = 'momentum-sidebar-overlay';
 
-  const overlay = document.createElement('div');
-  overlay.className = 'momentum-sidebar-overlay';
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(overlay);
-  document.body.appendChild(bar);
+            document.body.appendChild(overlay);
+            document.body.appendChild(bar);
 
-  const toggle = bar.querySelector('.momentum-menu-toggle');
-  function closeMenu() {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('show');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
-    document.body.style.overflow = '';
-  }
-  function openMenu() {
-    sidebar.classList.add('open');
-    overlay.classList.add('show');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close navigation');
-    document.body.style.overflow = 'hidden';
-  }
-  toggle.addEventListener('click', function () {
-    sidebar.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  overlay.addEventListener('click', closeMenu);
-  sidebar.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
-    });
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') closeMenu();
-  });
-  window.addEventListener('resize', function () {
-    if (!window.matchMedia('(max-width: 768px)').matches) closeMenu();
-  });
-})();
-</script>
+            const toggle = bar.querySelector('.momentum-menu-toggle');
+
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                toggle.innerHTML = '☰';
+                document.body.style.overflow = '';
+            }
+
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+                toggle.innerHTML = '✕';
+                document.body.style.overflow = 'hidden';
+            }
+
+            toggle.addEventListener('click', function () {
+                if (sidebar.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            overlay.addEventListener('click', closeMenu);
+
+            sidebar.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) closeMenu();
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) closeMenu();
+            });
+        })();
+    </script>
 
 </body>
-
 </html>
