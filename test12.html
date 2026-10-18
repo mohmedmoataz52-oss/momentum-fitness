@@ -29,164 +29,147 @@
             background: linear-gradient(rgba(3, 12, 10, .88), rgba(3, 12, 10, .150)), url('https://i.etsystatic.com/23444619/r/il/ae9d34/4938847639/il_fullxfull.4938847639_94gi.jpg') center/cover fixed
         }
 
-           .sidebar {
-
+        .sidebar {
             width: 235px;
             min-height: 100vh;
-
             background:
-                linear-gradient(
-                    rgba(2, 10, 16, .78),
-                    rgba(2, 10, 16, .94)
-                ),
-                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800")
-                center / cover;
-
+                linear-gradient(rgba(2, 10, 16, .78), rgba(2, 10, 16, .94)),
+                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover;
             border-right: 1px solid #20313d;
-
             padding: 28px 14px;
-
             position: fixed;
             left: 0;
             top: 0;
             bottom: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
         }
 
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: -1.2px;
-      margin: 4px 0 7px 9px
-    }
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: -1.2px;
+            margin: 4px 0 7px 9px
+        }
 
-    .logo .mo {
-  color: #ffffff;
-}
+        .logo .mo { color: #ffffff; }
+        .logo .mentum { color: #39d98a; }
 
-.logo .mentum {
-  color: #39d98a;
-}
+        .brand-caption {
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 1.8px;
+            margin: 0 0 38px 10px
+        }
 
-    .brand-caption {
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 1.8px;
-      margin: 0 0 38px 10px
-    }
+        .nav-label {
+            color: #657a74;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.8px;
+            margin: 0 0 13px 12px
+        }
 
-    .nav-label {
-      color: #657a74;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1.8px;
-      margin: 0 0 13px 12px
-    }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
 
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 7px
-    }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 13px;
+            color: #9aada7;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: .25s
+        }
 
-    .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 13px;
-      color: #9aada7;
-      font-size: 13px;
-      font-weight: 600;
-      border: 1px solid transparent;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: .25s
-    }
+        .nav-link i {
+            width: 19px;
+            text-align: center;
+            font-size: 15px
+        }
 
-    .nav-link i {
-      width: 19px;
-      text-align: center;
-      font-size: 15px
-    }
+        .nav-link:hover {
+            background: rgba(255, 255, 255, .055);
+            color: #f5faf8
+        }
 
-    .nav-link:hover {
-      background: rgba(255, 255, 255, .055);
-      color: var(--white)
-    }
+        .nav-link.active {
+            color: var(--green);
+            background: rgba(57, 217, 138, .10);
+            border-color: rgba(57, 217, 138, .17)
+        }
 
-    .nav-link.active {
-      color: var(--green);
-      background: rgba(57, 217, 138, .10);
-      border-color: rgba(57, 217, 138, .17)
-    }
+        .sidebar-bottom {
+            margin-top: auto;
+            padding-top: 25px
+        }
 
-    .sidebar-bottom {
-      margin-top: auto;
-      padding-top: 25px
-    }
+        .quote {
+            padding: 0 10px 18px;
+            color: #b9ccc4;
+            font-size: 13px;
+            line-height: 1.65
+        }
 
-    .quote {
-      padding: 0 10px 18px;
-      color: #b9ccc4;
-      font-size: 13px;
-      line-height: 1.65
-    }
+        .quote span {
+            display: block;
+            width: 42px;
+            height: 3px;
+            background: var(--green);
+            margin-top: 12px;
+            border-radius: 4px
+        }
 
-    .quote span {
-      display: block;
-      width: 42px;
-      height: 3px;
-      background: var(--green);
-      margin-top: 12px;
-      border-radius: 4px
-    }
+        .coach-mini {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 13px 10px;
+            margin-bottom: 12px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .035);
+            border-radius: 14px
+        }
 
-    .coach-mini {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      padding: 13px 10px;
-      margin-bottom: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .035);
-      border-radius: 14px
-    }
+        .coach-avatar {
+            width: 39px;
+            height: 39px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #39d98a, #168f70);
+            display: grid;
+            place-items: center;
+            color: #04140d;
+            font-size: 15px;
+            font-weight: 900;
+            flex-shrink: 0
+        }
 
-    .coach-avatar {
-      width: 39px;
-      height: 39px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #39d98a, #168f70);
-      display: grid;
-      place-items: center;
-      color: #04140d;
-      font-size: 15px;
-      font-weight: 900;
-      flex-shrink: 0
-    }
+        .coach-info { min-width: 0 }
+        .coach-info h4 {
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
+        .coach-info p {
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: 5px
+        }
 
-    .coach-info {
-      min-width: 0
-    }
-
-    .coach-info h4 {
-      font-size: 12px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap
-    }
-
-    .coach-info p {
-      font-size: 10px;
-      color: var(--muted);
-      margin-top: 5px
-    }
-
-    .logout {
-      color: #ff8f8f
-    }
+        .logout { color: #ff8f8f }
 
         .main {
-            margin-left: 225px;
+            margin-left: 235px;
             padding: 30px;
             max-width: 1500px
         }
@@ -197,13 +180,9 @@
             margin-bottom: 9px
         }
 
-        .eyebrow span {
-            color: var(--g)
-        }
+        .eyebrow span { color: var(--g) }
 
-        h1 {
-            font-size: 30px
-        }
+        h1 { font-size: 30px }
 
         .sub {
             font-size: 12px;
@@ -243,16 +222,14 @@
             margin-top: 16px
         }
 
-        .stat,
-        .card {
+        .stat, .card {
             background: rgba(255, 255, 255, .025);
             border: 1px solid var(--line);
             border-radius: 14px;
             padding: 16px
         }
 
-        .stat small,
-        .muted {
+        .stat small, .muted {
             font-size: 11px;
             color: var(--muted)
         }
@@ -342,9 +319,7 @@
             border-color: var(--g)
         }
 
-        .btn.danger {
-            color: #ffaaa4
-        }
+        .btn.danger { color: #ffaaa4 }
 
         .actions {
             display: flex;
@@ -369,10 +344,7 @@
             background: rgba(255, 255, 255, .02)
         }
 
-        .item h3 {
-            font-size: 13px
-        }
-
+        .item h3 { font-size: 13px }
         .item p {
             font-size: 11px;
             color: var(--muted);
@@ -443,259 +415,198 @@
             margin-top: 12px
         }
 
-        @media(max-width:800px) {
-            .sidebar {
-                width: 65px;
-                padding: 23px 8px
-            }
-
-            .logo {
-                font-size: 0
-            }
-
-            .logo:before {
-                content: 'M';
-                font-size: 25px;
-                color: var(--g)
-            }
-
-            .caption,
-            .nav a span {
-                display: none
-            }
-
-            .nav a {
-                justify-content: center;
-                padding: 14px 7px
-            }
-
-            .main {
-                margin-left: 65px;
-                padding: 22px 12px
-            }
-
-            .grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr))
-            }
-
-            h1 {
-                font-size: 25px
-            }
-
-            .hero {
-                align-items: flex-start;
-                flex-direction: column
-            }
+        .logo, .logo a, .logo span, .logo::before, .logo::after, .logo a::before, .logo a::after {
+            border-bottom: none !important;
+            text-decoration: none !important;
+            box-shadow: none !important;
+            background-image: none !important;
         }
 
-        @media(max-width:470px) {
-            .grid {
-                grid-template-columns: 1fr
+        /* =========================
+           MOMENTUM MOBILE FIXES (New)
+        ========================= */
+        @media (max-width: 768px) {
+            /* 1. إخفاء السايدبار وتجهيزه للفتح */
+            .sidebar {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 260px !important;
+                min-height: 100vh !important;
+                background: linear-gradient(rgba(2, 10, 16, .95), rgba(2, 10, 16, .98)), url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover !important;
+                transform: translateX(-105%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1050 !important;
+                padding: 28px 14px !important;
+                display: flex !important;
+                flex-direction: column;
             }
 
-            .panel {
-                padding: 14px
+            .sidebar.open {
+                transform: translateX(0) !important;
+            }
+
+            /* 2. إظهار النصوص في السايدبار */
+            .brand-caption, .nav-label, .nav-link span, .coach-info, .quote {
+                display: block !important;
+            }
+            .logo {
+                font-size: 25px !important;
+                margin-left: 9px !important;
+            }
+            .logo:before {
+                content: none !important;
+            }
+            .nav-links { width: 100% !important; }
+            .nav-link {
+                justify-content: flex-start !important;
+                padding: 14px 13px !important;
+            }
+            .coach-mini { padding: 13px 10px !important; border: 1px solid var(--line) !important; background: rgba(255, 255, 255, .035) !important; }
+            .sidebar-bottom { width: 100% !important; }
+
+            /* 3. شريط الموبايل العلوي */
+            .momentum-mobile-bar {
+                display: flex !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 65px;
+                background: rgba(3, 12, 19, 0.85);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(36, 227, 163, 0.15);
+                z-index: 1000;
+                align-items: center;
+                padding: 0 15px;
+                justify-content: space-between;
+            }
+
+            .momentum-menu-toggle {
+                background: rgba(36, 227, 163, 0.1);
+                border: 1px solid rgba(36, 227, 163, 0.3);
+                color: #24e3a3;
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+
+            /* 4. طبقة التعتيم ورا السايدبار */
+            .momentum-sidebar-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1040;
+                backdrop-filter: blur(3px);
+            }
+            .momentum-sidebar-overlay.show {
+                display: block;
+            }
+
+            /* 5. تعديل المساحات للمحتوى الأساسي */
+            .main {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 85px 15px 30px !important;
+            }
+
+            /* 6. ترتيب الكروت والجريد */
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            h1 { font-size: 25px !important; }
+
+            .hero {
+                flex-direction: column !important;
+                align-items: flex-start !important;
             }
 
             .item {
-                flex-wrap: wrap
+                flex-wrap: wrap !important;
+            }
+
+            .panel {
+                padding: 15px !important;
+            }
+
+            .row {
+                flex-wrap: wrap;
             }
         }
-        .logo,
-.logo a,
-.logo span,
-.logo::before,
-.logo::after,
-.logo a::before,
-.logo a::after {
-    border-bottom: none !important;
-    text-decoration: none !important;
-    box-shadow: none !important;
-    background-image: none !important;
-}
     </style>
-<style>
-
-/* MOMENTUM responsive navigation patch */
-@media (max-width: 768px) {
-  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
-  body { background-attachment: scroll !important; }
-  .sidebar {
-    position: fixed !important;
-    inset: 0 auto 0 0 !important;
-    width: min(82vw, 290px) !important;
-    min-width: 0 !important;
-    max-width: 86vw !important;
-    height: 100dvh !important;
-    min-height: 100dvh !important;
-    box-sizing: border-box !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding: 22px 14px 28px !important;
-    transform: translateX(-105%);
-    transition: transform .25s ease;
-    z-index: 1201 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    visibility: visible !important;
-  }
-  .sidebar.open { transform: translateX(0) !important; }
-  .sidebar .side-logo, .sidebar .logo, .sidebar .side-logo h2 {
-    max-width: 100%;
-    overflow-wrap: anywhere;
-  }
-  .sidebar .nav, .sidebar nav, .sidebar .nav-links {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 7px !important;
-  }
-  .sidebar .nav-item, .sidebar .nav-link, .sidebar .nav-links a,
-  .sidebar nav a {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    justify-content: flex-start !important;
-    white-space: normal !important;
-  }
-  .momentum-mobile-bar {
-    display: flex !important;
-    align-items: center;
-    gap: 12px;
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 58px;
-    padding: 0 15px;
-    box-sizing: border-box;
-    z-index: 1100;
-    background: rgba(3, 12, 19, .96);
-    border-bottom: 1px solid rgba(48, 220, 169, .22);
-    backdrop-filter: blur(14px);
-  }
-  .momentum-menu-toggle {
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(48, 220, 169, .45);
-    border-radius: 12px;
-    color: #31dba8;
-    background: rgba(27, 211, 159, .12);
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
-  }
-  .momentum-mobile-brand {
-    color: #f5faf8;
-    font-weight: 800;
-    font-size: 19px;
-    letter-spacing: -.4px;
-  }
-  .momentum-mobile-brand span { color: #31dba8; }
-  .momentum-sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .62);
-    z-index: 1200;
-  }
-  .momentum-sidebar-overlay.show { display: block; }
-  .main {
-    margin-left: 0 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 78px 15px 30px !important;
-  }
-  .page, .app, .container, .content, .dashboard, .main-content {
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-  }
-  .page { overflow-x: clip; }
-  .main > *, .page > *, .container > * { min-width: 0; }
-  img, video, canvas, iframe { max-width: 100%; }
-  input, select, textarea, button { max-width: 100%; box-sizing: border-box; }
-  table { max-width: 100%; }
-  .summary-grid, .stats-grid, .stat-grid, .cards-grid, .card-grid,
-  .gallery, .athlete-grid, .support-layout, .workout-grid, .diet-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-  .daily-progress-card { flex-wrap: wrap; }
-}
-@media (min-width: 769px) {
-  .momentum-mobile-bar, .momentum-sidebar-overlay { display: none !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sidebar { transition: none !important; }
-}
-
-</style>
 </head>
 
 <body>
-<aside class="sidebar">
-    <div class="logo"><a href="test4.html" class="logo-link"><span class="mo">MO</span><span class="mentum">MENTUM</span></a></div>
-    <p class="brand-caption">DISCIPLINE BUILDS RESULTS</p>
-    <p class="nav-label">MAIN MENU</p>
-    <nav class="nav-links">
-      <a href="test4.html" class="nav-link "><i class="fa-solid fa-house"></i><span>Home</span></a>
-      <a href="test9.html" class="nav-link" id="editAthletesLink"><i class="fa-solid fa-users-gear"></i><span>Edit
-          Athletes</span></a>
-      <a href="test8.html" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i><span>Search Athletes</span></a>
-      <a href="test10.html" class="nav-link" id="complaintsLink"><i
-          class="fa-solid fa-message"></i><span>Complaints</span></a>
-      <a href="test11.html" class="nav-link" id="progressLink"><i class="fa-solid fa-chart-line"></i><span>Athlete
-          Progress</span></a>
-      <a href="test12.html" class="nav-link active" id="settingsLink"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
-    </nav>
-    <div class="sidebar-bottom">
-      <div class="quote">Better Athletes<br>Build A Stronger<br>Tomorrow<span></span></div>
-      <div class="coach-mini">
-        <div class="coach-avatar"><i class="fa-solid fa-user-tie"></i></div>
-        <div class="coach-info">
-          <h4 id="sidebarCoachName">Coach Ahmed</h4>
-          <p>Professional Coach</p>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo"><a href="test4.html" class="logo-link"><span class="mo">MO</span><span class="mentum">MENTUM</span></a></div>
+        <p class="brand-caption">DISCIPLINE BUILDS RESULTS</p>
+        <p class="nav-label">MAIN MENU</p>
+        <nav class="nav-links">
+            <a href="test4.html" class="nav-link "><i class="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="test9.html" class="nav-link" id="editAthletesLink"><i class="fa-solid fa-users-gear"></i><span>Edit Athletes</span></a>
+            <a href="test8.html" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i><span>Search Athletes</span></a>
+            <a href="test10.html" class="nav-link" id="complaintsLink"><i class="fa-solid fa-message"></i><span>Complaints</span></a>
+            <a href="test11.html" class="nav-link" id="progressLink"><i class="fa-solid fa-chart-line"></i><span>Athlete Progress</span></a>
+            <a href="test12.html" class="nav-link active" id="settingsLink"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+        </nav>
+        <div class="sidebar-bottom">
+            <div class="quote">Better Athletes<br>Build A Stronger<br>Tomorrow<span></span></div>
+            <div class="coach-mini">
+                <div class="coach-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="coach-info">
+                    <h4 id="sidebarCoachName">Coach Ahmed</h4>
+                    <p>Professional Coach</p>
+                </div>
+            </div>
+            <a href="#" class="nav-link logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i><span>Log Out</span></a>
         </div>
-      </div>
-      <a href="#" class="nav-link logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i><span>Log
-          Out</span></a>
-    </div>
-  </aside>
+    </aside>
+
+    <!-- MAIN CONTENT -->
     <main class="main">
         <div class="eyebrow">Trainer Workspace / <span>Settings</span></div>
         <h1>Settings</h1>
-        <p class="sub">Manage trainer profile details and a few local interface preferences. Backend authentication and
-            profile updates can be wired in later.</p>
+        <p class="sub">Manage trainer profile details and a few local interface preferences. Backend authentication and profile updates can be wired in later.</p>
+        
         <section class="panel hero">
             <div>
                 <h2>Trainer Settings</h2>
                 <p>Update the display profile and default coaching preferences.</p>
-            </div><span class="badge">Local prototype</span>
+            </div>
+            <span class="badge">Local prototype</span>
         </section>
+
         <div class="grid">
             <div class="stat"><small>Application</small><strong style="font-size:19px">MOMENTUM</strong></div>
             <div class="stat"><small>Account Role</small><strong style="font-size:19px">Trainer</strong></div>
             <div class="stat"><small>Data Storage</small><strong style="font-size:19px">Browser</strong></div>
         </div>
+
         <section class="panel">
             <h2 style="font-size:16px">Trainer Profile</h2>
             <div class="grid">
                 <div class="field"><label>Display name</label><input id="trainerName" placeholder="Coach name"></div>
-                <div class="field"><label>Email</label><input id="trainerEmail" type="email"
-                        placeholder="coach@example.com"></div>
+                <div class="field"><label>Email</label><input id="trainerEmail" type="email" placeholder="coach@example.com"></div>
                 <div class="field"><label>Phone</label><input id="trainerPhone" placeholder="Phone number"></div>
             </div>
-            <div class="field"><label>Short bio</label><textarea id="trainerBio"
-                    placeholder="Your coaching approach..."></textarea></div>
+            <div class="field"><label>Short bio</label><textarea id="trainerBio" placeholder="Your coaching approach..."></textarea></div>
         </section>
+
         <section class="panel">
             <h2 style="font-size:16px">Coaching Defaults</h2>
             <div class="grid">
-                <div class="field"><label>Default water target (ml/day)</label><input id="water" type="number" min="0"
-                        step="250"></div>
+                <div class="field"><label>Default water target (ml/day)</label><input id="water" type="number" min="0" step="250"></div>
                 <div class="field"><label>Default plan visibility</label><select id="visibility">
                         <option value="draft">Draft</option>
                         <option value="published">Published</option>
@@ -705,69 +616,133 @@
                         <option value="imperial">Imperial (lb / ft)</option>
                     </select></div>
             </div>
-            <div class="field"><label>Dashboard note</label><textarea id="note"
-                    placeholder="Optional note for your workspace..."></textarea></div>
-            <div class="actions"><button class="btn primary" id="save"><i class="fa-solid fa-floppy-disk"></i> Save
-                    Settings</button><button class="btn" id="reset">Reset Form</button></div>
+            <div class="field"><label>Dashboard note</label><textarea id="note" placeholder="Optional note for your workspace..."></textarea></div>
+            <div class="actions">
+                <button class="btn primary" id="save"><i class="fa-solid fa-floppy-disk"></i> Save Settings</button>
+                <button class="btn" id="reset">Reset Form</button>
+            </div>
             <p id="message" class="muted" style="margin-top:12px"></p>
-            <div class="notice">These settings currently save to this browser under
-                <code>momentumTrainerSettings</code>. When Supabase is connected, store trainer profile data against the
-                authenticated trainer ID and enforce permissions in the database.</div>
+            <div class="notice">These settings currently save to this browser under <code>momentumTrainerSettings</code>. When Supabase is connected, store trainer profile data against the authenticated trainer ID and enforce permissions in the database.</div>
         </section>
-        <p class="footer">MOMENTUM · DISCIPLINE BUILDS RESULTS<br>Frontend prototype — ready to connect to your backend.
-        </p>
+
+        <p class="footer">MOMENTUM · DISCIPLINE BUILDS RESULTS<br>Frontend prototype — ready to connect to your backend.</p>
     </main>
-    <script>document.getElementById('logout').addEventListener('click', e => { e.preventDefault(); if (confirm('Log out?')) { localStorage.removeItem('isLoggedIn'); localStorage.removeItem('userRole'); location.href = 'test.html' } });</script>
-    <script>const KEY = 'momentumTrainerSettings'; const fields = ['trainerName', 'trainerEmail', 'trainerPhone', 'trainerBio', 'water', 'visibility', 'units', 'note']; function load() { let d = {}; try { d = JSON.parse(localStorage.getItem(KEY) || '{}') } catch (e) { } fields.forEach(id => { let el = document.getElementById(id); if (d[id] !== undefined) el.value = d[id]; else if (id === 'water') el.value = 3000; else if (id === 'visibility') el.value = 'draft'; else if (id === 'units') el.value = 'metric' }) } function save() { let d = {}; fields.forEach(id => d[id] = document.getElementById(id).value); localStorage.setItem(KEY, JSON.stringify(d)); let n = d.trainerName.trim(); if (n) { document.getElementById('message').textContent = 'Settings saved in this browser.'; localStorage.setItem('momentumTrainerDisplayName', n) } else document.getElementById('message').textContent = 'Settings saved in this browser.' } document.getElementById('save').addEventListener('click', save); document.getElementById('reset').addEventListener('click', () => { if (confirm('Reset this form to saved/default settings?')) { load(); document.getElementById('message').textContent = 'Form restored.' } }); load();</script>
 
-<script>
-(function () {
-  const sidebar = document.querySelector('.sidebar');
-  if (!sidebar || document.querySelector('.momentum-mobile-bar')) return;
+    <!-- =========================================================
+         SETTINGS LOGIC
+    ========================================================= -->
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', e => { 
+            e.preventDefault(); 
+            if (confirm('Log out?')) { 
+                localStorage.removeItem('isLoggedIn'); 
+                localStorage.removeItem('userRole'); 
+                location.href = 'test.html' 
+            } 
+        });
+    </script>
+    
+    <script>
+        const KEY = 'momentumTrainerSettings'; 
+        const fields = ['trainerName', 'trainerEmail', 'trainerPhone', 'trainerBio', 'water', 'visibility', 'units', 'note']; 
+        
+        function load() { 
+            let d = {}; 
+            try { d = JSON.parse(localStorage.getItem(KEY) || '{}') } catch (e) { } 
+            fields.forEach(id => { 
+                let el = document.getElementById(id); 
+                if (d[id] !== undefined) el.value = d[id]; 
+                else if (id === 'water') el.value = 3000; 
+                else if (id === 'visibility') el.value = 'draft'; 
+                else if (id === 'units') el.value = 'metric' 
+            }) 
+        } 
+        
+        function save() { 
+            let d = {}; 
+            fields.forEach(id => d[id] = document.getElementById(id).value); 
+            localStorage.setItem(KEY, JSON.stringify(d)); 
+            let n = d.trainerName.trim(); 
+            if (n) { 
+                document.getElementById('message').textContent = 'Settings saved in this browser.'; 
+                localStorage.setItem('momentumTrainerDisplayName', n) 
+            } else document.getElementById('message').textContent = 'Settings saved in this browser.' 
+        } 
+        
+        document.getElementById('save').addEventListener('click', save); 
+        document.getElementById('reset').addEventListener('click', () => { 
+            if (confirm('Reset this form to saved/default settings?')) { 
+                load(); 
+                document.getElementById('message').textContent = 'Form restored.' 
+            } 
+        }); 
+        
+        load();
+    </script>
 
-  const bar = document.createElement('header');
-  bar.className = 'momentum-mobile-bar';
-  bar.innerHTML = '<button class="momentum-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><div class="momentum-mobile-brand">MO<span>MENTUM</span></div>';
+    <!-- =========================================================
+         MOBILE MENU SCRIPT (Clean & Working)
+    ========================================================= -->
+    <script>
+        (function () {
+            const sidebar = document.querySelector('.sidebar');
+            if (!sidebar) return;
 
-  const overlay = document.createElement('div');
-  overlay.className = 'momentum-sidebar-overlay';
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(overlay);
-  document.body.appendChild(bar);
+            // إنشاء الشريط العلوي
+            const bar = document.createElement('header');
+            bar.className = 'momentum-mobile-bar';
+            bar.innerHTML = `
+                <button class="momentum-menu-toggle" type="button" aria-label="Open navigation">☰</button>
+                <div style="color: #fff; font-weight: bold; font-size: 18px; letter-spacing: 1px;">
+                    <span style="color: #24e3a3;">MO</span>MENTUM
+                </div>
+                <div style="width: 42px;"></div> 
+            `;
 
-  const toggle = bar.querySelector('.momentum-menu-toggle');
-  function closeMenu() {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('show');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
-    document.body.style.overflow = '';
-  }
-  function openMenu() {
-    sidebar.classList.add('open');
-    overlay.classList.add('show');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close navigation');
-    document.body.style.overflow = 'hidden';
-  }
-  toggle.addEventListener('click', function () {
-    sidebar.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  overlay.addEventListener('click', closeMenu);
-  sidebar.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
-    });
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') closeMenu();
-  });
-  window.addEventListener('resize', function () {
-    if (!window.matchMedia('(max-width: 768px)').matches) closeMenu();
-  });
-})();
-</script>
+            // إنشاء طبقة التعتيم
+            const overlay = document.createElement('div');
+            overlay.className = 'momentum-sidebar-overlay';
+
+            document.body.appendChild(overlay);
+            document.body.appendChild(bar);
+
+            const toggle = bar.querySelector('.momentum-menu-toggle');
+
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                toggle.innerHTML = '☰';
+                document.body.style.overflow = '';
+            }
+
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+                toggle.innerHTML = '✕';
+                document.body.style.overflow = 'hidden';
+            }
+
+            toggle.addEventListener('click', function () {
+                if (sidebar.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            overlay.addEventListener('click', closeMenu);
+
+            sidebar.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) closeMenu();
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) closeMenu();
+            });
+        })();
+    </script>
 
 </body>
-
 </html>
