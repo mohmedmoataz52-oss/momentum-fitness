@@ -1098,21 +1098,7 @@
         const resultCount = document.getElementById("resultCount");
         const athleteCards = Array.from(document.querySelectorAll(".athlete-card"));
 
-        function filterAthletes() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            const selectedStatus = statusFilter.value;
-            const selectedSort = sortFilter.value;
-
-            let visibleCards = athleteCards.filter(card => {
-                const athleteName = card.dataset.name.toLowerCase();
-                const athleteId = card.dataset.id.toLowerCase();
-                const athleteStatus = card.dataset.status;
-
-                const matchesSearch = athleteName.includes(searchTerm) || athleteId.includes(searchTerm);
-                const matchesStatus = selectedStatus === "all" || athleteStatus === selectedStatus;
-
-                return matchesSearch && matchesStatus;
-            });
+     
 
             if (selectedSort === "name") {
                 visibleCards.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
