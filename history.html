@@ -34,337 +34,223 @@
             min-height: 100vh;
             color: #f4f8fb;
             background:
-                linear-gradient(90deg,
-                    rgba(1, 10, 20, 0.82),
-                    rgba(1, 10, 20, 0.58)),
+                linear-gradient(90deg, rgba(1, 10, 20, 0.82), rgba(1, 10, 20, 0.58)),
                 url("https://i.etsystatic.com/23444619/r/il/db93ac/5875799596/il_fullxfull.5875799596_r7m1.jpg") center center / cover fixed no-repeat;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-
         /* =========================
            SIDEBAR
         ========================= */
-
-         .sidebar {
-
+        .sidebar {
             width: 235px;
             min-height: 100vh;
-
             background:
-                linear-gradient(
-                    rgba(2, 10, 16, .78),
-                    rgba(2, 10, 16, .94)
-                ),
-                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800")
-                center / cover;
-
+                linear-gradient(rgba(2, 10, 16, .78), rgba(2, 10, 16, .94)),
+                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover;
             border-right: 1px solid #20313d;
-
             padding: 28px 14px;
-
             position: fixed;
             left: 0;
             top: 0;
             bottom: 0;
+            z-index: 1000;
         }
 
-
         .side-logo {
-
             display: flex;
             align-items: center;
             gap: 12px;
-
             padding: 0 15px 30px;
         }
 
-
         .side-logo i {
-
             color: #24e3a3;
             font-size: 34px;
         }
 
-
         .side-logo h2 {
-
             font-size: 21px;
             letter-spacing: 1px;
         }
 
-
         .side-logo p {
-
             color: #82919d;
             font-size: 8px;
             letter-spacing: 2px;
             margin-top: 4px;
         }
 
-
         .nav {
-
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-
         .nav-item {
-
             min-height: 55px;
-
             display: flex;
             align-items: center;
-
             gap: 16px;
-
             padding: 0 17px;
-
             border-radius: 12px;
-
             color: #aebbc7;
-
             text-decoration: none;
-
             transition: .25s;
         }
 
-
         .nav-item i {
-
             width: 20px;
-
             text-align: center;
-
             font-size: 18px;
         }
 
-
         .nav-item:hover {
-
             background: rgba(36, 227, 163, .08);
-
             color: #24e3a3;
         }
 
-
         .nav-item.active {
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(36, 227, 163, .20),
-                    rgba(36, 227, 163, .06)
-                );
-
+            background: linear-gradient(90deg, rgba(36, 227, 163, .20), rgba(36, 227, 163, .06));
             color: #24e3a3;
-
             border-left: 3px solid #24e3a3;
         }
 
-
         .side-quote {
-
             position: absolute;
-
             left: 25px;
             right: 25px;
             bottom: 35px;
-
             color: #73818c;
-
             font-size: 13px;
-
             line-height: 1.7;
-
             font-style: italic;
         }
-
 
         /* =========================
            MAIN
         ========================= */
-
         .main {
-
             margin-left: 235px;
-
             width: calc(100% - 235px);
-
             padding: 22px 28px 40px;
         }
+
         /* =========================
            HEADER
         ========================= */
-
         .header {
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
             margin-bottom: 25px;
         }
 
-
         .brand-mobile {
-
             display: none;
         }
 
-
         .date {
-
             display: flex;
-
             align-items: center;
-
             gap: 10px;
-
             color: #d3dbe2;
-
             font-size: 14px;
         }
 
-
         .date i {
-
             color: #aab7c2;
             font-size: 18px;
         }
 
-
         .user-area {
-
             display: flex;
-
             align-items: center;
-
             gap: 12px;
         }
 
-
         .user-info {
-
             text-align: right;
         }
 
-
         .user-name {
-
             font-size: 14px;
-
             font-weight: bold;
         }
-.logo{
-    font: size 18px;
-    font-weight:800;
-    letter-spacing:-1.3px;
-    text-decoration:none;
-}
 
-.logo .white{
-    color:#fff;
-}
+        .logo {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -1.3px;
+            text-decoration: none;
+        }
 
-.logo .green{
-    color:#39d98a;
-}
+        .logo .white {
+            color: #fff;
+        }
+
+        .logo .green {
+            color: #39d98a;
+        }
 
         .user-role {
-
             color: #82909b;
-
             font-size: 11px;
-
             margin-top: 3px;
         }
 
-
         .user-avatar {
-
             width: 45px;
             height: 45px;
-
             border-radius: 50%;
-
             border: 1px solid #41515e;
-
             background: #0b1822;
-
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             font-size: 20px;
         }
 
-
         .crown {
-
             color: #ffc84a;
-
             font-size: 15px;
         }
-
 
         /* =========================
            CONTENT GRID
         ========================= */
-
         .content {
-
             display: grid;
-
             grid-template-columns: minmax(0, 1fr) 260px;
-
             gap: 18px;
         }
-
 
         /* =========================
            TITLE
         ========================= */
-
         .page-title {
-
             margin-bottom: 18px;
         }
 
-
         .page-title h1 {
-
             font-size: 38px;
-
             margin-bottom: 7px;
         }
 
-
         .page-title p {
-
             color: #aebbc6;
-
             font-size: 15px;
-
             line-height: 1.5;
         }
-
 
         .green {
             color: #24e3a3;
         }
 
-
         .topbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             margin-bottom: 28px;
         }
 
@@ -372,13 +258,10 @@
             display: flex;
             align-items: center;
             gap: 8px;
-
             color: var(--green);
-
             font-size: 10px;
             font-weight: 800;
             letter-spacing: 1.7px;
-
             margin-bottom: 8px;
         }
 
@@ -398,9 +281,7 @@
 
         .topbar p {
             color: var(--muted);
-
             margin-top: 7px;
-
             font-size: 13px;
         }
 
@@ -421,11 +302,8 @@
 
         .athlete-text small {
             display: block;
-
             color: #68798a;
-
             margin-top: 3px;
-
             font-size: 9px;
             letter-spacing: 1px;
         }
@@ -433,51 +311,33 @@
         .avatar {
             width: 43px;
             height: 43px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             background: #0d1a28;
-
             border: 1px solid #26394b;
             border-radius: 50%;
-
             color: var(--green);
-
             font-weight: 800;
         }
 
         /* =========================
            SUMMARY
         ========================= */
-
         .summary-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-
             gap: 15px;
-
             margin-bottom: 22px;
         }
 
         .summary-card {
             min-height: 92px;
-
             display: flex;
             align-items: center;
-
             gap: 13px;
-
             padding: 18px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(14, 28, 43, 0.98),
-                    rgba(8, 18, 29, 0.98)
-                );
-
+            background: linear-gradient(145deg, rgba(14, 28, 43, 0.98), rgba(8, 18, 29, 0.98));
             border: 1px solid var(--border);
             border-radius: 13px;
         }
@@ -485,30 +345,21 @@
         .summary-icon {
             width: 43px;
             height: 43px;
-
             flex-shrink: 0;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             color: var(--green);
-
             background: var(--green-soft);
-
             border: 1px solid rgba(57, 217, 138, 0.13);
             border-radius: 10px;
-
             font-size: 16px;
         }
 
         .summary-card span {
             display: block;
-
             color: #718195;
-
             margin-bottom: 5px;
-
             font-size: 11px;
         }
 
@@ -519,7 +370,6 @@
         /* =========================
            SECTION
         ========================= */
-
         .section-heading {
             margin: 30px 0 14px;
         }
@@ -530,30 +380,22 @@
 
         .section-heading p {
             color: var(--muted);
-
             margin-top: 5px;
-
             font-size: 12px;
         }
 
         /* =========================
            FILTER
         ========================= */
-
         .filter-box {
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             gap: 20px;
-
             padding: 18px 20px;
-
             background: rgba(10, 22, 35, 0.96);
-
             border: 1px solid var(--border);
             border-radius: 13px;
-
             margin-bottom: 15px;
         }
 
@@ -563,9 +405,7 @@
 
         .filter-title p {
             color: var(--muted);
-
             margin-top: 4px;
-
             font-size: 11px;
         }
 
@@ -577,18 +417,12 @@
         .filters input,
         .filters select {
             height: 38px;
-
             padding: 0 12px;
-
             color: #fff;
-
             background: #07121e;
-
             border: 1px solid #203449;
             border-radius: 8px;
-
             outline: none;
-
             font-size: 12px;
         }
 
@@ -604,19 +438,10 @@
         /* =========================
            HISTORY CARD
         ========================= */
-
         .history-card {
             overflow: hidden;
-
             margin-bottom: 13px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(12, 27, 42, 0.98),
-                    rgba(7, 17, 28, 0.98)
-                );
-
+            background: linear-gradient(145deg, rgba(12, 27, 42, 0.98), rgba(7, 17, 28, 0.98));
             border: 1px solid var(--border);
             border-radius: 13px;
         }
@@ -625,9 +450,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             padding: 17px 19px;
-
             border-bottom: 1px solid #16283a;
         }
 
@@ -635,9 +458,7 @@
             display: flex;
             align-items: center;
             gap: 7px;
-
             color: var(--green);
-
             font-size: 10px;
             font-weight: 800;
             letter-spacing: 0.5px;
@@ -645,7 +466,6 @@
 
         .history-header h3 {
             margin-top: 6px;
-
             font-size: 16px;
         }
 
@@ -653,16 +473,11 @@
             display: flex;
             align-items: center;
             gap: 6px;
-
             padding: 7px 10px;
-
             color: var(--green);
-
             background: var(--green-soft);
-
             border: 1px solid rgba(57, 217, 138, 0.15);
             border-radius: 20px;
-
             font-size: 10px;
             font-weight: 700;
         }
@@ -673,15 +488,10 @@
 
         .exercise-row {
             display: grid;
-
             grid-template-columns: 2fr 1fr 1fr 1fr;
-
             align-items: center;
-
             gap: 15px;
-
             padding: 15px 0;
-
             border-bottom: 1px solid #142638;
         }
 
@@ -692,47 +502,34 @@
         .exercise-name {
             display: flex;
             align-items: center;
-
             gap: 10px;
-
             min-width: 0;
         }
 
         .check {
             width: 24px;
             height: 24px;
-
             flex-shrink: 0;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             color: var(--green);
-
             background: var(--green-soft);
-
             border-radius: 50%;
-
             font-size: 10px;
         }
 
         .exercise-name strong {
             overflow: hidden;
-
             text-overflow: ellipsis;
             white-space: nowrap;
-
             font-size: 13px;
         }
 
         .exercise-stat span {
             display: block;
-
             color: #68788d;
-
             margin-bottom: 4px;
-
             font-size: 9px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -744,28 +541,17 @@
 
         .no-exercises {
             padding: 20px 0;
-
             color: var(--muted);
-
             font-size: 12px;
         }
 
         /* =========================
            EMPTY
         ========================= */
-
         .empty-state {
             padding: 55px 25px;
-
             text-align: center;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(12, 27, 42, 0.97),
-                    rgba(7, 17, 28, 0.97)
-                );
-
+            background: linear-gradient(145deg, rgba(12, 27, 42, 0.97), rgba(7, 17, 28, 0.97));
             border: 1px solid var(--border);
             border-radius: 13px;
         }
@@ -773,19 +559,13 @@
         .empty-icon {
             width: 52px;
             height: 52px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             margin: 0 auto 15px;
-
             color: var(--green);
-
             background: var(--green-soft);
-
             border-radius: 13px;
-
             font-size: 21px;
         }
 
@@ -795,13 +575,9 @@
 
         .empty-state p {
             max-width: 430px;
-
             margin: 8px auto 20px;
-
             color: var(--muted);
-
             line-height: 1.6;
-
             font-size: 12px;
         }
 
@@ -809,16 +585,11 @@
             display: inline-flex;
             align-items: center;
             gap: 7px;
-
             padding: 10px 15px;
-
             color: #06111b;
             background: var(--green);
-
             border-radius: 8px;
-
             text-decoration: none;
-
             font-size: 12px;
             font-weight: 800;
         }
@@ -826,17 +597,9 @@
         /* =========================
            BODY WEIGHT
         ========================= */
-
         .weight-history {
             overflow: hidden;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(12, 27, 42, 0.98),
-                    rgba(7, 17, 28, 0.98)
-                );
-
+            background: linear-gradient(145deg, rgba(12, 27, 42, 0.98), rgba(7, 17, 28, 0.98));
             border: 1px solid var(--border);
             border-radius: 13px;
         }
@@ -844,15 +607,10 @@
         .weight-header {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-
             padding: 13px 19px;
-
             color: #66778a;
-
             background: rgba(5, 13, 21, 0.45);
-
             border-bottom: 1px solid #16283a;
-
             font-size: 9px;
             font-weight: 800;
             text-transform: uppercase;
@@ -862,13 +620,9 @@
         .weight-row {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-
             align-items: center;
-
             padding: 15px 19px;
-
             border-bottom: 1px solid #142638;
-
             font-size: 12px;
         }
 
@@ -890,32 +644,20 @@
             text-align: right;
         }
 
-        .weight-row .up {
-            color: #ff6b6b;
-        }
-
-        .weight-row .down {
-            color: var(--green);
-        }
-
-        .weight-row .same {
-            color: #718095;
-        }
+        .weight-row .up { color: #ff6b6b; }
+        .weight-row .down { color: var(--green); }
+        .weight-row .same { color: #718095; }
 
         .empty-weight {
             padding: 30px;
-
             color: var(--muted);
-
             text-align: center;
-
             font-size: 12px;
         }
 
         /* =========================
            PROGRESS PHOTOS
         ========================= */
-
         .photos-section {
             margin-top: 30px;
         }
@@ -924,7 +666,6 @@
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
-
             margin-bottom: 14px;
         }
 
@@ -934,9 +675,7 @@
 
         .photos-header p {
             color: var(--muted);
-
             margin-top: 5px;
-
             font-size: 12px;
         }
 
@@ -944,18 +683,12 @@
             display: inline-flex;
             align-items: center;
             gap: 7px;
-
             padding: 9px 13px;
-
             color: var(--green);
-
             background: var(--green-soft);
-
             border: 1px solid rgba(57, 217, 138, 0.16);
             border-radius: 8px;
-
             text-decoration: none;
-
             font-size: 11px;
             font-weight: 700;
         }
@@ -963,51 +696,38 @@
         .photos-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-
             gap: 14px;
         }
 
         .photo-history-card {
             overflow: hidden;
-
             background: var(--card);
-
             border: 1px solid var(--border);
             border-radius: 12px;
         }
 
         .photo-image-wrap {
             position: relative;
-
             height: 220px;
-
             background: #050b12;
         }
 
         .photo-image-wrap img {
             width: 100%;
             height: 100%;
-
             display: block;
-
             object-fit: cover;
         }
 
         .photo-position {
             position: absolute;
-
             left: 10px;
             bottom: 10px;
-
             padding: 6px 9px;
-
             color: #fff;
-
             background: rgba(4, 11, 18, 0.82);
-
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 7px;
-
             font-size: 9px;
             font-weight: 800;
             text-transform: uppercase;
@@ -1018,59 +738,43 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             padding: 12px 13px;
         }
 
         .photo-history-info strong {
             display: block;
-
             font-size: 11px;
         }
 
         .photo-history-info span {
             display: block;
-
             color: #697a8d;
-
             margin-top: 4px;
-
             font-size: 9px;
         }
 
         .photo-empty {
             grid-column: 1 / -1;
-
             padding: 35px;
-
             color: var(--muted);
-
             background: var(--card);
-
             border: 1px solid var(--border);
             border-radius: 12px;
-
             text-align: center;
-
             font-size: 12px;
         }
 
         /* =========================
            LIGHTBOX
         ========================= */
-
         .lightbox {
             position: fixed;
             inset: 0;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             padding: 30px;
-
             background: rgba(0, 0, 0, 0.88);
-
             z-index: 500;
         }
 
@@ -1081,309 +785,215 @@
         .lightbox img {
             max-width: 90vw;
             max-height: 88vh;
-
             border-radius: 10px;
-
             box-shadow: 0 20px 80px rgba(0,0,0,0.55);
         }
 
         .lightbox-close {
             position: absolute;
-
             top: 22px;
             right: 25px;
-
             width: 40px;
             height: 40px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             color: #fff;
-
             background: rgba(255,255,255,0.08);
-
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 50%;
-
             cursor: pointer;
-
             font-size: 16px;
         }
 
         /* =========================
-           RESPONSIVE
+           DAILY PROGRESS
         ========================= */
+        .daily-progress-section { margin: 28px 0; }
+        .daily-workout-progress { display: grid; gap: 12px; }
+        .daily-progress-card {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 18px; padding: 18px 20px; border-radius: 16px;
+            background: rgba(10, 23, 33, .92); border: 1px solid #1b303d;
+        }
+        .daily-progress-meta h3 { color: #f4f8fb; font-size: 15px; margin-bottom: 6px; }
+        .daily-progress-meta p { color: #82919d; font-size: 12px; }
+        .daily-progress-right { min-width: 120px; text-align: right; }
+        .daily-progress-percent { color: #39d98a; font-size: 20px; font-weight: 800; }
+        .daily-progress-track { height: 6px; margin-top: 8px; border-radius: 99px; overflow: hidden; background: #172832; }
+        .daily-progress-fill { height: 100%; border-radius: inherit; background: #39d98a; }
 
+        /* =========================
+           MOMENTUM MOBILE FIXES (New)
+        ========================= */
         @media (max-width: 1100px) {
-
-            .summary-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .photos-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            .photos-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        @media (max-width: 800px) {
-
-            :root {
-                --sidebar-width: 70px;
-            }
-
+        @media (max-width: 768px) {
+            /* 1. إخفاء السايدبار وتجهيزه للفتح */
             .sidebar {
-                padding: 20px 9px;
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 260px !important;
+                min-height: 100vh !important;
+                background: linear-gradient(rgba(2, 10, 16, .95), rgba(2, 10, 16, .98)), url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover !important;
+                transform: translateX(-105%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1050 !important;
+                padding: 28px 14px !important;
+                display: flex !important;
+                flex-direction: column;
             }
 
-            .brand {
-                padding: 4px 0;
-                text-align: center;
-                font-size: 16px;
+            /* كلاس بيضاف بالجافاسكريبت لما تدوس على الزرار */
+            .sidebar.open {
+                transform: translateX(0) !important;
             }
 
-            .brand-subtitle {
-                display: none;
+            /* 2. إظهار النصوص في السايدبار */
+            .nav {
+                display: flex !important;
+                flex-direction: column !important;
             }
-
             .nav-item {
-                justify-content: center;
-                padding: 0;
+                justify-content: flex-start !important;
+                padding: 0 17px !important;
+                min-height: 55px !important;
             }
-
             .nav-item span {
-                display: none;
+                display: block !important;
+                opacity: 1 !important;
+            }
+            .side-quote {
+                display: block !important;
             }
 
-            .nav-item i {
-                font-size: 17px;
+            /* 3. شريط الموبايل العلوي */
+            .momentum-mobile-bar {
+                display: flex !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 65px;
+                background: rgba(3, 12, 19, 0.85);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(36, 227, 163, 0.15);
+                z-index: 1000;
+                align-items: center;
+                padding: 0 15px;
+                justify-content: space-between;
             }
 
-            .logout-btn {
+            .momentum-menu-toggle {
+                background: rgba(36, 227, 163, 0.1);
+                border: 1px solid rgba(36, 227, 163, 0.3);
+                color: #24e3a3;
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
                 justify-content: center;
-                padding: 0;
+                cursor: pointer;
             }
 
-            .logout-btn span {
+            /* 4. طبقة التعتيم ورا السايدبار */
+            .momentum-sidebar-overlay {
                 display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1040;
+                backdrop-filter: blur(3px);
+            }
+            .momentum-sidebar-overlay.show {
+                display: block;
             }
 
+            /* 5. تعديل المساحات للمحتوى الأساسي */
             .main {
-                padding: 22px 17px 40px;
-            }
-
-            .filter-box {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .filters {
-                width: 100%;
-                flex-direction: column;
-            }
-
-            .filters input {
-                width: 100%;
-            }
-
-            .exercise-row {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .exercise-name {
-                grid-column: 1 / -1;
-            }
-        }
-
-        @media (max-width: 550px) {
-
-            .main {
-                padding: 18px 12px 35px;
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 85px 15px 30px !important;
             }
 
             .topbar {
-                align-items: flex-start;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            
+            .athlete-info {
+                margin-top: 15px !important;
+                width: 100% !important;
+                border-top: 1px solid #1b303d;
+                padding-top: 15px;
             }
 
-            .topbar h1 {
-                font-size: 25px;
-            }
-
-            .athlete-text {
-                display: none;
-            }
-
+            /* 6. ترتيب الجداول والكروت */
             .summary-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
             }
+            .summary-card { min-height: auto; padding: 15px; }
 
-            .photos-grid {
-                grid-template-columns: 1fr;
+            .filter-box {
+                flex-direction: column !important;
+                align-items: stretch !important;
             }
-
-            .photos-header {
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 10px;
+            .filters {
+                flex-direction: column !important;
+                width: 100% !important;
             }
-
-            .photo-image-wrap {
-                height: 300px;
-            }
-
-            .history-header {
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .completed-badge {
-                white-space: nowrap;
-            }
+            .filters input { width: 100% !important; }
 
             .exercise-row {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+            .exercise-name {
+                grid-column: 1 / -1 !important;
+                border-bottom: 1px solid #142638;
+                padding-bottom: 10px;
+            }
+            .exercise-stat {
+                text-align: left !important;
+            }
+
+            .weight-header, .weight-row {
+                grid-template-columns: 1fr 1fr !important;
+            }
+            .weight-header > span:nth-child(3), .weight-row > span:nth-child(3) {
+                display: none !important; /* إخفاء التغيير في الموبايل */
+            }
+            .weight-row strong { text-align: right !important; }
+
+            .photos-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 10px !important;
+            }
+
+            .photos-grid { grid-template-columns: 1fr !important; }
+            .photo-image-wrap { height: 300px !important; }
+
+            .daily-progress-card {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            .daily-progress-right {
+                width: 100% !important;
+                text-align: left !important;
+                margin-top: 10px;
             }
         }
-    
-    .daily-progress-section { margin: 28px 0; }
-    .daily-workout-progress { display: grid; gap: 12px; }
-    .daily-progress-card {
-        display: flex; align-items: center; justify-content: space-between;
-        gap: 18px; padding: 18px 20px; border-radius: 16px;
-        background: rgba(10, 23, 33, .92); border: 1px solid #1b303d;
-    }
-    .daily-progress-meta h3 { color: #f4f8fb; font-size: 15px; margin-bottom: 6px; }
-    .daily-progress-meta p { color: #82919d; font-size: 12px; }
-    .daily-progress-right { min-width: 120px; text-align: right; }
-    .daily-progress-percent { color: #39d98a; font-size: 20px; font-weight: 800; }
-    .daily-progress-track { height: 6px; margin-top: 8px; border-radius: 99px; overflow: hidden; background: #172832; }
-    .daily-progress-fill { height: 100%; border-radius: inherit; background: #39d98a; }
-    @media (max-width: 600px) {
-        .daily-progress-card { align-items: flex-start; flex-direction: column; }
-        .daily-progress-right { width: 100%; text-align: left; }
-    }
-
-</style>
-<style>
-
-/* MOMENTUM responsive navigation patch */
-@media (max-width: 768px) {
-  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
-  body { background-attachment: scroll !important; }
-  .sidebar {
-    position: fixed !important;
-    inset: 0 auto 0 0 !important;
-    width: min(82vw, 290px) !important;
-    min-width: 0 !important;
-    max-width: 86vw !important;
-    height: 100dvh !important;
-    min-height: 100dvh !important;
-    box-sizing: border-box !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding: 22px 14px 28px !important;
-    transform: translateX(-105%);
-    transition: transform .25s ease;
-    z-index: 1201 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    visibility: visible !important;
-  }
-  .sidebar.open { transform: translateX(0) !important; }
-  .sidebar .side-logo, .sidebar .logo, .sidebar .side-logo h2 {
-    max-width: 100%;
-    overflow-wrap: anywhere;
-  }
-  .sidebar .nav, .sidebar nav, .sidebar .nav-links {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 7px !important;
-  }
-  .sidebar .nav-item, .sidebar .nav-link, .sidebar .nav-links a,
-  .sidebar nav a {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    justify-content: flex-start !important;
-    white-space: normal !important;
-  }
-  .momentum-mobile-bar {
-    display: flex !important;
-    align-items: center;
-    gap: 12px;
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 58px;
-    padding: 0 15px;
-    box-sizing: border-box;
-    z-index: 1100;
-    background: rgba(3, 12, 19, .96);
-    border-bottom: 1px solid rgba(48, 220, 169, .22);
-    backdrop-filter: blur(14px);
-  }
-  .momentum-menu-toggle {
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(48, 220, 169, .45);
-    border-radius: 12px;
-    color: #31dba8;
-    background: rgba(27, 211, 159, .12);
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
-  }
-  .momentum-mobile-brand {
-    color: #f5faf8;
-    font-weight: 800;
-    font-size: 19px;
-    letter-spacing: -.4px;
-  }
-  .momentum-mobile-brand span { color: #31dba8; }
-  .momentum-sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .62);
-    z-index: 1200;
-  }
-  .momentum-sidebar-overlay.show { display: block; }
-  .main {
-    margin-left: 0 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 78px 15px 30px !important;
-  }
-  .page, .app, .container, .content, .dashboard, .main-content {
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-  }
-  .page { overflow-x: clip; }
-  .main > *, .page > *, .container > * { min-width: 0; }
-  img, video, canvas, iframe { max-width: 100%; }
-  input, select, textarea, button { max-width: 100%; box-sizing: border-box; }
-  table { max-width: 100%; }
-  .summary-grid, .stats-grid, .stat-grid, .cards-grid, .card-grid,
-  .gallery, .athlete-grid, .support-layout, .workout-grid, .diet-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-  .daily-progress-card { flex-wrap: wrap; }
-}
-@media (min-width: 769px) {
-  .momentum-mobile-bar, .momentum-sidebar-overlay { display: none !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sidebar { transition: none !important; }
-}
-
-</style>
+    </style>
 </head>
 
 <body>
@@ -1391,288 +1001,149 @@
 <!-- =========================
      SIDEBAR
 ========================= -->
-
 <aside class="sidebar">
+    <div class="side-logo">
+        <i class="fa-solid fa-dumbbell"></i>
+        <h2>
+            <a href="test3.html" class="logo">
+                <span class="white">MO</span><span class="green">MENTUM</span>
+            </a>
+        </h2>
+    </div>
 
-        <div class="side-logo">
-
+    <nav class="nav">
+        <a href="test3.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="test5.html" class="nav-item ">
             <i class="fa-solid fa-dumbbell"></i>
-                    <h2><a href="test3.html" class="logo">
-        <span class="white">MO</span><span class="green">MENTUM</span>
-    </a></h2>
+            <span>Exercises</span>
+        </a>
+        <a href="progress-photos.html" class="nav-item">
+            <i class="fa-solid fa-camera"></i>
+            <span>Progress Photos</span>
+        </a>
+        <a href="work_plan.html" class="nav-item">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Workout Plan</span>
+        </a>
+        <a href="diet-plan.html" class="nav-item">
+            <i class="fa-solid fa-utensils"></i>
+            <span>Diet Plan</span>
+        </a>
+        <a href="support.html" class="nav-item">
+            <i class="fa-solid fa-message"></i>
+            <span>Support</span>
+        </a>
+        <a href="history.html" class="nav-item active">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>Progress / History</span>
+        </a>
+    </nav>
 
-
-        </div>
-
-
-        <nav class="nav">
-
-            <a href="test3.html" class="nav-item">
-
-                <i class="fa-solid fa-house"></i>
-
-                <span>Home</span>
-
-            </a>
-
-
-            <a href="test5.html" class="nav-item ">
-
-                <i class="fa-solid fa-dumbbell"></i>
-
-                <span>Exercises</span>
-
-            </a>
-
-
-            <a href="progress-photos.html" class="nav-item">
-
-                <i class="fa-solid fa-camera"></i>
-
-                <span>Progress Photos</span>
-
-            </a>
-
-
-            <a href="work_plan.html" class="nav-item">
-
-                <i class="fa-solid fa-calendar-days"></i>
-
-                <span>Workout Plan</span>
-
-            </a>
-
-
-            <a href="diet-plan.html" class="nav-item">
-
-                <i class="fa-solid fa-utensils"></i>
-
-                <span>Diet Plan</span>
-
-            </a>
-
-
-            <a href="support.html" class="nav-item">
-
-                <i class="fa-solid fa-message"></i>
-
-                <span>Support</span>
-
-            </a>
-
-
-            <a href="history.html" class="nav-item active">
-
-                <i class="fa-solid fa-chart-column"></i>
-
-                <span>Progress / History</span>
-
-            </a>
-
-        </nav>
-
-
-        <div class="side-quote">
-
-            "Small steps<br>
-            make big<br>
-            changes."
-
-        </div>
-
-    </aside>
+    <div class="side-quote">
+        "Small steps<br>
+        make big<br>
+        changes."
+    </div>
+</aside>
 
 
 <!-- =========================
      MAIN
 ========================= -->
-
 <main class="main">
 
     <!-- HEADER -->
-
     <header class="topbar">
-
         <div>
-
             <div class="page-kicker">
                 <i class="fa-solid fa-chart-line"></i>
                 PROGRESS TRACKING
             </div>
-
-            <h1>
-                Progress <span>History</span>
-            </h1>
-
-            <p>
-                Track your workouts, strength, body weight and transformation.
-            </p>
-
+            <h1>Progress <span>History</span></h1>
+            <p>Track your workouts, strength, body weight and transformation.</p>
         </div>
 
-
         <div class="athlete-info">
-
             <div class="athlete-text">
                 <strong id="athleteName">Athlete</strong>
                 <small id="athleteId">ATH-10001</small>
             </div>
-
-            <div class="avatar" id="avatar">
-                A
-            </div>
-
+            <div class="avatar" id="avatar">A</div>
         </div>
-
     </header>
-
 
     <!-- =========================
          SUMMARY
     ========================= -->
-
     <section class="summary-grid">
-
         <div class="summary-card">
-
-            <div class="summary-icon">
-                <i class="fa-solid fa-dumbbell"></i>
-            </div>
-
+            <div class="summary-icon"><i class="fa-solid fa-dumbbell"></i></div>
             <div>
                 <span>Workouts</span>
                 <strong id="totalWorkouts">0</strong>
             </div>
-
         </div>
 
-
         <div class="summary-card">
-
-            <div class="summary-icon">
-                <i class="fa-solid fa-check"></i>
-            </div>
-
+            <div class="summary-icon"><i class="fa-solid fa-check"></i></div>
             <div>
                 <span>Exercises Completed</span>
                 <strong id="totalExercises">0</strong>
             </div>
-
         </div>
 
-
         <div class="summary-card">
-
-            <div class="summary-icon">
-                <i class="fa-solid fa-weight-hanging"></i>
-            </div>
-
+            <div class="summary-icon"><i class="fa-solid fa-weight-hanging"></i></div>
             <div>
                 <span>Best Exercise Weight</span>
                 <strong id="bestWeight">0 kg</strong>
             </div>
-
         </div>
 
-
         <div class="summary-card">
-
-            <div class="summary-icon">
-                <i class="fa-solid fa-scale-balanced"></i>
-            </div>
-
+            <div class="summary-icon"><i class="fa-solid fa-scale-balanced"></i></div>
             <div>
                 <span>Current Weight</span>
                 <strong id="currentWeight">-- kg</strong>
             </div>
-
         </div>
-
     </section>
-
 
     <!-- =========================
          WORKOUT HISTORY
     ========================= -->
-
     <section class="filter-box">
-
         <div class="filter-title">
-
             <h2>Workout History</h2>
-
-            <p>
-                Review your previous training sessions.
-            </p>
-
+            <p>Review your previous training sessions.</p>
         </div>
-
 
         <div class="filters">
-
-            <input
-                type="text"
-                id="searchExercise"
-                placeholder="Search exercise..."
-                oninput="renderHistory()"
-            >
-
+            <input type="text" id="searchExercise" placeholder="Search exercise..." oninput="renderHistory()">
             <select id="dayFilter" onchange="renderHistory()">
-
-                <option value="all">
-                    All Days
-                </option>
-
-                <option value="Push">
-                    Push
-                </option>
-
-                <option value="Pull">
-                    Pull
-                </option>
-
-                <option value="Legs">
-                    Legs
-                </option>
-
+                <option value="all">All Days</option>
+                <option value="Push">Push</option>
+                <option value="Pull">Pull</option>
+                <option value="Legs">Legs</option>
             </select>
-
         </div>
-
     </section>
-
 
     <section id="historyContainer">
-
         <div class="empty-state">
-
-            <div class="empty-icon">
-                <i class="fa-solid fa-chart-column"></i>
-            </div>
-
-            <h2>
-                No History Yet
-            </h2>
-
-            <p>
-                Complete your workouts from the Exercises page
-                and your training history will appear here.
-            </p>
-
-            <a href="test5.html">
-                <i class="fa-solid fa-dumbbell"></i>
-                Go To Exercises
-            </a>
-
+            <div class="empty-icon"><i class="fa-solid fa-chart-column"></i></div>
+            <h2>No History Yet</h2>
+            <p>Complete your workouts from the Exercises page and your training history will appear here.</p>
+            <a href="test5.html"><i class="fa-solid fa-dumbbell"></i> Go To Exercises</a>
         </div>
-
     </section>
-
 
     <!-- =========================
          DAILY WORKOUT PROGRESS
     ========================= -->
-
     <section class="daily-progress-section">
         <div class="section-heading">
             <h2>Daily Workout Progress</h2>
@@ -1690,1257 +1161,357 @@
     <!-- =========================
          BODY WEIGHT
     ========================= -->
-
     <section>
-
         <div class="section-heading">
-
-            <h2>
-                Body Weight History
-            </h2>
-
-            <p>
-                Track your body weight changes over time.
-            </p>
-
+            <h2>Body Weight History</h2>
+            <p>Track your body weight changes over time.</p>
         </div>
-
 
         <div id="weightHistory" class="weight-history">
-
-            <div class="empty-weight">
-                No body weight records yet.
-            </div>
-
+            <div class="empty-weight">No body weight records yet.</div>
         </div>
-
     </section>
-
 
     <!-- =========================
          PROGRESS PHOTOS
     ========================= -->
-
     <section class="photos-section">
-
         <div class="photos-header">
-
             <div>
-
-                <h2>
-                    Progress Photos
-                </h2>
-
-                <p>
-                    Your latest transformation photos.
-                </p>
-
+                <h2>Progress Photos</h2>
+                <p>Your latest transformation photos.</p>
             </div>
-
             <a href="progress-photos.html" class="view-photos-btn">
-
-                <i class="fa-solid fa-images"></i>
-
-                Manage Photos
-
+                <i class="fa-solid fa-images"></i> Manage Photos
             </a>
-
         </div>
-
 
         <div id="photosGrid" class="photos-grid">
-
-            <div class="photo-empty">
-                No progress photos yet.
-            </div>
-
+            <div class="photo-empty">No progress photos yet.</div>
         </div>
-
     </section>
-
 </main>
 
 
 <!-- =========================
      LIGHTBOX
 ========================= -->
-
 <div id="lightbox" class="lightbox hidden">
-
-    <button
-        class="lightbox-close"
-        onclick="closeLightbox()"
-    >
+    <button class="lightbox-close" onclick="closeLightbox()">
         <i class="fa-solid fa-xmark"></i>
     </button>
-
-    <img
-        id="lightboxImage"
-        src=""
-        alt="Progress Photo"
-    >
-
+    <img id="lightboxImage" src="" alt="Progress Photo">
 </div>
 
 
 <script>
+    const athleteId = localStorage.getItem("athleteId") || "ATH-10001";
+    const athleteName = localStorage.getItem("userName") || "Athlete";
 
-    /* ==========================================
-       ATHLETE
-    ========================================== */
-
-    const athleteId =
-        localStorage.getItem("athleteId") || "ATH-10001";
-
-    const athleteName =
-        localStorage.getItem("userName") || "Athlete";
-
-
-    document.getElementById("athleteName").textContent =
-        athleteName;
-
-    document.getElementById("athleteId").textContent =
-        athleteId;
-
-    document.getElementById("avatar").textContent =
-        athleteName.charAt(0).toUpperCase();
-
-
-    /* ==========================================
-       WORKOUT HISTORY
-    ========================================== */
+    document.getElementById("athleteName").textContent = athleteName;
+    document.getElementById("athleteId").textContent = athleteId;
+    document.getElementById("avatar").textContent = athleteName.charAt(0).toUpperCase();
 
     function getWorkoutHistory() {
-
-        const athleteKey =
-            "workoutHistory_" + athleteId;
-
-        const athleteData =
-            localStorage.getItem(athleteKey);
-
+        const athleteKey = "workoutHistory_" + athleteId;
+        const athleteData = localStorage.getItem(athleteKey);
         if (athleteData) {
-
             try {
-
-                const parsed =
-                    JSON.parse(athleteData);
-
-                if (Array.isArray(parsed)) {
-                    return parsed;
-                }
-
-                if (
-                    parsed &&
-                    typeof parsed === "object"
-                ) {
-                    return Object.values(parsed);
-                }
-
+                const parsed = JSON.parse(athleteData);
+                if (Array.isArray(parsed)) return parsed;
+                if (parsed && typeof parsed === "object") return Object.values(parsed);
             } catch (error) {
-
-                console.log(
-                    "Could not read athlete workout history."
-                );
-
+                console.log("Could not read athlete workout history.");
             }
-
         }
 
-
-        /*
-         * Backward compatibility with the
-         * existing possible storage keys.
-         */
-
-        const possibleKeys = [
-            "workoutHistory",
-            "exerciseHistory",
-            "workout_history"
-        ];
-
-
+        const possibleKeys = ["workoutHistory", "exerciseHistory", "workout_history"];
         let history = [];
-
-
         for (const key of possibleKeys) {
-
-            const data =
-                localStorage.getItem(key);
-
+            const data = localStorage.getItem(key);
             if (!data) continue;
-
-
             try {
-
-                const parsed =
-                    JSON.parse(data);
-
-
-                if (Array.isArray(parsed)) {
-
-                    history = parsed;
-                    break;
-
-                }
-
-
-                if (
-                    parsed &&
-                    typeof parsed === "object"
-                ) {
-
-                    history =
-                        Object.values(parsed);
-
-                    break;
-
-                }
-
+                const parsed = JSON.parse(data);
+                if (Array.isArray(parsed)) { history = parsed; break; }
+                if (parsed && typeof parsed === "object") { history = Object.values(parsed); break; }
             } catch (error) {
-
-                console.log(
-                    "Could not read:",
-                    key
-                );
-
+                console.log("Could not read:", key);
             }
-
         }
-
-
-        /*
-         * Only show this athlete's records
-         * if athleteId exists in the record.
-         */
-
         return history.filter(record => {
-
             if (!record) return false;
-
-            if (!record.athleteId) {
-                return true;
-            }
-
-            return String(record.athleteId) ===
-                   String(athleteId);
-
+            if (!record.athleteId) return true;
+            return String(record.athleteId) === String(athleteId);
         });
-
     }
-
-
-    /* ==========================================
-       RENDER WORKOUT HISTORY
-    ========================================== */
 
     function renderHistory() {
+        const container = document.getElementById("historyContainer");
+        const search = document.getElementById("searchExercise").value.toLowerCase().trim();
+        const selectedDay = document.getElementById("dayFilter").value;
+        let history = getWorkoutHistory();
 
-        const container =
-            document.getElementById(
-                "historyContainer"
-            );
-
-
-        const search =
-            document
-                .getElementById("searchExercise")
-                .value
-                .toLowerCase()
-                .trim();
-
-
-        const selectedDay =
-            document
-                .getElementById("dayFilter")
-                .value;
-
-
-        let history =
-            getWorkoutHistory();
-
-
-        history =
-            history.filter(workout => {
-
-                const workoutDay =
-                    workout.day ||
-                    workout.dayName ||
-                    workout.workoutDay ||
-                    "";
-
-
-                if (
-                    selectedDay !== "all" &&
-                    !String(workoutDay)
-                        .toLowerCase()
-                        .includes(
-                            selectedDay.toLowerCase()
-                        )
-                ) {
-
-                    return false;
-
-                }
-
-
-                if (!search) {
-                    return true;
-                }
-
-
-                const exercises =
-                    workout.exercises || [];
-
-
-                return exercises.some(
-                    exercise =>
-                        String(
-                            exercise.name || ""
-                        )
-                        .toLowerCase()
-                        .includes(search)
-                );
-
-            });
-
-
-        /*
-         * Newest first
-         */
+        history = history.filter(workout => {
+            const workoutDay = workout.day || workout.dayName || workout.workoutDay || "";
+            if (selectedDay !== "all" && !String(workoutDay).toLowerCase().includes(selectedDay.toLowerCase())) return false;
+            if (!search) return true;
+            const exercises = workout.exercises || [];
+            return exercises.some(exercise => String(exercise.name || "").toLowerCase().includes(search));
+        });
 
         history.sort((a, b) => {
-
-            const dateA =
-                new Date(
-                    a.date ||
-                    a.createdAt ||
-                    0
-                );
-
-            const dateB =
-                new Date(
-                    b.date ||
-                    b.createdAt ||
-                    0
-                );
-
+            const dateA = new Date(a.date || a.createdAt || 0);
+            const dateB = new Date(b.date || b.createdAt || 0);
             return dateB - dateA;
-
         });
-
 
         if (!history.length) {
-
             container.innerHTML = `
-
                 <div class="empty-state">
-
-                    <div class="empty-icon">
-                        <i class="fa-solid fa-chart-column"></i>
-                    </div>
-
-                    <h2>
-                        No History Yet
-                    </h2>
-
-                    <p>
-                        Complete your workouts from
-                        the Exercises page and your
-                        history will appear here.
-                    </p>
-
-                    <a href="test5.html">
-                        <i class="fa-solid fa-dumbbell"></i>
-                        Go To Exercises
-                    </a>
-
+                    <div class="empty-icon"><i class="fa-solid fa-chart-column"></i></div>
+                    <h2>No History Yet</h2>
+                    <p>Complete your workouts from the Exercises page and your history will appear here.</p>
+                    <a href="test5.html"><i class="fa-solid fa-dumbbell"></i> Go To Exercises</a>
                 </div>
-
             `;
-
-
             updateSummary([]);
-
             return;
-
         }
 
+        container.innerHTML = history.map(workout => {
+            const date = workout.date || workout.createdAt || "";
+            const workoutDay = workout.day || workout.dayName || workout.workoutDay || "Workout";
+            const exercises = workout.exercises || [];
 
-        container.innerHTML =
-            history.map(workout => {
-
-                const date =
-                    workout.date ||
-                    workout.createdAt ||
-                    "";
-
-
-                const workoutDay =
-                    workout.day ||
-                    workout.dayName ||
-                    workout.workoutDay ||
-                    "Workout";
-
-
-                const exercises =
-                    workout.exercises || [];
-
-
-                return `
-
-                    <div class="history-card">
-
-                        <div class="history-header">
-
-                            <div>
-
-                                <div class="history-date">
-
-                                    <i class="fa-regular fa-calendar"></i>
-
-                                    ${formatDate(date)}
-
-                                </div>
-
-                                <h3>
-                                    ${escapeHTML(workoutDay)}
-                                </h3>
-
+            return `
+                <div class="history-card">
+                    <div class="history-header">
+                        <div>
+                            <div class="history-date">
+                                <i class="fa-regular fa-calendar"></i> ${formatDate(date)}
                             </div>
-
-
-                            <div class="completed-badge">
-
-                                <i class="fa-solid fa-check"></i>
-
-                                Completed
-
-                            </div>
-
+                            <h3>${escapeHTML(workoutDay)}</h3>
                         </div>
-
-
-                        <div class="exercise-history">
-
-                            ${
-                                exercises.length
-
-                                ?
-
-                                exercises.map(exercise => {
-
-                                    const name =
-                                        exercise.name ||
-                                        "Exercise";
-
-
-                                    const weight =
-                                        exercise.weight ??
-                                        exercise.currentWeight ??
-                                        0;
-
-
-                                    const sets =
-                                        exercise.sets ??
-                                        "-";
-
-
-                                    const reps =
-                                        exercise.reps ??
-                                        "-";
-
-
-                                    return `
-
-                                        <div class="exercise-row">
-
-                                            <div class="exercise-name">
-
-                                                <span class="check">
-
-                                                    <i class="fa-solid fa-check"></i>
-
-                                                </span>
-
-                                                <strong>
-                                                    ${escapeHTML(name)}
-                                                </strong>
-
-                                            </div>
-
-
-                                            <div class="exercise-stat">
-
-                                                <span>
-                                                    Weight
-                                                </span>
-
-                                                <strong>
-                                                    ${weight} kg
-                                                </strong>
-
-                                            </div>
-
-
-                                            <div class="exercise-stat">
-
-                                                <span>
-                                                    Sets
-                                                </span>
-
-                                                <strong>
-                                                    ${sets}
-                                                </strong>
-
-                                            </div>
-
-
-                                            <div class="exercise-stat">
-
-                                                <span>
-                                                    Reps
-                                                </span>
-
-                                                <strong>
-                                                    ${reps}
-                                                </strong>
-
-                                            </div>
-
-                                        </div>
-
-                                    `;
-
-                                }).join("")
-
-                                :
-
-                                `
-
-                                    <div class="no-exercises">
-
-                                        No exercise details recorded.
-
-                                    </div>
-
-                                `
-                            }
-
+                        <div class="completed-badge">
+                            <i class="fa-solid fa-check"></i> Completed
                         </div>
-
                     </div>
 
-                `;
-
-            }).join("");
-
+                    <div class="exercise-history">
+                        ${exercises.length ? exercises.map(exercise => {
+                            const name = exercise.name || "Exercise";
+                            const weight = exercise.weight ?? exercise.currentWeight ?? 0;
+                            const sets = exercise.sets ?? "-";
+                            const reps = exercise.reps ?? "-";
+                            return `
+                                <div class="exercise-row">
+                                    <div class="exercise-name">
+                                        <span class="check"><i class="fa-solid fa-check"></i></span>
+                                        <strong>${escapeHTML(name)}</strong>
+                                    </div>
+                                    <div class="exercise-stat">
+                                        <span>Weight</span>
+                                        <strong>${weight} kg</strong>
+                                    </div>
+                                    <div class="exercise-stat">
+                                        <span>Sets</span>
+                                        <strong>${sets}</strong>
+                                    </div>
+                                    <div class="exercise-stat">
+                                        <span>Reps</span>
+                                        <strong>${reps}</strong>
+                                    </div>
+                                </div>
+                            `;
+                        }).join("") : `<div class="no-exercises">No exercise details recorded.</div>`}
+                    </div>
+                </div>
+            `;
+        }).join("");
 
         updateSummary(history);
-
     }
-
-
-    /* ==========================================
-       SUMMARY
-    ========================================== */
 
     function updateSummary(history) {
-
-        let totalWorkouts =
-            history.length;
-
-
+        let totalWorkouts = history.length;
         let totalExercises = 0;
-
         let bestWeight = 0;
 
-
         history.forEach(workout => {
-
-            const exercises =
-                workout.exercises || [];
-
-
-            totalExercises +=
-                exercises.length;
-
-
+            const exercises = workout.exercises || [];
+            totalExercises += exercises.length;
             exercises.forEach(exercise => {
-
-                const weight =
-                    Number(
-                        exercise.weight ??
-                        exercise.currentWeight ??
-                        0
-                    );
-
-
-                if (weight > bestWeight) {
-                    bestWeight = weight;
-                }
-
+                const weight = Number(exercise.weight ?? exercise.currentWeight ?? 0);
+                if (weight > bestWeight) bestWeight = weight;
             });
-
         });
 
-
-        document.getElementById(
-            "totalWorkouts"
-        ).textContent =
-            totalWorkouts;
-
-
-        document.getElementById(
-            "totalExercises"
-        ).textContent =
-            totalExercises;
-
-
-        document.getElementById(
-            "bestWeight"
-        ).textContent =
-            bestWeight > 0
-            ? bestWeight + " kg"
-            : "0 kg";
-
-
+        document.getElementById("totalWorkouts").textContent = totalWorkouts;
+        document.getElementById("totalExercises").textContent = totalExercises;
+        document.getElementById("bestWeight").textContent = bestWeight > 0 ? bestWeight + " kg" : "0 kg";
         updateCurrentWeight();
-
     }
-
-
-    /* ==========================================
-       WEIGHT HISTORY
-    ========================================== */
 
     function getWeightHistory() {
-
-        const athleteKey =
-            "weightHistory_" + athleteId;
-
-
-        const athleteData =
-            localStorage.getItem(athleteKey);
-
-
+        const athleteKey = "weightHistory_" + athleteId;
+        const athleteData = localStorage.getItem(athleteKey);
         if (athleteData) {
-
             try {
-
-                const parsed =
-                    JSON.parse(athleteData);
-
-
+                const parsed = JSON.parse(athleteData);
                 if (Array.isArray(parsed)) {
-
-                    return parsed
-                        .filter(record =>
-                            record &&
-                            record.weight != null
-                        )
-                        .map(record => ({
-                            date:
-                                record.date ||
-                                record.createdAt ||
-                                "",
-                            weight:
-                                Number(record.weight)
-                        }))
-                        .filter(record =>
-                            !isNaN(record.weight)
-                        );
-
+                    return parsed.filter(record => record && record.weight != null)
+                        .map(record => ({ date: record.date || record.createdAt || "", weight: Number(record.weight) }))
+                        .filter(record => !isNaN(record.weight));
                 }
-
             } catch (error) {
-
-                console.log(
-                    "Could not read athlete weight history."
-                );
-
+                console.log("Could not read athlete weight history.");
             }
-
         }
-
-
-        /*
-         * Existing Exercises page currently uses:
-         *
-         * weight_YYYY-MM-DD
-         *
-         * We keep compatibility, but only use
-         * records from the existing localStorage.
-         */
 
         const records = [];
-
-
-        for (
-            let i = 0;
-            i < localStorage.length;
-            i++
-        ) {
-
-            const key =
-                localStorage.key(i);
-
-
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
             if (!key) continue;
-
-
-            if (
-                key.startsWith("weight_")
-            ) {
-
-                const value =
-                    localStorage.getItem(key);
-
-
-                const weight =
-                    Number(value);
-
-
+            if (key.startsWith("weight_")) {
+                const value = localStorage.getItem(key);
+                const weight = Number(value);
                 if (!isNaN(weight)) {
-
-                    records.push({
-
-                        date:
-                            key.replace(
-                                "weight_",
-                                ""
-                            ),
-
-                        weight:
-                            weight
-
-                    });
-
+                    records.push({ date: key.replace("weight_", ""), weight: weight });
                 }
-
             }
-
         }
-
-
-        records.sort(
-            (a, b) =>
-                new Date(a.date) -
-                new Date(b.date)
-        );
-
-
+        records.sort((a, b) => new Date(a.date) - new Date(b.date));
         return records;
-
     }
-
-
-    /* ==========================================
-       CURRENT WEIGHT
-    ========================================== */
 
     function updateCurrentWeight() {
-
-        let current =
-            localStorage.getItem(
-                "userWeight"
-            );
-
-
-        const records =
-            getWeightHistory();
-
-
+        let current = localStorage.getItem("userWeight");
+        const records = getWeightHistory();
         if (records.length) {
-
-            const newest =
-                records[records.length - 1];
-
-
-            if (
-                newest &&
-                newest.weight
-            ) {
-
-                current =
-                    newest.weight;
-
-            }
-
+            const newest = records[records.length - 1];
+            if (newest && newest.weight) current = newest.weight;
         }
-
-
-        document.getElementById(
-            "currentWeight"
-        ).textContent =
-            current
-            ? current + " kg"
-            : "-- kg";
-
+        document.getElementById("currentWeight").textContent = current ? current + " kg" : "-- kg";
     }
-
-
-    /* ==========================================
-       RENDER WEIGHT HISTORY
-    ========================================== */
 
     function renderWeightHistory() {
-
-        const container =
-            document.getElementById(
-                "weightHistory"
-            );
-
-
-        const records =
-            getWeightHistory();
-
+        const container = document.getElementById("weightHistory");
+        const records = getWeightHistory();
 
         if (!records.length) {
-
-            container.innerHTML = `
-
-                <div class="empty-weight">
-
-                    No body weight records yet.
-
-                </div>
-
-            `;
-
+            container.innerHTML = `<div class="empty-weight">No body weight records yet.</div>`;
             return;
-
         }
-
 
         container.innerHTML = `
-
             <div class="weight-header">
-
                 <span>Date</span>
-
-                <span style="text-align:center;">
-                    Weight
-                </span>
-
-                <span style="text-align:right;">
-                    Change
-                </span>
-
+                <span style="text-align:center;">Weight</span>
+                <span style="text-align:right;">Change</span>
             </div>
-
         `;
 
+        container.innerHTML += records.slice().reverse().map((record, index, reversed) => {
+            const originalIndex = records.length - 1 - index;
+            let change = `<span class="same">—</span>`;
 
-        container.innerHTML +=
-            records
-                .slice()
-                .reverse()
-                .map((record, index, reversed) => {
+            if (originalIndex > 0) {
+                const difference = record.weight - records[originalIndex - 1].weight;
+                if (difference > 0) {
+                    change = `<span class="up">+${difference.toFixed(1)} kg</span>`;
+                } else if (difference < 0) {
+                    change = `<span class="down">${difference.toFixed(1)} kg</span>`;
+                } else {
+                    change = `<span class="same">No change</span>`;
+                }
+            }
 
-                    const originalIndex =
-                        records.length -
-                        1 -
-                        index;
-
-
-                    let change =
-                        `<span class="same">—</span>`;
-
-
-                    if (originalIndex > 0) {
-
-                        const difference =
-                            record.weight -
-                            records[
-                                originalIndex - 1
-                            ].weight;
-
-
-                        if (difference > 0) {
-
-                            change = `
-
-                                <span class="up">
-
-                                    +${difference.toFixed(1)} kg
-
-                                </span>
-
-                            `;
-
-                        }
-                        else if (difference < 0) {
-
-                            change = `
-
-                                <span class="down">
-
-                                    ${difference.toFixed(1)} kg
-
-                                </span>
-
-                            `;
-
-                        }
-                        else {
-
-                            change = `
-
-                                <span class="same">
-
-                                    No change
-
-                                </span>
-
-                            `;
-
-                        }
-
-                    }
-
-
-                    return `
-
-                        <div class="weight-row">
-
-                            <span>
-                                ${formatDate(record.date)}
-                            </span>
-
-                            <strong>
-                                ${record.weight} kg
-                            </strong>
-
-                            ${change}
-
-                        </div>
-
-                    `;
-
-                })
-                .join("");
-
+            return `
+                <div class="weight-row">
+                    <span>${formatDate(record.date)}</span>
+                    <strong>${record.weight} kg</strong>
+                    ${change}
+                </div>
+            `;
+        }).join("");
     }
-
-
-    /* ==========================================
-       PROGRESS PHOTOS
-    ========================================== */
 
     function getProgressPhotos() {
-
-        const key =
-            "progressPhotos_" + athleteId;
-
-
-        const data =
-            localStorage.getItem(key);
-
-
-        if (!data) {
-            return [];
-        }
-
-
+        const key = "progressPhotos_" + athleteId;
+        const data = localStorage.getItem(key);
+        if (!data) return [];
         try {
-
-            const photos =
-                JSON.parse(data);
-
-
-            if (!Array.isArray(photos)) {
-                return [];
-            }
-
-
-            return photos
-                .filter(photo =>
-                    photo &&
-                    photo.image
-                )
-                .sort((a, b) => {
-
-                    const dateA =
-                        new Date(
-                            a.date ||
-                            a.createdAt ||
-                            0
-                        );
-
-                    const dateB =
-                        new Date(
-                            b.date ||
-                            b.createdAt ||
-                            0
-                        );
-
-                    return dateB - dateA;
-
-                });
-
+            const photos = JSON.parse(data);
+            if (!Array.isArray(photos)) return [];
+            return photos.filter(photo => photo && photo.image).sort((a, b) => {
+                const dateA = new Date(a.date || a.createdAt || 0);
+                const dateB = new Date(b.date || b.createdAt || 0);
+                return dateB - dateA;
+            });
         } catch (error) {
-
-            console.log(
-                "Could not read progress photos."
-            );
-
+            console.log("Could not read progress photos.");
             return [];
-
         }
-
     }
-
-
-    /* ==========================================
-       RENDER PROGRESS PHOTOS
-    ========================================== */
 
     function renderProgressPhotos() {
-
-        const container =
-            document.getElementById(
-                "photosGrid"
-            );
-
-
-        const photos =
-            getProgressPhotos();
-
-
-        /*
-         * Show latest 6 photos only.
-         * Full gallery remains on
-         * progress-photos.html
-         */
-
-        const latestPhotos =
-            photos.slice(0, 6);
-
+        const container = document.getElementById("photosGrid");
+        const photos = getProgressPhotos();
+        const latestPhotos = photos.slice(0, 6);
 
         if (!latestPhotos.length) {
-
             container.innerHTML = `
-
                 <div class="photo-empty">
-
-                    <i class="fa-solid fa-images"
-                       style="font-size:22px; margin-bottom:10px; color:#39d98a;">
-                    </i>
-
-                    <div>
-                        No progress photos yet.
-                    </div>
-
+                    <i class="fa-solid fa-images" style="font-size:22px; margin-bottom:10px; color:#39d98a;"></i>
+                    <div>No progress photos yet.</div>
                 </div>
-
             `;
-
             return;
-
         }
 
-
-        container.innerHTML =
-            latestPhotos.map(photo => {
-
-                return `
-
-                    <div class="photo-history-card">
-
-                        <div class="photo-image-wrap">
-
-                            <img
-                                src="${photo.image}"
-                                alt="${escapeHTML(
-                                    photo.type ||
-                                    "Progress"
-                                )}"
-                                onclick="openLightbox(this.src)"
-                                style="cursor:pointer;"
-                            >
-
-                            <div class="photo-position">
-
-                                ${escapeHTML(
-                                    photo.type ||
-                                    "Progress"
-                                )}
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="photo-history-info">
-
-                            <div>
-
-                                <strong>
-                                    ${escapeHTML(
-                                        photo.type ||
-                                        "Progress"
-                                    )} View
-                                </strong>
-
-                                <span>
-
-                                    <i class="fa-regular fa-calendar"></i>
-
-                                    ${formatDate(
-                                        photo.date ||
-                                        photo.createdAt
-                                    )}
-
-                                </span>
-
-                            </div>
-
-                            <i
-                                class="fa-solid fa-camera"
-                                style="color:#39d98a; font-size:12px;"
-                            ></i>
-
-                        </div>
-
+        container.innerHTML = latestPhotos.map(photo => {
+            return `
+                <div class="photo-history-card">
+                    <div class="photo-image-wrap">
+                        <img src="${photo.image}" alt="${escapeHTML(photo.type || "Progress")}" onclick="openLightbox(this.src)" style="cursor:pointer;">
+                        <div class="photo-position">${escapeHTML(photo.type || "Progress")}</div>
                     </div>
-
-                `;
-
-            }).join("");
-
+                    <div class="photo-history-info">
+                        <div>
+                            <strong>${escapeHTML(photo.type || "Progress")} View</strong>
+                            <span><i class="fa-regular fa-calendar"></i> ${formatDate(photo.date || photo.createdAt)}</span>
+                        </div>
+                        <i class="fa-solid fa-camera" style="color:#39d98a; font-size:12px;"></i>
+                    </div>
+                </div>
+            `;
+        }).join("");
     }
-
-
-    /* ==========================================
-       LIGHTBOX
-    ========================================== */
 
     function openLightbox(image) {
-
-        document.getElementById(
-            "lightboxImage"
-        ).src = image;
-
-
-        document.getElementById(
-            "lightbox"
-        ).classList.remove("hidden");
-
+        document.getElementById("lightboxImage").src = image;
+        document.getElementById("lightbox").classList.remove("hidden");
     }
-
 
     function closeLightbox() {
-
-        document.getElementById(
-            "lightbox"
-        ).classList.add("hidden");
-
+        document.getElementById("lightbox").classList.add("hidden");
     }
 
-
-    document.getElementById(
-        "lightbox"
-    ).addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === this
-            ) {
-
-                closeLightbox();
-
-            }
-
-        }
-    );
-
-
-    /* ==========================================
-       HELPERS
-    ========================================== */
+    document.getElementById("lightbox").addEventListener("click", function(event) {
+        if (event.target === this) closeLightbox();
+    });
 
     function formatDate(date) {
-
-        if (!date) {
-            return "Unknown date";
-        }
-
-
-        const d =
-            new Date(
-                date
-            );
-
-
-        if (
-            isNaN(
-                d.getTime()
-            )
-        ) {
-
-            return date;
-
-        }
-
-
-        return d.toLocaleDateString(
-            "en-US",
-            {
-                month: "short",
-                day: "numeric",
-                year: "numeric"
-            }
-        );
-
+        if (!date) return "Unknown date";
+        const d = new Date(date);
+        if (isNaN(d.getTime())) return date;
+        return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
     }
-
 
     function escapeHTML(value) {
-
-        return String(value)
-
-            .replace(/&/g, "&amp;")
-
-            .replace(/</g, "&lt;")
-
-            .replace(/>/g, "&gt;")
-
-            .replace(/"/g, "&quot;")
-
-            .replace(/'/g, "&#039;");
-
+        return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
 
-
-    /* ==========================================
-       LOGOUT
-    ========================================== */
-
-    function logout() {
-
-        localStorage.removeItem(
-            "isLoggedIn"
-        );
-
-        localStorage.removeItem(
-            "userRole"
-        );
-
-        window.location.href =
-            "test.html";
-
-    }
-
-
-    /* ==========================================
-       START
-    ========================================== */
-
-    
-    /* ==========================================
-       DAILY WORKOUT PROGRESS
-    ========================================== */
     function renderDailyWorkoutProgress() {
         const container = document.getElementById("dailyWorkoutProgress");
         if (!container) return;
@@ -2997,61 +1568,73 @@
     }
 
     renderHistory();
-
     renderWeightHistory();
-
     renderProgressPhotos();
     renderDailyWorkoutProgress();
-
 </script>
 
-
+<!-- =========================================================
+     MOBILE MENU SCRIPT (Clean & Working)
+========================================================= -->
 <script>
-(function () {
-  const sidebar = document.querySelector('.sidebar');
-  if (!sidebar || document.querySelector('.momentum-mobile-bar')) return;
+    (function () {
+        const sidebar = document.querySelector('.sidebar');
+        if (!sidebar) return;
 
-  const bar = document.createElement('header');
-  bar.className = 'momentum-mobile-bar';
-  bar.innerHTML = '<button class="momentum-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><div class="momentum-mobile-brand">MO<span>MENTUM</span></div>';
+        // إنشاء الشريط العلوي
+        const bar = document.createElement('header');
+        bar.className = 'momentum-mobile-bar';
+        bar.innerHTML = `
+            <button class="momentum-menu-toggle" type="button" aria-label="Open navigation">☰</button>
+            <div style="color: #fff; font-weight: bold; font-size: 18px; letter-spacing: 1px;">
+                <span style="color: #24e3a3;">MO</span>MENTUM
+            </div>
+            <div style="width: 42px;"></div> 
+        `;
 
-  const overlay = document.createElement('div');
-  overlay.className = 'momentum-sidebar-overlay';
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(overlay);
-  document.body.appendChild(bar);
+        // إنشاء طبقة التعتيم
+        const overlay = document.createElement('div');
+        overlay.className = 'momentum-sidebar-overlay';
 
-  const toggle = bar.querySelector('.momentum-menu-toggle');
-  function closeMenu() {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('show');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
-    document.body.style.overflow = '';
-  }
-  function openMenu() {
-    sidebar.classList.add('open');
-    overlay.classList.add('show');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close navigation');
-    document.body.style.overflow = 'hidden';
-  }
-  toggle.addEventListener('click', function () {
-    sidebar.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  overlay.addEventListener('click', closeMenu);
-  sidebar.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
-    });
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') closeMenu();
-  });
-  window.addEventListener('resize', function () {
-    if (!window.matchMedia('(max-width: 768px)').matches) closeMenu();
-  });
-})();
+        document.body.appendChild(overlay);
+        document.body.appendChild(bar);
+
+        const toggle = bar.querySelector('.momentum-menu-toggle');
+
+        function closeMenu() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+            toggle.innerHTML = '☰';
+            document.body.style.overflow = '';
+        }
+
+        function openMenu() {
+            sidebar.classList.add('open');
+            overlay.classList.add('show');
+            toggle.innerHTML = '✕';
+            document.body.style.overflow = 'hidden';
+        }
+
+        toggle.addEventListener('click', function () {
+            if (sidebar.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        sidebar.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (window.innerWidth <= 768) closeMenu();
+            });
+        });
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) closeMenu();
+        });
+    })();
 </script>
 
 </body>
