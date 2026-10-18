@@ -1,35 +1,34 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MoMentum | Diet Plan</title>
+    <title>MoMentum | Diet Plan</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<style>
-:root {
-    --green: #24e3a3;
-    --bg: #070b0e;
-    --card: #0d1317;
-    --card2: #111a1f;
-    --border: #202d33;
-    --muted: #82919d;
-    --white: #f4f8fb;
-}
+    <style>
+        :root {
+            --green: #24e3a3;
+            --bg: #070b0e;
+            --card: #0d1317;
+            --card2: #111a1f;
+            --border: #202d33;
+            --muted: #82919d;
+            --white: #f4f8fb;
+        }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
+        body {
             margin: 0;
             min-height: 100vh;
             color: #f4f8fb;
@@ -41,1287 +40,1034 @@ body {
             font-family: Arial, Helvetica, sans-serif;
         }
 
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* SIDEBAR - SAME AS WORK PLAN */
-
-.sidebar {
-    width: 235px;
-    min-height: 100vh;
-    background:
-        linear-gradient(rgba(2, 10, 16, .78), rgba(2, 10, 16, .94)),
-        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover;
-    border-right: 1px solid #20313d;
-    padding: 28px 14px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 1000;
-}
-
-.side-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0 15px 30px;
-}
-
-.side-logo i {
-    color: var(--green);
-    font-size: 34px;
-}
-
-.side-logo h2 {
-    font-size: 21px;
-    letter-spacing: 1px;
-}
-
-.logo .white {
-    color: #fff;
-}
-
-.logo .green {
-    color: #39d98a;
-}
-
-.nav {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.nav-item {
-    min-height: 55px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 0 17px;
-    border-radius: 12px;
-    color: #aebbc7;
-    transition: .25s;
-}
-
-.nav-item i {
-    width: 20px;
-    text-align: center;
-    font-size: 18px;
-}
-
-.nav-item:hover {
-    background: rgba(36, 227, 163, .08);
-    color: var(--green);
-}
-
-.nav-item.active {
-    background: linear-gradient(
-        90deg,
-        rgba(36, 227, 163, .20),
-        rgba(36, 227, 163, .06)
-    );
-    color: var(--green);
-    border-left: 3px solid var(--green);
-}
-
-.side-quote {
-    position: absolute;
-    left: 25px;
-    right: 25px;
-    bottom: 35px;
-    color: #73818c;
-    font-size: 13px;
-    line-height: 1.7;
-    font-style: italic;
-}
-
-/* MAIN */
-
-.main {
-    margin-left: 245px;
-    min-height: 100vh;
-    padding: 34px 40px 60px;
-}
-
-.page {
-    width: min(1100px, 100%);
-    margin: 0 auto;
-}
-
-.top-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    min-height: 65px;
-    margin-bottom: 30px;
-    padding-bottom: 18px;
-   
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.brand > i {
-    color: var(--green);
-    font-size: 25px;
-}
-
-.brand h1 {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-.current-date {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.page-title {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.title-icon {
-    width: 53px;
-    height: 53px;
-    flex-shrink: 0;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(36, 227, 163, .09);
-    border: 1px solid rgba(36, 227, 163, .2);
-    color: var(--green);
-    font-size: 22px;
-}
-
-.page-title h2 {
-    font-size: 27px;
-    font-weight: 800;
-}
-
-.page-title p {
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 6px;
-}
-
-/* DAYS */
-
-.days-wrapper {
-    overflow-x: auto;
-    padding-bottom: 9px;
-    margin-bottom: 20px;
-}
-
-.days {
-    display: flex;
-    gap: 10px;
-    width: max-content;
-}
-
-.day-btn {
-    min-width: 110px;
-    padding: 13px 15px;
-    text-align: left;
-    cursor: pointer;
-    color: #aebbc7;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    transition: .2s;
-}
-
-.day-btn:hover {
-    border-color: var(--green);
-}
-
-.day-number {
-    display: block;
-    color: #788791;
-    font-size: 10px;
-    margin-bottom: 6px;
-}
-
-.day-name {
-    display: block;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.day-btn.active {
-    color: #03140e;
-    background: var(--green);
-    border-color: var(--green);
-}
-
-.day-btn.active .day-number {
-    color: #174c37;
-}
-
-/* PLAN CARD */
-
-.plan-card {
-    overflow: hidden;
-    background: rgba(11, 17, 21, .97);
-    border: 1px solid var(--border);
-    border-radius: 19px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, .2);
-}
-
-.plan-header {
-    padding: 23px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    border-bottom: 1px solid var(--border);
-}
-
-.plan-info h3 {
-    font-size: 21px;
-}
-
-.plan-info p {
-    margin-top: 7px;
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.read-only-badge {
-    flex-shrink: 0;
-    padding: 9px 12px;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    color: #9aa8b1;
-    background: #131b20;
-    font-size: 11px;
-}
-
-.read-only-badge i {
-    margin-right: 5px;
-    color: var(--green);
-}
-
-/* MEALS */
-
-.meal-scroll {
-    max-height: 620px;
-    min-height: 230px;
-    overflow-y: auto;
-    padding: 18px;
-    scrollbar-width: thin;
-    scrollbar-color: #33443d #0d1317;
-}
-
-.meal-scroll::-webkit-scrollbar {
-    width: 7px;
-}
-
-.meal-scroll::-webkit-scrollbar-track {
-    background: #0d1317;
-}
-
-.meal-scroll::-webkit-scrollbar-thumb {
-    background: #33443d;
-    border-radius: 20px;
-}
-
-.meal-list {
-    display: flex;
-    flex-direction: column;
-    gap: 11px;
-}
-
-.meal {
-    display: grid;
-    grid-template-columns: 95px 40px minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 14px;
-    padding: 14px;
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    background: var(--card2);
-    transition: .2s;
-}
-
-.meal:hover {
-    border-color: rgba(36, 227, 163, .4);
-}
-
-.meal-image {
-    width: 95px;
-    height: 80px;
-    overflow: hidden;
-    border-radius: 10px;
-    background: #18232a;
-}
-
-.meal-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.meal-number {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 11px;
-    background: #18232a;
-    color: var(--green);
-    font-size: 12px;
-    font-weight: 800;
-}
-
-.meal-info {
-    min-width: 0;
-}
-
-.meal-name {
-    font-size: 14px;
-    font-weight: 700;
-    overflow-wrap: anywhere;
-}
-
-.meal-time {
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 11px;
-}
-
-.meal-time i {
-    margin-right: 4px;
-    color: var(--green);
-}
-
-.food-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 9px;
-}
-
-.food-item {
-    padding: 6px 8px;
-    border-radius: 6px;
-    background: #1a252b;
-    color: #a1afb8;
-    font-size: 10px;
-    overflow-wrap: anywhere;
-}
-
-.meal-calories {
-    min-width: 85px;
-    padding: 10px;
-    border: 1px solid rgba(36, 227, 163, .2);
-    border-radius: 9px;
-    background: rgba(36, 227, 163, .07);
-    text-align: center;
-}
-
-.calorie-label {
-    display: block;
-    color: #82919d;
-    font-size: 9px;
-    margin-bottom: 6px;
-}
-
-.calorie-value {
-    color: var(--green);
-    font-size: 12px;
-    font-weight: 800;
-}
-
-/* TOTAL */
-
-.total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    margin: 0 18px 18px;
-    padding: 17px;
-    background: #0e161b;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-}
-
-.total-title {
-    color: #aebbc7;
-    font-size: 12px;
-}
-
-.total-value {
-    color: var(--green);
-    font-size: 18px;
-    font-weight: 800;
-}
-
-/* EMPTY STATE */
-
-.empty-state {
-    min-height: 260px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 35px 20px;
-    text-align: center;
-}
-
-.empty-icon {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 17px;
-    background: rgba(36, 227, 163, .08);
-    color: var(--green);
-    font-size: 24px;
-    margin-bottom: 17px;
-}
-
-.empty-state h3 {
-    font-size: 17px;
-    margin-bottom: 8px;
-}
-
-.empty-state p {
-    max-width: 380px;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.8;
-}
-
-/* NOTICE */
-
-.notice {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin: 0 18px 18px;
-    padding: 13px 14px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: #0e161b;
-    color: #82919d;
-    font-size: 11px;
-    line-height: 1.8;
-}
-
-.notice i {
-    margin-top: 3px;
-    color: var(--green);
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 850px) {
-    .sidebar {
-        width: 72px;
-        padding: 22px 9px;
-    }
-
-    .side-logo {
-        justify-content: center;
-        padding: 0 0 28px;
-    }
-
-    .side-logo > i {
-        font-size: 24px;
-    }
-
-    .side-logo > h2,
-    .nav-item span,
-    .side-quote {
-        display: none;
-    }
-
-    .nav-item {
-        justify-content: center;
-        padding: 0;
-        gap: 0;
-    }
-
-    .nav-item i {
-        font-size: 17px;
-    }
-
-    .main {
-        margin-left: 72px;
-        padding: 25px 20px 45px;
-    }
-
-    .meal {
-        grid-template-columns: 70px 35px minmax(0, 1fr);
-        gap: 10px;
-    }
-
-    .meal-image {
-        width: 70px;
-        height: 65px;
-    }
-
-    .meal-number {
-        width: 33px;
-        height: 33px;
-    }
-
-    .meal-calories {
-        grid-column: 3;
-        justify-self: start;
-    }
-}
-
-@media (max-width: 550px) {
-    .main {
-        padding: 20px 12px 35px;
-    }
-
-    .top-header {
-        margin-bottom: 22px;
-    }
-
-    .brand h1 {
-        font-size: 18px;
-    }
-
-    .brand > i {
-        font-size: 20px;
-    }
-
-    .current-date {
-        font-size: 10px;
-    }
-
-    .page-title h2 {
-        font-size: 22px;
-    }
-
-    .day-btn {
-        min-width: 90px;
-        padding: 11px;
-    }
-
-    .plan-header {
-        padding: 17px;
-        align-items: flex-start;
-    }
-
-    .plan-info h3 {
-        font-size: 17px;
-    }
-
-    .read-only-badge {
-        padding: 8px;
-        font-size: 9px;
-    }
-
-    .meal-scroll {
-        max-height: 60vh;
-        padding: 12px;
-    }
-
-    .meal {
-        grid-template-columns: 35px minmax(0, 1fr);
-        gap: 10px;
-        padding: 12px;
-    }
-
-    .meal-image {
-        grid-column: 1 / -1;
-        width: 100%;
-        height: 140px;
-    }
-
-    .meal-number {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .meal-info {
-        grid-column: 2;
-        grid-row: 2;
-    }
-
-    .meal-calories {
-        grid-column: 2;
-        justify-self: start;
-    }
-
-    .meal-name {
-        font-size: 12px;
-    }
-
-    .food-item {
-        font-size: 9px;
-    }
-
-    .total {
-        margin: 0 12px 12px;
-    }
-
-    .notice {
-        margin: 0 12px 12px;
-    }
-}
-
-@media (max-width: 350px) {
-    .sidebar {
-        width: 55px;
-    }
-
-    .main {
-        margin-left: 55px;
-    }
-
-    .brand h1 {
-        font-size: 15px;
-    }
-}
-</style>
-<style>
-
-/* MOMENTUM responsive navigation patch */
-@media (max-width: 768px) {
-  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
-  body { background-attachment: scroll !important; }
-  .sidebar {
-    position: fixed !important;
-    inset: 0 auto 0 0 !important;
-    width: min(82vw, 290px) !important;
-    min-width: 0 !important;
-    max-width: 86vw !important;
-    height: 100dvh !important;
-    min-height: 100dvh !important;
-    box-sizing: border-box !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding: 22px 14px 28px !important;
-    transform: translateX(-105%);
-    transition: transform .25s ease;
-    z-index: 1201 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    visibility: visible !important;
-  }
-  .sidebar.open { transform: translateX(0) !important; }
-  .sidebar .side-logo, .sidebar .logo, .sidebar .side-logo h2 {
-    max-width: 100%;
-    overflow-wrap: anywhere;
-  }
-  .sidebar .nav, .sidebar nav, .sidebar .nav-links {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 7px !important;
-  }
-  .sidebar .nav-item, .sidebar .nav-link, .sidebar .nav-links a,
-  .sidebar nav a {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    justify-content: flex-start !important;
-    white-space: normal !important;
-  }
-  .momentum-mobile-bar {
-    display: flex !important;
-    align-items: center;
-    gap: 12px;
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 58px;
-    padding: 0 15px;
-    box-sizing: border-box;
-    z-index: 1100;
-    background: rgba(3, 12, 19, .96);
-    border-bottom: 1px solid rgba(48, 220, 169, .22);
-    backdrop-filter: blur(14px);
-  }
-  .momentum-menu-toggle {
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(48, 220, 169, .45);
-    border-radius: 12px;
-    color: #31dba8;
-    background: rgba(27, 211, 159, .12);
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
-  }
-  .momentum-mobile-brand {
-    color: #f5faf8;
-    font-weight: 800;
-    font-size: 19px;
-    letter-spacing: -.4px;
-  }
-  .momentum-mobile-brand span { color: #31dba8; }
-  .momentum-sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .62);
-    z-index: 1200;
-  }
-  .momentum-sidebar-overlay.show { display: block; }
-  .main {
-    margin-left: 0 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 78px 15px 30px !important;
-  }
-  .page, .app, .container, .content, .dashboard, .main-content {
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-  }
-  .page { overflow-x: clip; }
-  .main > *, .page > *, .container > * { min-width: 0; }
-  img, video, canvas, iframe { max-width: 100%; }
-  input, select, textarea, button { max-width: 100%; box-sizing: border-box; }
-  table { max-width: 100%; }
-  .summary-grid, .stats-grid, .stat-grid, .cards-grid, .card-grid,
-  .gallery, .athlete-grid, .support-layout, .workout-grid, .diet-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-  .daily-progress-card { flex-wrap: wrap; }
-}
-@media (min-width: 769px) {
-  .momentum-mobile-bar, .momentum-sidebar-overlay { display: none !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sidebar { transition: none !important; }
-}
-
-</style>
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* SIDEBAR - SAME AS WORK PLAN */
+
+        .sidebar {
+            width: 235px;
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(2, 10, 16, .78), rgba(2, 10, 16, .94)),
+                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover;
+            border-right: 1px solid #20313d;
+            padding: 28px 14px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 1000;
+        }
+
+        .side-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 15px 30px;
+        }
+
+        .side-logo i {
+            color: var(--green);
+            font-size: 34px;
+        }
+
+        .side-logo h2 {
+            font-size: 21px;
+            letter-spacing: 1px;
+        }
+
+        .logo .white {
+            color: #fff;
+        }
+
+        .logo .green {
+            color: #39d98a;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-item {
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 17px;
+            border-radius: 12px;
+            color: #aebbc7;
+            transition: .25s;
+        }
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .nav-item:hover {
+            background: rgba(36, 227, 163, .08);
+            color: var(--green);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(36, 227, 163, .20), rgba(36, 227, 163, .06));
+            color: var(--green);
+            border-left: 3px solid var(--green);
+        }
+
+        .side-quote {
+            position: absolute;
+            left: 25px;
+            right: 25px;
+            bottom: 35px;
+            color: #73818c;
+            font-size: 13px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 235px;
+            min-height: 100vh;
+            padding: 34px 40px 60px;
+        }
+
+        .page {
+            width: min(1100px, 100%);
+            margin: 0 auto;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            min-height: 65px;
+            margin-bottom: 30px;
+            padding-bottom: 18px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand > i {
+            color: var(--green);
+            font-size: 25px;
+        }
+
+        .brand h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .current-date {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .title-icon {
+            width: 53px;
+            height: 53px;
+            flex-shrink: 0;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(36, 227, 163, .09);
+            border: 1px solid rgba(36, 227, 163, .2);
+            color: var(--green);
+            font-size: 22px;
+        }
+
+        .page-title h2 {
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .page-title p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        /* DAYS */
+
+        .days-wrapper {
+            overflow-x: auto;
+            padding-bottom: 9px;
+            margin-bottom: 20px;
+        }
+
+        .days {
+            display: flex;
+            gap: 10px;
+            width: max-content;
+        }
+
+        .day-btn {
+            min-width: 110px;
+            padding: 13px 15px;
+            text-align: left;
+            cursor: pointer;
+            color: #aebbc7;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: .2s;
+        }
+
+        .day-btn:hover {
+            border-color: var(--green);
+        }
+
+        .day-number {
+            display: block;
+            color: #788791;
+            font-size: 10px;
+            margin-bottom: 6px;
+        }
+
+        .day-name {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .day-btn.active {
+            color: #03140e;
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .day-btn.active .day-number {
+            color: #174c37;
+        }
+
+        /* PLAN CARD */
+
+        .plan-card {
+            overflow: hidden;
+            background: rgba(11, 17, 21, .97);
+            border: 1px solid var(--border);
+            border-radius: 19px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .2);
+        }
+
+        .plan-header {
+            padding: 23px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .plan-info h3 {
+            font-size: 21px;
+        }
+
+        .plan-info p {
+            margin-top: 7px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .read-only-badge {
+            flex-shrink: 0;
+            padding: 9px 12px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            color: #9aa8b1;
+            background: #131b20;
+            font-size: 11px;
+        }
+
+        .read-only-badge i {
+            margin-right: 5px;
+            color: var(--green);
+        }
+
+        /* MEALS */
+
+        .meal-scroll {
+            max-height: 620px;
+            min-height: 230px;
+            overflow-y: auto;
+            padding: 18px;
+            scrollbar-width: thin;
+            scrollbar-color: #33443d #0d1317;
+        }
+
+        .meal-scroll::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        .meal-scroll::-webkit-scrollbar-track {
+            background: #0d1317;
+        }
+
+        .meal-scroll::-webkit-scrollbar-thumb {
+            background: #33443d;
+            border-radius: 20px;
+        }
+
+        .meal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .meal {
+            display: grid;
+            grid-template-columns: 95px 40px minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 14px;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            background: var(--card2);
+            transition: .2s;
+        }
+
+        .meal:hover {
+            border-color: rgba(36, 227, 163, .4);
+        }
+
+        .meal-image {
+            width: 95px;
+            height: 80px;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #18232a;
+        }
+
+        .meal-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .meal-number {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            background: #18232a;
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .meal-info {
+            min-width: 0;
+        }
+
+        .meal-name {
+            font-size: 14px;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .meal-time {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .meal-time i {
+            margin-right: 4px;
+            color: var(--green);
+        }
+
+        .food-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 9px;
+        }
+
+        .food-item {
+            padding: 6px 8px;
+            border-radius: 6px;
+            background: #1a252b;
+            color: #a1afb8;
+            font-size: 10px;
+            overflow-wrap: anywhere;
+        }
+
+        .meal-calories {
+            min-width: 85px;
+            padding: 10px;
+            border: 1px solid rgba(36, 227, 163, .2);
+            border-radius: 9px;
+            background: rgba(36, 227, 163, .07);
+            text-align: center;
+        }
+
+        .calorie-label {
+            display: block;
+            color: #82919d;
+            font-size: 9px;
+            margin-bottom: 6px;
+        }
+
+        .calorie-value {
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        /* TOTAL */
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 0 18px 18px;
+            padding: 17px;
+            background: #0e161b;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .total-title {
+            color: #aebbc7;
+            font-size: 12px;
+        }
+
+        .total-value {
+            color: var(--green);
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        /* EMPTY STATE */
+
+        .empty-state {
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .empty-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 17px;
+            background: rgba(36, 227, 163, .08);
+            color: var(--green);
+            font-size: 24px;
+            margin-bottom: 17px;
+        }
+
+        .empty-state h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            max-width: 380px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* NOTICE */
+
+        .notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 0 18px 18px;
+            padding: 13px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #0e161b;
+            color: #82919d;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .notice i {
+            margin-top: 3px;
+            color: var(--green);
+        }
+
+        /* =========================
+           MOMENTUM MOBILE FIXES (New)
+        ========================= */
+        @media (max-width: 768px) {
+            /* 1. إخفاء السايدبار وتجهيزه للفتح */
+            .sidebar {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 260px !important; /* عرض مناسب لظهور النصوص */
+                min-height: 100vh !important;
+                background: linear-gradient(rgba(2, 10, 16, .95), rgba(2, 10, 16, .98)), url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover !important;
+                transform: translateX(-105%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1050 !important;
+                padding: 28px 14px !important;
+                display: flex !important;
+                flex-direction: column;
+            }
+
+            /* كلاس بيضاف بالجافاسكريبت لما تدوس على الزرار */
+            .sidebar.open {
+                transform: translateX(0) !important;
+            }
+
+            /* 2. إظهار النصوص في السايدبار */
+            .nav {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            .nav-item {
+                justify-content: flex-start !important;
+                padding: 0 17px !important;
+                min-height: 55px !important;
+            }
+            .nav-item span {
+                display: block !important; /* إظهار النص */
+                opacity: 1 !important;
+            }
+            .side-quote {
+                display: block !important;
+            }
+
+            /* 3. شريط الموبايل العلوي (بدل الشريط الأسود الوحش) */
+            .momentum-mobile-bar {
+                display: flex !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 65px;
+                background: rgba(3, 12, 19, 0.85); /* لون شفاف شيك */
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(36, 227, 163, 0.15);
+                z-index: 1000;
+                align-items: center;
+                padding: 0 15px;
+                justify-content: space-between;
+            }
+
+            .momentum-menu-toggle {
+                background: rgba(36, 227, 163, 0.1);
+                border: 1px solid rgba(36, 227, 163, 0.3);
+                color: #24e3a3;
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+
+            /* 4. طبقة التعتيم ورا السايدبار */
+            .momentum-sidebar-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1040;
+                backdrop-filter: blur(3px);
+            }
+            .momentum-sidebar-overlay.show {
+                display: block;
+            }
+
+            /* 5. تعديل المساحات للمحتوى الأساسي */
+            .main {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 85px 15px 30px !important; /* مساحة عشان الشريط العلوي */
+            }
+
+            .top-header {
+                display: none !important; /* إخفاء الهيدر القديم في الموبايل لصالح الشريط الجديد */
+            }
+
+            .page {
+                width: 100% !important;
+            }
+
+            /* 6. تعديل شكل الكروت والجرايد عشان تبان زي اللاب توب */
+            .meal {
+                grid-template-columns: 70px 35px minmax(0, 1fr) !important;
+                gap: 10px;
+            }
+            .meal-image {
+                width: 70px;
+                height: 65px;
+            }
+            .meal-number {
+                width: 33px;
+                height: 33px;
+            }
+            .meal-calories {
+                grid-column: 1 / -1 !important;
+                justify-self: stretch !important;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 15px;
+                border-radius: 9px;
+            }
+            .meal-calories .calorie-label {
+                margin-bottom: 0;
+            }
+            
+            .total { margin: 0 12px 12px; }
+            .notice { margin: 0 12px 12px; }
+            .day-btn { min-width: 90px; padding: 11px; }
+            
+            .plan-header {
+                padding: 17px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* تحسين شكل الكارت جداً للموبايلات الصغيرة */
+            .meal {
+                grid-template-columns: minmax(0, 1fr) !important;
+            }
+            .meal-image {
+                width: 100%;
+                height: 160px;
+                grid-column: auto !important;
+            }
+            .meal-number {
+                display: none; /* نشيل الرقم عشان نوفر مساحة */
+            }
+            .meal-info {
+                grid-column: auto !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-
-<aside class="sidebar">
-
-    <div class="side-logo">
-        <i class="fa-solid fa-dumbbell"></i>
-        <h2>
-            <a href="test3.html" class="logo">
-                <span class="white">MO</span><span class="green">MENTUM</span>
-            </a>
-        </h2>
-    </div>
-
-    <nav class="nav">
-
-        <a href="test3.html" class="nav-item">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span>
-        </a>
-
-        <a href="test5.html" class="nav-item">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="side-logo">
             <i class="fa-solid fa-dumbbell"></i>
-            <span>Exercises</span>
-        </a>
+            <h2>
+                <a href="test3.html" class="logo">
+                    <span class="white">MO</span><span class="green">MENTUM</span>
+                </a>
+            </h2>
+        </div>
 
-        <a href="progress-photos.html" class="nav-item">
-            <i class="fa-solid fa-camera"></i>
-            <span>Progress Photos</span>
-        </a>
+        <nav class="nav">
+            <a href="test3.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="test5.html" class="nav-item">
+                <i class="fa-solid fa-dumbbell"></i>
+                <span>Exercises</span>
+            </a>
+            <a href="progress-photos.html" class="nav-item">
+                <i class="fa-solid fa-camera"></i>
+                <span>Progress Photos</span>
+            </a>
+            <a href="work_plan.html" class="nav-item">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Workout Plan</span>
+            </a>
+            <a href="diet-plan.html" class="nav-item active">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Diet Plan</span>
+            </a>
+            <a href="support.html" class="nav-item">
+                <i class="fa-solid fa-message"></i>
+                <span>Support</span>
+            </a>
+            <a href="history.html" class="nav-item">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Progress / History</span>
+            </a>
+        </nav>
 
-        <a href="work_plan.html" class="nav-item">
-            <i class="fa-solid fa-calendar-days"></i>
-            <span>Workout Plan</span>
-        </a>
+        <div class="side-quote">
+            "Small steps<br>
+            make big<br>
+            changes."
+        </div>
+    </aside>
 
-        <a href="diet-plan.html" class="nav-item active">
-            <i class="fa-solid fa-utensils"></i>
-            <span>Diet Plan</span>
-        </a>
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <header class="top-header">
+            <div class="brand">
+                <i class="fa-solid fa-utensils"></i>
+                <h1>
+                    <span class="white">MO</span><span class="green">MENTUM</span>
+                </h1>
+            </div>
+            <div class="current-date">
+                <i class="fa-regular fa-calendar"></i>
+                <span id="currentDate">Today</span>
+            </div>
+        </header>
 
-        <a href="support.html" class="nav-item">
-            <i class="fa-solid fa-message"></i>
-            <span>Support</span>
-        </a>
+        <main class="page">
+            <div class="page-title">
+                <div class="title-icon">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <div>
+                    <h2>Diet Plan</h2>
+                    <p>Your trainer's daily nutrition plan</p>
+                </div>
+            </div>
 
-        <a href="history.html" class="nav-item">
-            <i class="fa-solid fa-chart-column"></i>
-            <span>Progress / History</span>
-        </a>
+            <!-- DAY SELECTOR -->
+            <div class="days-wrapper">
+                <div class="days">
+                    <button class="day-btn active" data-day="1" onclick="selectDay(1)">
+                        <span class="day-number">DAY 01</span>
+                        <span class="day-name">Day One</span>
+                    </button>
+                    <button class="day-btn" data-day="2" onclick="selectDay(2)">
+                        <span class="day-number">DAY 02</span>
+                        <span class="day-name">Day Two</span>
+                    </button>
+                    <button class="day-btn" data-day="3" onclick="selectDay(3)">
+                        <span class="day-number">DAY 03</span>
+                        <span class="day-name">Day Three</span>
+                    </button>
+                    <button class="day-btn" data-day="4" onclick="selectDay(4)">
+                        <span class="day-number">DAY 04</span>
+                        <span class="day-name">Day Four</span>
+                    </button>
+                    <button class="day-btn" data-day="5" onclick="selectDay(5)">
+                        <span class="day-number">DAY 05</span>
+                        <span class="day-name">Day Five</span>
+                    </button>
+                    <button class="day-btn" data-day="6" onclick="selectDay(6)">
+                        <span class="day-number">DAY 06</span>
+                        <span class="day-name">Day Six</span>
+                    </button>
+                    <button class="day-btn" data-day="7" onclick="selectDay(7)">
+                        <span class="day-number">DAY 07</span>
+                        <span class="day-name">Day Seven</span>
+                    </button>
+                </div>
+            </div>
 
-    </nav>
+            <!-- DIET PLAN CARD -->
+            <section class="plan-card">
+                <div class="plan-header">
+                    <div class="plan-info">
+                        <h3 id="planTitle">Day 01 — Meal Plan</h3>
+                        <p id="planSubtitle">Your assigned meals</p>
+                    </div>
+                    <div class="read-only-badge">
+                        <i class="fa-solid fa-lock"></i>
+                        Read Only
+                    </div>
+                </div>
 
-    <div class="side-quote">
-        "Small steps<br>
-        make big<br>
-        changes."
+                <div class="meal-scroll" id="mealScroll">
+                    <div class="meal-list" id="mealList"></div>
+                </div>
+
+                <div class="total">
+                    <span class="total-title">Total Daily Calories</span>
+                    <span class="total-value" id="totalCalories">0 kcal</span>
+                </div>
+
+                <div class="notice">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>
+                        This Diet Plan is managed by your trainer. You can view
+                        your meals here, but only your assigned trainer can edit
+                        your nutrition plan.
+                    </span>
+                </div>
+            </section>
+        </main>
     </div>
 
-</aside>
+    <!-- =========================================================
+         DIET PLAN LOGIC
+    ========================================================= -->
+    <script>
+        /* =========================================
+           LOGIN CHECK
+        ========================================= */
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.replace("test.html");
+        }
 
-<!-- MAIN CONTENT -->
+        /* =========================================
+           CURRENT ATHLETE ID
+        ========================================= */
+        const athleteId = localStorage.getItem("athleteId") || "ATH-10001";
 
-<div class="main">
+        /* =========================================
+           DATE
+        ========================================= */
+        document.getElementById("currentDate").textContent =
+            new Date().toLocaleDateString("en-US", {
+                month: "short", day: "numeric", year: "numeric"
+            });
 
-    <header class="top-header">
+        /* =========================================
+           LOAD SAVED DIET PLANS
+        ========================================= */
+        function loadDietPlans() {
+            try {
+                const saved = JSON.parse(localStorage.getItem("dietPlans") || "[]");
+                return Array.isArray(saved) ? saved : [];
+            } catch (error) {
+                console.error("Unable to load diet plans:", error);
+                return [];
+            }
+        }
 
-        <div class="brand">
-            <i class="fa-solid fa-utensils"></i>
-            <h1>
-                <span class="white">MO</span><span class="green">MENTUM</span>
-            </h1>
-        </div>
+        /* =========================================
+           FIND THIS ATHLETE'S DIET PLAN
+        ========================================= */
+        function getMyDietPlan() {
+            const plans = loadDietPlans();
+            return plans.find(plan => String(plan.athleteId) === String(athleteId)) || null;
+        }
 
-        <div class="current-date">
-            <i class="fa-regular fa-calendar"></i>
-            <span id="currentDate">Today</span>
-        </div>
+        /* =========================================
+           GET THE SELECTED DAY
+        ========================================= */
+        function getDayData(plan, day) {
+            if (!plan || !plan.days) return null;
+            if (Array.isArray(plan.days)) {
+                return plan.days.find(item => Number(item.day ?? item.id ?? item.dayNumber) === Number(day)) || null;
+            }
+            return plan.days[day] || plan.days[String(day)] || null;
+        }
 
-    </header>
+        /* =========================================
+           SAFE TEXT
+        ========================================= */
+        function escapeHTML(value) {
+            return String(value ?? "").replace(/[&<>"']/g, character => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+            })[character]);
+        }
 
-    <main class="page">
-
-        <div class="page-title">
-
-            <div class="title-icon">
-                <i class="fa-solid fa-utensils"></i>
-            </div>
-
-            <div>
-                <h2>Diet Plan</h2>
-                <p>Your trainer's daily nutrition plan</p>
-            </div>
-
-        </div>
-
-        <!-- DAY SELECTOR -->
-
-        <div class="days-wrapper">
-            <div class="days">
-
-                <button class="day-btn active" data-day="1" onclick="selectDay(1)">
-                    <span class="day-number">DAY 01</span>
-                    <span class="day-name">Day One</span>
-                </button>
-
-                <button class="day-btn" data-day="2" onclick="selectDay(2)">
-                    <span class="day-number">DAY 02</span>
-                    <span class="day-name">Day Two</span>
-                </button>
-
-                <button class="day-btn" data-day="3" onclick="selectDay(3)">
-                    <span class="day-number">DAY 03</span>
-                    <span class="day-name">Day Three</span>
-                </button>
-
-                <button class="day-btn" data-day="4" onclick="selectDay(4)">
-                    <span class="day-number">DAY 04</span>
-                    <span class="day-name">Day Four</span>
-                </button>
-
-                <button class="day-btn" data-day="5" onclick="selectDay(5)">
-                    <span class="day-number">DAY 05</span>
-                    <span class="day-name">Day Five</span>
-                </button>
-
-                <button class="day-btn" data-day="6" onclick="selectDay(6)">
-                    <span class="day-number">DAY 06</span>
-                    <span class="day-name">Day Six</span>
-                </button>
-
-                <button class="day-btn" data-day="7" onclick="selectDay(7)">
-                    <span class="day-number">DAY 07</span>
-                    <span class="day-name">Day Seven</span>
-                </button>
-
-            </div>
-        </div>
-
-        <!-- DIET PLAN CARD -->
-
-        <section class="plan-card">
-
-            <div class="plan-header">
-
-                <div class="plan-info">
-                    <h3 id="planTitle">Day 01 — Meal Plan</h3>
-                    <p id="planSubtitle">Your assigned meals</p>
+        /* =========================================
+           EMPTY STATE
+        ========================================= */
+        function showEmptyState(message) {
+            document.getElementById("mealList").innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h3>No Meals Assigned</h3>
+                    <p>${escapeHTML(message)}</p>
                 </div>
+            `;
+            document.getElementById("totalCalories").textContent = "0 kcal";
+        }
 
-                <div class="read-only-badge">
-                    <i class="fa-solid fa-lock"></i>
-                    Read Only
+        /* =========================================
+           RENDER MEALS
+        ========================================= */
+        function renderMeals(meals) {
+            const mealList = document.getElementById("mealList");
+            mealList.replaceChildren();
+
+            if (!Array.isArray(meals) || meals.length === 0) {
+                showEmptyState("Your trainer hasn't added meals for this day yet.");
+                return;
+            }
+
+            let dailyTotal = 0;
+
+            meals.forEach((meal, index) => {
+                const calories = Number(meal.calories);
+                const safeCalories = Number.isFinite(calories) && calories >= 0 ? calories : 0;
+                dailyTotal += safeCalories;
+
+                const foods = Array.isArray(meal.foods) ? meal.foods : [];
+                const foodsHTML = foods.map(food => `<span class="food-item">${escapeHTML(food)}</span>`).join("");
+
+                const defaultImage = "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=400&q=80";
+                const image = meal.image || defaultImage;
+
+                const item = document.createElement("article");
+                item.className = "meal";
+
+                item.innerHTML = `
+                    <div class="meal-image">
+                        <img src="${escapeHTML(image)}" alt="${escapeHTML(meal.name || "Meal")}" loading="lazy" onerror="this.onerror=null;this.src='${defaultImage}'">
+                    </div>
+                    <div class="meal-number">${String(index + 1).padStart(2, "0")}</div>
+                    <div class="meal-info">
+                        <div class="meal-name">${escapeHTML(meal.name || "Meal")}</div>
+                        <div class="meal-time"><i class="fa-regular fa-clock"></i> ${escapeHTML(meal.time || "Time not set")}</div>
+                        <div class="food-items">${foodsHTML}</div>
+                    </div>
+                    <div class="meal-calories">
+                        <span class="calorie-label">CALORIES</span>
+                        <span class="calorie-value">${safeCalories} kcal</span>
+                    </div>
+                `;
+                mealList.appendChild(item);
+            });
+
+            document.getElementById("totalCalories").textContent = `${dailyTotal} kcal`;
+        }
+
+        /* =========================================
+           SELECT DAY
+        ========================================= */
+        function selectDay(day) {
+            day = Number(day);
+            if (!Number.isInteger(day) || day < 1 || day > 7) return;
+
+            document.querySelectorAll(".day-btn").forEach(button => {
+                button.classList.toggle("active", Number(button.dataset.day) === day);
+            });
+
+            const plan = getMyDietPlan();
+            const dayPlan = getDayData(plan, day);
+
+            document.getElementById("planTitle").textContent = `Day ${String(day).padStart(2, "0")} — Meal Plan`;
+            const mealScroll = document.getElementById("mealScroll");
+            mealScroll.scrollTop = 0;
+
+            if (!plan) {
+                document.getElementById("planSubtitle").textContent = "No nutrition plan assigned";
+                showEmptyState("Your trainer hasn't assigned a Diet Plan to your account yet.");
+                return;
+            }
+
+            const isRestDay = dayPlan && (dayPlan.isRestDay === true || String(dayPlan.name || dayPlan.title || "").toLowerCase() === "rest");
+
+            if (isRestDay) {
+                document.getElementById("planSubtitle").textContent = "Rest Day — Set by your trainer";
+                showEmptyState(dayPlan.note || "Your trainer has marked this as a rest day.");
+                return;
+            }
+
+            if (!dayPlan || !Array.isArray(dayPlan.meals)) {
+                document.getElementById("planSubtitle").textContent = "No nutrition plan assigned for this day";
+                showEmptyState("Your trainer hasn't added meals for this day yet.");
+                return;
+            }
+
+            document.getElementById("planSubtitle").textContent = dayPlan.name || dayPlan.title || "Daily Nutrition";
+            renderMeals(dayPlan.meals);
+        }
+
+        /* INITIAL LOAD */
+        selectDay(1);
+    </script>
+
+    <!-- =========================================================
+         MOBILE MENU SCRIPT (Clean & Working)
+    ========================================================= -->
+    <script>
+        (function () {
+            const sidebar = document.querySelector('.sidebar');
+            if (!sidebar) return;
+
+            // إنشاء الشريط العلوي
+            const bar = document.createElement('header');
+            bar.className = 'momentum-mobile-bar';
+            bar.innerHTML = `
+                <button class="momentum-menu-toggle" type="button" aria-label="Open navigation">☰</button>
+                <div style="color: #fff; font-weight: bold; font-size: 18px; letter-spacing: 1px;">
+                    <span style="color: #24e3a3;">MO</span>MENTUM
                 </div>
-
-            </div>
-
-            <div class="meal-scroll" id="mealScroll">
-                <div class="meal-list" id="mealList"></div>
-            </div>
-
-            <div class="total">
-                <span class="total-title">Total Daily Calories</span>
-                <span class="total-value" id="totalCalories">0 kcal</span>
-            </div>
-
-            <div class="notice">
-                <i class="fa-solid fa-circle-info"></i>
-                <span>
-                    This Diet Plan is managed by your trainer. You can view
-                    your meals here, but only your assigned trainer can edit
-                    your nutrition plan.
-                </span>
-            </div>
-
-        </section>
-
-    </main>
-
-</div>
-
-<script>
-
-/* =========================================
-   LOGIN CHECK
-========================================= */
-
-if (localStorage.getItem("isLoggedIn") !== "true") {
-    window.location.replace("test.html");
-}
-
-/* =========================================
-   CURRENT ATHLETE ID
-========================================= */
-
-// Must match the ID used by the trainer's search and editing page.
-const athleteId = localStorage.getItem("athleteId") || "ATH-10001";
-
-/* =========================================
-   DATE
-========================================= */
-
-document.getElementById("currentDate").textContent =
-    new Date().toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric"
-    });
-
-/* =========================================
-   LOAD SAVED DIET PLANS
-========================================= */
-
-function loadDietPlans() {
-    try {
-        const saved = JSON.parse(
-            localStorage.getItem("dietPlans") || "[]"
-        );
-
-        return Array.isArray(saved) ? saved : [];
-
-    } catch (error) {
-        console.error("Unable to load diet plans:", error);
-        return [];
-    }
-}
-
-/* =========================================
-   FIND THIS ATHLETE'S DIET PLAN
-========================================= */
-
-function getMyDietPlan() {
-    const plans = loadDietPlans();
-
-    return plans.find(plan =>
-        String(plan.athleteId) === String(athleteId)
-    ) || null;
-}
-
-/* =========================================
-   GET THE SELECTED DAY
-
-   Supports:
-   days: { 1: {...}, 2: {...} }
-   OR
-   days: [{ day: 1, meals: [...] }]
-========================================= */
-
-function getDayData(plan, day) {
-    if (!plan || !plan.days) {
-        return null;
-    }
-
-    if (Array.isArray(plan.days)) {
-        return plan.days.find(item =>
-            Number(item.day ?? item.id ?? item.dayNumber) === Number(day)
-        ) || null;
-    }
-
-    return plan.days[day] || plan.days[String(day)] || null;
-}
-
-/* =========================================
-   SAFE TEXT
-========================================= */
-
-function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, character => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-    })[character]);
-}
-
-/* =========================================
-   EMPTY STATE
-========================================= */
-
-function showEmptyState(message) {
-    document.getElementById("mealList").innerHTML = `
-        <div class="empty-state">
-            <div class="empty-icon">
-                <i class="fa-solid fa-utensils"></i>
-            </div>
-            <h3>No Meals Assigned</h3>
-            <p>${escapeHTML(message)}</p>
-        </div>
-    `;
-
-    document.getElementById("totalCalories").textContent = "0 kcal";
-}
-
-/* =========================================
-   RENDER MEALS
-========================================= */
-
-function renderMeals(meals) {
-    const mealList = document.getElementById("mealList");
-
-    mealList.replaceChildren();
-
-    if (!Array.isArray(meals) || meals.length === 0) {
-        showEmptyState(
-            "Your trainer hasn't added meals for this day yet."
-        );
-        return;
-    }
-
-    let dailyTotal = 0;
-
-    meals.forEach((meal, index) => {
-        const calories = Number(meal.calories);
-        const safeCalories =
-            Number.isFinite(calories) && calories >= 0 ? calories : 0;
-
-        dailyTotal += safeCalories;
-
-        const foods = Array.isArray(meal.foods)
-            ? meal.foods
-            : [];
-
-        const foodsHTML = foods.map(food => `
-            <span class="food-item">${escapeHTML(food)}</span>
-        `).join("");
-
-        const defaultImage =
-            "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=400&q=80";
-
-        const image = meal.image || defaultImage;
-
-        const item = document.createElement("article");
-        item.className = "meal";
-
-        item.innerHTML = `
-            <div class="meal-image">
-                <img
-                    src="${escapeHTML(image)}"
-                    alt="${escapeHTML(meal.name || "Meal")}"
-                    loading="lazy"
-                    onerror="this.onerror=null;this.src='${defaultImage}'"
-                >
-            </div>
-
-            <div class="meal-number">
-                ${String(index + 1).padStart(2, "0")}
-            </div>
-
-            <div class="meal-info">
-                <div class="meal-name">
-                    ${escapeHTML(meal.name || "Meal")}
-                </div>
-
-                <div class="meal-time">
-                    <i class="fa-regular fa-clock"></i>
-                    ${escapeHTML(meal.time || "Time not set")}
-                </div>
-
-                <div class="food-items">
-                    ${foodsHTML}
-                </div>
-            </div>
-
-            <div class="meal-calories">
-                <span class="calorie-label">CALORIES</span>
-                <span class="calorie-value">${safeCalories} kcal</span>
-            </div>
-        `;
-
-        mealList.appendChild(item);
-    });
-
-    document.getElementById("totalCalories").textContent =
-        `${dailyTotal} kcal`;
-}
-
-/* =========================================
-   SELECT DAY
-========================================= */
-
-function selectDay(day) {
-    day = Number(day);
-
-    if (!Number.isInteger(day) || day < 1 || day > 7) {
-        return;
-    }
-
-    document.querySelectorAll(".day-btn").forEach(button => {
-        button.classList.toggle(
-            "active",
-            Number(button.dataset.day) === day
-        );
-    });
-
-    const plan = getMyDietPlan();
-    const dayPlan = getDayData(plan, day);
-
-    document.getElementById("planTitle").textContent =
-        `Day ${String(day).padStart(2, "0")} — Meal Plan`;
-
-    const mealScroll = document.getElementById("mealScroll");
-
-    mealScroll.scrollTop = 0;
-
-    if (!plan) {
-        document.getElementById("planSubtitle").textContent =
-            "No nutrition plan assigned";
-
-        showEmptyState(
-            "Your trainer hasn't assigned a Diet Plan to your account yet."
-        );
-        return;
-    }
-
-    // A rest day appears only when the trainer explicitly sets it.
-    const isRestDay =
-        dayPlan &&
-        (
-            dayPlan.isRestDay === true ||
-            String(dayPlan.name || dayPlan.title || "").toLowerCase() === "rest"
-        );
-
-    if (isRestDay) {
-        document.getElementById("planSubtitle").textContent =
-            "Rest Day — Set by your trainer";
-
-        showEmptyState(
-            dayPlan.note || "Your trainer has marked this as a rest day."
-        );
-        return;
-    }
-
-    if (!dayPlan || !Array.isArray(dayPlan.meals)) {
-        document.getElementById("planSubtitle").textContent =
-            "No nutrition plan assigned for this day";
-
-        showEmptyState(
-            "Your trainer hasn't added meals for this day yet."
-        );
-        return;
-    }
-
-    document.getElementById("planSubtitle").textContent =
-        dayPlan.name || dayPlan.title || "Daily Nutrition";
-
-    renderMeals(dayPlan.meals);
-}
-
-/* =========================================
-   INITIAL LOAD
-========================================= */
-
-selectDay(1);
-
-</script>
-
-
-<script>
-(function () {
-  const sidebar = document.querySelector('.sidebar');
-  if (!sidebar || document.querySelector('.momentum-mobile-bar')) return;
-
-  const bar = document.createElement('header');
-  bar.className = 'momentum-mobile-bar';
-  bar.innerHTML = '<button class="momentum-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><div class="momentum-mobile-brand">MO<span>MENTUM</span></div>';
-
-  const overlay = document.createElement('div');
-  overlay.className = 'momentum-sidebar-overlay';
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(overlay);
-  document.body.appendChild(bar);
-
-  const toggle = bar.querySelector('.momentum-menu-toggle');
-  function closeMenu() {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('show');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
-    document.body.style.overflow = '';
-  }
-  function openMenu() {
-    sidebar.classList.add('open');
-    overlay.classList.add('show');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close navigation');
-    document.body.style.overflow = 'hidden';
-  }
-  toggle.addEventListener('click', function () {
-    sidebar.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  overlay.addEventListener('click', closeMenu);
-  sidebar.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
-    });
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') closeMenu();
-  });
-  window.addEventListener('resize', function () {
-    if (!window.matchMedia('(max-width: 768px)').matches) closeMenu();
-  });
-})();
-</script>
+                <div style="width: 42px;"></div> 
+            `;
+
+            // إنشاء طبقة التعتيم
+            const overlay = document.createElement('div');
+            overlay.className = 'momentum-sidebar-overlay';
+
+            document.body.appendChild(overlay);
+            document.body.appendChild(bar);
+
+            const toggle = bar.querySelector('.momentum-menu-toggle');
+
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                toggle.innerHTML = '☰';
+                document.body.style.overflow = '';
+            }
+
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+                toggle.innerHTML = '✕';
+                document.body.style.overflow = 'hidden';
+            }
+
+            toggle.addEventListener('click', function () {
+                if (sidebar.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            overlay.addEventListener('click', closeMenu);
+
+            sidebar.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) closeMenu();
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) closeMenu();
+            });
+        })();
+    </script>
 
 </body>
 </html>
