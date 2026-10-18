@@ -52,13 +52,8 @@
             margin: 4px 0 7px 9px
         }
 
-        .logo .mo {
-            color: #ffffff;
-        }
-
-        .logo .mentum {
-            color: #39d98a;
-        }
+        .logo .mo { color: #ffffff; }
+        .logo .mentum { color: #39d98a; }
 
         .brand-caption {
             color: var(--muted);
@@ -157,26 +152,20 @@
             flex-shrink: 0
         }
 
-        .coach-info {
-            min-width: 0
-        }
-
+        .coach-info { min-width: 0 }
         .coach-info h4 {
             font-size: 12px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap
         }
-
         .coach-info p {
             font-size: 10px;
             color: var(--muted);
             margin-top: 5px
         }
 
-        .logout {
-            color: #ff8f8f
-        }
+        .logout { color: #ff8f8f }
 
         .main {
             margin-left: 235px;
@@ -190,13 +179,9 @@
             margin-bottom: 9px
         }
 
-        .eyebrow span {
-            color: var(--g)
-        }
+        .eyebrow span { color: var(--g) }
 
-        h1 {
-            font-size: 30px
-        }
+        h1 { font-size: 30px }
 
         .sub {
             font-size: 12px;
@@ -223,22 +208,11 @@
             background: linear-gradient(110deg, rgba(14, 48, 34, .93), rgba(9, 24, 19, .87))
         }
 
-        .hero h2 {
-            font-size: 20px
-        }
-
+        .hero h2 { font-size: 20px }
         .hero p {
             color: var(--muted);
             font-size: 11px;
             margin-top: 7px
-        }
-
-        .pill {
-            font-size: 10px;
-            padding: 7px 9px;
-            border-radius: 8px;
-            background: rgba(57, 217, 138, .1);
-            color: var(--g)
         }
 
         .days {
@@ -279,13 +253,8 @@
         }
         .day.active small { color: var(--g); }
 
-        .content {
-            padding: 20px
-        }
-
-        .content h3 {
-            font-size: 17px
-        }
+        .content { padding: 20px }
+        .content h3 { font-size: 17px }
 
         .hint {
             color: var(--muted);
@@ -441,9 +410,7 @@
                 font-size: 25px !important;
                 margin-left: 9px !important;
             }
-            .logo:before {
-                content: none !important;
-            }
+            .logo:before { content: none !important; }
             .nav-links { width: 100% !important; }
             .nav-link {
                 justify-content: flex-start !important;
@@ -493,9 +460,7 @@
                 z-index: 1040;
                 backdrop-filter: blur(3px);
             }
-            .momentum-sidebar-overlay.show {
-                display: block;
-            }
+            .momentum-sidebar-overlay.show { display: block; }
 
             /* 5. تعديل المساحات للمحتوى الأساسي */
             .main {
@@ -505,23 +470,10 @@
             }
 
             /* 6. ترتيب الكروت والجرايد */
-            .summary {
-                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-            }
-
-            .hero {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-            }
-
-            h1 {
-                font-size: 25px !important;
-            }
-
-            .item {
-                flex-wrap: wrap !important; /* يخلي الوزن ينزل تحت لو المساحة ضاقت */
-            }
-
+            .summary { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+            .hero { flex-direction: column !important; align-items: flex-start !important; }
+            h1 { font-size: 25px !important; }
+            .item { flex-wrap: wrap !important; }
             .target {
                 width: 100% !important;
                 text-align: left !important;
@@ -529,25 +481,13 @@
                 padding-top: 10px;
                 border-top: 1px solid rgba(255,255,255,.05);
             }
-
-            .back {
-                width: 100%;
-                justify-content: center;
-            }
+            .back { width: 100%; justify-content: center; }
         }
 
         @media (max-width: 430px) {
-            .item {
-                gap: 9px !important;
-                padding: 11px !important;
-            }
-            .icon {
-                width: 36px !important;
-                height: 36px !important;
-            }
-            .details strong {
-                font-size: 11px !important;
-            }
+            .item { gap: 9px !important; padding: 11px !important; }
+            .icon { width: 36px !important; height: 36px !important; }
+            .details strong { font-size: 11px !important; }
         }
         
         .logo, .logo a, .logo span, .logo::before, .logo::after, .logo a::before, .logo a::after {
@@ -566,7 +506,7 @@
         <div class="logo"><a href="test4.html" class="logo-link"><span class="mo">MO</span><span class="mentum">MENTUM</span></a></div>
         <p class="brand-caption">DISCIPLINE BUILDS RESULTS</p>
         <p class="nav-label">MAIN MENU</p>
-        <nav class="nav-links">
+        <nav class="nav-links" id="mainNav">
             <a href="test4.html" class="nav-link "><i class="fa-solid fa-house"></i><span>Home</span></a>
             <a href="test9.html" class="nav-link" id="editAthletesLink"><i class="fa-solid fa-users-gear"></i><span>Edit Athletes</span></a>
             <a href="test8.html" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i><span>Search Athletes</span></a>
@@ -591,8 +531,7 @@
     <main class="main">
         <div class="eyebrow">My Training / <span>Work Plan</span></div>
         <h1>Work Plan</h1>
-        <p class="sub">Your coach's plan, organized day by day. If your coach updates a published plan, reopen this page
-            to see the latest saved version.</p>
+        <p class="sub">Your coach's plan, organized day by day. If your coach updates a published plan, reopen this page to see the latest saved version.</p>
         
         <section class="panel hero">
             <div>
@@ -715,9 +654,17 @@
         function macro(k) { return athlete ? (athlete.dietPlan || []).flatMap(d => d.meals || []).flatMap(m => m.foods || []).reduce((s, f) => s + (Number(f[k]) || 0), 0) : 0 } 
         
         if (localStorage.getItem('momentumPlanPreviewMode') === 'coach') { 
-            const nav = document.querySelector('.nav-links'); 
+            const nav = document.getElementById('mainNav'); 
             if (nav) { 
-                nav.innerHTML = '<a href="test4.html"><i class="fa-solid fa-house"></i><span>Trainer Dashboard</span></a><a href="test9.html"><i class="fa-solid fa-users-gear"></i><span>Edit Athletes</span></a><a href="test8.html"><i class="fa-solid fa-magnifying-glass"></i><span>Search Athletes</span></a><a href="test10.html"><i class="fa-solid fa-message"></i><span>Complaints</span></a><a href="test11.html"><i class="fa-solid fa-chart-line"></i><span>Athlete Progress</span></a><a href="test12.html"><i class="fa-solid fa-gear"></i><span>Settings</span></a>'; 
+                // إضافة كلاس nav-link عشان اللينكات متطلعش بنفسجي ومتخططة
+                nav.innerHTML = `
+                    <a href="test4.html" class="nav-link"><i class="fa-solid fa-house"></i><span>Trainer Dashboard</span></a>
+                    <a href="test9.html" class="nav-link"><i class="fa-solid fa-users-gear"></i><span>Edit Athletes</span></a>
+                    <a href="test8.html" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i><span>Search Athletes</span></a>
+                    <a href="test10.html" class="nav-link"><i class="fa-solid fa-message"></i><span>Complaints</span></a>
+                    <a href="test11.html" class="nav-link"><i class="fa-solid fa-chart-line"></i><span>Athlete Progress</span></a>
+                    <a href="test12.html" class="nav-link"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+                `; 
             } 
             document.querySelector('.eyebrow').innerHTML = 'Coach Workspace / <span>Preview ' + (isWork ? 'Work Plan' : 'Diet Plan') + '</span>'; 
             document.querySelector('.sub').textContent = 'Coach preview for the selected athlete. Use the Trainer Dashboard or Edit Athletes to return to coach tools.'; 
@@ -798,5 +745,4 @@
     </script>
 
 </body>
-
 </html>
