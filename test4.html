@@ -46,28 +46,22 @@
       min-height: 100vh
     }
 
-       .sidebar {
-
-            width: 235px;
-            min-height: 100vh;
-
-            background:
-                linear-gradient(
-                    rgba(2, 10, 16, .78),
-                    rgba(2, 10, 16, .94)
-                ),
-                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800")
-                center / cover;
-
-            border-right: 1px solid #20313d;
-
-            padding: 28px 14px;
-
-            position: fixed;
-            left: 0;
-            top: 0;
-            bottom: 0;
-        }
+    .sidebar {
+      width: 235px;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(2, 10, 16, .78), rgba(2, 10, 16, .94)),
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover;
+      border-right: 1px solid #20313d;
+      padding: 28px 14px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+    }
 
     .logo {
       font-size: 25px;
@@ -77,12 +71,12 @@
     }
 
     .logo .mo {
-  color: #ffffff;
-}
+      color: #ffffff;
+    }
 
-.logo .mentum {
-  color: #39d98a;
-}
+    .logo .mentum {
+      color: #39d98a;
+    }
 
     .brand-caption {
       color: var(--muted);
@@ -203,8 +197,8 @@
     }
 
     .main {
-      margin-left: 255px;
-      width: calc(100% - 255px);
+      margin-left: 235px;
+      width: calc(100% - 235px);
       min-width: 0;
       padding: 34px 32px 42px
     }
@@ -799,274 +793,167 @@
     }
 
     @media(max-width:1250px) {
+      .sidebar { width: 225px }
+      .main { margin-left: 225px; width: calc(100% - 225px); padding: 27px 22px }
+      .hero { grid-template-columns: 1fr }
+      .stats { grid-template-columns: repeat(3, minmax(0, 1fr)) }
+      .content { grid-template-columns: 1fr }
+      .athlete-row { grid-template-columns: minmax(150px, 1.3fr) 50px minmax(70px, .8fr) 94px 15px }
+    }
+
+    /* =========================
+       MOMENTUM MOBILE FIXES (New)
+    ========================= */
+    @media (max-width: 768px) {
+      /* 1. إخفاء السايدبار وتجهيزه للفتح */
       .sidebar {
-        width: 225px
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 260px !important;
+        min-height: 100vh !important;
+        background: linear-gradient(rgba(2, 10, 16, .95), rgba(2, 10, 16, .98)), url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover !important;
+        transform: translateX(-105%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1050 !important;
+        padding: 28px 14px !important;
+        display: flex !important;
+        flex-direction: column;
       }
 
+      .sidebar.open {
+        transform: translateX(0) !important;
+      }
+
+      /* 2. إظهار النصوص في السايدبار */
+      .brand-caption, .nav-label, .nav-link span, .coach-info, .quote {
+        display: block !important;
+      }
+      .logo {
+        font-size: 25px !important;
+        margin-left: 9px !important;
+      }
+      .logo:before {
+        content: none !important; /* إخفاء حرف M القديم */
+      }
+      .nav-links { width: 100% !important; }
+      .nav-link {
+        justify-content: flex-start !important;
+        padding: 14px 13px !important;
+      }
+      .coach-mini { padding: 13px 10px !important; border: 1px solid var(--line) !important; background: rgba(255, 255, 255, .035) !important; }
+      .sidebar-bottom { width: 100% !important; }
+
+      /* 3. شريط الموبايل العلوي */
+      .momentum-mobile-bar {
+        display: flex !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 65px;
+        background: rgba(3, 12, 19, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(36, 227, 163, 0.15);
+        z-index: 1000;
+        align-items: center;
+        padding: 0 15px;
+        justify-content: space-between;
+      }
+
+      .momentum-menu-toggle {
+        background: rgba(36, 227, 163, 0.1);
+        border: 1px solid rgba(36, 227, 163, 0.3);
+        color: #24e3a3;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      /* 4. طبقة التعتيم ورا السايدبار */
+      .momentum-sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1040;
+        backdrop-filter: blur(3px);
+      }
+      .momentum-sidebar-overlay.show {
+        display: block;
+      }
+
+      /* 5. تعديل المساحات للمحتوى الأساسي */
       .main {
-        margin-left: 225px;
-        width: calc(100% - 225px);
-        padding: 27px 22px
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 85px 15px 30px !important;
       }
 
+      /* إخفاء الهيدر القديم لتجنب التكرار */
+      .topbar {
+        display: none !important;
+      }
+
+      /* 6. ترتيب الجرايد والكروت */
       .hero {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr !important;
+        padding: 20px !important;
       }
-
       .stats {
-        grid-template-columns: repeat(3, minmax(0, 1fr))
+        grid-template-columns: 1fr !important;
       }
+      .stat-card {
+        min-height: 110px !important;
+        padding: 15px !important;
+      }
+      .stat-icon { margin-bottom: 9px !important; }
 
       .content {
-        grid-template-columns: 1fr
-      }
-
-      .athlete-row {
-        grid-template-columns: minmax(150px, 1.3fr) 50px minmax(70px, .8fr) 94px 15px
-      }
-    }
-
-    @media(max-width:850px) {
-      .sidebar {
-        width: 76px;
-        padding: 25px 10px;
-        align-items: center
-
-      }
-
-      .logo {
-        font-size: 0;
-        margin-left: 0
-      }
-
-      .logo:before {
-        content: "M";
-        font-size: 26px;
-        color: var(--green)
-      }
-
-      .brand-caption,
-      .nav-label,
-      .nav-link span,
-      .coach-info,
-      .quote {
-        display: none
-      }
-
-      .nav-links {
-        width: 100%
-      }
-
-      .nav-link {
-        justify-content: center;
-        padding: 15px 8px
-      }
-
-      .nav-link i {
-        font-size: 17px
-      }
-
-      .coach-mini {
-        padding: 6px;
-        border: none;
-        background: transparent
-      }
-
-      .sidebar-bottom {
-        width: 100%
-      }
-
-      .main {
-        margin-left: 76px;
-        width: calc(100% - 76px)
-      }
-    }
-
-    @media(max-width:600px) {
-      .main {
-        padding: 22px 13px 30px
-      }
-
-      .topbar {
-        align-items: flex-start
-      }
-
-      .profile-chip {
-        display: none
-      }
-
-      .hero {
-        padding: 20px
-      }
-
-      .stats {
-        grid-template-columns: 1fr
-      }
-
-      .stat-card {
-        min-height: 110px
-      }
-
-      .stat-icon {
-        margin-bottom: 9px
-      }
-
-      .athlete-row {
-        grid-template-columns: minmax(120px, 1fr) 45px 15px;
-        gap: 9px;
-        padding: 12px
-      }
-
-      .athlete-row .progress-bar,
-      .athlete-row .status {
-        display: none
-      }
-
-      .athlete-meta {
-        font-size: 9px
-      }
-
-      .panel-header {
-        padding: 15px
-      }
-
-      .today-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        row-gap: 18px
+        grid-template-columns: 1fr !important;
       }
 
       .quick-grid {
-        gap: 8px
+        grid-template-columns: 1fr !important;
       }
 
-      .quick-card {
-        padding: 12px
+      .today-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        row-gap: 18px !important;
       }
 
-      .page-title {
-        font-size: 25px
+      /* 7. صفوف اللاعبين */
+      .athlete-row {
+        grid-template-columns: minmax(120px, 1fr) 45px 15px !important;
+        gap: 9px !important;
+        padding: 12px !important;
+      }
+      .athlete-row .progress-bar, .athlete-row .status {
+        display: none !important;
+      }
+      .athlete-meta { font-size: 9px !important; }
+
+      /* 8. زر البحث */
+      input[type="search"] {
+        width: 100% !important;
+        padding: 11px 14px !important;
+        background: rgba(3, 12, 10, .55) !important;
+        border: 1px solid rgba(57, 217, 138, .22) !important;
+        border-radius: 10px !important;
+        color: #f5faf8 !important;
+        outline: none !important;
+        margin: 12px 0 0 !important;
+        font-size: 12px !important;
       }
     }
   </style>
-<style>
-
-/* MOMENTUM responsive navigation patch */
-@media (max-width: 768px) {
-  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
-  body { background-attachment: scroll !important; }
-  .sidebar {
-    position: fixed !important;
-    inset: 0 auto 0 0 !important;
-    width: min(82vw, 290px) !important;
-    min-width: 0 !important;
-    max-width: 86vw !important;
-    height: 100dvh !important;
-    min-height: 100dvh !important;
-    box-sizing: border-box !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding: 22px 14px 28px !important;
-    transform: translateX(-105%);
-    transition: transform .25s ease;
-    z-index: 1201 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    visibility: visible !important;
-  }
-  .sidebar.open { transform: translateX(0) !important; }
-  .sidebar .side-logo, .sidebar .logo, .sidebar .side-logo h2 {
-    max-width: 100%;
-    overflow-wrap: anywhere;
-  }
-  .sidebar .nav, .sidebar nav, .sidebar .nav-links {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 7px !important;
-  }
-  .sidebar .nav-item, .sidebar .nav-link, .sidebar .nav-links a,
-  .sidebar nav a {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    justify-content: flex-start !important;
-    white-space: normal !important;
-  }
-  .momentum-mobile-bar {
-    display: flex !important;
-    align-items: center;
-    gap: 12px;
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 58px;
-    padding: 0 15px;
-    box-sizing: border-box;
-    z-index: 1100;
-    background: rgba(3, 12, 19, .96);
-    border-bottom: 1px solid rgba(48, 220, 169, .22);
-    backdrop-filter: blur(14px);
-  }
-  .momentum-menu-toggle {
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(48, 220, 169, .45);
-    border-radius: 12px;
-    color: #31dba8;
-    background: rgba(27, 211, 159, .12);
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
-  }
-  .momentum-mobile-brand {
-    color: #f5faf8;
-    font-weight: 800;
-    font-size: 19px;
-    letter-spacing: -.4px;
-  }
-  .momentum-mobile-brand span { color: #31dba8; }
-  .momentum-sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .62);
-    z-index: 1200;
-  }
-  .momentum-sidebar-overlay.show { display: block; }
-  .main {
-    margin-left: 0 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 78px 15px 30px !important;
-  }
-  .page, .app, .container, .content, .dashboard, .main-content {
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-  }
-  .page { overflow-x: clip; }
-  .main > *, .page > *, .container > * { min-width: 0; }
-  img, video, canvas, iframe { max-width: 100%; }
-  input, select, textarea, button { max-width: 100%; box-sizing: border-box; }
-  table { max-width: 100%; }
-  .summary-grid, .stats-grid, .stat-grid, .cards-grid, .card-grid,
-  .gallery, .athlete-grid, .support-layout, .workout-grid, .diet-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-  .daily-progress-card { flex-wrap: wrap; }
-}
-@media (min-width: 769px) {
-  .momentum-mobile-bar, .momentum-sidebar-overlay { display: none !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sidebar { transition: none !important; }
-}
-
-</style>
 </head>
 
 <body>
@@ -1332,24 +1219,24 @@
     const sortSelect = document.getElementById("sortAthletes");
     const emptyState = document.getElementById("emptyState");
 
-   
       let saved = [];
       try { saved = JSON.parse(localStorage.getItem("momentumAthletes") || "[]"); } catch (e) { saved = []; }
-      if (!Array.isArray(saved) || !saved.length) return;
-      list.innerHTML = saved.map((a, i) => {
-        const progress = Number(a.progress || 0);
-        const status = progress >= 85 ? "On Track" : progress >= 70 ? "In Progress" : "Needs Focus";
-        const statusClass = progress >= 85 ? "" : progress >= 70 ? "progressing" : "focus";
-        const photo = a.photo ? `<img class="athlete-photo" src="${a.photo}" alt="">` : `<div class="athlete-photo" style="display:grid;place-items:center;color:#39d98a"><i class="fa-solid fa-user"></i></div>`;
-        return `<div class="athlete-row" data-id="${a.id}" data-name="${String(a.name || "Athlete").replace(/"/g, "&quot;")}" data-age="${a.age || 0}" data-progress="${progress}" tabindex="0" role="button"><div class="athlete-info">${photo}<div><div class="athlete-name">${a.name || "Athlete"}</div><div class="athlete-meta">Age: ${a.age || "—"} · ${a.weight || "—"} kg · ${a.height || "—"} cm</div></div></div><div class="progress-circle" style="--progress:${progress}%"><span>${progress}%</span></div><div class="progress-bar"><span style="width:${progress}%"></span></div><div class="status ${statusClass}">${status}</div><div class="arrow">›</div></div>`;
-      }).join("");
-      rows = Array.from(list.querySelectorAll(".athlete-row"));
+      if (Array.isArray(saved) && saved.length) {
+        list.innerHTML = saved.map((a, i) => {
+          const progress = Number(a.progress || 0);
+          const status = progress >= 85 ? "On Track" : progress >= 70 ? "In Progress" : "Needs Focus";
+          const statusClass = progress >= 85 ? "" : progress >= 70 ? "progressing" : "focus";
+          const photo = a.photo ? `<img class="athlete-photo" src="${a.photo}" alt="">` : `<div class="athlete-photo" style="display:grid;place-items:center;color:#39d98a"><i class="fa-solid fa-user"></i></div>`;
+          return `<div class="athlete-row" data-id="${a.id}" data-name="${String(a.name || "Athlete").replace(/"/g, "&quot;")}" data-age="${a.age || 0}" data-progress="${progress}" tabindex="0" role="button"><div class="athlete-info">${photo}<div><div class="athlete-name">${a.name || "Athlete"}</div><div class="athlete-meta">Age: ${a.age || "—"} · ${a.weight || "—"} kg · ${a.height || "—"} cm</div></div></div><div class="progress-circle" style="--progress:${progress}%"><span>${progress}%</span></div><div class="progress-bar"><span style="width:${progress}%"></span></div><div class="status ${statusClass}">${status}</div><div class="arrow">›</div></div>`;
+        }).join("");
+        rows = Array.from(list.querySelectorAll(".athlete-row"));
+      }
+      
       rows.forEach(row => {
         const open = () => { localStorage.setItem("momentumSelectedAthleteId", row.dataset.id); localStorage.setItem("selectedAthleteId", row.dataset.id); window.location.href = "test9.html"; };
         row.addEventListener("click", open);
         row.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
       });
-    
 
     function updateAthletes() {
       const term = search.value.trim().toLowerCase();
@@ -1367,7 +1254,6 @@
       document.getElementById("totalAthletesStat").textContent = rows.length;
       document.getElementById("activePlansStat").textContent = rows.length;
     }
-    syncAthletesFromEditor();
     search.addEventListener("input", updateAthletes);
     sortSelect.addEventListener("change", updateAthletes);
     updateAthletes();
@@ -1375,11 +1261,6 @@
     function openPlaceholder(name) { alert(name + " will be connected to the backend in the next integration step."); }
     document.getElementById("notificationBtn").addEventListener("click", () => openPlaceholder("Notifications"));
 
-    function selectAthlete(row) {
-      localStorage.setItem("selectedAthleteName", row.dataset.name);
-      localStorage.setItem("selectedAthleteProgress", row.dataset.progress);
-      alert("Selected athlete: " + row.dataset.name + "\nAthlete profile and real progress will be connected here next.");
-    }
     document.getElementById("logoutBtn").addEventListener("click", e => {
       e.preventDefault();
       if (confirm("Are you sure you want to log out?")) {
@@ -1390,52 +1271,68 @@
     });
   </script>
 
+<!-- =========================================================
+     MOBILE MENU SCRIPT (Clean & Working)
+========================================================= -->
 <script>
-(function () {
-  const sidebar = document.querySelector('.sidebar');
-  if (!sidebar || document.querySelector('.momentum-mobile-bar')) return;
+    (function () {
+        const sidebar = document.querySelector('.sidebar');
+        if (!sidebar) return;
 
-  const bar = document.createElement('header');
-  bar.className = 'momentum-mobile-bar';
-  bar.innerHTML = '<button class="momentum-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><div class="momentum-mobile-brand">MO<span>MENTUM</span></div>';
+        // إنشاء الشريط العلوي
+        const bar = document.createElement('header');
+        bar.className = 'momentum-mobile-bar';
+        bar.innerHTML = `
+            <button class="momentum-menu-toggle" type="button" aria-label="Open navigation">☰</button>
+            <div style="color: #fff; font-weight: bold; font-size: 18px; letter-spacing: 1px;">
+                <span style="color: #24e3a3;">MO</span>MENTUM
+            </div>
+            <div style="width: 42px;"></div> 
+        `;
 
-  const overlay = document.createElement('div');
-  overlay.className = 'momentum-sidebar-overlay';
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(overlay);
-  document.body.appendChild(bar);
+        // إنشاء طبقة التعتيم
+        const overlay = document.createElement('div');
+        overlay.className = 'momentum-sidebar-overlay';
 
-  const toggle = bar.querySelector('.momentum-menu-toggle');
-  function closeMenu() {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('show');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
-    document.body.style.overflow = '';
-  }
-  function openMenu() {
-    sidebar.classList.add('open');
-    overlay.classList.add('show');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close navigation');
-    document.body.style.overflow = 'hidden';
-  }
-  toggle.addEventListener('click', function () {
-    sidebar.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  overlay.addEventListener('click', closeMenu);
-  sidebar.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
-    });
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') closeMenu();
-  });
-  window.addEventListener('resize', function () {
-    if (!window.matchMedia('(max-width: 768px)').matches) closeMenu();
-  });
-})();
+        document.body.appendChild(overlay);
+        document.body.appendChild(bar);
+
+        const toggle = bar.querySelector('.momentum-menu-toggle');
+
+        function closeMenu() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+            toggle.innerHTML = '☰';
+            document.body.style.overflow = '';
+        }
+
+        function openMenu() {
+            sidebar.classList.add('open');
+            overlay.classList.add('show');
+            toggle.innerHTML = '✕';
+            document.body.style.overflow = 'hidden';
+        }
+
+        toggle.addEventListener('click', function () {
+            if (sidebar.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        overlay.addEventListener('click', closeMenu);
+
+        sidebar.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (window.innerWidth <= 768) closeMenu();
+            });
+        });
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) closeMenu();
+        });
+    })();
 </script>
 
 </body>
