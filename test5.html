@@ -70,6 +70,7 @@
             left: 0;
             top: 0;
             bottom: 0;
+            z-index: 100;
         }
 
 
@@ -1589,2827 +1590,819 @@
 
 
         /* =========================
-           MOBILE
+           RESPONSIVE (MOBILE FIX)
         ========================= */
 
         @media(max-width: 1050px) {
-
-            .sidebar {
-                width: 190px;
-            }
-
-            .main {
-                margin-left: 190px;
-                width: calc(100% - 190px);
-            }
-
-            .content {
-                grid-template-columns: 1fr;
-            }
-
-            .right-column {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .motivation {
-                min-height: 180px;
-            }
+            .sidebar { width: 190px; }
+            .main { margin-left: 190px; width: calc(100% - 190px); }
+            .content { grid-template-columns: 1fr; }
+            .right-column { display: grid; grid-template-columns: repeat(2, 1fr); }
+            .motivation { min-height: 180px; }
         }
 
-
-        @media(max-width: 750px) {
-
+        @media (max-width: 768px) {
+            /* إخفاء السايدبار وتجهيزه للفتح */
             .sidebar {
-                position: static;
-
-                width: 100%;
-
-                min-height: auto;
-
-                padding: 12px;
-
-                border-right: none;
-
-                border-bottom: 1px solid #20313d;
-            }
-
-            .side-quote {
-                display: none;
-            }
-
-            .side-logo {
-                padding: 0 10px 12px;
-            }
-
-            .nav {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .nav-item {
-                min-height: 45px;
-                justify-content: center;
-                padding: 0;
-            }
-
-            .nav-item span {
-                display: none;
-            }
-
-            .nav-item i {
-                font-size: 17px;
-            }
-
-            .page {
-                display: block;
-            }
-
-            .main {
-                margin-left: 0;
-                width: 100%;
-                padding: 15px;
-            }
-
-            .header {
-                margin-bottom: 18px;
-            }
-
-            .date {
-                font-size: 11px;
-            }
-
-            .user-info {
-                display: none;
-            }
-
-            .page-title h1 {
-                font-size: 30px;
-            }
-
-            .workout-body,
-            .meal-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .water-options {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .weight-body {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 260px !important;
+                min-height: 100vh !important;
+                background: linear-gradient(rgba(2, 10, 16, .95), rgba(2, 10, 16, .98)), url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover !important;
+                transform: translateX(-105%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1050 !important;
+                padding: 28px 14px !important;
+                display: flex !important;
                 flex-direction: column;
-                align-items: stretch;
             }
 
-            .weight-history {
-                width: 100%;
-                border-left: none;
-                border-top: 1px solid #293c47;
-                padding-left: 0;
-                padding-top: 15px;
+            /* كلاس بيضاف بالجافاسكريبت لما تدوس على الزرار */
+            .sidebar.open { transform: translateX(0) !important; }
+
+            /* إظهار النصوص في السايدبار */
+            .nav { display: flex !important; flex-direction: column !important; }
+            .nav-item { justify-content: flex-start !important; padding: 0 17px !important; min-height: 55px !important; }
+            .nav-item span { display: block !important; opacity: 1 !important; }
+            .side-quote { display: block !important; }
+
+            /* شريط الموبايل العلوي */
+            .momentum-mobile-bar {
+                display: flex !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 65px;
+                background: rgba(3, 12, 19, 0.85);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(36, 227, 163, 0.15);
+                z-index: 1000;
+                align-items: center;
+                padding: 0 15px;
+                justify-content: space-between;
             }
 
-            .right-column {
+            .momentum-menu-toggle {
+                background: rgba(36, 227, 163, 0.1);
+                border: 1px solid rgba(36, 227, 163, 0.3);
+                color: #24e3a3;
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+                font-size: 20px;
                 display: flex;
-            }
-        }
-
-
-        @media(max-width: 480px) {
-
-            .side-logo h2 {
-                font-size: 17px;
-            }
-
-            .side-logo p {
-                font-size: 7px;
-            }
-
-            .exercise-row {
-                grid-template-columns: 55px 1fr 28px;
-                gap: 7px;
-            }
-
-            .exercise-image {
-                width: 50px;
-                height: 48px;
-            }
-
-            .exercise-name {
-                font-size: 10px;
-            }
-
-            .exercise-details {
-                font-size: 8px;
-            }
-
-            .water-options {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .today-progress {
+                align-items: center;
                 justify-content: center;
+                cursor: pointer;
             }
+
+            /* طبقة التعتيم ورا السايدبار */
+            .momentum-sidebar-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1040;
+                backdrop-filter: blur(3px);
+            }
+            .momentum-sidebar-overlay.show { display: block; }
+
+            /* تعديل المساحات للمحتوى الأساسي */
+            .main {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 85px 15px 30px !important;
+            }
+
+            .header { display: none !important; }
+            .content { grid-template-columns: 1fr !important; }
+            .right-column { display: flex !important; flex-direction: column !important; }
+            .workout-body, .meal-layout { grid-template-columns: 1fr !important; }
+            .water-options { grid-template-columns: repeat(3, 1fr); }
+            
+            .weight-body { flex-direction: column; align-items: stretch; }
+            .weight-history { width: 100%; border-left: none; border-top: 1px solid #293c47; padding-left: 0; padding-top: 15px; }
+            
+            .section-card, .side-card { border-radius: 12px; }
         }
     </style>
-
-<style>
-
-/* MOMENTUM responsive navigation patch */
-@media (max-width: 768px) {
-  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
-  body { background-attachment: scroll !important; }
-  .sidebar {
-    position: fixed !important;
-    inset: 0 auto 0 0 !important;
-    width: min(82vw, 290px) !important;
-    min-width: 0 !important;
-    max-width: 86vw !important;
-    height: 100dvh !important;
-    min-height: 100dvh !important;
-    box-sizing: border-box !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding: 22px 14px 28px !important;
-    transform: translateX(-105%);
-    transition: transform .25s ease;
-    z-index: 1201 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    visibility: visible !important;
-  }
-  .sidebar.open { transform: translateX(0) !important; }
-  .sidebar .side-logo, .sidebar .logo, .sidebar .side-logo h2 {
-    max-width: 100%;
-    overflow-wrap: anywhere;
-  }
-  .sidebar .nav, .sidebar nav, .sidebar .nav-links {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 7px !important;
-  }
-  .sidebar .nav-item, .sidebar .nav-link, .sidebar .nav-links a,
-  .sidebar nav a {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    justify-content: flex-start !important;
-    white-space: normal !important;
-  }
-  .momentum-mobile-bar {
-    display: flex !important;
-    align-items: center;
-    gap: 12px;
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 58px;
-    padding: 0 15px;
-    box-sizing: border-box;
-    z-index: 1100;
-    background: rgba(3, 12, 19, .96);
-    border-bottom: 1px solid rgba(48, 220, 169, .22);
-    backdrop-filter: blur(14px);
-  }
-  .momentum-menu-toggle {
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(48, 220, 169, .45);
-    border-radius: 12px;
-    color: #31dba8;
-    background: rgba(27, 211, 159, .12);
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
-  }
-  .momentum-mobile-brand {
-    color: #f5faf8;
-    font-weight: 800;
-    font-size: 19px;
-    letter-spacing: -.4px;
-  }
-  .momentum-mobile-brand span { color: #31dba8; }
-  .momentum-sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .62);
-    z-index: 1200;
-  }
-  .momentum-sidebar-overlay.show { display: block; }
-  .main {
-    margin-left: 0 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 78px 15px 30px !important;
-  }
-  .page, .app, .container, .content, .dashboard, .main-content {
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-  }
-  .page { overflow-x: clip; }
-  .main > *, .page > *, .container > * { min-width: 0; }
-  img, video, canvas, iframe { max-width: 100%; }
-  input, select, textarea, button { max-width: 100%; box-sizing: border-box; }
-  table { max-width: 100%; }
-  .summary-grid, .stats-grid, .stat-grid, .cards-grid, .card-grid,
-  .gallery, .athlete-grid, .support-layout, .workout-grid, .diet-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-  .daily-progress-card { flex-wrap: wrap; }
-}
-@media (min-width: 769px) {
-  .momentum-mobile-bar, .momentum-sidebar-overlay { display: none !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sidebar { transition: none !important; }
-}
-
-</style>
 </head>
 
 
 <body>
 
-
     <div class="page">
 
-
         <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
+             SIDEBAR
+        ====================================================== -->
         <aside class="sidebar">
-
             <div class="side-logo">
-
                 <i class="fa-solid fa-dumbbell"></i>
                 <h2><a href="test3.html" class="logo">
                         <span class="white">MO</span><span class="green">MENTUM</span>
                     </a></h2>
-
-
             </div>
 
-
             <nav class="nav">
-
                 <a href="test3.html" class="nav-item">
-
                     <i class="fa-solid fa-house"></i>
-
                     <span>Home</span>
-
                 </a>
-
-
                 <a href="test5.html" class="nav-item active">
-
                     <i class="fa-solid fa-dumbbell"></i>
-
                     <span>Exercises</span>
-
                 </a>
-
-
                 <a href="progress-photos.html" class="nav-item">
-
                     <i class="fa-solid fa-camera"></i>
-
                     <span>Progress Photos</span>
-
                 </a>
-
-
                 <a href="work_plan.html" class="nav-item">
-
                     <i class="fa-solid fa-calendar-days"></i>
-
                     <span>Workout Plan</span>
-
                 </a>
-
-
                 <a href="diet-plan.html" class="nav-item">
-
                     <i class="fa-solid fa-utensils"></i>
-
                     <span>Diet Plan</span>
-
                 </a>
-
-
                 <a href="support.html" class="nav-item">
-
                     <i class="fa-solid fa-message"></i>
-
                     <span>Support</span>
-
                 </a>
-
-
                 <a href="history.html" class="nav-item">
-
                     <i class="fa-solid fa-chart-column"></i>
-
                     <span>Progress / History</span>
-
                 </a>
-
             </nav>
 
-
             <div class="side-quote">
-
                 "Small steps<br>
                 make big<br>
                 changes."
-
             </div>
-
         </aside>
 
 
-
         <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
+             MAIN
+        ====================================================== -->
         <main class="main">
 
-
             <!-- ================= HEADER ================= -->
-
             <header class="header">
-
-
                 <div class="date">
-
                     <i class="fa-regular fa-calendar"></i>
-
-                    <span id="todayDate">
-                        Loading...
-                    </span>
-
+                    <span id="todayDate">Loading...</span>
                 </div>
-
 
                 <div class="user-area">
-
                     <div class="user-info">
-
-                        <div class="user-name" id="headerName">
-
-                            Mohamed
-
-                        </div>
-
-                        <div class="user-role">
-
-                            Athlete
-
-                        </div>
-
+                        <div class="user-name" id="headerName">Mohamed</div>
+                        <div class="user-role">Athlete</div>
                     </div>
-
-
                     <div class="user-avatar">
-
                         <i class="fa-regular fa-user"></i>
-
                     </div>
-
-
                     <i class="fa-solid fa-crown crown"></i>
-
                 </div>
-
             </header>
 
-
-
             <!-- ================= CONTENT ================= -->
-
             <div class="content">
 
-
                 <!-- =================================================
-                 LEFT CONTENT
-            ================================================== -->
-
+                     LEFT CONTENT
+                ================================================== -->
                 <div>
 
-
                     <div class="page-title">
-
-                        <h1>
-                            Today's <span class="green">Plan</span>
-                        </h1>
-
-                        <p id="dayMessage">
-                            Stay consistent.<br>
-                            You're doing great!
-                        </p>
-
+                        <h1>Today's <span class="green">Plan</span></h1>
+                        <p id="dayMessage">Stay consistent.<br>You're doing great!</p>
                     </div>
 
-
-
                     <!-- =================================================
-                     WORKOUT
-                ================================================== -->
-
+                         WORKOUT
+                    ================================================== -->
                     <section class="section-card">
 
-
                         <div class="section-header">
-
                             <div class="section-title">
-
                                 <div class="section-icon">
-
                                     <i class="fa-solid fa-dumbbell"></i>
-
                                 </div>
-
                                 <div>
-
-                                    <h2 id="workoutTitle">
-                                        Workout
-                                    </h2>
-
-                                    <p id="workoutSubtitle">
-                                        Push - Chest - Shoulders - Triceps
-                                    </p>
-
+                                    <h2 id="workoutTitle">Workout</h2>
+                                    <p id="workoutSubtitle">Push - Chest - Shoulders - Triceps</p>
                                 </div>
-
                             </div>
-
 
                             <div class="status" id="workoutStatus">
-
-                                <i class="fa-solid fa-circle"></i>
-                                In Progress
-
+                                <i class="fa-solid fa-circle"></i> In Progress
                             </div>
-
                         </div>
-
-
 
                         <!-- WORKOUT -->
-
                         <div class="workout-body" id="workoutBody">
-
-
-                            <div class="exercise-list" id="exerciseList">
-                            </div>
-
+                            <div class="exercise-list" id="exerciseList"></div>
 
                             <div class="adjust-box">
-
-
-                                <h3>
-                                    Quick Adjust
-                                </h3>
-
-
-                                <div class="selected-exercise" id="selectedExercise">
-
-                                    Select an exercise
-
-                                </div>
-
+                                <h3>Quick Adjust</h3>
+                                <div class="selected-exercise" id="selectedExercise">Select an exercise</div>
 
                                 <div class="weight-control">
-
-                                    <button id="minusWeight">
-
-                                        −
-
-                                    </button>
-
-
-                                    <div class="weight-value" id="exerciseWeight">
-
-                                        0 kg
-
-                                    </div>
-
-
-                                    <button id="plusWeight">
-
-                                        +
-
-                                    </button>
-
+                                    <button id="minusWeight">−</button>
+                                    <div class="weight-value" id="exerciseWeight">0 kg</div>
+                                    <button id="plusWeight">+</button>
                                 </div>
-
 
                                 <div class="history-title">
-
-                                    <i class="fa-solid fa-chart-simple"></i>
-
-                                    Last 3 Weeks
-
+                                    <i class="fa-solid fa-chart-simple"></i> Last 3 Weeks
                                 </div>
-
 
                                 <div class="mini-chart">
-
-                                    <div class="chart-column">
-
-                                        <div class="chart-bar" style="height:35px">
-                                        </div>
-
-                                        <span>W-3</span>
-
-                                    </div>
-
-
-                                    <div class="chart-column">
-
-                                        <div class="chart-bar" style="height:48px">
-                                        </div>
-
-                                        <span>W-2</span>
-
-                                    </div>
-
-
-                                    <div class="chart-column">
-
-                                        <div class="chart-bar" style="height:60px">
-                                        </div>
-
-                                        <span>W-1</span>
-
-                                    </div>
-
-
-                                    <div class="chart-column">
-
-                                        <div class="chart-bar" style="height:70px">
-                                        </div>
-
-                                        <span>W0</span>
-
-                                    </div>
-
+                                    <div class="chart-column"><div class="chart-bar" style="height:35px"></div><span>W-3</span></div>
+                                    <div class="chart-column"><div class="chart-bar" style="height:48px"></div><span>W-2</span></div>
+                                    <div class="chart-column"><div class="chart-bar" style="height:60px"></div><span>W-1</span></div>
+                                    <div class="chart-column"><div class="chart-bar" style="height:70px"></div><span>W0</span></div>
                                 </div>
 
-
-                                <button class="save-workout" id="saveWorkout">
-
-                                    Save Workout
-
-                                </button>
-
-
+                                <button class="save-workout" id="saveWorkout">Save Workout</button>
                             </div>
-
                         </div>
-
-
 
                         <!-- REST -->
-
                         <div class="rest-message" id="restMessage">
-
                             <i class="fa-solid fa-bed"></i>
-
-                            <h2>
-                                Today is a Rest Day
-                            </h2>
-
-                            <p>
-                                Recovery is part of progress.
-                                Your diet and water goals are still active today.
-                            </p>
-
-                            <button class="rest-button" id="undoRest">
-
-                                Back to Workout
-
-                            </button>
-
+                            <h2>Today is a Rest Day</h2>
+                            <p>Recovery is part of progress. Your diet and water goals are still active today.</p>
+                            <button class="rest-button" id="undoRest">Back to Workout</button>
                         </div>
-
 
                     </section>
 
-
-
                     <!-- =================================================
-                     MEALS
-                ================================================== -->
-
+                         MEALS
+                    ================================================== -->
                     <section class="section-card">
-
-
                         <div class="section-header">
-
-
                             <div class="section-title">
-
                                 <div class="section-icon" style="background:#f0a000">
-
                                     <i class="fa-solid fa-utensils"></i>
-
                                 </div>
-
-
                                 <div>
-
-                                    <h2>
-                                        Meals
-                                    </h2>
-
-                                    <p>
-                                        Daily nutrition plan
-                                    </p>
-
+                                    <h2>Meals</h2>
+                                    <p>Daily nutrition plan</p>
                                 </div>
-
                             </div>
-
-
-                            <div class="meal-count" id="mealCount">
-
-                                2 / 4
-
-                            </div>
-
+                            <div class="meal-count" id="mealCount">2 / 4</div>
                         </div>
-
 
                         <div class="meal-progress">
-
-                            <div class="meal-progress-fill" id="mealProgress">
-
-                            </div>
-
+                            <div class="meal-progress-fill" id="mealProgress"></div>
                         </div>
-
 
                         <div class="meal-layout">
-
-
-                            <div class="meal-list" id="mealList">
-
-                            </div>
-
+                            <div class="meal-list" id="mealList"></div>
 
                             <div class="tips-box">
-
-                                <h3>
-                                    Meal Tips
-                                </h3>
-
-
+                                <h3>Meal Tips</h3>
                                 <div class="tip">
-
-                                    <i class="fa-solid fa-droplet"></i>
-
-                                    Drink water with your meals.
-
+                                    <i class="fa-solid fa-droplet"></i> Drink water with your meals.
                                 </div>
-
-
                                 <div class="tip">
-
-                                    <i class="fa-solid fa-circle-check"></i>
-
-                                    Keep your portions as planned.
-
+                                    <i class="fa-solid fa-circle-check"></i> Keep your portions as planned.
                                 </div>
-
-
-                                <button class="diet-button">
-
-                                    View Full Diet Plan
-
-                                </button>
-
+                                <button class="diet-button">View Full Diet Plan</button>
                             </div>
-
                         </div>
-
                     </section>
 
-
-
                     <!-- =================================================
-                     WATER
-                ================================================== -->
-
+                         WATER
+                    ================================================== -->
                     <section class="section-card">
-
-
                         <div class="section-header">
-
-
                             <div class="section-title">
-
                                 <div class="section-icon" style="background:#198fe0">
-
                                     <i class="fa-solid fa-droplet"></i>
-
                                 </div>
-
-
                                 <div>
-
-                                    <h2>
-                                        Water
-                                    </h2>
-
-                                    <p>
-                                        Daily hydration target
-                                    </p>
-
+                                    <h2>Water</h2>
+                                    <p>Daily hydration target</p>
                                 </div>
-
                             </div>
-
-
-                            <div class="meal-count" id="waterText">
-
-                                1.5 / 3 L
-
-                            </div>
-
+                            <div class="meal-count" id="waterText">1.5 / 3 L</div>
                         </div>
-
 
                         <div class="water-body">
-
-
                             <div class="water-top">
-
-
-                                <div class="water-amount" id="waterAmount">
-
-                                    1.5 / 3 L
-
-                                </div>
-
-
+                                <div class="water-amount" id="waterAmount">1.5 / 3 L</div>
                                 <div class="water-bar">
-
-                                    <div class="water-fill" id="waterFill">
-
-                                    </div>
-
+                                    <div class="water-fill" id="waterFill"></div>
                                 </div>
-
-
-                                <div class="water-percent" id="waterPercent">
-
-                                    50%
-
-                                </div>
-
+                                <div class="water-percent" id="waterPercent">50%</div>
                             </div>
-
 
                             <div class="water-options">
-
-
-                                <button class="water-option" data-water="0.5">
-
-                                    <i class="fa-solid fa-glass-water"></i>
-
-                                    500 ml
-
-                                </button>
-
-
-                                <button class="water-option" data-water="1">
-
-                                    <i class="fa-solid fa-glass-water"></i>
-
-                                    1 L
-
-                                </button>
-
-
-                                <button class="water-option" data-water="1.5">
-
-                                    <i class="fa-solid fa-glass-water"></i>
-
-                                    1.5 L
-
-                                </button>
-
-
-                                <button class="water-option" data-water="2">
-
-                                    <i class="fa-solid fa-glass-water"></i>
-
-                                    2 L
-
-                                </button>
-
-
-                                <button class="water-option" data-water="2.5">
-
-                                    <i class="fa-solid fa-glass-water"></i>
-
-                                    2.5 L
-
-                                </button>
-
-
-                                <button class="water-option" data-water="3">
-
-                                    <i class="fa-solid fa-glass-water"></i>
-
-                                    3 L
-
-                                </button>
-
+                                <button class="water-option" data-water="0.5"><i class="fa-solid fa-glass-water"></i> 500 ml</button>
+                                <button class="water-option" data-water="1"><i class="fa-solid fa-glass-water"></i> 1 L</button>
+                                <button class="water-option" data-water="1.5"><i class="fa-solid fa-glass-water"></i> 1.5 L</button>
+                                <button class="water-option" data-water="2"><i class="fa-solid fa-glass-water"></i> 2 L</button>
+                                <button class="water-option" data-water="2.5"><i class="fa-solid fa-glass-water"></i> 2.5 L</button>
+                                <button class="water-option" data-water="3"><i class="fa-solid fa-glass-water"></i> 3 L</button>
                             </div>
-
                         </div>
-
                     </section>
-
-
 
                     <!-- =================================================
-                     WEIGHT
-                ================================================== -->
-
+                         WEIGHT
+                    ================================================== -->
                     <section class="section-card">
-
-
                         <div class="section-header">
-
                             <div class="section-title">
-
                                 <div class="section-icon" style="background:#198fe0">
-
                                     <i class="fa-solid fa-weight-scale"></i>
-
                                 </div>
-
                                 <div>
-
-                                    <h2>
-                                        Weight
-                                    </h2>
-
-                                    <p>
-                                        Daily body weight
-                                    </p>
-
+                                    <h2>Weight</h2>
+                                    <p>Daily body weight</p>
                                 </div>
-
                             </div>
-
                         </div>
-
 
                         <div class="weight-body">
-
-
                             <div class="weight-left">
-
-                                <h3>
-                                    Today's Weight
-                                </h3>
-
-
+                                <h3>Today's Weight</h3>
                                 <div class="weight-input-row">
-
-                                    <input type="number" id="todayWeight" class="weight-input" placeholder="66.2"
-                                        step="0.1">
-
-
-                                    <button class="weight-save" id="saveWeight">
-
-                                        Save
-
-                                    </button>
-
+                                    <input type="number" id="todayWeight" class="weight-input" placeholder="66.2" step="0.1">
+                                    <button class="weight-save" id="saveWeight">Save</button>
                                 </div>
-
                             </div>
-
 
                             <div class="weight-history">
-
-                                <h3>
-                                    Weight History
-                                </h3>
-
-
+                                <h3>Weight History</h3>
                                 <div class="weight-line">
-
-                                    <div class="weight-point" style="left:5%;bottom:8px">
-
-                                        <span>
-                                            64.5
-                                        </span>
-
-                                    </div>
-
-
-                                    <div class="weight-point" style="left:35%;bottom:14px">
-
-                                        <span>
-                                            65.1
-                                        </span>
-
-                                    </div>
-
-
-                                    <div class="weight-point" style="left:65%;bottom:25px">
-
-                                        <span>
-                                            65.8
-                                        </span>
-
-                                    </div>
-
-
-                                    <div class="weight-point" style="left:92%;bottom:36px">
-
-                                        <span>
-                                            66.2
-                                        </span>
-
-                                    </div>
-
+                                    <div class="weight-point" style="left:5%;bottom:8px"><span>64.5</span></div>
+                                    <div class="weight-point" style="left:35%;bottom:14px"><span>65.1</span></div>
+                                    <div class="weight-point" style="left:65%;bottom:25px"><span>65.8</span></div>
+                                    <div class="weight-point" style="left:92%;bottom:36px"><span>66.2</span></div>
                                 </div>
-
                             </div>
-
                         </div>
-
                     </section>
-
 
                 </div>
 
-
-
                 <!-- =================================================
-                 RIGHT COLUMN
-            ================================================== -->
-
+                     RIGHT COLUMN
+                ================================================== -->
                 <aside class="right-column">
 
-
                     <!-- TODAY PROGRESS -->
-
                     <div class="side-card">
-
-                        <h2>
-                            Today's Progress
-                        </h2>
-
-
+                        <h2>Today's Progress</h2>
                         <div class="today-progress">
-
-
-                            <div class="progress-circle" id="progressCircle" data-progress="62%">
-
-                            </div>
-
-
+                            <div class="progress-circle" id="progressCircle" data-progress="62%"></div>
                             <div class="progress-stats">
-
-
                                 <div class="stat">
-
-                                    <span>
-                                        <i class="fa-solid fa-dumbbell" style="color:#24e3a3">
-                                        </i>
-
-                                        Workout
-                                    </span>
-
-                                    <span class="stat-value" id="workoutStat">
-
-                                        3/5
-
-                                    </span>
-
+                                    <span><i class="fa-solid fa-dumbbell" style="color:#24e3a3"></i> Workout</span>
+                                    <span class="stat-value" id="workoutStat">3/5</span>
                                 </div>
-
-
                                 <div class="stat">
-
-                                    <span>
-                                        <i class="fa-solid fa-utensils" style="color:#ffc13b">
-                                        </i>
-
-                                        Meals
-                                    </span>
-
-                                    <span class="stat-value" id="mealStat">
-
-                                        2/4
-
-                                    </span>
-
+                                    <span><i class="fa-solid fa-utensils" style="color:#ffc13b"></i> Meals</span>
+                                    <span class="stat-value" id="mealStat">2/4</span>
                                 </div>
-
-
                                 <div class="stat">
-
-                                    <span>
-                                        <i class="fa-solid fa-droplet" style="color:#35aee8">
-                                        </i>
-
-                                        Water
-                                    </span>
-
-                                    <span class="stat-value" id="waterStat">
-
-                                        1.5/3 L
-
-                                    </span>
-
+                                    <span><i class="fa-solid fa-droplet" style="color:#35aee8"></i> Water</span>
+                                    <span class="stat-value" id="waterStat">1.5/3 L</span>
                                 </div>
-
-
                                 <div class="stat">
-
-                                    <span>
-                                        <i class="fa-solid fa-weight-scale" style="color:#6ca9ff">
-                                        </i>
-
-                                        Weight
-                                    </span>
-
-                                    <span class="stat-value">
-
-                                        1/1
-
-                                    </span>
-
+                                    <span><i class="fa-solid fa-weight-scale" style="color:#6ca9ff"></i> Weight</span>
+                                    <span class="stat-value">1/1</span>
                                 </div>
-
-
                             </div>
-
                         </div>
-
                     </div>
-
-
 
                     <!-- QUICK ACTIONS -->
-
                     <div class="side-card">
-
-                        <h2>
-                            Quick Actions
-                        </h2>
-
-
-                        <button class="action-button" id="completeAllMeals">
-
-                            <i class="fa-solid fa-utensils"></i>
-
-                            Complete All Meals
-
-                        </button>
-
-
-                        <button class="action-button" id="quickWeight">
-
-                            <i class="fa-solid fa-weight-scale"></i>
-
-                            Update Weight
-
-                        </button>
-
-
-                        <button class="action-button" id="quickWater">
-
-                            <i class="fa-solid fa-droplet"></i>
-
-                            Add Water
-
-                        </button>
-
-
-                        <button class="action-button" id="markWorkout">
-
-                            <i class="fa-solid fa-dumbbell"></i>
-
-                            Mark Workout
-
-                        </button>
-
+                        <h2>Quick Actions</h2>
+                        <button class="action-button" id="completeAllMeals"><i class="fa-solid fa-utensils"></i> Complete All Meals</button>
+                        <button class="action-button" id="quickWeight"><i class="fa-solid fa-weight-scale"></i> Update Weight</button>
+                        <button class="action-button" id="quickWater"><i class="fa-solid fa-droplet"></i> Add Water</button>
+                        <button class="action-button" id="markWorkout"><i class="fa-solid fa-dumbbell"></i> Mark Workout</button>
                     </div>
-
-
 
                     <!-- DAILY GOALS -->
-
                     <div class="side-card">
-
-                        <h2>
-                            Daily Goals
-                        </h2>
-
-
+                        <h2>Daily Goals</h2>
                         <div class="goal">
-
-                            <div class="goal-top">
-
-                                <span>
-                                    Workout
-                                </span>
-
-                                <span id="goalWorkout">
-                                    3/5
-                                </span>
-
-                            </div>
-
-
-                            <div class="goal-bar">
-
-                                <div class="goal-fill" id="goalWorkoutBar" style="width:60%">
-                                </div>
-
-                            </div>
-
+                            <div class="goal-top"><span>Workout</span><span id="goalWorkout">3/5</span></div>
+                            <div class="goal-bar"><div class="goal-fill" id="goalWorkoutBar" style="width:60%"></div></div>
                         </div>
-
-
                         <div class="goal">
-
-                            <div class="goal-top">
-
-                                <span>
-                                    Meals
-                                </span>
-
-                                <span id="goalMeals">
-                                    2/4
-                                </span>
-
-                            </div>
-
-
-                            <div class="goal-bar">
-
-                                <div class="goal-fill" id="goalMealsBar" style="width:50%">
-                                </div>
-
-                            </div>
-
+                            <div class="goal-top"><span>Meals</span><span id="goalMeals">2/4</span></div>
+                            <div class="goal-bar"><div class="goal-fill" id="goalMealsBar" style="width:50%"></div></div>
                         </div>
-
-
                         <div class="goal">
-
-                            <div class="goal-top">
-
-                                <span>
-                                    Water
-                                </span>
-
-                                <span id="goalWater">
-                                    1.5/3 L
-                                </span>
-
-                            </div>
-
-
-                            <div class="goal-bar">
-
-                                <div class="goal-fill" id="goalWaterBar" style="width:50%">
-                                </div>
-
-                            </div>
-
+                            <div class="goal-top"><span>Water</span><span id="goalWater">1.5/3 L</span></div>
+                            <div class="goal-bar"><div class="goal-fill" id="goalWaterBar" style="width:50%"></div></div>
                         </div>
-
-
                         <div class="goal">
-
-                            <div class="goal-top">
-
-                                <span>
-                                    Weight
-                                </span>
-
-                                <span>
-                                    1/1
-                                </span>
-
-                            </div>
-
-
-                            <div class="goal-bar">
-
-                                <div class="goal-fill" style="width:100%">
-                                </div>
-
-                            </div>
-
+                            <div class="goal-top"><span>Weight</span><span>1/1</span></div>
+                            <div class="goal-bar"><div class="goal-fill" style="width:100%"></div></div>
                         </div>
-
                     </div>
-
-
 
                     <!-- MOTIVATION -->
-
                     <div class="side-card motivation">
-
-                        <h2>
-                            Better<br>
-                            <span>Every Day</span>
-                        </h2>
-
+                        <h2>Better<br><span>Every Day</span></h2>
                     </div>
-
 
                 </aside>
 
             </div>
-
         </main>
-
     </div>
 
-
-
     <!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
+         JAVASCRIPT LOGIC (Workout, Meals, Water, Weight)
+    ========================================================= -->
     <script>
-
-
-        // =========================================================
-        // USER DATA
-        // =========================================================
-
-        const userName =
-            localStorage.getItem("userName") || "Mohamed";
-
-
-        document.getElementById("headerName").textContent =
-            userName;
-
-
-
-        // =========================================================
-        // DATE
-        // =========================================================
+        const userName = localStorage.getItem("userName") || "Mohamed";
+        document.getElementById("headerName").textContent = userName;
 
         const now = new Date();
+        const dateOptions = { weekday: "short", month: "short", day: "numeric" };
+        document.getElementById("todayDate").textContent = now.toLocaleDateString("en-US", dateOptions);
 
-
-        const dateOptions = {
-
-            weekday: "short",
-
-            month: "short",
-
-            day: "numeric"
-
-        };
-
-
-        document.getElementById("todayDate").textContent =
-            now.toLocaleDateString("en-US", dateOptions);
-
-
-
-        // =========================================================
-        // DAY
-        // =========================================================
-
-        const dayName =
-            now.toLocaleDateString(
-                "en-US",
-                { weekday: "long" }
-            );
-
-
-
-        // =========================================================
-        // WORKOUT PLANS
-        // =========================================================
+        const dayName = now.toLocaleDateString("en-US", { weekday: "long" });
 
         const workoutPlans = {
-
-            Monday: {
-
-                name: "Push",
-
-                subtitle:
-                    "Chest - Shoulders - Triceps",
-
-                exercises: [
-
-                    {
-                        name: "Bench Press",
-                        sets: "4 × 8–10",
-                        weight: 40,
-                        image:
-                            "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300"
-                    },
-
-                    {
-                        name: "Incline Dumbbell Press",
-                        sets: "3 × 10–12",
-                        weight: 22.5,
-                        image:
-                            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300"
-                    },
-
-                    {
-                        name: "Shoulder Press",
-                        sets: "3 × 10–12",
-                        weight: 20,
-                        image:
-                            "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300"
-                    },
-
-                    {
-                        name: "Lateral Raises",
-                        sets: "3 × 12–15",
-                        weight: 10,
-                        image:
-                            "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300"
-                    },
-
-                    {
-                        name: "Triceps Pushdown",
-                        sets: "3 × 10–12",
-                        weight: 15,
-                        image:
-                            "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=300"
-                    }
-
-                ]
-
-            },
-
-
-            Tuesday: {
-
-                name: "Pull",
-
-                subtitle:
-                    "Back - Rear Delts - Biceps",
-
-                exercises: [
-
-                    {
-                        name: "Lat Pulldown",
-                        sets: "4 × 8–12",
-                        weight: 60,
-                        image:
-                            "https://images.unsplash.com/photo-1603287681836-b174ce5074c2?w=300"
-                    },
-
-                    {
-                        name: "Barbell Row",
-                        sets: "4 × 8–10",
-                        weight: 50,
-                        image:
-                            "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300"
-                    },
-
-                    {
-                        name: "Seated Cable Row",
-                        sets: "3 × 10–12",
-                        weight: 45,
-                        image:
-                            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300"
-                    },
-
-                    {
-                        name: "Face Pull",
-                        sets: "3 × 12–15",
-                        weight: 20,
-                        image:
-                            "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300"
-                    }
-
-                ]
-
-            },
-
-
-            Wednesday: {
-
-                name: "Legs",
-
-                subtitle:
-                    "Quads - Hamstrings - Calves",
-
-                exercises: [
-
-                    {
-                        name: "Squat",
-                        sets: "4 × 6–10",
-                        weight: 80,
-                        image:
-                            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300"
-                    },
-
-                    {
-                        name: "Leg Press",
-                        sets: "3 × 10–12",
-                        weight: 140,
-                        image:
-                            "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300"
-                    },
-
-                    {
-                        name: "Leg Extension",
-                        sets: "3 × 12–15",
-                        weight: 50,
-                        image:
-                            "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=300"
-                    },
-
-                    {
-                        name: "Leg Curl",
-                        sets: "3 × 10–12",
-                        weight: 45,
-                        image:
-                            "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300"
-                    }
-
-                ]
-
-            },
-
-
-            Thursday: {
-
-                name: "Push",
-
-                subtitle:
-                    "Chest - Shoulders - Triceps",
-
-                exercises: [
-
-                    {
-                        name: "Incline Bench Press",
-                        sets: "4 × 8–10",
-                        weight: 50,
-                        image:
-                            "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300"
-                    },
-
-                    {
-                        name: "Machine Chest Press",
-                        sets: "3 × 10–12",
-                        weight: 45,
-                        image:
-                            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300"
-                    },
-
-                    {
-                        name: "Shoulder Press",
-                        sets: "3 × 10–12",
-                        weight: 20,
-                        image:
-                            "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300"
-                    }
-
-                ]
-
-            },
-
-
-            Friday: {
-
-                name: "Pull",
-
-                subtitle:
-                    "Back - Rear Delts - Biceps",
-
-                exercises: [
-
-                    {
-                        name: "Pull Ups",
-                        sets: "4 × 6–10",
-                        weight: 0,
-                        image:
-                            "https://images.unsplash.com/photo-1603287681836-b174ce5074c2?w=300"
-                    },
-
-                    {
-                        name: "Cable Row",
-                        sets: "3 × 10–12",
-                        weight: 45,
-                        image:
-                            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300"
-                    },
-
-                    {
-                        name: "Dumbbell Curl",
-                        sets: "3 × 10–12",
-                        weight: 12.5,
-                        image:
-                            "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300"
-                    }
-
-                ]
-
-            },
-
-
-            Saturday: {
-
-                name: "Legs",
-
-                subtitle:
-                    "Quads - Hamstrings - Calves",
-
-                exercises: [
-
-                    {
-                        name: "Hack Squat",
-                        sets: "4 × 8–12",
-                        weight: 70,
-                        image:
-                            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300"
-                    },
-
-                    {
-                        name: "Romanian Deadlift",
-                        sets: "3 × 8–10",
-                        weight: 60,
-                        image:
-                            "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300"
-                    },
-
-                    {
-                        name: "Leg Curl",
-                        sets: "3 × 10–12",
-                        weight: 45,
-                        image:
-                            "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300"
-                    }
-
-                ]
-
-            },
-
-
-            Sunday: {
-
-                name: "Rest",
-
-                subtitle:
-                    "Recovery Day",
-
-                exercises: []
-
-            }
-
+            Monday: { name: "Push", subtitle: "Chest - Shoulders - Triceps", exercises: [
+                { name: "Bench Press", sets: "4 × 8–10", weight: 40, image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300" },
+                { name: "Incline Dumbbell Press", sets: "3 × 10–12", weight: 22.5, image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300" },
+                { name: "Shoulder Press", sets: "3 × 10–12", weight: 20, image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300" },
+                { name: "Lateral Raises", sets: "3 × 12–15", weight: 10, image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300" },
+                { name: "Triceps Pushdown", sets: "3 × 10–12", weight: 15, image: "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=300" }
+            ]},
+            Tuesday: { name: "Pull", subtitle: "Back - Rear Delts - Biceps", exercises: [
+                { name: "Lat Pulldown", sets: "4 × 8–12", weight: 60, image: "https://images.unsplash.com/photo-1603287681836-b174ce5074c2?w=300" },
+                { name: "Barbell Row", sets: "4 × 8–10", weight: 50, image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300" },
+                { name: "Seated Cable Row", sets: "3 × 10–12", weight: 45, image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300" },
+                { name: "Face Pull", sets: "3 × 12–15", weight: 20, image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300" }
+            ]},
+            Wednesday: { name: "Legs", subtitle: "Quads - Hamstrings - Calves", exercises: [
+                { name: "Squat", sets: "4 × 6–10", weight: 80, image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300" },
+                { name: "Leg Press", sets: "3 × 10–12", weight: 140, image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300" },
+                { name: "Leg Extension", sets: "3 × 12–15", weight: 50, image: "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=300" },
+                { name: "Leg Curl", sets: "3 × 10–12", weight: 45, image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300" }
+            ]},
+            Thursday: { name: "Push", subtitle: "Chest - Shoulders - Triceps", exercises: [
+                { name: "Incline Bench Press", sets: "4 × 8–10", weight: 50, image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300" },
+                { name: "Machine Chest Press", sets: "3 × 10–12", weight: 45, image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300" },
+                { name: "Shoulder Press", sets: "3 × 10–12", weight: 20, image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300" }
+            ]},
+            Friday: { name: "Pull", subtitle: "Back - Rear Delts - Biceps", exercises: [
+                { name: "Pull Ups", sets: "4 × 6–10", weight: 0, image: "https://images.unsplash.com/photo-1603287681836-b174ce5074c2?w=300" },
+                { name: "Cable Row", sets: "3 × 10–12", weight: 45, image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300" },
+                { name: "Dumbbell Curl", sets: "3 × 10–12", weight: 12.5, image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300" }
+            ]},
+            Saturday: { name: "Legs", subtitle: "Quads - Hamstrings - Calves", exercises: [
+                { name: "Hack Squat", sets: "4 × 8–12", weight: 70, image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300" },
+                { name: "Romanian Deadlift", sets: "3 × 8–10", weight: 60, image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300" },
+                { name: "Leg Curl", sets: "3 × 10–12", weight: 45, image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=300" }
+            ]},
+            Sunday: { name: "Rest", subtitle: "Recovery Day", exercises: [] }
         };
 
-
-
-        // =========================================================
-        // CURRENT WORKOUT
-        // =========================================================
-
-        let todayPlan =
-            workoutPlans[dayName] || workoutPlans.Monday;
-
-
+        let todayPlan = workoutPlans[dayName] || workoutPlans.Monday;
         let selectedExerciseIndex = 0;
+        let exerciseCompleted = JSON.parse(localStorage.getItem("exerciseCompleted_" + dayName) || "[]");
 
-
-        let exerciseCompleted =
-            JSON.parse(
-                localStorage.getItem(
-                    "exerciseCompleted_" + dayName
-                ) || "[]"
-            );
-
-
-
-        const workoutTitle =
-            document.getElementById("workoutTitle");
-
-        const workoutSubtitle =
-            document.getElementById("workoutSubtitle");
-
-        const exerciseList =
-            document.getElementById("exerciseList");
-
-        const restMessage =
-            document.getElementById("restMessage");
-
-        const workoutBody =
-            document.getElementById("workoutBody");
-
-
-
-        // =========================================================
-        // RENDER WORKOUT
-        // =========================================================
+        const workoutTitle = document.getElementById("workoutTitle");
+        const workoutSubtitle = document.getElementById("workoutSubtitle");
+        const exerciseList = document.getElementById("exerciseList");
+        const restMessage = document.getElementById("restMessage");
+        const workoutBody = document.getElementById("workoutBody");
 
         function renderWorkout() {
-
-
-            workoutTitle.textContent =
-                todayPlan.name === "Rest"
-                    ? "Rest Day"
-                    : todayPlan.name + " Workout";
-
-
-            workoutSubtitle.textContent =
-                todayPlan.subtitle;
-
-
+            workoutTitle.textContent = todayPlan.name === "Rest" ? "Rest Day" : todayPlan.name + " Workout";
+            workoutSubtitle.textContent = todayPlan.subtitle;
             exerciseList.innerHTML = "";
 
-
             if (todayPlan.name === "Rest") {
-
                 workoutBody.style.display = "none";
-
                 restMessage.style.display = "block";
-
                 return;
             }
 
-
             workoutBody.style.display = "grid";
-
             restMessage.style.display = "none";
 
+            todayPlan.exercises.forEach((exercise, index) => {
+                const row = document.createElement("div");
+                row.className = "exercise-row";
+                if (exerciseCompleted.includes(index)) row.classList.add("completed");
 
-            todayPlan.exercises.forEach(
-                (exercise, index) => {
-
-
-                    const row =
-                        document.createElement("div");
-
-
-                    row.className =
-                        "exercise-row";
-
-
-                    if (
-                        exerciseCompleted.includes(index)
-                    ) {
-
-                        row.classList.add("completed");
-
-                    }
-
-
-                    row.innerHTML = `
-
-                <img
-                    class="exercise-image"
-                    src="${exercise.image}"
-                    alt="${exercise.name}"
-                >
-
-                <div>
-
-                    <div class="exercise-name">
-                        ${index + 1}. ${exercise.name}
+                row.innerHTML = `
+                    <img class="exercise-image" src="${exercise.image}" alt="${exercise.name}">
+                    <div>
+                        <div class="exercise-name">${index + 1}. ${exercise.name}</div>
+                        <div class="exercise-details">${exercise.sets} &nbsp; | &nbsp; <span>${getExerciseWeight(index, exercise.weight)} kg</span></div>
                     </div>
+                    <button class="check-button" onclick="toggleExercise(${index})">${exerciseCompleted.includes(index) ? "✓" : ""}</button>
+                `;
 
-                    <div class="exercise-details">
-                        ${exercise.sets}
-                        &nbsp; | &nbsp;
-                        <span>
-                            ${getExerciseWeight(index, exercise.weight)} kg
-                        </span>
-                    </div>
+                row.addEventListener("click", function (event) {
+                    if (event.target.classList.contains("check-button")) return;
+                    selectExercise(index);
+                });
+                exerciseList.appendChild(row);
+            });
 
-                </div>
-
-                <button
-                    class="check-button"
-                    onclick="toggleExercise(${index})">
-
-                    ${exerciseCompleted.includes(index)
-                            ? "✓"
-                            : ""
-                        }
-
-                </button>
-
-            `;
-
-
-                    row.addEventListener(
-                        "click",
-                        function (event) {
-
-                            if (
-                                event.target.classList.contains(
-                                    "check-button"
-                                )
-                            ) {
-                                return;
-                            }
-
-                            selectExercise(index);
-
-                        }
-                    );
-
-
-                    exerciseList.appendChild(row);
-
-                }
-            );
-
-
-            selectExercise(
-                selectedExerciseIndex
-            );
-
+            selectExercise(selectedExerciseIndex);
             updateProgress();
-
         }
 
-
-
-        // =========================================================
-        // GET SAVED EXERCISE WEIGHT
-        // =========================================================
-
-        function getExerciseWeight(
-            index,
-            defaultWeight
-        ) {
-
-            const saved =
-                localStorage.getItem(
-                    "exerciseWeight_" +
-                    dayName +
-                    "_" +
-                    index
-                );
-
-
-            return saved !== null
-                ? Number(saved)
-                : defaultWeight;
-
+        function getExerciseWeight(index, defaultWeight) {
+            const saved = localStorage.getItem("exerciseWeight_" + dayName + "_" + index);
+            return saved !== null ? Number(saved) : defaultWeight;
         }
-
-
-
-        // =========================================================
-        // SELECT EXERCISE
-        // =========================================================
 
         function selectExercise(index) {
-
-            selectedExerciseIndex =
-                index;
-
-
-            const exercise =
-                todayPlan.exercises[index];
-
-
+            selectedExerciseIndex = index;
+            const exercise = todayPlan.exercises[index];
             if (!exercise) return;
-
-
-            document.getElementById(
-                "selectedExercise"
-            ).textContent =
-                exercise.name;
-
-
-            document.getElementById(
-                "exerciseWeight"
-            ).textContent =
-                getExerciseWeight(
-                    index,
-                    exercise.weight
-                ) + " kg";
-
+            document.getElementById("selectedExercise").textContent = exercise.name;
+            document.getElementById("exerciseWeight").textContent = getExerciseWeight(index, exercise.weight) + " kg";
         }
 
+        document.getElementById("plusWeight").addEventListener("click", function () {
+            const exercise = todayPlan.exercises[selectedExerciseIndex];
+            if (!exercise) return;
+            let weight = getExerciseWeight(selectedExerciseIndex, exercise.weight);
+            weight += 2.5;
+            localStorage.setItem("exerciseWeight_" + dayName + "_" + selectedExerciseIndex, weight);
+            document.getElementById("exerciseWeight").textContent = weight + " kg";
+            renderWorkout();
+        });
 
-
-        // =========================================================
-        // PLUS WEIGHT
-        // =========================================================
-
-        document.getElementById(
-            "plusWeight"
-        ).addEventListener(
-            "click",
-            function () {
-
-                const exercise =
-                    todayPlan.exercises[
-                    selectedExerciseIndex
-                    ];
-
-                if (!exercise) return;
-
-
-                let weight =
-                    getExerciseWeight(
-                        selectedExerciseIndex,
-                        exercise.weight
-                    );
-
-
-                weight += 2.5;
-
-
-                localStorage.setItem(
-                    "exerciseWeight_" +
-                    dayName +
-                    "_" +
-                    selectedExerciseIndex,
-                    weight
-                );
-
-
-                document.getElementById(
-                    "exerciseWeight"
-                ).textContent =
-                    weight + " kg";
-
-
-                renderWorkout();
-
-            }
-        );
-
-
-
-        // =========================================================
-        // MINUS WEIGHT
-        // =========================================================
-
-        document.getElementById(
-            "minusWeight"
-        ).addEventListener(
-            "click",
-            function () {
-
-                const exercise =
-                    todayPlan.exercises[
-                    selectedExerciseIndex
-                    ];
-
-                if (!exercise) return;
-
-
-                let weight =
-                    getExerciseWeight(
-                        selectedExerciseIndex,
-                        exercise.weight
-                    );
-
-
-                weight = Math.max(
-                    0,
-                    weight - 2.5
-                );
-
-
-                localStorage.setItem(
-                    "exerciseWeight_" +
-                    dayName +
-                    "_" +
-                    selectedExerciseIndex,
-                    weight
-                );
-
-
-                document.getElementById(
-                    "exerciseWeight"
-                ).textContent =
-                    weight + " kg";
-
-
-                renderWorkout();
-
-            }
-        );
-
-
-
-        // =========================================================
-        // COMPLETE EXERCISE
-        // =========================================================
+        document.getElementById("minusWeight").addEventListener("click", function () {
+            const exercise = todayPlan.exercises[selectedExerciseIndex];
+            if (!exercise) return;
+            let weight = getExerciseWeight(selectedExerciseIndex, exercise.weight);
+            weight = Math.max(0, weight - 2.5);
+            localStorage.setItem("exerciseWeight_" + dayName + "_" + selectedExerciseIndex, weight);
+            document.getElementById("exerciseWeight").textContent = weight + " kg";
+            renderWorkout();
+        });
 
         function toggleExercise(index) {
-
-
-            if (
-                exerciseCompleted.includes(index)
-            ) {
-
-                exerciseCompleted =
-                    exerciseCompleted.filter(
-                        item => item !== index
-                    );
-
+            if (exerciseCompleted.includes(index)) {
+                exerciseCompleted = exerciseCompleted.filter(item => item !== index);
             } else {
-
                 exerciseCompleted.push(index);
-
             }
-
-
-            localStorage.setItem(
-                "exerciseCompleted_" + dayName,
-                JSON.stringify(
-                    exerciseCompleted
-                )
-            );
-
-
+            localStorage.setItem("exerciseCompleted_" + dayName, JSON.stringify(exerciseCompleted));
             renderWorkout();
-
         }
 
+        document.getElementById("saveWorkout").addEventListener("click", function () {
+            const today = now.toISOString().split("T")[0];
+            localStorage.setItem("workoutSaved_" + today, "true");
+            document.getElementById("workoutStatus").innerHTML = "✓ Workout Saved";
+            updateProgress();
+        });
 
-
-        // =========================================================
-        // SAVE WORKOUT
-        // =========================================================
-
-        document.getElementById(
-            "saveWorkout"
-        ).addEventListener(
-            "click",
-            function () {
-
-
-                const today =
-                    now.toISOString().split("T")[0];
-
-
-                localStorage.setItem(
-                    "workoutSaved_" + today,
-                    "true"
-                );
-
-
-                document.getElementById(
-                    "workoutStatus"
-                ).innerHTML =
-                    "✓ Workout Saved";
-
-
-                updateProgress();
-
-            }
-        );
-
-
-
-        // =========================================================
-        // REST DAY
-        // =========================================================
-
-        document.getElementById(
-            "undoRest"
-        ).addEventListener(
-            "click",
-            function () {
-
-                renderWorkout();
-
-            }
-        );
-
-
-
-        // =========================================================
-        // MEALS
-        // =========================================================
+        document.getElementById("undoRest").addEventListener("click", function () { renderWorkout(); });
 
         const meals = [
-
-            {
-                name: "Meal 1 - Breakfast",
-                time: "7:00 AM",
-                details: "Oats (80g) + Eggs (3) + Banana (1)",
-                image:
-                    "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=300"
-            },
-
-            {
-                name: "Meal 2 - Mid Morning",
-                time: "10:30 AM",
-                details: "Chicken Breast (150g) + Rice (100g) + Vegetables",
-                image:
-                    "https://images.unsplash.com/photo-1547592180-85f173990554?w=300"
-            },
-
-            {
-                name: "Meal 3 - Lunch",
-                time: "2:00 PM",
-                details: "Chicken Breast (200g) + Rice (150g) + Salad",
-                image:
-                    "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300"
-            },
-
-            {
-                name: "Meal 4 - Pre Workout",
-                time: "5:30 PM",
-                details: "Banana (1) + Oats (50g) + Honey (10g)",
-                image:
-                    "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=300"
-            }
-
+            { name: "Meal 1 - Breakfast", time: "7:00 AM", details: "Oats (80g) + Eggs (3) + Banana (1)", image: "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=300" },
+            { name: "Meal 2 - Mid Morning", time: "10:30 AM", details: "Chicken Breast (150g) + Rice (100g) + Vegetables", image: "https://images.unsplash.com/photo-1547592180-85f173990554?w=300" },
+            { name: "Meal 3 - Lunch", time: "2:00 PM", details: "Chicken Breast (200g) + Rice (150g) + Salad", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300" },
+            { name: "Meal 4 - Pre Workout", time: "5:30 PM", details: "Banana (1) + Oats (50g) + Honey (10g)", image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=300" }
         ];
 
-
-        let completedMeals =
-            JSON.parse(
-                localStorage.getItem(
-                    "completedMeals_" + dayName
-                ) || "[]"
-            );
-
-
-
-        const mealList =
-            document.getElementById("mealList");
-
-
+        let completedMeals = JSON.parse(localStorage.getItem("completedMeals_" + dayName) || "[]");
+        const mealList = document.getElementById("mealList");
 
         function renderMeals() {
-
-
             mealList.innerHTML = "";
+            meals.forEach((meal, index) => {
+                const row = document.createElement("div");
+                row.className = "meal-row";
+                if (completedMeals.includes(index)) row.classList.add("completed");
 
-
-            meals.forEach(
-                (meal, index) => {
-
-
-                    const row =
-                        document.createElement("div");
-
-
-                    row.className =
-                        "meal-row";
-
-
-                    if (
-                        completedMeals.includes(index)
-                    ) {
-
-                        row.classList.add(
-                            "completed"
-                        );
-
-                    }
-
-
-                    row.innerHTML = `
-
-                <img
-                    class="meal-image"
-                    src="${meal.image}"
-                    alt="${meal.name}"
-                >
-
-                <div>
-
-                    <div class="meal-name">
-                        ${meal.name}
-                        (${meal.time})
+                row.innerHTML = `
+                    <img class="meal-image" src="${meal.image}" alt="${meal.name}">
+                    <div>
+                        <div class="meal-name">${meal.name} (${meal.time})</div>
+                        <div class="meal-details">${meal.details}</div>
                     </div>
-
-                    <div class="meal-details">
-                        ${meal.details}
-                    </div>
-
-                </div>
-
-                <button
-                    class="meal-check"
-                    onclick="toggleMeal(${index})">
-
-                    ${completedMeals.includes(index)
-                            ? "✓"
-                            : ""
-                        }
-
-                </button>
-
-            `;
-
-
-                    mealList.appendChild(row);
-
-                }
-            );
-
-
+                    <button class="meal-check" onclick="toggleMeal(${index})">${completedMeals.includes(index) ? "✓" : ""}</button>
+                `;
+                mealList.appendChild(row);
+            });
             updateMealProgress();
-
         }
-
-
-
-        // =========================================================
-        // TOGGLE MEAL
-        // =========================================================
 
         function toggleMeal(index) {
-
-
-            if (
-                completedMeals.includes(index)
-            ) {
-
-                completedMeals =
-                    completedMeals.filter(
-                        item => item !== index
-                    );
-
+            if (completedMeals.includes(index)) {
+                completedMeals = completedMeals.filter(item => item !== index);
             } else {
-
                 completedMeals.push(index);
-
             }
-
-
-            localStorage.setItem(
-                "completedMeals_" + dayName,
-                JSON.stringify(
-                    completedMeals
-                )
-            );
-
-
+            localStorage.setItem("completedMeals_" + dayName, JSON.stringify(completedMeals));
             renderMeals();
-
             updateProgress();
-
         }
 
-
-
-        // =========================================================
-        // COMPLETE ALL MEALS
-        // =========================================================
-
-        document.getElementById(
-            "completeAllMeals"
-        ).addEventListener(
-            "click",
-            function () {
-
-
-                completedMeals =
-                    meals.map(
-                        (_, index) => index
-                    );
-
-
-                localStorage.setItem(
-                    "completedMeals_" + dayName,
-                    JSON.stringify(
-                        completedMeals
-                    )
-                );
-
-
-                renderMeals();
-
-                updateProgress();
-
-            }
-        );
-
-
-
-        // =========================================================
-        // MEAL PROGRESS
-        // =========================================================
+        document.getElementById("completeAllMeals").addEventListener("click", function () {
+            completedMeals = meals.map((_, index) => index);
+            localStorage.setItem("completedMeals_" + dayName, JSON.stringify(completedMeals));
+            renderMeals();
+            updateProgress();
+        });
 
         function updateMealProgress() {
-
-
-            const count =
-                completedMeals.length;
-
-
-            const total =
-                meals.length;
-
-
-            const percent =
-                (count / total) * 100;
-
-
-            document.getElementById(
-                "mealCount"
-            ).textContent =
-                count + " / " + total;
-
-
-            document.getElementById(
-                "mealProgress"
-            ).style.width =
-                percent + "%";
-
-
-            document.getElementById(
-                "mealStat"
-            ).textContent =
-                count + "/" + total;
-
-
-            document.getElementById(
-                "goalMeals"
-            ).textContent =
-                count + "/" + total;
-
-
-            document.getElementById(
-                "goalMealsBar"
-            ).style.width =
-                percent + "%";
-
+            const count = completedMeals.length;
+            const total = meals.length;
+            const percent = (count / total) * 100;
+            document.getElementById("mealCount").textContent = count + " / " + total;
+            document.getElementById("mealProgress").style.width = percent + "%";
+            document.getElementById("mealStat").textContent = count + "/" + total;
+            document.getElementById("goalMeals").textContent = count + "/" + total;
+            document.getElementById("goalMealsBar").style.width = percent + "%";
         }
-
-
-
-        // =========================================================
-        // WATER
-        // =========================================================
 
         const waterGoal = 3;
+        let waterAmount = Number(localStorage.getItem("water_" + dayName) || 1.5);
 
-
-        let waterAmount =
-            Number(
-                localStorage.getItem(
-                    "water_" + dayName
-                ) || 1.5
-            );
-
-
-
-        document.querySelectorAll(
-            ".water-option"
-        ).forEach(
-            button => {
-
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-
-                        waterAmount =
-                            Number(
-                                this.dataset.water
-                            );
-
-
-                        localStorage.setItem(
-                            "water_" + dayName,
-                            waterAmount
-                        );
-
-
-                        updateWater();
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        // =========================================================
-        // UPDATE WATER
-        // =========================================================
+        document.querySelectorAll(".water-option").forEach(button => {
+            button.addEventListener("click", function () {
+                waterAmount = Number(this.dataset.water);
+                localStorage.setItem("water_" + dayName, waterAmount);
+                updateWater();
+            });
+        });
 
         function updateWater() {
-
-
-            const percent =
-                Math.min(
-                    100,
-                    (waterAmount / waterGoal) * 100
-                );
-
-
-            document.getElementById(
-                "waterAmount"
-            ).textContent =
-                waterAmount + " / 3 L";
-
-
-            document.getElementById(
-                "waterText"
-            ).textContent =
-                waterAmount + " / 3 L";
-
-
-            document.getElementById(
-                "waterPercent"
-            ).textContent =
-                Math.round(percent) + "%";
-
-
-            document.getElementById(
-                "waterFill"
-            ).style.width =
-                percent + "%";
-
-
-            document.getElementById(
-                "waterStat"
-            ).textContent =
-                waterAmount + "/3 L";
-
-
-            document.getElementById(
-                "goalWater"
-            ).textContent =
-                waterAmount + "/3 L";
-
-
-            document.getElementById(
-                "goalWaterBar"
-            ).style.width =
-                percent + "%";
-
+            const percent = Math.min(100, (waterAmount / waterGoal) * 100);
+            document.getElementById("waterAmount").textContent = waterAmount + " / 3 L";
+            document.getElementById("waterText").textContent = waterAmount + " / 3 L";
+            document.getElementById("waterPercent").textContent = Math.round(percent) + "%";
+            document.getElementById("waterFill").style.width = percent + "%";
+            document.getElementById("waterStat").textContent = waterAmount + "/3 L";
+            document.getElementById("goalWater").textContent = waterAmount + "/3 L";
+            document.getElementById("goalWaterBar").style.width = percent + "%";
         }
 
+        document.getElementById("quickWater").addEventListener("click", function () {
+            waterAmount = Math.min(3, waterAmount + 0.5);
+            localStorage.setItem("water_" + dayName, waterAmount);
+            updateWater();
+            updateProgress();
+        });
 
-
-        // =========================================================
-        // QUICK WATER
-        // =========================================================
-
-        document.getElementById(
-            "quickWater"
-        ).addEventListener(
-            "click",
-            function () {
-
-
-                waterAmount =
-                    Math.min(
-                        3,
-                        waterAmount + 0.5
-                    );
-
-
-                localStorage.setItem(
-                    "water_" + dayName,
-                    waterAmount
-                );
-
-
-                updateWater();
-
-                updateProgress();
-
+        document.getElementById("saveWeight").addEventListener("click", function () {
+            const input = document.getElementById("todayWeight");
+            const value = Number(input.value);
+            if (!value || value < 20 || value > 300) {
+                alert("Please enter a valid weight.");
+                return;
             }
-        );
+            const date = now.toISOString().split("T")[0];
+            localStorage.setItem("weight_" + date, value);
+            localStorage.setItem("userWeight", value);
+            alert("Weight saved successfully!");
+            updateProgress();
+        });
 
+        document.getElementById("quickWeight").addEventListener("click", function () {
+            document.getElementById("todayWeight").focus();
+            document.getElementById("todayWeight").scrollIntoView({ behavior: "smooth", block: "center" });
+        });
 
-
-        // =========================================================
-        // WEIGHT
-        // =========================================================
-
-        document.getElementById(
-            "saveWeight"
-        ).addEventListener(
-            "click",
-            function () {
-
-
-                const input =
-                    document.getElementById(
-                        "todayWeight"
-                    );
-
-
-                const value =
-                    Number(
-                        input.value
-                    );
-
-
-                if (
-                    !value ||
-                    value < 20 ||
-                    value > 300
-                ) {
-
-                    alert(
-                        "Please enter a valid weight."
-                    );
-
-                    return;
-
-                }
-
-
-                const date =
-                    now.toISOString()
-                        .split("T")[0];
-
-
-                localStorage.setItem(
-                    "weight_" + date,
-                    value
-                );
-
-
-                localStorage.setItem(
-                    "userWeight",
-                    value
-                );
-
-
-                alert(
-                    "Weight saved successfully!"
-                );
-
-
-                updateProgress();
-
-            }
-        );
-
-
-
-        // =========================================================
-        // QUICK WEIGHT
-        // =========================================================
-
-        document.getElementById(
-            "quickWeight"
-        ).addEventListener(
-            "click",
-            function () {
-
-
-                document.getElementById(
-                    "todayWeight"
-                ).focus();
-
-
-                document.getElementById(
-                    "todayWeight"
-                ).scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-            }
-        );
-
-
-
-        // =========================================================
-        // MARK WORKOUT
-        // =========================================================
-
-        document.getElementById(
-            "markWorkout"
-        ).addEventListener(
-            "click",
-            function () {
-
-
-                todayPlan.exercises.forEach(
-                    (_, index) => {
-
-                        if (
-                            !exerciseCompleted.includes(
-                                index
-                            )
-                        ) {
-
-                            exerciseCompleted.push(
-                                index
-                            );
-
-                        }
-
-                    }
-                );
-
-
-                localStorage.setItem(
-                    "exerciseCompleted_" + dayName,
-                    JSON.stringify(
-                        exerciseCompleted
-                    )
-                );
-
-
-                renderWorkout();
-
-                updateProgress();
-
-            }
-        );
-
-
-
-        // =========================================================
-        // SAVE WORKOUT BUTTON
-        // =========================================================
-
-        document.getElementById(
-            "saveWorkout"
-        ).addEventListener(
-            "click",
-            function () {
-
-                localStorage.setItem(
-                    "workoutSaved_" + dayName,
-                    "true"
-                );
-
-                updateProgress();
-
-            }
-        );
-
-
-
-        // =========================================================
-        // PROGRESS
-        // =========================================================
+        document.getElementById("markWorkout").addEventListener("click", function () {
+            todayPlan.exercises.forEach((_, index) => {
+                if (!exerciseCompleted.includes(index)) exerciseCompleted.push(index);
+            });
+            localStorage.setItem("exerciseCompleted_" + dayName, JSON.stringify(exerciseCompleted));
+            renderWorkout();
+            updateProgress();
+        });
 
         function updateProgress() {
+            const workoutTotal = todayPlan.exercises.length;
+            const workoutDone = exerciseCompleted.length;
+            const workoutPercent = workoutTotal > 0 ? (workoutDone / workoutTotal) * 100 : 100;
 
-
-            const workoutTotal =
-                todayPlan.exercises.length;
-
-
-            const workoutDone =
-                exerciseCompleted.length;
-
-
-            const workoutPercent =
-                workoutTotal > 0
-                    ? (workoutDone / workoutTotal) * 100
-                    : 100;
-
-
-            // Share today's workout completion with Home and History.
-            const athleteIdForProgress =
-                localStorage.getItem("athleteId") || "ATH-10001";
-            const progressDate =
-                now.toISOString().slice(0, 10);
-            const dailyProgressKey =
-                "exerciseDailyProgress_" + athleteIdForProgress;
+            const athleteIdForProgress = localStorage.getItem("athleteId") || "ATH-10001";
+            const progressDate = now.toISOString().slice(0, 10);
+            const dailyProgressKey = "exerciseDailyProgress_" + athleteIdForProgress;
             let dailyProgressRecords = {};
             try {
-                dailyProgressRecords = JSON.parse(
-                    localStorage.getItem(dailyProgressKey) || "{}"
-                ) || {};
+                dailyProgressRecords = JSON.parse(localStorage.getItem(dailyProgressKey) || "{}") || {};
             } catch (error) {
                 dailyProgressRecords = {};
             }
 
             dailyProgressRecords[progressDate] = {
-                date: progressDate,
-                athleteId: athleteIdForProgress,
-                dayName: dayName,
-                workoutName: todayPlan.name || dayName,
-                completed: workoutDone,
-                total: workoutTotal,
-                percent: Math.round(workoutPercent),
+                date: progressDate, athleteId: athleteIdForProgress, dayName: dayName,
+                workoutName: todayPlan.name || dayName, completed: workoutDone,
+                total: workoutTotal, percent: Math.round(workoutPercent),
                 updatedAt: new Date().toISOString()
             };
+            localStorage.setItem(dailyProgressKey, JSON.stringify(dailyProgressRecords));
 
-            localStorage.setItem(
-                dailyProgressKey,
-                JSON.stringify(dailyProgressRecords)
-            );
+            const mealPercent = (completedMeals.length / meals.length) * 100;
+            const waterPercent = (waterAmount / waterGoal) * 100;
+            const weightSaved = localStorage.getItem("weight_" + now.toISOString().split("T")[0]);
+            const weightPercent = weightSaved ? 100 : 0;
 
+            const overall = Math.round((workoutPercent * .40) + (mealPercent * .30) + (waterPercent * .20) + (weightPercent * .10));
 
-            const mealPercent =
-                (completedMeals.length / meals.length) * 100;
-
-
-            const waterPercent =
-                (waterAmount / waterGoal) * 100;
-
-
-            const weightSaved =
-                localStorage.getItem(
-                    "weight_" +
-                    now.toISOString().split("T")[0]
-                );
-
-
-            const weightPercent =
-                weightSaved ? 100 : 0;
-
-
-            /*
-                Overall progress:
-        
-                Workout = 40%
-                Meals   = 30%
-                Water   = 20%
-                Weight  = 10%
-            */
-
-
-            const overall =
-                Math.round(
-                    (
-                        workoutPercent * .40
-                        +
-                        mealPercent * .30
-                        +
-                        waterPercent * .20
-                        +
-                        weightPercent * .10
-                    )
-                );
-
-
-            document.getElementById(
-                "progressCircle"
-            ).style.background =
-                `
-        conic-gradient(
-            #24e3a3 ${overall}%,
-            #263842 ${overall}%
-        )
-        `;
-
-
-            document.getElementById(
-                "progressCircle"
-            ).setAttribute(
-                "data-progress",
-                overall + "%"
-            );
-
-
-            document.getElementById(
-                "workoutStat"
-            ).textContent =
-                workoutDone +
-                "/" +
-                workoutTotal;
-
-
-            document.getElementById(
-                "goalWorkout"
-            ).textContent =
-                workoutDone +
-                "/" +
-                workoutTotal;
-
-
-            document.getElementById(
-                "goalWorkoutBar"
-            ).style.width =
-                workoutPercent + "%";
-
+            document.getElementById("progressCircle").style.background = `conic-gradient(#24e3a3 ${overall}%, #263842 ${overall}%)`;
+            document.getElementById("progressCircle").setAttribute("data-progress", overall + "%");
+            document.getElementById("workoutStat").textContent = workoutDone + "/" + workoutTotal;
+            document.getElementById("goalWorkout").textContent = workoutDone + "/" + workoutTotal;
+            document.getElementById("goalWorkoutBar").style.width = workoutPercent + "%";
         }
 
-
-
-        // =========================================================
-        // INITIALIZE
-        // =========================================================
-
         renderWorkout();
-
         renderMeals();
-
         updateWater();
-
         updateProgress();
-
-
     </script>
 
+    <!-- =========================================================
+         MOBILE MENU SCRIPT (Clean & Working)
+    ========================================================= -->
+    <script>
+        (function () {
+            const sidebar = document.querySelector('.sidebar');
+            if (!sidebar) return;
 
-<script>
-(function () {
-  const sidebar = document.querySelector('.sidebar');
-  if (!sidebar || document.querySelector('.momentum-mobile-bar')) return;
+            // إنشاء الشريط العلوي
+            const bar = document.createElement('header');
+            bar.className = 'momentum-mobile-bar';
+            bar.innerHTML = `
+                <button class="momentum-menu-toggle" type="button" aria-label="Open navigation">☰</button>
+                <div style="color: #fff; font-weight: bold; font-size: 18px; letter-spacing: 1px;">
+                    <span style="color: #24e3a3;">MO</span>MENTUM
+                </div>
+                <div style="width: 42px;"></div> 
+            `;
 
-  const bar = document.createElement('header');
-  bar.className = 'momentum-mobile-bar';
-  bar.innerHTML = '<button class="momentum-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><div class="momentum-mobile-brand">MO<span>MENTUM</span></div>';
+            // إنشاء طبقة التعتيم
+            const overlay = document.createElement('div');
+            overlay.className = 'momentum-sidebar-overlay';
 
-  const overlay = document.createElement('div');
-  overlay.className = 'momentum-sidebar-overlay';
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(overlay);
-  document.body.appendChild(bar);
+            document.body.appendChild(overlay);
+            document.body.appendChild(bar);
 
-  const toggle = bar.querySelector('.momentum-menu-toggle');
-  function closeMenu() {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('show');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
-    document.body.style.overflow = '';
-  }
-  function openMenu() {
-    sidebar.classList.add('open');
-    overlay.classList.add('show');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close navigation');
-    document.body.style.overflow = 'hidden';
-  }
-  toggle.addEventListener('click', function () {
-    sidebar.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  overlay.addEventListener('click', closeMenu);
-  sidebar.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
-    });
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') closeMenu();
-  });
-  window.addEventListener('resize', function () {
-    if (!window.matchMedia('(max-width: 768px)').matches) closeMenu();
-  });
-})();
-</script>
+            const toggle = bar.querySelector('.momentum-menu-toggle');
+
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                toggle.innerHTML = '☰';
+                document.body.style.overflow = '';
+            }
+
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+                toggle.innerHTML = '✕';
+                document.body.style.overflow = 'hidden';
+            }
+
+            toggle.addEventListener('click', function () {
+                if (sidebar.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            overlay.addEventListener('click', closeMenu);
+
+            sidebar.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) closeMenu();
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) closeMenu();
+            });
+        })();
+    </script>
 
 </body>
-
 </html>
