@@ -57,168 +57,160 @@
         }
 
         /* SIDEBAR */
-
-          .sidebar {
-
+        .sidebar {
             width: 235px;
             min-height: 100vh;
-
             background:
-                linear-gradient(
-                    rgba(2, 10, 16, .78),
-                    rgba(2, 10, 16, .94)
-                ),
-                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800")
-                center / cover;
-
+                linear-gradient(rgba(2, 10, 16, .78), rgba(2, 10, 16, .94)),
+                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover;
             border-right: 1px solid #20313d;
-
             padding: 28px 14px;
-
             position: fixed;
             left: 0;
             top: 0;
             bottom: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
         }
 
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: -1.2px;
-      margin: 4px 0 7px 9px
-    }
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: -1.2px;
+            margin: 4px 0 7px 9px
+        }
 
-    .logo .mo {
-  color: #ffffff;
-}
+        .logo .mo {
+            color: #ffffff;
+        }
 
-.logo .mentum {
-  color: #39d98a;
-}
+        .logo .mentum {
+            color: #39d98a;
+        }
 
-    .brand-caption {
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 1.8px;
-      margin: 0 0 38px 10px
-    }
+        .brand-caption {
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 1.8px;
+            margin: 0 0 38px 10px
+        }
 
-    .nav-label {
-      color: #657a74;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1.8px;
-      margin: 0 0 13px 12px
-    }
+        .nav-label {
+            color: #657a74;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.8px;
+            margin: 0 0 13px 12px
+        }
 
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 7px
-    }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 7px
+        }
 
-    .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 13px;
-      color: #9aada7;
-      font-size: 13px;
-      font-weight: 600;
-      border: 1px solid transparent;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: .25s
-    }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 13px;
+            color: #9aada7;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: .25s
+        }
 
-    .nav-link i {
-      width: 19px;
-      text-align: center;
-      font-size: 15px
-    }
+        .nav-link i {
+            width: 19px;
+            text-align: center;
+            font-size: 15px
+        }
 
-    .nav-link:hover {
-      background: rgba(255, 255, 255, .055);
-      color: var(--white)
-    }
+        .nav-link:hover {
+            background: rgba(255, 255, 255, .055);
+            color: var(--white)
+        }
 
-    .nav-link.active {
-      color: var(--green);
-      background: rgba(57, 217, 138, .10);
-      border-color: rgba(57, 217, 138, .17)
-    }
+        .nav-link.active {
+            color: var(--green);
+            background: rgba(57, 217, 138, .10);
+            border-color: rgba(57, 217, 138, .17)
+        }
 
-    .sidebar-bottom {
-      margin-top: auto;
-      padding-top: 25px
-    }
+        .sidebar-bottom {
+            margin-top: auto;
+            padding-top: 25px
+        }
 
-    .quote {
-      padding: 0 10px 18px;
-      color: #b9ccc4;
-      font-size: 13px;
-      line-height: 1.65
-    }
+        .quote {
+            padding: 0 10px 18px;
+            color: #b9ccc4;
+            font-size: 13px;
+            line-height: 1.65
+        }
 
-    .quote span {
-      display: block;
-      width: 42px;
-      height: 3px;
-      background: var(--green);
-      margin-top: 12px;
-      border-radius: 4px
-    }
+        .quote span {
+            display: block;
+            width: 42px;
+            height: 3px;
+            background: var(--green);
+            margin-top: 12px;
+            border-radius: 4px
+        }
 
-    .coach-mini {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      padding: 13px 10px;
-      margin-bottom: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, .035);
-      border-radius: 14px
-    }
+        .coach-mini {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 13px 10px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, .035);
+            border-radius: 14px
+        }
 
-    .coach-avatar {
-      width: 39px;
-      height: 39px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #39d98a, #168f70);
-      display: grid;
-      place-items: center;
-      color: #04140d;
-      font-size: 15px;
-      font-weight: 900;
-      flex-shrink: 0
-    }
+        .coach-avatar {
+            width: 39px;
+            height: 39px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #39d98a, #168f70);
+            display: grid;
+            place-items: center;
+            color: #04140d;
+            font-size: 15px;
+            font-weight: 900;
+            flex-shrink: 0
+        }
 
-    .coach-info {
-      min-width: 0
-    }
+        .coach-info {
+            min-width: 0
+        }
 
-    .coach-info h4 {
-      font-size: 12px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap
-    }
+        .coach-info h4 {
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
 
-    .coach-info p {
-      font-size: 10px;
-      color: var(--muted);
-      margin-top: 5px
-    }
+        .coach-info p {
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: 5px
+        }
 
-    .logout {
-      color: #ff8f8f
-    }
+        .logout {
+            color: #ff8f8f
+        }
 
         /* MAIN CONTENT */
-
         .main {
-            width: calc(100% - 255px);
-            margin-left: 255px;
+            width: calc(100% - 235px);
+            margin-left: 235px;
             padding: 34px 38px 45px;
             min-width: 0;
         }
@@ -306,7 +298,6 @@
         }
 
         /* GLASS PANELS */
-
         .panel {
             background: var(--panel);
             border: 1px solid var(--border);
@@ -433,7 +424,6 @@
         }
 
         /* ATHLETE GRID */
-
         .athlete-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -661,257 +651,138 @@
         }
 
         /* RESPONSIVE */
-
         @media (max-width: 1250px) {
-            .athlete-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .filters {
-                grid-template-columns: minmax(180px, 1fr) 160px 160px;
-            }
-
-            .main {
-                padding-left: 27px;
-                padding-right: 27px;
-            }
+            .athlete-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .filters { grid-template-columns: minmax(180px, 1fr) 160px 160px; }
+            .main { padding-left: 27px; padding-right: 27px; }
         }
 
-        @media (max-width: 900px) {
+        /* =========================
+           MOMENTUM MOBILE FIXES (New)
+        ========================= */
+        @media (max-width: 768px) {
+            /* 1. إخفاء السايدبار وتجهيزه للفتح */
             .sidebar {
-                width: 78px;
-                min-width: 78px;
-                padding: 25px 11px;
-                align-items: center;
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 260px !important;
+                min-height: 100vh !important;
+                background: linear-gradient(rgba(2, 10, 16, .95), rgba(2, 10, 16, .98)), url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover !important;
+                transform: translateX(-105%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1050 !important;
+                padding: 28px 14px !important;
+                display: flex !important;
+                flex-direction: column;
             }
 
+            .sidebar.open {
+                transform: translateX(0) !important;
+            }
+
+            /* 2. إظهار النصوص في السايدبار */
+            .brand-caption, .nav-label, .nav-link span, .coach-info, .quote {
+                display: block !important;
+            }
             .logo {
-                font-size: 0;
-                margin-left: 0;
+                font-size: 25px !important;
+                margin-left: 9px !important;
             }
-
-            .logo::before {
-                content: "M";
-                color: var(--green);
-                font-size: 25px;
+            .logo:before {
+                content: none !important;
             }
-
-            .brand-caption,
-            .nav-label,
-            .nav-link span,
-            .coach-info {
-                display: none;
-            }
-
-            .nav-links {
-                width: 100%;
-            }
-
+            .nav-links { width: 100% !important; }
             .nav-link {
+                justify-content: flex-start !important;
+                padding: 14px 13px !important;
+            }
+            .coach-mini { padding: 13px 10px !important; border: 1px solid var(--border) !important; background: rgba(255, 255, 255, .035) !important; }
+            .sidebar-bottom { width: 100% !important; }
+
+            /* 3. شريط الموبايل العلوي */
+            .momentum-mobile-bar {
+                display: flex !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 65px;
+                background: rgba(3, 12, 19, 0.85);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(36, 227, 163, 0.15);
+                z-index: 1000;
+                align-items: center;
+                padding: 0 15px;
+                justify-content: space-between;
+            }
+
+            .momentum-menu-toggle {
+                background: rgba(36, 227, 163, 0.1);
+                border: 1px solid rgba(36, 227, 163, 0.3);
+                color: #24e3a3;
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
                 justify-content: center;
-                padding: 15px 8px;
+                cursor: pointer;
             }
 
-            .nav-link i {
-                font-size: 17px;
-            }
-
-            .coach-mini {
-                padding: 6px;
-                border: none;
-                background: transparent;
-            }
-
-            .coach-avatar {
-                width: 38px;
-                height: 38px;
-            }
-
-            .sidebar-bottom {
-                width: 100%;
-            }
-
-            .main {
-                width: calc(100% - 78px);
-                margin-left: 78px;
-            }
-        }
-
-        @media (max-width: 650px) {
-            .main {
-                padding: 24px 15px 35px;
-            }
-
-            .topbar {
-                align-items: flex-start;
-            }
-
-            .top-actions {
-                gap: 7px;
-            }
-
-            .profile-chip {
+            /* 4. طبقة التعتيم ورا السايدبار */
+            .momentum-sidebar-overlay {
                 display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1040;
+                backdrop-filter: blur(3px);
+            }
+            .momentum-sidebar-overlay.show {
+                display: block;
             }
 
-            .page-title {
-                font-size: 25px;
+            /* 5. تعديل المساحات للمحتوى الأساسي */
+            .main {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 85px 15px 30px !important;
             }
 
+            /* 6. إخفاء معلومات اليوزر في الموبايل لتوفير مساحة */
+            .profile-chip { display: none !important; }
+            .top-actions { gap: 7px !important; }
+            .page-title { font-size: 25px !important; }
+            .topbar { align-items: flex-start !important; }
+
+            /* 7. ترتيب الفلاتر والكروت */
             .filters {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
             }
-
-            .search-hero {
-                padding: 19px;
-            }
-
             .athlete-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
             }
-
             .section-heading {
-                align-items: flex-start;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 10px !important;
             }
-
-            .result-count {
-                font-size: 10px;
+            .search-hero {
+                padding: 19px !important;
             }
         }
-                
         
-.logo,
-.logo a,
-.logo span,
-.logo::before,
-.logo::after,
-.logo a::before,
-.logo a::after {
-    border-bottom: none !important;
-    text-decoration: none !important;
-    box-shadow: none !important;
-    background-image: none !important;
-}
+        .logo, .logo a, .logo span, .logo::before, .logo::after, .logo a::before, .logo a::after {
+            border-bottom: none !important;
+            text-decoration: none !important;
+            box-shadow: none !important;
+            background-image: none !important;
+        }
     </style>
-<style>
-
-/* MOMENTUM responsive navigation patch */
-@media (max-width: 768px) {
-  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
-  body { background-attachment: scroll !important; }
-  .sidebar {
-    position: fixed !important;
-    inset: 0 auto 0 0 !important;
-    width: min(82vw, 290px) !important;
-    min-width: 0 !important;
-    max-width: 86vw !important;
-    height: 100dvh !important;
-    min-height: 100dvh !important;
-    box-sizing: border-box !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding: 22px 14px 28px !important;
-    transform: translateX(-105%);
-    transition: transform .25s ease;
-    z-index: 1201 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    visibility: visible !important;
-  }
-  .sidebar.open { transform: translateX(0) !important; }
-  .sidebar .side-logo, .sidebar .logo, .sidebar .side-logo h2 {
-    max-width: 100%;
-    overflow-wrap: anywhere;
-  }
-  .sidebar .nav, .sidebar nav, .sidebar .nav-links {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 7px !important;
-  }
-  .sidebar .nav-item, .sidebar .nav-link, .sidebar .nav-links a,
-  .sidebar nav a {
-    width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    justify-content: flex-start !important;
-    white-space: normal !important;
-  }
-  .momentum-mobile-bar {
-    display: flex !important;
-    align-items: center;
-    gap: 12px;
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 58px;
-    padding: 0 15px;
-    box-sizing: border-box;
-    z-index: 1100;
-    background: rgba(3, 12, 19, .96);
-    border-bottom: 1px solid rgba(48, 220, 169, .22);
-    backdrop-filter: blur(14px);
-  }
-  .momentum-menu-toggle {
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
-    border: 1px solid rgba(48, 220, 169, .45);
-    border-radius: 12px;
-    color: #31dba8;
-    background: rgba(27, 211, 159, .12);
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
-  }
-  .momentum-mobile-brand {
-    color: #f5faf8;
-    font-weight: 800;
-    font-size: 19px;
-    letter-spacing: -.4px;
-  }
-  .momentum-mobile-brand span { color: #31dba8; }
-  .momentum-sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .62);
-    z-index: 1200;
-  }
-  .momentum-sidebar-overlay.show { display: block; }
-  .main {
-    margin-left: 0 !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 78px 15px 30px !important;
-  }
-  .page, .app, .container, .content, .dashboard, .main-content {
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-  }
-  .page { overflow-x: clip; }
-  .main > *, .page > *, .container > * { min-width: 0; }
-  img, video, canvas, iframe { max-width: 100%; }
-  input, select, textarea, button { max-width: 100%; box-sizing: border-box; }
-  table { max-width: 100%; }
-  .summary-grid, .stats-grid, .stat-grid, .cards-grid, .card-grid,
-  .gallery, .athlete-grid, .support-layout, .workout-grid, .diet-grid {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-  .daily-progress-card { flex-wrap: wrap; }
-}
-@media (min-width: 769px) {
-  .momentum-mobile-bar, .momentum-sidebar-overlay { display: none !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sidebar { transition: none !important; }
-}
-
-</style>
 </head>
 
 <body>
@@ -919,52 +790,44 @@
     <div class="app">
 
         <!-- SIDEBAR -->
-      <aside class="sidebar">
-    <div class="logo"><a href="test4.html" class="logo-link"><span class="mo">MO</span><span class="mentum">MENTUM</span></a></div>
-    <p class="brand-caption">DISCIPLINE BUILDS RESULTS</p>
-    <p class="nav-label">MAIN MENU</p>
-    <nav class="nav-links">
-      <a href="test4.html" class="nav-link"><i class="fa-solid fa-house"></i><span>Home</span></a>
-      <a href="test9.html" class="nav-link" id="editAthletesLink"><i class="fa-solid fa-users-gear"></i><span>Edit
-          Athletes</span></a>
-      <a href="test8.html" class="nav-link active"><i class="fa-solid fa-magnifying-glass"></i><span>Search Athletes</span></a>
-      <a href="test10.html" class="nav-link" id="complaintsLink"><i
-          class="fa-solid fa-message"></i><span>Complaints</span></a>
-      <a href="test11.html" class="nav-link" id="progressLink"><i class="fa-solid fa-chart-line"></i><span>Athlete
-          Progress</span></a>
-      <a href="test12.html" class="nav-link" id="settingsLink"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
-    </nav>
-    <div class="sidebar-bottom">
-      <div class="quote">Better Athletes<br>Build A Stronger<br>Tomorrow<span></span></div>
-      <div class="coach-mini">
-        <div class="coach-avatar"><i class="fa-solid fa-user-tie"></i></div>
-        <div class="coach-info">
-          <h4 id="sidebarCoachName">Coach Ahmed</h4>
-          <p>Professional Coach</p>
-        </div>
-      </div>
-      <a href="#" class="nav-link logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i><span>Log
-          Out</span></a>
-    </div>
-  </aside>
+        <aside class="sidebar">
+            <div class="logo"><a href="test4.html" class="logo-link"><span class="mo">MO</span><span class="mentum">MENTUM</span></a></div>
+            <p class="brand-caption">DISCIPLINE BUILDS RESULTS</p>
+            <p class="nav-label">MAIN MENU</p>
+            <nav class="nav-links">
+                <a href="test4.html" class="nav-link"><i class="fa-solid fa-house"></i><span>Home</span></a>
+                <a href="test9.html" class="nav-link" id="editAthletesLink"><i class="fa-solid fa-users-gear"></i><span>Edit Athletes</span></a>
+                <a href="test8.html" class="nav-link active"><i class="fa-solid fa-magnifying-glass"></i><span>Search Athletes</span></a>
+                <a href="test10.html" class="nav-link" id="complaintsLink"><i class="fa-solid fa-message"></i><span>Complaints</span></a>
+                <a href="test11.html" class="nav-link" id="progressLink"><i class="fa-solid fa-chart-line"></i><span>Athlete Progress</span></a>
+                <a href="test12.html" class="nav-link" id="settingsLink"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+            </nav>
+            <div class="sidebar-bottom">
+                <div class="quote">Better Athletes<br>Build A Stronger<br>Tomorrow<span></span></div>
+                <div class="coach-mini">
+                    <div class="coach-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="coach-info">
+                        <h4 id="sidebarCoachName">Coach Ahmed</h4>
+                        <p>Professional Coach</p>
+                    </div>
+                </div>
+                <a href="#" class="nav-link logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i><span>Log Out</span></a>
+            </div>
+        </aside>
 
         <!-- MAIN -->
         <main class="main">
 
             <header class="topbar">
-
                 <div>
                     <p class="breadcrumb">Dashboard / <span>Search Athletes</span></p>
-
                     <h1 class="page-title">Search Athletes</h1>
-
                     <p class="page-subtitle">
                         Find your athletes, check their progress, and manage your coaching team.
                     </p>
                 </div>
 
                 <div class="top-actions">
-
                     <button class="icon-button" title="Search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
@@ -973,26 +836,21 @@
                         <div class="coach-avatar">
                             <i class="fa-solid fa-user-tie"></i>
                         </div>
-
                         <div>
                             <strong id="topCoachName">Coach Ahmed</strong>
                             <small>Trainer Account</small>
                         </div>
                     </div>
-
                 </div>
-
             </header>
 
             <!-- SEARCH + FILTERS -->
             <section class="panel search-hero">
-
                 <div class="section-heading">
                     <div>
                         <h2>Find Your Athletes</h2>
                         <p>Search by athlete name or athlete ID.</p>
                     </div>
-
                     <div class="result-count">
                         <i class="fa-solid fa-users"></i>
                         <span id="resultCount">6 Athletes</span>
@@ -1000,15 +858,9 @@
                 </div>
 
                 <div class="filters">
-
                     <div class="search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
-
-                        <input
-                            type="text"
-                            id="searchInput"
-                            placeholder="Search name or athlete ID..."
-                            autocomplete="off">
+                        <input type="text" id="searchInput" placeholder="Search name or athlete ID..." autocomplete="off">
                     </div>
 
                     <select class="filter-select" id="statusFilter">
@@ -1025,393 +877,191 @@
                         <option value="progress-low">Progress: Low to High</option>
                         <option value="age">Age: Low to High</option>
                     </select>
-
                 </div>
             </section>
 
             <!-- ATHLETE CARDS -->
             <section>
-
                 <div class="athlete-grid" id="athleteGrid">
-
                     <!-- ATHLETE 1 -->
-                    <article class="panel athlete-card"
-                        data-name="omar hassan"
-                        data-id="ath1021"
-                        data-status="on-track"
-                        data-progress="92"
-                        data-age="24">
-
+                    <article class="panel athlete-card" data-name="omar hassan" data-id="ath1021" data-status="on-track" data-progress="92" data-age="24">
                         <div class="card-top">
-
                             <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/32.jpg"
-                                    alt="Omar Hassan">
-
+                                <img class="athlete-photo" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Omar Hassan">
                                 <div>
                                     <h3 class="athlete-name">Omar Hassan</h3>
                                     <p class="athlete-id">ID: ATH1021</p>
                                 </div>
                             </div>
-
                             <span class="status on-track">On Track</span>
-
                         </div>
-
                         <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>24</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>78 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>180 cm</strong>
-                                <span>Height</span>
-                            </div>
+                            <div class="detail-box"><strong>24</strong><span>Age</span></div>
+                            <div class="detail-box"><strong>78 kg</strong><span>Weight</span></div>
+                            <div class="detail-box"><strong>180 cm</strong><span>Height</span></div>
                         </div>
-
                         <div class="progress-header">
                             <span>Overall Progress</span>
                             <span class="progress-value">92%</span>
                         </div>
-
                         <div class="progress-track">
                             <div class="progress-fill" style="width:92%"></div>
                         </div>
-
                         <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> Active today
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1021">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
+                            <span class="last-active"><i class="fa-regular fa-clock"></i> Active today</span>
+                            <button class="view-button" data-athlete-id="ATH1021">View Profile <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
-
                     </article>
 
                     <!-- ATHLETE 2 -->
-                    <article class="panel athlete-card"
-                        data-name="youssef ali"
-                        data-id="ath1022"
-                        data-status="in-progress"
-                        data-progress="68"
-                        data-age="21">
-
+                    <article class="panel athlete-card" data-name="youssef ali" data-id="ath1022" data-status="in-progress" data-progress="68" data-age="21">
                         <div class="card-top">
-
                             <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/46.jpg"
-                                    alt="Youssef Ali">
-
+                                <img class="athlete-photo" src="https://randomuser.me/api/portraits/men/46.jpg" alt="Youssef Ali">
                                 <div>
                                     <h3 class="athlete-name">Youssef Ali</h3>
                                     <p class="athlete-id">ID: ATH1022</p>
                                 </div>
                             </div>
-
                             <span class="status in-progress">In Progress</span>
-
                         </div>
-
                         <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>21</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>72 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>176 cm</strong>
-                                <span>Height</span>
-                            </div>
+                            <div class="detail-box"><strong>21</strong><span>Age</span></div>
+                            <div class="detail-box"><strong>72 kg</strong><span>Weight</span></div>
+                            <div class="detail-box"><strong>176 cm</strong><span>Height</span></div>
                         </div>
-
                         <div class="progress-header">
                             <span>Overall Progress</span>
                             <span class="progress-value">68%</span>
                         </div>
-
                         <div class="progress-track">
                             <div class="progress-fill" style="width:68%"></div>
                         </div>
-
                         <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> Active today
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1022">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
+                            <span class="last-active"><i class="fa-regular fa-clock"></i> Active today</span>
+                            <button class="view-button" data-athlete-id="ATH1022">View Profile <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
-
                     </article>
 
                     <!-- ATHLETE 3 -->
-                    <article class="panel athlete-card"
-                        data-name="mohamed adel"
-                        data-id="ath1023"
-                        data-status="needs-focus"
-                        data-progress="35"
-                        data-age="27">
-
+                    <article class="panel athlete-card" data-name="mohamed adel" data-id="ath1023" data-status="needs-focus" data-progress="35" data-age="27">
                         <div class="card-top">
-
                             <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/75.jpg"
-                                    alt="Mohamed Adel">
-
+                                <img class="athlete-photo" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Mohamed Adel">
                                 <div>
                                     <h3 class="athlete-name">Mohamed Adel</h3>
                                     <p class="athlete-id">ID: ATH1023</p>
                                 </div>
                             </div>
-
                             <span class="status needs-focus">Needs Focus</span>
-
                         </div>
-
                         <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>27</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>90 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>183 cm</strong>
-                                <span>Height</span>
-                            </div>
+                            <div class="detail-box"><strong>27</strong><span>Age</span></div>
+                            <div class="detail-box"><strong>90 kg</strong><span>Weight</span></div>
+                            <div class="detail-box"><strong>183 cm</strong><span>Height</span></div>
                         </div>
-
                         <div class="progress-header">
                             <span>Overall Progress</span>
                             <span class="progress-value">35%</span>
                         </div>
-
                         <div class="progress-track">
                             <div class="progress-fill" style="width:35%"></div>
                         </div>
-
                         <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> 3 days ago
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1023">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
+                            <span class="last-active"><i class="fa-regular fa-clock"></i> 3 days ago</span>
+                            <button class="view-button" data-athlete-id="ATH1023">View Profile <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
-
                     </article>
 
                     <!-- ATHLETE 4 -->
-                    <article class="panel athlete-card"
-                        data-name="ahmed mostafa"
-                        data-id="ath1024"
-                        data-status="on-track"
-                        data-progress="85"
-                        data-age="23">
-
+                    <article class="panel athlete-card" data-name="ahmed mostafa" data-id="ath1024" data-status="on-track" data-progress="85" data-age="23">
                         <div class="card-top">
-
                             <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/11.jpg"
-                                    alt="Ahmed Mostafa">
-
+                                <img class="athlete-photo" src="https://randomuser.me/api/portraits/men/11.jpg" alt="Ahmed Mostafa">
                                 <div>
                                     <h3 class="athlete-name">Ahmed Mostafa</h3>
                                     <p class="athlete-id">ID: ATH1024</p>
                                 </div>
                             </div>
-
                             <span class="status on-track">On Track</span>
-
                         </div>
-
                         <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>23</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>75 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>178 cm</strong>
-                                <span>Height</span>
-                            </div>
+                            <div class="detail-box"><strong>23</strong><span>Age</span></div>
+                            <div class="detail-box"><strong>75 kg</strong><span>Weight</span></div>
+                            <div class="detail-box"><strong>178 cm</strong><span>Height</span></div>
                         </div>
-
                         <div class="progress-header">
                             <span>Overall Progress</span>
                             <span class="progress-value">85%</span>
                         </div>
-
                         <div class="progress-track">
                             <div class="progress-fill" style="width:85%"></div>
                         </div>
-
                         <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> Active today
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1024">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
+                            <span class="last-active"><i class="fa-regular fa-clock"></i> Active today</span>
+                            <button class="view-button" data-athlete-id="ATH1024">View Profile <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
-
                     </article>
 
                     <!-- ATHLETE 5 -->
-                    <article class="panel athlete-card"
-                        data-name="karim samy"
-                        data-id="ath1025"
-                        data-status="in-progress"
-                        data-progress="57"
-                        data-age="20">
-
+                    <article class="panel athlete-card" data-name="karim samy" data-id="ath1025" data-status="in-progress" data-progress="57" data-age="20">
                         <div class="card-top">
-
                             <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/52.jpg"
-                                    alt="Karim Samy">
-
+                                <img class="athlete-photo" src="https://randomuser.me/api/portraits/men/52.jpg" alt="Karim Samy">
                                 <div>
                                     <h3 class="athlete-name">Karim Samy</h3>
                                     <p class="athlete-id">ID: ATH1025</p>
                                 </div>
                             </div>
-
                             <span class="status in-progress">In Progress</span>
-
                         </div>
-
                         <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>20</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>68 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>172 cm</strong>
-                                <span>Height</span>
-                            </div>
+                            <div class="detail-box"><strong>20</strong><span>Age</span></div>
+                            <div class="detail-box"><strong>68 kg</strong><span>Weight</span></div>
+                            <div class="detail-box"><strong>172 cm</strong><span>Height</span></div>
                         </div>
-
                         <div class="progress-header">
                             <span>Overall Progress</span>
                             <span class="progress-value">57%</span>
                         </div>
-
                         <div class="progress-track">
                             <div class="progress-fill" style="width:57%"></div>
                         </div>
-
                         <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> Yesterday
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1025">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
+                            <span class="last-active"><i class="fa-regular fa-clock"></i> Yesterday</span>
+                            <button class="view-button" data-athlete-id="ATH1025">View Profile <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
-
                     </article>
 
                     <!-- ATHLETE 6 -->
-                    <article class="panel athlete-card"
-                        data-name="mostafa khaled"
-                        data-id="ath1026"
-                        data-status="on-track"
-                        data-progress="96"
-                        data-age="26">
-
+                    <article class="panel athlete-card" data-name="mostafa khaled" data-id="ath1026" data-status="on-track" data-progress="96" data-age="26">
                         <div class="card-top">
-
                             <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/68.jpg"
-                                    alt="Mostafa Khaled">
-
+                                <img class="athlete-photo" src="https://randomuser.me/api/portraits/men/68.jpg" alt="Mostafa Khaled">
                                 <div>
                                     <h3 class="athlete-name">Mostafa Khaled</h3>
                                     <p class="athlete-id">ID: ATH1026</p>
                                 </div>
                             </div>
-
                             <span class="status on-track">On Track</span>
-
                         </div>
-
                         <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>26</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>82 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>181 cm</strong>
-                                <span>Height</span>
-                            </div>
+                            <div class="detail-box"><strong>26</strong><span>Age</span></div>
+                            <div class="detail-box"><strong>82 kg</strong><span>Weight</span></div>
+                            <div class="detail-box"><strong>181 cm</strong><span>Height</span></div>
                         </div>
-
                         <div class="progress-header">
                             <span>Overall Progress</span>
                             <span class="progress-value">96%</span>
                         </div>
-
                         <div class="progress-track">
                             <div class="progress-fill" style="width:96%"></div>
                         </div>
-
                         <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> Active today
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1026">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
+                            <span class="last-active"><i class="fa-regular fa-clock"></i> Active today</span>
+                            <button class="view-button" data-athlete-id="ATH1026">View Profile <i class="fa-solid fa-arrow-right"></i></button>
                         </div>
-
                     </article>
-
                 </div>
 
                 <!-- NO RESULTS -->
@@ -1420,7 +1070,6 @@
                     <h3>No athletes found</h3>
                     <p>Try another name, athlete ID, or status filter.</p>
                 </div>
-
             </section>
 
             <p class="bottom-note">
@@ -1429,16 +1078,16 @@
             </p>
 
         </main>
-
     </div>
 
+    <!-- =========================================================
+         SEARCH ATHLETES LOGIC (Fixed)
+    ========================================================= -->
     <script>
         // COACH NAME
         const savedCoachName = localStorage.getItem("userName") || "Coach Ahmed";
-
         document.getElementById("sidebarCoachName").textContent = savedCoachName;
         document.getElementById("topCoachName").textContent = savedCoachName;
-
 
         // SEARCH + FILTER + SORT
         const searchInput = document.getElementById("searchInput");
@@ -1447,51 +1096,35 @@
         const athleteGrid = document.getElementById("athleteGrid");
         const emptyState = document.getElementById("emptyState");
         const resultCount = document.getElementById("resultCount");
+        const athleteCards = Array.from(document.querySelectorAll(".athlete-card"));
 
-        const athleteCards = Array.from(
-            document.querySelectorAll(".athlete-card")
-        );
-
-        
+        function filterAthletes() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const selectedStatus = statusFilter.value;
+            const selectedSort = sortFilter.value;
 
             let visibleCards = athleteCards.filter(card => {
                 const athleteName = card.dataset.name.toLowerCase();
                 const athleteId = card.dataset.id.toLowerCase();
                 const athleteStatus = card.dataset.status;
 
-                const matchesSearch =
-                    athleteName.includes(searchTerm) ||
-                    athleteId.includes(searchTerm);
-
-                const matchesStatus =
-                    selectedStatus === "all" ||
-                    athleteStatus === selectedStatus;
+                const matchesSearch = athleteName.includes(searchTerm) || athleteId.includes(searchTerm);
+                const matchesStatus = selectedStatus === "all" || athleteStatus === selectedStatus;
 
                 return matchesSearch && matchesStatus;
             });
 
             if (selectedSort === "name") {
-                visibleCards.sort((a, b) =>
-                    a.dataset.name.localeCompare(b.dataset.name)
-                );
+                visibleCards.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
             }
-
             if (selectedSort === "progress-high") {
-                visibleCards.sort((a, b) =>
-                    Number(b.dataset.progress) - Number(a.dataset.progress)
-                );
+                visibleCards.sort((a, b) => Number(b.dataset.progress) - Number(a.dataset.progress));
             }
-
             if (selectedSort === "progress-low") {
-                visibleCards.sort((a, b) =>
-                    Number(a.dataset.progress) - Number(b.dataset.progress)
-                );
+                visibleCards.sort((a, b) => Number(a.dataset.progress) - Number(b.dataset.progress));
             }
-
             if (selectedSort === "age") {
-                visibleCards.sort((a, b) =>
-                    Number(a.dataset.age) - Number(b.dataset.age)
-                );
+                visibleCards.sort((a, b) => Number(a.dataset.age) - Number(b.dataset.age));
             }
 
             athleteCards.forEach(card => {
@@ -1503,119 +1136,109 @@
                 athleteGrid.appendChild(card);
             });
 
-            resultCount.textContent =
-                visibleCards.length +
-                (visibleCards.length === 1 ? " Athlete" : " Athletes");
-
-            emptyState.style.display =
-                visibleCards.length === 0 ? "block" : "none";
-
-            athleteGrid.style.display =
-                visibleCards.length === 0 ? "none" : "grid";
+            resultCount.textContent = visibleCards.length + (visibleCards.length === 1 ? " Athlete" : " Athletes");
+            emptyState.style.display = visibleCards.length === 0 ? "block" : "none";
+            athleteGrid.style.display = visibleCards.length === 0 ? "none" : "grid";
         }
 
         searchInput.addEventListener("input", filterAthletes);
         statusFilter.addEventListener("change", filterAthletes);
         sortFilter.addEventListener("change", filterAthletes);
 
-
         // VIEW PROFILE
         document.querySelectorAll(".view-button").forEach(button => {
             button.addEventListener("click", () => {
                 const athleteId = button.dataset.athleteId;
-
                 localStorage.setItem("selectedAthleteId", athleteId);
-
-                alert(
-                    "Selected Athlete ID: " + athleteId +
-                    "\n\nThe athlete profile page will be connected here next."
-                );
+                alert("Selected Athlete ID: " + athleteId + "\n\nThe athlete profile page will be connected here next.");
             });
         });
-
 
         // PLACEHOLDER LINKS
         document.getElementById("complaintsLink").addEventListener("click", event => {
             event.preventDefault();
             alert("Complaints page will be connected here.");
         });
-
         document.getElementById("progressLink").addEventListener("click", event => {
             event.preventDefault();
             alert("Athlete Progress page will be connected here.");
         });
 
-
         // LOG OUT
         document.getElementById("logoutBtn").addEventListener("click", event => {
             event.preventDefault();
-
             const confirmLogout = confirm("Are you sure you want to log out?");
-
             if (confirmLogout) {
                 localStorage.removeItem("isLoggedIn");
                 localStorage.removeItem("userRole");
                 window.location.href = "test.html";
             }
         });
-
-
-        // OPTIONAL LOGIN CHECK
-        // When login is connected, uncomment these lines:
-        //
-        // if (localStorage.getItem("isLoggedIn") !== "true") {
-        //     window.location.href = "test.html";
-        // }
     </script>
 
+    <!-- =========================================================
+         MOBILE MENU SCRIPT (Clean & Working)
+    ========================================================= -->
+    <script>
+        (function () {
+            const sidebar = document.querySelector('.sidebar');
+            if (!sidebar) return;
 
-<script>
-(function () {
-  const sidebar = document.querySelector('.sidebar');
-  if (!sidebar || document.querySelector('.momentum-mobile-bar')) return;
+            // إنشاء الشريط العلوي
+            const bar = document.createElement('header');
+            bar.className = 'momentum-mobile-bar';
+            bar.innerHTML = `
+                <button class="momentum-menu-toggle" type="button" aria-label="Open navigation">☰</button>
+                <div style="color: #fff; font-weight: bold; font-size: 18px; letter-spacing: 1px;">
+                    <span style="color: #24e3a3;">MO</span>MENTUM
+                </div>
+                <div style="width: 42px;"></div> 
+            `;
 
-  const bar = document.createElement('header');
-  bar.className = 'momentum-mobile-bar';
-  bar.innerHTML = '<button class="momentum-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button><div class="momentum-mobile-brand">MO<span>MENTUM</span></div>';
+            // إنشاء طبقة التعتيم
+            const overlay = document.createElement('div');
+            overlay.className = 'momentum-sidebar-overlay';
 
-  const overlay = document.createElement('div');
-  overlay.className = 'momentum-sidebar-overlay';
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(overlay);
-  document.body.appendChild(bar);
+            document.body.appendChild(overlay);
+            document.body.appendChild(bar);
 
-  const toggle = bar.querySelector('.momentum-menu-toggle');
-  function closeMenu() {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('show');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation');
-    document.body.style.overflow = '';
-  }
-  function openMenu() {
-    sidebar.classList.add('open');
-    overlay.classList.add('show');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close navigation');
-    document.body.style.overflow = 'hidden';
-  }
-  toggle.addEventListener('click', function () {
-    sidebar.classList.contains('open') ? closeMenu() : openMenu();
-  });
-  overlay.addEventListener('click', closeMenu);
-  sidebar.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      if (window.matchMedia('(max-width: 768px)').matches) closeMenu();
-    });
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') closeMenu();
-  });
-  window.addEventListener('resize', function () {
-    if (!window.matchMedia('(max-width: 768px)').matches) closeMenu();
-  });
-})();
-</script>
+            const toggle = bar.querySelector('.momentum-menu-toggle');
+
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                toggle.innerHTML = '☰';
+                document.body.style.overflow = '';
+            }
+
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+                toggle.innerHTML = '✕';
+                document.body.style.overflow = 'hidden';
+            }
+
+            toggle.addEventListener('click', function () {
+                if (sidebar.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            overlay.addEventListener('click', closeMenu);
+
+            sidebar.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) closeMenu();
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) closeMenu();
+            });
+        })();
+    </script>
 
 </body>
 </html>
