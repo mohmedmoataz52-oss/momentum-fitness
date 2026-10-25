@@ -1615,8 +1615,9 @@ window.openPage = page => { window.location.href = page; };
     const userName=profile.full_name || 'User';
     const userEmail=user.email || '';
     const userAge=profile.age ?? '--';
-    // Existing weight button remains local until weight logging is connected.
-    const userWeight=localStorage.getItem('momentumWeight_'+user.id) ?? profile.weight ?? '--';
+    // The verified backend profile is authoritative; ignore earlier browser-only weights.
+    const userWeight=profile.weight ?? '--';
+    localStorage.removeItem('momentumWeight_'+user.id);
     const userHeight=profile.height ?? '--';
     const cache={userID:user.id,athleteId:user.id,userName,userEmail,userAge,userWeight,userHeight,
       userRole:profile.role,userPhone:profile.whatsapp ?? '',isLoggedIn:'true'};
@@ -1718,80 +1719,30 @@ window.openPage = page => { window.location.href = page; };
            UPDATE WEIGHT
         ========================================= */
 
-        const newWeight =
-            document.getElementById("newWeight");
-
-        const updateWeight =
-            document.getElementById("updateWeight");
-
-        const weightMessage =
-            document.getElementById("weightMessage");
-
-
-        updateWeight.addEventListener(
-            "click",
-            function () {
-
-                const weightValue =
-                    newWeight.value.trim();
-
-
-                if (weightValue === "") {
-
-                    weightMessage.textContent =
-                        "Please enter your new weight.";
-
-                    weightMessage.style.color =
-                        "#ff6b6b";
-
-                    return;
-                }
-
-
-                const weightNumber =
-                    Number(weightValue);
-
-
-                if (
-                    !Number.isFinite(weightNumber) ||
-                    weightNumber < 20 ||
-                    weightNumber > 300
-                ) {
-
-                    weightMessage.textContent =
-                        "Please enter a weight between 20 and 300 kg.";
-
-                    weightMessage.style.color =
-                        "#ff6b6b";
-
-                    return;
-                }
-
-
-                localStorage.setItem("momentumWeight_" + user.id, weightNumber);
-                localStorage.setItem(
-                    "userWeight",
-                    weightNumber
-                );
-
-
-                document.getElementById(
-                    "profileWeight"
-                ).textContent =
-                    weightNumber;
-
-
-                weightMessage.textContent =
-                    "Weight updated successfully!";
-
-                weightMessage.style.color =
-                    "#24e3a3";
-
-
-                newWeight.value = "";
-
-            }
-        );
+        const newWeight=document.getElementById('newWeight'),updateWeight=document.getElementById('updateWeight'),weightMessage=document.getElementById('weightMessage');
+        let weightSaving=false;
+        function weightNotice(text,ok=false){weightMessage.textContent=text;weightMessage.style.color=ok?'#24e3a3':'#ff6b6b';}
+        async function verifyWeightAccount(){const {data,error}=await sb.auth.getUser();if(error||data.user?.id!==user.id)throw new Error('Account changed. Reload and sign in to the correct athlete account.');}
+        async function weightRPC(args){const {data,error}=await sb.rpc('momentum_tracking',args);if(error)throw error;if(!data||data.athlete_id!==user.id)throw new Error('Could not verify your daily record. Reload this page.');return data;}
+        function showSavedWeight(weight){document.getElementById('profileWeight').textContent=weight;localStorage.setItem('userWeight',String(weight));localStorage.removeItem('momentumWeight_'+user.id);}
+        updateWeight.addEventListener('click',async()=>{
+          if(weightSaving)return;const text=newWeight.value.trim(),value=Number(text);
+          if(!text||!Number.isFinite(value)||value<20||value>300){weightNotice('Please enter a weight between 20 and 300 kg.');return;}
+          weightSaving=true;updateWeight.disabled=true;newWeight.disabled=true;weightNotice('Saving your weight...',true);
+          try{
+            await verifyWeightAccount();
+            // Load the latest server state, retaining the chosen day, meals, water and exercises.
+            const latest=await weightRPC({action:'load'});
+            const state={...latest.state,body_weight:value};
+            const saved=await weightRPC({action:'save',log_date:latest.date,expected_revision:latest.revision,payload:{day:latest.day_index,plan_revision:latest.snapshot.plan_revision,state}});
+            await verifyWeightAccount();
+            showSavedWeight(saved.state.body_weight);newWeight.value='';weightNotice('Weight saved to Supabase for '+saved.date+'. Your coach can see it in Progress.',true);
+            await syncHomeWorkoutProgress();
+          }catch(error){weightNotice((error.message||'Could not save weight.')+' Your input has been kept.');}
+          finally{weightSaving=false;updateWeight.disabled=false;newWeight.disabled=false;}
+        });
+        async function refreshHomeWeight(){if(weightSaving)return;try{await verifyWeightAccount();const {data,error}=await sb.from('profiles').select('id,weight').eq('id',user.id).single();if(error)throw error;if(data.id!==user.id)throw new Error('Account changed. Reload.');if(data.weight!==null)showSavedWeight(data.weight);}catch(error){weightNotice(error.message);}}
+        window.addEventListener('focus',refreshHomeWeight);
 
 
         /* =========================================
