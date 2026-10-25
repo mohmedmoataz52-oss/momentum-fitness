@@ -1575,50 +1575,57 @@
 
     <!-- ================= JAVASCRIPT ================= -->
 
-    <script>
 
-        /* =========================================
-           LOGIN CHECK
-        ========================================= */
-
-        const isLoggedIn =
-            localStorage.getItem("isLoggedIn");
-
-
-        if (isLoggedIn !== "true") {
-
-            window.location.href =
-                "test.html";
-
-        }
-
-
-        /* =========================================
-           USER DATA
-        ========================================= */
-
-        const userName =
-            localStorage.getItem("userName") || "User";
-
-        const userEmail =
-            localStorage.getItem("userEmail") || "No email";
-
-        const userAge =
-            localStorage.getItem("userAge") || "--";
-
-        const userWeight =
-            localStorage.getItem("userWeight") || "--";
-
-        const userHeight =
-            localStorage.getItem("userHeight") || "--";
-
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// Existing navigation remains available while the verified profile loads.
+window.openPage = page => { window.location.href = page; };
+(async function initializeAthlete() {
+  const fields=['headerEmail','profileName','profileAge','profileWeight','profileHeight','athleteIdDisplay'];
+  fields.forEach(id=>document.getElementById(id).textContent='--');
+  document.getElementById('headerName').textContent='Loading your profile...';
+  document.getElementById('copyAthleteId').disabled=true;
+  document.getElementById('updateWeight').disabled=true;
+  try {
+    if (!window.supabase) throw new Error('Could not load Supabase. Check your connection and reload.');
+    const sb=window.supabase.createClient(
+      'https://xcgbxurbnsytecrdupct.supabase.co',
+      'sb_publishable_PAd7gf0Q-N9H4PqgqqaVNg_EfE583xO');
+    const {data:auth,error:authError}=await sb.auth.getUser();
+    if(authError || !auth.user) {
+      if(authError && !['AuthSessionMissingError','AuthApiError'].includes(authError.name)) throw authError;
+      localStorage.setItem('isLoggedIn','false');
+      window.location.replace('test.html?role=athlete');
+      return;
+    }
+    const user=auth.user;
+    const {data:profile,error}=await sb.from('profiles')
+      .select('id,full_name,role,age,weight,height,whatsapp').eq('id',user.id).single();
+    if(error) throw error;
+    if(profile.role==='trainer') {window.location.replace('test4.html'); return;}
+    if(profile.role!=='athlete') throw new Error('This profile does not have an athlete role.');
+    const previousUser=localStorage.getItem('userID');
+    // Prevent another account's old local trainer card from appearing here.
+    if(previousUser!==user.id || localStorage.getItem('momentumTrainerCacheOwner')!==user.id) {
+      localStorage.removeItem('myTrainer');
+    }
+    localStorage.setItem('momentumTrainerCacheOwner',user.id);
+    const userName=profile.full_name || 'User';
+    const userEmail=user.email || '';
+    const userAge=profile.age ?? '--';
+    // Existing weight button remains local until weight logging is connected.
+    const userWeight=localStorage.getItem('momentumWeight_'+user.id) ?? profile.weight ?? '--';
+    const userHeight=profile.height ?? '--';
+    const cache={userID:user.id,athleteId:user.id,userName,userEmail,userAge,userWeight,userHeight,
+      userRole:profile.role,userPhone:profile.whatsapp ?? '',isLoggedIn:'true'};
+    Object.entries(cache).forEach(([key,value])=>localStorage.setItem(key,String(value)));
+    localStorage.removeItem('userPassword');
         /* =========================================
            ATHLETE ID
         ========================================= */
 
         const athleteId =
-            localStorage.getItem("athleteId") || "ATH-10001";
+            user.id;
 
 
         document.getElementById(
@@ -1744,6 +1751,7 @@
 
 
                 if (
+                    !Number.isFinite(weightNumber) ||
                     weightNumber < 20 ||
                     weightNumber > 300
                 ) {
@@ -1758,6 +1766,7 @@
                 }
 
 
+                localStorage.setItem("momentumWeight_" + user.id, weightNumber);
                 localStorage.setItem(
                     "userWeight",
                     weightNumber
@@ -1939,13 +1948,14 @@
         ========================================= */
 
         loadMyTrainer();
+        window.openPage = openPage;
 
     
         /* =========================================
            LIVE WORKOUT PROGRESS FROM EXERCISES
         ========================================= */
         (function syncHomeWorkoutProgress() {
-            const athleteId = localStorage.getItem("athleteId") || "ATH-10001";
+            const athleteId = user.id;
             const todayKey = new Date().toISOString().slice(0, 10);
             const storageKey = "exerciseDailyProgress_" + athleteId;
             let records = {};
@@ -1976,7 +1986,17 @@
             if (count) count.textContent = `${done}/${total}`;
         })();
 
+
+    document.getElementById('copyAthleteId').disabled=false;
+    document.getElementById('updateWeight').disabled=false;
+  } catch(error) {
+    document.getElementById('headerName').textContent='Could not load your profile';
+    document.getElementById('headerEmail').textContent=error.message || 'Please reload and try again.';
+    localStorage.setItem('isLoggedIn','false');
+  }
+})();
 </script>
+
 
 </body>
 
