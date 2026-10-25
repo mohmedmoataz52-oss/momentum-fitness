@@ -793,9 +793,10 @@
     background-image: none !important;
 }
     </style>
+<link rel="stylesheet" href="momentum-ui.css?v=20261026">
 </head>
 
-<body>
+<body data-momentum-auth data-momentum-page="test8.html" data-momentum-role="trainer">
 
     <div class="app">
 
@@ -914,389 +915,8 @@
             <section>
 
                 <div class="athlete-grid" id="athleteGrid">
-
-                    <!-- ATHLETE 1 -->
-                    <article class="panel athlete-card"
-                        data-name="omar hassan"
-                        data-id="ath1021"
-                        data-status="on-track"
-                        data-progress="92"
-                        data-age="24">
-
-                        <div class="card-top">
-
-                            <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/32.jpg"
-                                    alt="Omar Hassan">
-
-                                <div>
-                                    <h3 class="athlete-name">Omar Hassan</h3>
-                                    <p class="athlete-id">ID: ATH1021</p>
-                                </div>
-                            </div>
-
-                            <span class="status on-track">On Track</span>
-
-                        </div>
-
-                        <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>24</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>78 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>180 cm</strong>
-                                <span>Height</span>
-                            </div>
-                        </div>
-
-                        <div class="progress-header">
-                            <span>Overall Progress</span>
-                            <span class="progress-value">92%</span>
-                        </div>
-
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width:92%"></div>
-                        </div>
-
-                        <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> Active today
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1021">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-
-                    </article>
-
-                    <!-- ATHLETE 2 -->
-                    <article class="panel athlete-card"
-                        data-name="youssef ali"
-                        data-id="ath1022"
-                        data-status="in-progress"
-                        data-progress="68"
-                        data-age="21">
-
-                        <div class="card-top">
-
-                            <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/46.jpg"
-                                    alt="Youssef Ali">
-
-                                <div>
-                                    <h3 class="athlete-name">Youssef Ali</h3>
-                                    <p class="athlete-id">ID: ATH1022</p>
-                                </div>
-                            </div>
-
-                            <span class="status in-progress">In Progress</span>
-
-                        </div>
-
-                        <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>21</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>72 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>176 cm</strong>
-                                <span>Height</span>
-                            </div>
-                        </div>
-
-                        <div class="progress-header">
-                            <span>Overall Progress</span>
-                            <span class="progress-value">68%</span>
-                        </div>
-
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width:68%"></div>
-                        </div>
-
-                        <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> Active today
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1022">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-
-                    </article>
-
-                    <!-- ATHLETE 3 -->
-                    <article class="panel athlete-card"
-                        data-name="mohamed adel"
-                        data-id="ath1023"
-                        data-status="needs-focus"
-                        data-progress="35"
-                        data-age="27">
-
-                        <div class="card-top">
-
-                            <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/75.jpg"
-                                    alt="Mohamed Adel">
-
-                                <div>
-                                    <h3 class="athlete-name">Mohamed Adel</h3>
-                                    <p class="athlete-id">ID: ATH1023</p>
-                                </div>
-                            </div>
-
-                            <span class="status needs-focus">Needs Focus</span>
-
-                        </div>
-
-                        <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>27</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>90 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>183 cm</strong>
-                                <span>Height</span>
-                            </div>
-                        </div>
-
-                        <div class="progress-header">
-                            <span>Overall Progress</span>
-                            <span class="progress-value">35%</span>
-                        </div>
-
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width:35%"></div>
-                        </div>
-
-                        <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> 3 days ago
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1023">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-
-                    </article>
-
-                    <!-- ATHLETE 4 -->
-                    <article class="panel athlete-card"
-                        data-name="ahmed mostafa"
-                        data-id="ath1024"
-                        data-status="on-track"
-                        data-progress="85"
-                        data-age="23">
-
-                        <div class="card-top">
-
-                            <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/11.jpg"
-                                    alt="Ahmed Mostafa">
-
-                                <div>
-                                    <h3 class="athlete-name">Ahmed Mostafa</h3>
-                                    <p class="athlete-id">ID: ATH1024</p>
-                                </div>
-                            </div>
-
-                            <span class="status on-track">On Track</span>
-
-                        </div>
-
-                        <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>23</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>75 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>178 cm</strong>
-                                <span>Height</span>
-                            </div>
-                        </div>
-
-                        <div class="progress-header">
-                            <span>Overall Progress</span>
-                            <span class="progress-value">85%</span>
-                        </div>
-
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width:85%"></div>
-                        </div>
-
-                        <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> Active today
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1024">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-
-                    </article>
-
-                    <!-- ATHLETE 5 -->
-                    <article class="panel athlete-card"
-                        data-name="karim samy"
-                        data-id="ath1025"
-                        data-status="in-progress"
-                        data-progress="57"
-                        data-age="20">
-
-                        <div class="card-top">
-
-                            <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/52.jpg"
-                                    alt="Karim Samy">
-
-                                <div>
-                                    <h3 class="athlete-name">Karim Samy</h3>
-                                    <p class="athlete-id">ID: ATH1025</p>
-                                </div>
-                            </div>
-
-                            <span class="status in-progress">In Progress</span>
-
-                        </div>
-
-                        <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>20</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>68 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>172 cm</strong>
-                                <span>Height</span>
-                            </div>
-                        </div>
-
-                        <div class="progress-header">
-                            <span>Overall Progress</span>
-                            <span class="progress-value">57%</span>
-                        </div>
-
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width:57%"></div>
-                        </div>
-
-                        <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> Yesterday
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1025">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-
-                    </article>
-
-                    <!-- ATHLETE 6 -->
-                    <article class="panel athlete-card"
-                        data-name="mostafa khaled"
-                        data-id="ath1026"
-                        data-status="on-track"
-                        data-progress="96"
-                        data-age="26">
-
-                        <div class="card-top">
-
-                            <div class="athlete-identity">
-                                <img class="athlete-photo"
-                                    src="https://randomuser.me/api/portraits/men/68.jpg"
-                                    alt="Mostafa Khaled">
-
-                                <div>
-                                    <h3 class="athlete-name">Mostafa Khaled</h3>
-                                    <p class="athlete-id">ID: ATH1026</p>
-                                </div>
-                            </div>
-
-                            <span class="status on-track">On Track</span>
-
-                        </div>
-
-                        <div class="athlete-details">
-                            <div class="detail-box">
-                                <strong>26</strong>
-                                <span>Age</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>82 kg</strong>
-                                <span>Weight</span>
-                            </div>
-
-                            <div class="detail-box">
-                                <strong>181 cm</strong>
-                                <span>Height</span>
-                            </div>
-                        </div>
-
-                        <div class="progress-header">
-                            <span>Overall Progress</span>
-                            <span class="progress-value">96%</span>
-                        </div>
-
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width:96%"></div>
-                        </div>
-
-                        <div class="card-footer">
-                            <span class="last-active">
-                                <i class="fa-regular fa-clock"></i> Active today
-                            </span>
-
-                            <button class="view-button" data-athlete-id="ATH1026">
-                                View Profile <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-
-                    </article>
-
-                </div>
-
-                <!-- NO RESULTS -->
-                <div class="panel empty-state" id="emptyState">
+</div>
+<div class="panel empty-state" id="emptyState">
                     <i class="fa-solid fa-user-slash"></i>
                     <h3>No athletes found</h3>
                     <p>Try another name, athlete ID, or status filter.</p>
@@ -1306,7 +926,7 @@
 
             <p class="bottom-note">
                 MOMENTUM · DISCIPLINE BUILDS RESULTS<br>
-                Only athletes connected to your trainer account appear here. Activity tracking will be connected separately.
+                Only athletes connected to your trainer account appear here. Use the exact-ID lookup above to invite another athlete.
             </p>
 
         </main>
@@ -1348,7 +968,7 @@ function filterAthletes(){
  const term=$('searchInput').value.trim().toLowerCase(),status=$('statusFilter').value,sort=$('sortFilter').value;
  const shown=athletes.filter(a=>(a.name+' '+a.id).toLowerCase().includes(term)&&(status==='all'||a.status===status));
  shown.sort((a,b)=>sort==='age'?(a.age||0)-(b.age||0):(a.name||'').localeCompare(b.name||''));
- $('athleteGrid').innerHTML=shown.map(a=>`<article class="panel athlete-card"><div class="card-top"><div class="athlete-identity"><div class="athlete-photo" style="display:grid;place-items:center;color:#39d98a"><i class="fa-solid fa-user"></i></div><div><h3 class="athlete-name">${esc(a.name||'Athlete')}</h3><p class="athlete-id" style="overflow-wrap:anywhere">ID: ${esc(a.id)}</p></div></div><span class="status">${esc(a.status)}</span></div><div class="athlete-details"><div class="detail-box"><strong>${esc(a.age??'—')}</strong><span>Age</span></div><div class="detail-box"><strong>${esc(a.weight??'—')} kg</strong><span>Weight</span></div><div class="detail-box"><strong>${esc(a.height??'—')} cm</strong><span>Height</span></div></div><div class="progress-header"><span>Activity logs not connected</span><span class="progress-value">—</span></div><div class="progress-track"><div class="progress-fill" style="width:0%"></div></div><div class="card-footer"><span class="last-active">${a.visibility==='published'?'Plans published':'Draft plans'}</span><button class="view-button" data-athlete-id="${esc(a.id)}">View Profile <i class="fa-solid fa-arrow-right"></i></button></div></article>`).join('');
+ $('athleteGrid').innerHTML=shown.map(a=>`<article class="panel athlete-card"><div class="card-top"><div class="athlete-identity"><div class="athlete-photo" data-momentum-avatar="${esc(a.id)}" style="display:grid;place-items:center;color:#39d98a"><i class="fa-solid fa-user"></i></div><div><h3 class="athlete-name">${esc(a.name||'Athlete')}</h3><p class="athlete-id" style="overflow-wrap:anywhere">ID: ${esc(a.id)}</p></div></div><span class="status">${esc(a.status)}</span></div><div class="athlete-details"><div class="detail-box"><strong>${esc(a.age??'—')}</strong><span>Age</span></div><div class="detail-box"><strong>${esc(a.weight??'—')} kg</strong><span>Weight</span></div><div class="detail-box"><strong>${esc(a.height??'—')} cm</strong><span>Height</span></div></div><div class="progress-header"><span>Open Progress for daily activity</span><span class="progress-value">—</span></div><div class="progress-track"><div class="progress-fill" style="width:0%"></div></div><div class="card-footer"><span class="last-active">${a.visibility==='published'?'Plans published':'Draft plans'}</span><button class="view-button" data-athlete-id="${esc(a.id)}">View Profile <i class="fa-solid fa-arrow-right"></i></button></div></article>`).join('');
  $('resultCount').textContent=shown.length+' Athletes';$('emptyState').style.display=shown.length?'none':'block';$('athleteGrid').style.display=shown.length?'grid':'none';
  $('emptyState').textContent=athletes.length?'No matching athletes.':'No connected athletes. Accept a connection request first.';
  document.querySelectorAll('.view-button').forEach(b=>b.addEventListener('click',()=>{localStorage.setItem('momentumSelectedAthleteId',b.dataset.athleteId);localStorage.setItem('selectedAthleteId',b.dataset.athleteId);location.href='test9.html?athlete='+encodeURIComponent(b.dataset.athleteId);}));
@@ -1362,5 +982,6 @@ $('logoutBtn').addEventListener('click',planLogout);loadAthletes();window.addEve
 
 </script>
 
+<script src="momentum-ui.js?v=20261026" defer></script>
 </body>
 </html>

@@ -1090,9 +1090,10 @@
             }
         }
     </style>
+<link rel="stylesheet" href="momentum-ui.css?v=20261026">
 </head>
 
-<body>
+<body data-momentum-auth data-momentum-page="support.html" data-momentum-role="athlete">
 
     <!-- =====================================================
          SIDEBAR
@@ -1679,6 +1680,7 @@ $('refreshSupport').onclick=()=>{if(!busy)refresh().then(()=>message('Updated.')
 sb.auth.onAuthStateChange?.((event,session)=>{if(me&&session?.user?.id!==me){cases=[];render();message('Account changed. Reload or sign in again.');}});
 
 </script>
+<script src="momentum-ui.js?v=20261026" defer></script>
 </body>
 
 </html>

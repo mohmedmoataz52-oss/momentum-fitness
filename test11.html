@@ -514,9 +514,10 @@
     background-image: none !important;
 }
     </style>
+<link rel="stylesheet" href="momentum-ui.css?v=20261026">
 </head>
 
-<body>
+<body data-momentum-auth data-momentum-page="test11.html" data-momentum-role="trainer">
 <aside class="sidebar">
     <div class="logo"><a href="test4.html" class="logo-link"><span class="mo">MO</span><span class="mentum">MENTUM</span></a></div>
     <p class="brand-caption">DISCIPLINE BUILDS RESULTS</p>
@@ -658,7 +659,7 @@ function renderProfile(){
 }
 function renderAthletes(){
  $('athleteSelect').innerHTML=athletes.length?'<option value="">Choose an athlete...</option>'+athletes.map(a=>`<option value="${esc(a.id)}">${esc(a.name||'Athlete')} — ${esc(a.id)}</option>`).join(''):'<option value="">No connected athletes</option>';
- $('athleteList').innerHTML=athletes.map(a=>`<article class="item"><div class="avatar"><i class="fa-solid fa-user"></i></div><div class="grow"><h3>${esc(a.name||'Athlete')}</h3><p style="overflow-wrap:anywhere">${esc(a.id)} · ${esc(a.goal||'Goal not set')}<br>${workCount(a)} plan exercises · ${mealCount(a)} plan meals</p></div><button class="btn" data-open="${esc(a.id)}">View</button></article>`).join('')||'<div class="empty">No connected athletes. Accept a connection request from the coach dashboard first.</div>';
+ $('athleteList').innerHTML=athletes.map(a=>`<article class="item"><div class="avatar" data-momentum-avatar="${esc(a.id)}"><i class="fa-solid fa-user"></i></div><div class="grow"><h3>${esc(a.name||'Athlete')}</h3><p style="overflow-wrap:anywhere">${esc(a.id)} · ${esc(a.goal||'Goal not set')}<br>${workCount(a)} plan exercises · ${mealCount(a)} plan meals</p></div><button class="btn" data-open="${esc(a.id)}">View</button></article>`).join('')||'<div class="empty">No connected athletes. Accept a connection request from the coach dashboard first.</div>';
  document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>selectAthlete(b.dataset.open)));
 }
 function eligibleDates(){
@@ -828,6 +829,7 @@ window.addEventListener('focus',refreshAthletes);
 
 
 </script>
+<script src="momentum-ui.js?v=20261026" defer></script>
 </body>
 
 </html>

@@ -1052,10 +1052,11 @@
         }
 
     </style>
+<link rel="stylesheet" href="momentum-ui.css?v=20261026">
 </head>
 
 
-<body>
+<body data-momentum-auth data-momentum-page="test3.html" data-momentum-role="athlete">
 
     <div class="container">
 
@@ -1377,7 +1378,7 @@
 
         <section class="progress">
 
-            <div class="circle" id="homeProgressCircle" aria-label="Today workout progress"></div>
+            <div class="circle" id="homeProgressCircle" data-value="—" aria-label="Today workout progress"></div>
 
             <div class="divider"></div>
 
@@ -1593,6 +1594,7 @@ window.openPage = page => { window.location.href = page; };
     const sb=window.supabase.createClient(
       'https://xcgbxurbnsytecrdupct.supabase.co',
       'sb_publishable_PAd7gf0Q-N9H4PqgqqaVNg_EfE583xO');
+    window.momentumClient=sb;
     const {data:auth,error:authError}=await sb.auth.getUser();
     if(authError || !auth.user) {
       if(authError && !['AuthSessionMissingError','AuthApiError'].includes(authError.name)) throw authError;
@@ -1777,6 +1779,7 @@ window.openPage = page => { window.location.href = page; };
             document.getElementById('trainerName').textContent=trainer.name||'Trainer';
             document.getElementById('trainerId').textContent=trainer.id;
             document.getElementById('trainerId').style.overflowWrap='anywhere';
+            document.getElementById('trainerPhoto').dataset.momentumAvatar=trainer.id;
             document.getElementById('trainerPhoto').src='https://ui-avatars.com/api/?name='+encodeURIComponent(trainer.name||'Trainer')+'&background=0a1822&color=24e3a3&size=160';
             const phone=String(trainer.whatsapp||'').replace(/[^0-9]/g,'');
             // Use an international number. Convert the common Egyptian local format.
@@ -1825,10 +1828,10 @@ window.openPage = page => { window.location.href = page; };
             if(data&&data.athlete_id!==user.id)throw new Error('Account changed. Reload the page.');
             const metrics=data?.metrics;
             const percent=metrics?.workout_percent??0;
-            if(circle){circle.style.background=`conic-gradient(#24e3a3 ${percent}%, #243542 ${percent}%)`;circle.textContent=percent+'%';circle.style.display='grid';circle.style.placeItems='center';circle.style.fontWeight='800';circle.style.color='#f4f8fb';circle.title='Today’s exercise logs from Supabase';}
+            if(circle){circle.style.background=`conic-gradient(#24e3a3 ${percent}%, #243542 ${percent}%)`;circle.dataset.value=percent+'%';circle.textContent='';circle.style.display='grid';circle.style.placeItems='center';circle.style.fontWeight='800';circle.style.color='#f4f8fb';circle.title='Today’s exercise logs from Supabase';}
             if(bar)bar.style.width=percent+'%';
             if(count)count.textContent=metrics?.prescribed_rest?'Rest assigned':metrics?.rest_override?'Workout skipped':`${metrics?.exercises_done??0}/${metrics?.exercises_total??0}`;
-          }catch(error){if(circle){circle.textContent='—';circle.title=error.message;}if(bar)bar.style.width='0%';if(count)count.textContent='—';}
+          }catch(error){if(circle){circle.dataset.value='—';circle.textContent='';circle.title=error.message;}if(bar)bar.style.width='0%';if(count)count.textContent='—';}
         }
         await syncHomeWorkoutProgress();
         window.addEventListener('focus',syncHomeWorkoutProgress);
@@ -1845,6 +1848,7 @@ window.openPage = page => { window.location.href = page; };
 </script>
 
 
+<script src="momentum-ui.js?v=20261026" defer></script>
 </body>
 
 </html>

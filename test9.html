@@ -850,9 +850,10 @@
     background-image: none !important;
 }
     </style>
+<link rel="stylesheet" href="momentum-ui.css?v=20261026">
 </head>
 
-<body>
+<body data-momentum-auth data-momentum-page="test9.html" data-momentum-role="trainer">
   <aside class="sidebar">
     <div class="logo"><a href="test4.html" class="logo-link"><span class="mo">MO</span><span class="mentum">MENTUM</span></a></div>
     <p class="brand-caption">DISCIPLINE BUILDS RESULTS</p>
@@ -1066,8 +1067,7 @@
                 </div>
             </section>
         </div>
-        <p class="footer">MOMENTUM · DISCIPLINE BUILDS RESULTS<br>Demo data is local to this browser. Connect
-            authentication and database policies before production use.</p>
+        <p class="footer">MOMENTUM · DISCIPLINE BUILDS RESULTS<br>Your account data is connected to Supabase.</p>
     </main>
     <div class="toast" id="toast">Saved successfully</div>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -1134,8 +1134,8 @@ function lockEditor(locked){
 }
 function toast(msg) { const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 2300) } function esc(s = '') { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) } function initials(n = 'A') { return n.split(/\s+/).map(x => x[0] || '').join('').slice(0, 2).toUpperCase() }
         function renderAthletes() { const term = document.getElementById('athleteSearch').value.toLowerCase(); const list = document.getElementById('athleteList'); const visible = athletes.filter(a => (a.name + ' ' + a.id).toLowerCase().includes(term)); document.getElementById('athleteCount').textContent = athletes.length + ' athletes · select one'; list.innerHTML = visible.map(a => `<button class="ath ${a.id === selectedId ? 'active' : ''}" data-id="${esc(a.id)}">${a.photo ? `<img src="${esc(a.photo)}" alt="">` : `<span class="avatar">${esc(initials(a.name))}</span>`}<span style="min-width:0"><strong>${esc(a.name)}</strong><small>${esc(a.id)} · ${esc(a.weight)} kg</small></span><i class="fa-solid fa-chevron-right chev"></i></button>`).join('') || '<div class="empty">No athletes found.</div>'; list.querySelectorAll('[data-id]').forEach(b => b.addEventListener('click', () => { if(dirty&&!confirm('Discard unsaved edits and switch athlete?'))return; if(dirty){location.href='test9.html?athlete='+encodeURIComponent(b.dataset.id);return;} selectedId = b.dataset.id; localStorage.setItem(SELECTED,selectedId); renderAll() })) }
-        function renderBanner() { const a = current(); if (!a) return; document.getElementById('personName').textContent = a.name; document.getElementById('personId').textContent = a.id + ' · ' + a.status + ' athlete'; document.getElementById('personGoal').textContent = 'Goal: ' + a.goal; document.getElementById('personPlanStatus').textContent = a.visibility === 'published' ? 'Plans published' : 'Plans not published'; const av = document.getElementById('personAvatar'); if (a.photo) { av.innerHTML = `<img src="${esc(a.photo)}" style="width:55px;height:55px;object-fit:cover;border-radius:16px" alt="">` } else av.textContent = initials(a.name) }
-        function fillProfile() { const a = current(); if (!a) return; const map = { pName: 'name', pId: 'id', pAge: 'age', pWeight: 'weight', pHeight: 'height', pEmail: 'email', pPhone: 'phone', pGoal: 'goal', pStart: 'start', pEnd: 'end', pStatus: 'status', pPhoto: 'photo' }; Object.entries(map).forEach(([id, k]) => document.getElementById(id).value = a[k] ?? ''); document.getElementById('waterTarget').value = a.waterTarget || 3000; document.getElementById('coachNotes').value = a.notes || ''; document.getElementById('planVisibility').value = a.visibility || 'draft'; document.getElementById('progressWeight').textContent = (a.weight || '—') + (a.weight ? ' kg' : ''); document.getElementById('progressTraining').textContent = a.workPlan.filter(d => !d.isRest).length; document.getElementById('progressMeals').textContent = Math.max(0, ...a.dietPlan.map(d => d.meals.length)); document.getElementById('progressLogs').textContent = '—' }
+        function renderBanner() { const a = current(); if (!a) return; document.getElementById('personName').textContent = a.name; document.getElementById('personId').textContent = a.id + ' · ' + a.status + ' athlete'; document.getElementById('personGoal').textContent = 'Goal: ' + a.goal; document.getElementById('personPlanStatus').textContent = a.visibility === 'published' ? 'Plans published' : 'Plans not published'; const av = document.getElementById('personAvatar'); av.dataset.momentumAvatar=a.id; if (a.photo) { av.innerHTML = `<img src="${esc(a.photo)}" style="width:55px;height:55px;object-fit:cover;border-radius:16px" alt="">` } else av.textContent = initials(a.name) }
+        function fillProfile() { const a = current(); if (!a) return; const map = { pName: 'name', pId: 'id', pAge: 'age', pWeight: 'weight', pHeight: 'height', pEmail: 'email', pPhone: 'phone', pGoal: 'goal', pStart: 'start', pEnd: 'end', pStatus: 'status', pPhoto: 'photo' }; Object.entries(map).forEach(([id, k]) => document.getElementById(id).value = a[k] ?? ''); document.getElementById('waterTarget').value = a.waterTarget ?? 3000; document.getElementById('coachNotes').value = a.notes || ''; document.getElementById('planVisibility').value = a.visibility || 'draft'; document.getElementById('progressWeight').textContent = (a.weight || '—') + (a.weight ? ' kg' : ''); document.getElementById('progressTraining').textContent = a.workPlan.filter(d => !d.isRest).length; document.getElementById('progressMeals').textContent = Math.max(0, ...a.dietPlan.map(d => d.meals.length)); document.getElementById('progressLogs').textContent = '—' }
         async function saveProfile() { const a = current(); const name = document.getElementById('pName').value.trim(); if (!name) { alert('Please enter the athlete name.'); return } const oldWeight = Number(a.weight); a.name = name; a.age = Number(document.getElementById('pAge').value) || ''; a.weight = Number(document.getElementById('pWeight').value) || ''; a.height = Number(document.getElementById('pHeight').value) || ''; a.email = document.getElementById('pEmail').value.trim(); a.phone = document.getElementById('pPhone').value.trim(); a.goal = document.getElementById('pGoal').value; a.start = document.getElementById('pStart').value; a.end = document.getElementById('pEnd').value; a.status = document.getElementById('pStatus').value; a.photo = document.getElementById('pPhoto').value.trim(); persist(); await saveRemote('profile') }
         function setTab(tab) { activeTab = tab; document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab)); document.querySelectorAll('.tabcontent').forEach(el => el.classList.toggle('hidden', el.id !== tab + 'Tab')); if (tab === 'work') renderWork(); if (tab === 'diet') renderDiet() }
         function renderDays(kind) { const root = document.getElementById(kind + 'Days'); const list = kind === 'work' ? current().workPlan : current().dietPlan; const active = kind === 'work' ? workDay : dietDay; root.innerHTML = list.map((d, i) => `<button class="daybtn ${i === active ? 'active' : ''}" data-day="${i}"><strong>${dayNames[i]}</strong><small>${kind === 'work' ? (d.isRest ? 'Rest Day' : esc(d.focus)) : d.meals.length + ' Meals'}</small></button>`).join(''); root.querySelectorAll('[data-day]').forEach(b => b.addEventListener('click', () => { if (kind === 'work') { workDay = Number(b.dataset.day); renderWork() } else { dietDay = Number(b.dataset.day); renderDiet() } })) }
@@ -1171,6 +1171,7 @@ async function initializeEditor(){
 window.addEventListener('beforeunload',event=>{if(dirty){event.preventDefault();event.returnValue='';}});
 
 </script>
+<script src="momentum-ui.js?v=20261026" defer></script>
 </body>
 
 </html>

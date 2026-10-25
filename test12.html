@@ -514,9 +514,10 @@
     background-image: none !important;
 }
     </style>
+<link rel="stylesheet" href="momentum-ui.css?v=20261026">
 </head>
 
-<body>
+<body data-momentum-auth data-momentum-page="test12.html" data-momentum-role="trainer">
 <aside class="sidebar">
     <div class="logo"><a href="test4.html" class="logo-link"><span class="mo">MO</span><span class="mentum">MENTUM</span></a></div>
     <p class="brand-caption">DISCIPLINE BUILDS RESULTS</p>
@@ -610,6 +611,7 @@ async function save(){if(busy||revision===null)return;const water=$('water').val
 $('save').onclick=save;$('reset').onclick=()=>{if(confirm('Restore settings saved in your account? Unsaved edits will be lost.'))load();};$('logoutBtn').onclick=async e=>{e.preventDefault();if(!confirm('Log out?'))return;try{const {error}=await sb.auth.signOut();if(error)throw error;location.href='test.html';}catch(e){message(e.message);}};
 lock(true);load();sb?.auth.onAuthStateChange?.((event,session)=>{if(owner&&session?.user?.id!==owner){revision=null;Object.keys(fields).forEach(id=>$(id).value='');$('trainerEmail').value='';$('sidebarCoachName').textContent='Trainer';lock(true);message('Account changed. Reload or sign in again.');}});
 
-</script></body>
+</script><script src="momentum-ui.js?v=20261026" defer></script>
+</body>
 
 </html>
