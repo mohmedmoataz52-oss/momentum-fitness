@@ -606,6 +606,7 @@
             <div class="list" id="dayList" style="max-height:440px;overflow-y:auto"></div>
         </section>
         <section class="panel" id="dailyDetails" aria-live="polite"></section>
+        <section class="panel"><div class="row" style="flex-wrap:wrap"><h2 class="grow" style="font-size:16px">Progress Photos</h2><span class="muted" id="coachPhotoTotal"></span></div><p class="muted" id="coachPhotosStatus" style="margin:12px 0"></p><div class="grid" id="coachPhotos"></div></section>
         <section class="panel"><h2 style="font-size:16px">Logged Body Weights</h2><div id="weightHistory" style="margin-top:12px"></div></section>
         <section class="panel">
             <h2 style="font-size:16px">Athlete List</h2>
@@ -614,10 +615,12 @@
         <p class="footer">MOMENTUM · DISCIPLINE BUILDS RESULTS<br>Daily activity from Supabase · Dates use Africa/Cairo.
         </p>
     </main>
+<div id="coachPhotoLightbox" hidden role="dialog" aria-modal="true" aria-label="Progress photo" style="position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);padding:24px;overflow:auto;text-align:center"><button class="btn" id="closeCoachPhoto" style="margin-bottom:16px">Close</button><p id="coachPhotoCaption" style="margin-bottom:12px"></p><img id="coachPhotoImage" alt="Athlete progress photo" style="max-width:95%;max-height:80vh;object-fit:contain"></div>
     
     
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+
 const sb=window.supabase?.createClient('https://xcgbxurbnsytecrdupct.supabase.co','sb_publishable_PAd7gf0Q-N9H4PqgqqaVNg_EfE583xO');
 const $=id=>document.getElementById(id);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -640,6 +643,7 @@ function workCount(a){return(a.workPlan||[]).reduce((sum,d)=>sum+(d.exercises||[
 function mealCount(a){return(a.dietPlan||[]).reduce((sum,d)=>sum+(d.meals||[]).length,0);}
 function disableActions(disabled){['edit','viewWork','viewDiet','applyDates','thisMonth','subscriptionDates'].forEach(id=>$(id).disabled=disabled);}
 function clearActivity(text='Choose an athlete to load activity.'){
+ periodPhotos=[];photosReady=false;++photoVersion;$('coachPhotos').innerHTML='';$('coachPhotosStatus').textContent='Choose a date to inspect its progress photos.';$('coachPhotoTotal').textContent='';closeCoachPhoto();
  records=[];selectedDate=null;availableFrom=null;availableTo=null;
  $('periodStats').innerHTML='';$('dayList').innerHTML='';$('dailyDetails').innerHTML='<div class="empty">'+esc(text)+'</div>';$('weightHistory').innerHTML='';$('rangeNote').textContent='';
 }
@@ -682,6 +686,7 @@ function renderDays(){
    label=r.metrics.overall_percent+'%';css=r.metrics.overall_percent===100?'':isToday?'warn':'red';
    description=(r.snapshot.prescribed_rest?'Coach-assigned rest':r.state.rest_override?'Workout marked rest':'Exercises '+r.metrics.exercises_done+'/'+r.metrics.exercises_total)+' · Meals '+r.metrics.meals_done+'/'+r.metrics.meals_total+' · Water '+r.state.water_ml/1000+' L';
   }
+  const photoCount=periodPhotos.filter(p=>p.photo_date===date).length;if(photoCount)description+=' · '+photoCount+' photo'+(photoCount===1?'':'s');
   return `<article class="item" style="${selectedDate===date?'border-color:var(--g)':''}"><div class="grow"><h3>${esc(date)}${isToday?' · Today':''}</h3><p>${esc(description)}</p></div><span class="badge ${css}">${esc(label)}</span><button class="btn" data-date="${esc(date)}" aria-pressed="${selectedDate===date}">Details</button></article>`;
  }).join('')||'<div class="empty">No eligible dates in this period.</div>';
  $('dayList').querySelectorAll('[data-date]').forEach(button=>button.addEventListener('click',()=>showDay(button.dataset.date)));
@@ -696,7 +701,7 @@ function previousExerciseWeight(ex,date){
  return 'No earlier matching load in this period';
 }
 function showDay(date){
- selectedDate=date;renderDays();const r=records.find(x=>x.date===date);
+ selectedDate=date;renderCoachPhotos(date);renderDays();const r=records.find(x=>x.date===date);
  if(!r){$('dailyDetails').innerHTML='<h2 style="font-size:16px">'+esc(date)+'</h2><div class="empty" style="margin-top:12px">No record was saved for this day. This does not confirm whether the athlete trained or ate their meals.</div>';return;}
  const past=date<today(),s=r.state,snap=r.snapshot,m=r.metrics,ex=snap.work?.exercises||[];
  const workState=snap.prescribed_rest?'Rest assigned by coach':s.rest_override?'Athlete marked rest; assigned workout is not counted as completed':(snap.work?.focus||'No workout assigned');
@@ -734,6 +739,7 @@ async function fetchHistory(){
   availableFrom=lower<=upper?lower:null;availableTo=lower<=upper?upper:null;
   renderSummary();selectedDate=records[0]?.date||availableTo;renderDays();if(selectedDate)showDay(selectedDate);else $('dailyDetails').innerHTML='<div class="empty">No eligible dates in this subscription period.</div>';
   notify(records.length?'Loaded '+records.length+' recorded day'+(records.length===1?'':'s')+'.':'No activity records in this period. Ask the athlete to save an entry in Exercises.');
+  await loadPeriodPhotos(version,id,availableFrom,availableTo);
  }catch(error){if(version!==requestVersion||id!==selectedId)return;clearActivity('Could not load activity.');notify(error.message,true);}
 }
 async function selectAthlete(id){
@@ -770,9 +776,56 @@ $('logoutBtn').addEventListener('click',async event=>{
  event.preventDefault();if(!confirm('Log out?'))return;
  try{const {error}=await sb.auth.signOut();if(error)throw error;++requestVersion;++listVersion;selectedId=null;athletes=[];clearActivity();renderProfile();['isLoggedIn','userRole','userID','momentumSelectedAthleteId','selectedAthleteId','myTrainer'].forEach(k=>localStorage.removeItem(k));location.href='test.html';}catch(error){notify(error.message,true);}
 });
+let periodPhotos=[],photosReady=false,photoVersion=0;
+async function loadPeriodPhotos(historyVersion,id,from,to){
+ periodPhotos=[];photosReady=false;$('coachPhotosStatus').textContent='Loading progress photos...';
+ if(!from||!to){photosReady=true;renderCoachPhotos(selectedDate);return;}
+ try{
+  let offset=0,items=[];
+  do{
+   const {data,error}=await sb.rpc('momentum_photos',{action:'list',target:id,payload:{date_from:from,date_to:to,offset,limit:100}});
+   if(historyVersion!==requestVersion||id!==selectedId)return;if(error)throw error;
+   items.push(...data.items);if(!data.has_more)break;if(data.next_offset<=offset)throw new Error('Photo pagination did not advance.');offset=data.next_offset;
+  }while(true);
+  if(historyVersion!==requestVersion||id!==selectedId)return;
+  periodPhotos=[...new Map(items.filter(p=>p.athlete_id===id&&p.trainer_id===coachId).map(p=>[p.id,p])).values()];photosReady=true;
+  $('coachPhotoTotal').textContent=periodPhotos.length+' photos in this period';renderDays();renderCoachPhotos(selectedDate);
+ }catch(error){if(historyVersion!==requestVersion||id!==selectedId)return;photosReady=false;$('coachPhotos').innerHTML='';$('coachPhotosStatus').textContent='Photos unavailable: '+error.message+'. Run momentum_photos.sql if photo storage has not been installed.';}
+}
+async function renderCoachPhotos(date){
+ const version=++photoVersion,id=selectedId;const root=$('coachPhotos');root.innerHTML='';
+ if(!date){$('coachPhotosStatus').textContent='Choose a date to inspect its progress photos.';return;}
+ if(!photosReady){$('coachPhotosStatus').textContent='Loading photos for the selected period...';return;}
+ const photos=periodPhotos.filter(p=>p.photo_date===date);
+ $('coachPhotosStatus').textContent=date+' · '+photos.length+' photo'+(photos.length===1?'':'s');
+ if(!photos.length){root.innerHTML='<div class="empty">No progress photos saved for this date.</div>';return;}
+ try{
+  const {data,error}=await sb.storage.from('momentum-progress-photos').createSignedUrls(photos.map(p=>p.storage_path),600);
+  if(version!==photoVersion||id!==selectedId||date!==selectedDate)return;if(error)throw error;
+  photos.forEach((p,i)=>{
+   const url=data[i]?.error?null:data[i]?.signedUrl;const card=document.createElement('article');card.className='card';
+   card.innerHTML=(url?`<img src="${esc(url)}" loading="lazy" alt="${esc(p.position)} progress photo on ${esc(p.photo_date)}" style="width:100%;height:220px;object-fit:cover;border-radius:10px;cursor:pointer">`:'<p class="muted">Image unavailable.</p>')+`<h3 style="margin-top:10px;font-size:13px">${esc(p.position)} · ${esc(p.photo_date)}</h3><button class="btn" style="margin-top:10px" data-photo-view="${esc(p.id)}">View Photo</button>`;
+   card.querySelector('img')?.addEventListener('click',()=>showPhotoLightbox(p.id));card.querySelector('button').addEventListener('click',()=>showPhotoLightbox(p.id));root.appendChild(card);
+  });
+ }catch(error){if(version===photoVersion)$('coachPhotosStatus').textContent='Could not load photo images: '+error.message;}
+}
+async function showPhotoLightbox(id){
+ const photo=periodPhotos.find(p=>p.id===id);if(!photo)return;const athlete=selectedId,version=photoVersion;
+ try{
+  const {data,error}=await sb.storage.from('momentum-progress-photos').createSignedUrls([photo.storage_path],600);
+  if(version!==photoVersion||athlete!==selectedId)return;if(error)throw error;if(!data[0]?.signedUrl||data[0]?.error)throw new Error('Image unavailable.');
+  $('coachPhotoImage').src=data[0].signedUrl;$('coachPhotoCaption').textContent=photo.position+' · '+photo.photo_date;$('coachPhotoLightbox').hidden=false;
+ }catch(error){$('coachPhotosStatus').textContent=error.message;}
+}
+function closeCoachPhoto(){ $('coachPhotoLightbox').hidden=true;$('coachPhotoImage').removeAttribute('src');}
+$('closeCoachPhoto').addEventListener('click',closeCoachPhoto);$('coachPhotoLightbox').addEventListener('click',event=>{if(event.target===$('coachPhotoLightbox'))closeCoachPhoto();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape')closeCoachPhoto();});
+
+
 $('dateFrom').value=today().slice(0,7)+'-01';$('dateTo').value=today();$('dateTo').max=today();$('dateFrom').max=today();
 $('sidebarCoachName').textContent='Loading...';disableActions(true);clearActivity('Loading connected athletes...');refreshAthletes();
 window.addEventListener('focus',refreshAthletes);
+
 
 </script>
 </body>
