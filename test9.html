@@ -1094,14 +1094,19 @@ async function planLogout(e){
  catch(error){alert(error.message);}
 }
 
-        const KEY = 'momentumAthletes'; const SELECTED = 'momentumSelectedAthleteId'; const days = ['Push', 'Pull', 'Legs', 'Push', 'Pull', 'Legs', 'Rest']; const dayNames = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7']; let activeTab = 'profile', workDay = 0, dietDay = 0, selectedId = null, athletes = [];
+        let preferencesWarning=''; const KEY = 'momentumAthletes'; const SELECTED = 'momentumSelectedAthleteId'; const days = ['Push', 'Pull', 'Legs', 'Push', 'Pull', 'Legs', 'Rest']; const dayNames = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7']; let activeTab = 'profile', workDay = 0, dietDay = 0, selectedId = null, athletes = [];
         function blankWork() { return days.map((focus, i) => ({ day: i + 1, focus, isRest: i === 6, exercises: [] })) } function blankDiet() { return dayNames.map((d, i) => ({ day: i + 1, meals: [] })) } function normalize(a) { a.workPlan = Array.isArray(a.workPlan) && a.workPlan.length === 7 ? a.workPlan : blankWork(); a.dietPlan = Array.isArray(a.dietPlan) && a.dietPlan.length === 7 ? a.dietPlan : blankDiet(); a.workPlan.forEach((d, i) => { d.day = i + 1; d.focus = d.focus || days[i]; d.exercises = d.exercises || [] }); a.dietPlan.forEach((d, i) => { d.day = i + 1; d.meals = d.meals || [] }); a.waterTarget = a.waterTarget ?? 3000; a.visibility = a.visibility || 'draft'; return a } async function load(){
  const coach=await planAccount('trainer');
  document.getElementById('sidebarCoachName').textContent=coach.full_name||'Trainer';
  const saved=await planAPI('list');
- const defaults=await sb.rpc('momentum_settings',{action:'get'});
- if(defaults.error)throw new Error(defaults.error.message+' Run momentum_settings.sql to load trainer preferences.');
- athletes=saved.map(a=>{if(Number(a.revision||0)===0&&defaults.data){a.waterTarget=defaults.data.water_target;a.visibility=defaults.data.visibility;}return normalize(a);});
+ let defaults=null;preferencesWarning='';
+ try{
+  const result=await sb.rpc('momentum_settings',{action:'get'});
+  if(result.error)throw result.error;
+  if(result.data&&Number.isInteger(result.data.water_target)&&result.data.water_target>=0&&result.data.water_target<=20000&&['draft','published'].includes(result.data.visibility))defaults=result.data;
+  else throw new Error('Invalid trainer preferences');
+ }catch(error){preferencesWarning='Trainer defaults are unavailable. Existing plans are unchanged; unsaved plans use their standard settings. You can continue editing.';}
+ athletes=saved.map(a=>{if(Number(a.revision||0)===0&&defaults){a.waterTarget=defaults.water_target;a.visibility=defaults.visibility;}return normalize(a);});
  const wanted=new URLSearchParams(location.search).get('athlete')||localStorage.getItem(SELECTED)||localStorage.getItem('selectedAthleteId');
  const explicit=new URLSearchParams(location.search).get('athlete');
  selectedId=athletes.some(a=>a.id===wanted)?wanted:(explicit?null:athletes[0]?.id);
@@ -1160,7 +1165,7 @@ async function initializeEditor(){
  document.querySelector('.top').after(banner);
  document.getElementById('addDemo').textContent='Find Connected Athletes';
  document.querySelector('.workarea').hidden=true;lockEditor(true);statusMessage('Loading connected athletes...');
- try{await load();renderAll();statusMessage(!current()&&athletes.length?'The requested athlete is not linked to this trainer. Choose a connected athlete from the list.':athletes.length?'Select an athlete. Save edits before leaving. Publish from Settings when ready.':'No connected athletes. Accept a request from the trainer dashboard first.');lockEditor(!current());}
+ try{await load();renderAll();statusMessage(!current()&&athletes.length?'The requested athlete is not linked to this trainer. Choose a connected athlete from the list.':athletes.length?'Select an athlete. Save edits before leaving. Publish from Settings when ready.':'No connected athletes. Accept a request from the trainer dashboard first.');lockEditor(!current());if(preferencesWarning){const warning=document.createElement('p');warning.id='trainerPreferencesWarning';warning.setAttribute('role','status');warning.style.cssText='margin:10px 0;color:#e7c47c';warning.textContent=preferencesWarning;banner.after(warning);}}
  catch(error){statusMessage(error.message+' Check that momentum_plans.sql ran successfully.',true);}
 }
 window.addEventListener('beforeunload',event=>{if(dirty){event.preventDefault();event.returnValue='';}});
