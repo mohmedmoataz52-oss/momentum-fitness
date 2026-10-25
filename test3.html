@@ -1583,6 +1583,8 @@ window.openPage = page => { window.location.href = page; };
 (async function initializeAthlete() {
   const fields=['headerEmail','profileName','profileAge','profileWeight','profileHeight','athleteIdDisplay'];
   fields.forEach(id=>document.getElementById(id).textContent='--');
+  document.getElementById('athleteIdDisplay').style.overflowWrap='anywhere';
+  document.getElementById('athleteIdDisplay').style.minWidth='0';
   document.getElementById('headerName').textContent='Loading your profile...';
   document.getElementById('copyAthleteId').disabled=true;
   document.getElementById('updateWeight').disabled=true;
@@ -1813,123 +1815,30 @@ window.openPage = page => { window.location.href = page; };
            LOAD MY TRAINER
         ========================================= */
 
-        function loadMyTrainer() {
-
-            const trainerConnection =
-                localStorage.getItem("myTrainer");
-
-            const trainerEmpty =
-                document.getElementById("trainerEmpty");
-
-            const trainerCard =
-                document.getElementById("trainerCard");
-
-            const trainerStatus =
-                document.getElementById("trainerStatus");
-
-
-            if (!trainerConnection) {
-
-                trainerEmpty.style.display =
-                    "flex";
-
-                trainerCard.style.display =
-                    "none";
-
-                trainerStatus.textContent =
-                    "NOT CONNECTED";
-
-                return;
+        async function loadMyTrainer() {
+          const empty=document.getElementById('trainerEmpty'),card=document.getElementById('trainerCard'),status=document.getElementById('trainerStatus');
+          card.style.display='none';empty.style.display='none';status.textContent='LOADING';
+          const oldLink=document.getElementById('trainerWhatsapp');if(oldLink)oldLink.remove();
+          try {
+            const {data:trainer,error}=await sb.rpc('momentum_coaching',{action:'connection',target:null,decision:null});
+            if(error)throw error;
+            if(!trainer){empty.style.display='flex';status.textContent='NOT CONNECTED';localStorage.removeItem('myTrainer');return;}
+            document.getElementById('trainerName').textContent=trainer.name||'Trainer';
+            document.getElementById('trainerId').textContent=trainer.id;
+            document.getElementById('trainerId').style.overflowWrap='anywhere';
+            document.getElementById('trainerPhoto').src='https://ui-avatars.com/api/?name='+encodeURIComponent(trainer.name||'Trainer')+'&background=0a1822&color=24e3a3&size=160';
+            const phone=String(trainer.whatsapp||'').replace(/[^0-9]/g,'');
+            // Use an international number. Convert the common Egyptian local format.
+            const international=/^01[0125][0-9]{8}$/.test(phone)?'20'+phone.slice(1):phone.replace(/^00/,'');
+            if(/^[1-9][0-9]{7,14}$/.test(international)){
+              const link=document.createElement('a');link.id='trainerWhatsapp';link.href='https://wa.me/'+international;
+              link.target='_blank';link.rel='noopener noreferrer';link.title='Contact your trainer on WhatsApp';link.setAttribute('aria-label',link.title);
+              link.style.cssText='color:#24e3a3;font-size:28px;margin:0 12px';link.innerHTML='<i class="fa-brands fa-whatsapp"></i>';card.appendChild(link);
             }
-
-
-            try {
-
-                const trainer =
-                    JSON.parse(trainerConnection);
-
-
-                if (
-                    !trainer ||
-                    trainer.status !== "accepted"
-                ) {
-
-                    trainerEmpty.style.display =
-                        "flex";
-
-                    trainerCard.style.display =
-                        "none";
-
-                    trainerStatus.textContent =
-                        "NOT CONNECTED";
-
-                    return;
-                }
-
-
-                document.getElementById(
-                    "trainerName"
-                ).textContent =
-                    trainer.name || "Trainer";
-
-
-                document.getElementById(
-                    "trainerId"
-                ).textContent =
-                    trainer.id || "--";
-
-
-                const trainerPhoto =
-                    document.getElementById(
-                        "trainerPhoto"
-                    );
-
-
-                if (trainer.photo) {
-
-                    trainerPhoto.src =
-                        trainer.photo;
-
-                } else {
-
-                    trainerPhoto.src =
-                        "https://ui-avatars.com/api/?name=" +
-                        encodeURIComponent(
-                            trainer.name || "Trainer"
-                        ) +
-                        "&background=0a1822&color=24e3a3&size=160";
-
-                }
-
-
-                trainerEmpty.style.display =
-                    "none";
-
-                trainerCard.style.display =
-                    "flex";
-
-                trainerStatus.textContent =
-                    "CONNECTED";
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "Trainer data error:",
-                    error
-                );
-
-                trainerEmpty.style.display =
-                    "flex";
-
-                trainerCard.style.display =
-                    "none";
-
-            }
-
+            localStorage.setItem('myTrainer',JSON.stringify(trainer));
+            card.style.display='flex';status.textContent='CONNECTED';
+          }catch(error){status.textContent='COULD NOT LOAD TRAINER';status.title=error.message;}
         }
-
 
         /* =========================================
            PAGE NAVIGATION
@@ -1947,7 +1856,8 @@ window.openPage = page => { window.location.href = page; };
            INITIALIZE
         ========================================= */
 
-        loadMyTrainer();
+        await loadMyTrainer();
+        window.addEventListener("focus", loadMyTrainer);
         window.openPage = openPage;
 
     

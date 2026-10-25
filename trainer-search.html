@@ -884,539 +884,67 @@
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-
-
-    /* =========================================
-       ELEMENTS
-    ========================================= */
-
-    const trainerIdInput =
-        document.getElementById(
-            "trainerIdInput"
-        );
-
-    const searchButton =
-        document.getElementById(
-            "searchButton"
-        );
-
-    const result =
-        document.getElementById(
-            "result"
-        );
-
-    const notFound =
-        document.getElementById(
-            "notFound"
-        );
-
-    const message =
-        document.getElementById(
-            "message"
-        );
-
-    const requestButton =
-        document.getElementById(
-            "requestButton"
-        );
-
-
-    /* =========================================
-       CURRENT ATHLETE
-    ========================================= */
-
-    const athleteId =
-        localStorage.getItem("athleteId")
-        || "ATH-10001";
-
-    const athleteName =
-        localStorage.getItem("userName")
-        || "Athlete";
-
-
-    /* =========================================
-       SEARCH TRAINER
-    ========================================= */
-
-    function searchTrainer() {
-
-        const enteredId =
-            trainerIdInput.value
-                .trim()
-                .toUpperCase();
-
-
-        result.style.display =
-            "none";
-
-        notFound.style.display =
-            "none";
-
-        message.textContent =
-            "";
-
-
-        if (!enteredId) {
-
-            message.textContent =
-                "Please enter a Trainer ID.";
-
-            message.style.color =
-                "#ff6b6b";
-
-            return;
-        }
-
-
-        /*
-            Trainers are stored as:
-
-            localStorage.setItem(
-                "trainers",
-                JSON.stringify([...])
-            );
-
-            Example trainer:
-
-            {
-                id: "TRN-10001",
-                name: "Ahmed Mohamed",
-                photo: "",
-                email: "ahmed@email.com"
-            }
-        */
-
-
-        let trainers = [];
-
-
-        try {
-
-            trainers =
-                JSON.parse(
-                    localStorage.getItem(
-                        "trainers"
-                    )
-                ) || [];
-
-        }
-
-        catch (error) {
-
-            trainers = [];
-
-        }
-
-
-        /*
-            FIND TRAINER
-        */
-
-        const trainer =
-            trainers.find(
-                function(item) {
-
-                    return String(
-                        item.id
-                    ).toUpperCase() === enteredId;
-
-                }
-            );
-
-
-        /*
-            NOT FOUND
-        */
-
-        if (!trainer) {
-
-            notFound.style.display =
-                "block";
-
-            message.textContent =
-                "";
-
-            return;
-        }
-
-
-        /*
-            SHOW TRAINER
-        */
-
-        result.style.display =
-            "block";
-
-
-        document.getElementById(
-            "trainerName"
-        ).textContent =
-            trainer.name || "Trainer";
-
-
-        document.getElementById(
-            "trainerId"
-        ).textContent =
-            trainer.id;
-
-
-        document.getElementById(
-            "detailName"
-        ).textContent =
-            trainer.name || "Trainer";
-
-
-        document.getElementById(
-            "detailId"
-        ).textContent =
-            trainer.id;
-
-
-        /*
-            TRAINER PHOTO
-        */
-
-        const trainerPhoto =
-            document.getElementById(
-                "trainerPhoto"
-            );
-
-
-        if (trainer.photo) {
-
-            trainerPhoto.src =
-                trainer.photo;
-
-        }
-
-        else {
-
-            trainerPhoto.src =
-                "https://ui-avatars.com/api/?name=" +
-                encodeURIComponent(
-                    trainer.name || "Trainer"
-                ) +
-                "&background=0a1822&color=24e3a3&size=160";
-
-        }
-
-
-        /*
-            CHECK REQUEST STATUS
-        */
-
-        updateRequestButton(
-            trainer.id
-        );
-
-    }
-
-
-    /* =========================================
-       REQUEST STATUS
-    ========================================= */
-
-    function getRequests() {
-
-        try {
-
-            return JSON.parse(
-                localStorage.getItem(
-                    "trainerRequests"
-                )
-            ) || [];
-
-        }
-
-        catch (error) {
-
-            return [];
-
-        }
-
-    }
-
-
-    /* =========================================
-       UPDATE REQUEST BUTTON
-    ========================================= */
-
-    function updateRequestButton(
-        trainerId
-    ) {
-
-        const requests =
-            getRequests();
-
-
-        const existingRequest =
-            requests.find(
-                function(request) {
-
-                    return (
-                        String(
-                            request.trainerId
-                        ).toUpperCase()
-                        ===
-                        String(
-                            trainerId
-                        ).toUpperCase()
-
-                        &&
-
-                        String(
-                            request.athleteId
-                        ).toUpperCase()
-                        ===
-                        String(
-                            athleteId
-                        ).toUpperCase()
-                    );
-
-                }
-            );
-
-
-        /*
-            NO REQUEST
-        */
-
-        if (!existingRequest) {
-
-            requestButton.disabled =
-                false;
-
-            requestButton.className =
-                "request-button";
-
-            requestButton.innerHTML =
-                `
-                <i class="fa-solid fa-paper-plane"></i>
-                Send Request
-                `;
-
-            return;
-        }
-
-
-        /*
-            ACCEPTED
-        */
-
-        if (
-            existingRequest.status ===
-            "accepted"
-        ) {
-
-            requestButton.disabled =
-                true;
-
-            requestButton.className =
-                "request-button accepted";
-
-            requestButton.innerHTML =
-                `
-                <i class="fa-solid fa-circle-check"></i>
-                Connected
-                `;
-
-            return;
-        }
-
-
-        /*
-            PENDING
-        */
-
-        requestButton.disabled =
-            true;
-
-        requestButton.className =
-            "request-button pending";
-
-        requestButton.innerHTML =
-            `
-            <i class="fa-solid fa-clock"></i>
-            Request Sent
-            `;
-
-    }
-
-
-    /* =========================================
-       SEND REQUEST
-    ========================================= */
-
-    requestButton.addEventListener(
-        "click",
-        function() {
-
-            const searchedTrainerId =
-                document.getElementById(
-                    "trainerId"
-                ).textContent;
-
-
-            if (!searchedTrainerId) {
-                return;
-            }
-
-
-            let requests =
-                getRequests();
-
-
-            /*
-                PREVENT DUPLICATE REQUEST
-            */
-
-            const alreadyExists =
-                requests.some(
-                    function(request) {
-
-                        return (
-                            String(
-                                request.trainerId
-                            ).toUpperCase()
-                            ===
-                            String(
-                                searchedTrainerId
-                            ).toUpperCase()
-
-                            &&
-
-                            String(
-                                request.athleteId
-                            ).toUpperCase()
-                            ===
-                            String(
-                                athleteId
-                            ).toUpperCase()
-                        );
-
-                    }
-                );
-
-
-            if (alreadyExists) {
-
-                updateRequestButton(
-                    searchedTrainerId
-                );
-
-                return;
-            }
-
-
-            /*
-                CREATE REQUEST
-            */
-
-            const newRequest = {
-
-                id:
-                    "REQ-" +
-                    Date.now(),
-
-                trainerId:
-                    searchedTrainerId,
-
-                athleteId:
-                    athleteId,
-
-                athleteName:
-                    athleteName,
-
-                athleteEmail:
-                    localStorage.getItem(
-                        "userEmail"
-                    ) || "",
-
-                status:
-                    "pending",
-
-                createdAt:
-                    new Date().toISOString()
-
-            };
-
-
-            requests.push(
-                newRequest
-            );
-
-
-            localStorage.setItem(
-                "trainerRequests",
-                JSON.stringify(
-                    requests
-                )
-            );
-
-
-            /*
-                UPDATE BUTTON
-            */
-
-            updateRequestButton(
-                searchedTrainerId
-            );
-
-
-            message.textContent =
-                "Your request has been sent successfully.";
-
-            message.style.color =
-                "#24e3a3";
-
-        }
-    );
-
-
-    /* =========================================
-       ENTER KEY SEARCH
-    ========================================= */
-
-    trainerIdInput.addEventListener(
-        "keydown",
-        function(event) {
-
-            if (
-                event.key ===
-                "Enter"
-            ) {
-
-                searchTrainer();
-
-            }
-
-        }
-    );
-
-
-    /* =========================================
-       SEARCH BUTTON
-    ========================================= */
-
-    searchButton.addEventListener(
-        "click",
-        searchTrainer
-    );
-
-
-    /* =========================================
-       BACK
-    ========================================= */
-
-    function goBack() {
-
-        window.location.href =
-            "test3.html";
-
-    }
-
-
+const sb=window.supabase?.createClient('https://xcgbxurbnsytecrdupct.supabase.co','sb_publishable_PAd7gf0Q-N9H4PqgqqaVNg_EfE583xO');
+async function requireProfile(role) {
+ if(!sb) throw new Error('Supabase could not load. Check your connection and reload.');
+ const {data,error}=await sb.auth.getUser();
+ if(error || !data.user) {window.location.replace('test.html?role='+role);throw new Error('Please sign in again.');}
+ const result=await sb.from('profiles').select('id,full_name,role,age,weight,height,whatsapp').eq('id',data.user.id).single();
+ if(result.error) throw result.error;
+ if(result.data.role!==role) {window.location.replace(result.data.role==='trainer'?'test4.html':'test3.html');throw new Error('Wrong account type.');}
+ return result.data;
+}
+async function coaching(action,target=null,decision=null) {
+ const {data,error}=await sb.rpc('momentum_coaching',{action,target,decision});
+ if(error) throw new Error(error.message+' (Check that momentum_connections.sql ran successfully.)');
+ return data;
+}
+const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const $=id=>document.getElementById(id);
+let currentTrainer=null,searchBusy=false,requestBusy=false;
+const ready=requireProfile('athlete');
+$('searchButton').disabled=true; $('requestButton').disabled=true;
+ready.then(()=>{$('searchButton').disabled=false;}).catch(error=>show(error.message));
+function show(text,ok=false){$('message').textContent=text;$('message').style.color=ok?'#24e3a3':'#ff6b6b';}
+function requestState(status) {
+ $('requestButton').disabled=['pending','accepted'].includes(status);
+ $('requestButton').className='request-button'+(status==='accepted'?' accepted':status==='pending'?' pending':'');
+ $('requestButton').textContent=status==='accepted'?'Connected':status==='pending'?'Request Sent':'Send Request';
+}
+async function searchTrainer() {
+ if(searchBusy||requestBusy)return;
+ searchBusy=true;currentTrainer=null;$('requestButton').disabled=true;
+ $('result').style.display='none';$('notFound').style.display='none';
+ const id=$('trainerIdInput').value.trim();
+ try {
+  await ready;
+  if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id))throw new Error('Paste the full Trainer ID (UUID) from the trainer dashboard.');
+  $('searchButton').disabled=true;show('Searching...',true);
+  const trainer=await coaching('lookup',id);
+  if(!trainer){$('notFound').style.display='block';show('');return;}
+  currentTrainer=trainer;
+  $('trainerName').textContent=$('detailName').textContent=trainer.name||'Trainer';
+  $('trainerId').textContent=$('detailId').textContent=trainer.id;
+  $('trainerPhoto').src='https://ui-avatars.com/api/?name='+encodeURIComponent(trainer.name||'Trainer')+'&background=0a1822&color=24e3a3&size=160';
+  requestState(trainer.status);$('result').style.display='block';show('');
+ }catch(error){show(error.message);}finally{searchBusy=false;$('searchButton').disabled=false;}
+}
+$('requestButton').addEventListener('click',async()=>{
+ if(!currentTrainer||requestBusy||$('requestButton').disabled)return;
+ requestBusy=true;$('requestButton').disabled=true;$('searchButton').disabled=true;
+ try {
+  const response=await coaching('request',currentTrainer.id);
+  currentTrainer.status=response.status;requestState(response.status);show(response.status==='accepted'?'Already connected.':'Request sent successfully.',true);
+ }catch(error){show(error.message);requestState(currentTrainer.status);}
+ finally{requestBusy=false;$('searchButton').disabled=false;}
+});
+$('searchButton').addEventListener('click',searchTrainer);
+$('trainerIdInput').placeholder='Paste Trainer ID (UUID)';
+$('trainerIdInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchTrainer();}});
+function goBack(){window.location.href='test3.html';}
 </script>
 
 </body>
