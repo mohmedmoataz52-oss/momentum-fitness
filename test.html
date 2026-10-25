@@ -788,6 +788,7 @@
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 
 
@@ -878,170 +879,73 @@
     }
 
 
-    /* ================================
-       LOGIN
-    ================================= */
 
-    document
-        .getElementById("loginForm")
-        .addEventListener("submit", function (e) {
-
-            e.preventDefault();
-
-
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim()
-                    .toLowerCase();
-
-
-            const password =
-                document
-                    .getElementById("password")
-                    .value;
-
-
-            const message =
-                document.getElementById("message");
-
-
-            const users =
-                JSON.parse(
-                    localStorage.getItem("users") || "[]"
-                );
-
-
-            const user =
-                users.find(u =>
-                    String(u.userEmail)
-                        .toLowerCase() === email
-                    &&
-                    u.userPassword === password
-                );
-
-
-            /* USER NOT FOUND */
-
-            if (!user) {
-
-                message.style.color = "#ff6b6b";
-
-                message.textContent =
-                    "Email or password is incorrect.";
-
-                return;
-            }
-
-
-            /* WRONG ROLE */
-
-            if (user.userRole !== selectedRole) {
-
-                message.style.color = "#ff6b6b";
-
-                message.textContent =
-                    "This account is registered as " +
-                    user.userRole + ".";
-
-                return;
-            }
-
-
-            /* ================================
-               SAVE USER DATA
-            ================================= */
-
-            localStorage.setItem(
-                "userID",
-                user.userID
-            );
-
-            localStorage.setItem(
-                "userName",
-                user.userName
-            );
-
-            localStorage.setItem(
-                "userRole",
-                user.userRole
-            );
-
-            localStorage.setItem(
-                "userEmail",
-                user.userEmail
-            );
-
-            localStorage.setItem(
-                "userPhone",
-                user.userPhone
-            );
-
-            localStorage.setItem(
-                "userAge",
-                user.userAge
-            );
-
-            localStorage.setItem(
-                "userWeight",
-                user.userWeight
-            );
-
-            localStorage.setItem(
-                "userHeight",
-                user.userHeight
-            );
-
-            localStorage.setItem(
-                "isLoggedIn",
-                "true"
-            );
-
-
-            /* SUCCESS MESSAGE */
-
-            message.style.color = "#39d98a";
-
-            message.textContent =
-                "Login successful!";
-
-
-            /* ================================
-               REDIRECT
-            ================================= */
-
-            setTimeout(() => {
-
-                if (user.userRole === "trainer") {
-
-                    window.location.href =
-                        "test4.html";
-
-                } else {
-
-                    window.location.href =
-                        "test3.html";
-
-                }
-
-            }, 700);
-
-        });
-
-
-    /* ================================
-       FORGOT PASSWORD
-    ================================= */
-
-    function forgotPassword() {
-
-        alert(
-            "Please contact your trainer or administrator to reset your password."
-        );
-
+// Fill these two PUBLIC project settings in BOTH pages before uploading.
+const SUPABASE_URL = "https://xcgbxurbnsytecrdupct.supabase.co";
+const SUPABASE_PUBLIC_KEY = "sb_publishable_PAd7gf0Q-N9H4PqgqqaVNg_EfE583xO";
+let client;
+function getClient() {
+  if (!SUPABASE_URL.startsWith('https://') || SUPABASE_PUBLIC_KEY.startsWith('YOUR_'))
+    throw new Error('Supabase is not configured. Add your Project URL and public key to this file.');
+  if (!window.supabase) throw new Error('Could not load Supabase. Check your connection and reload.');
+  return client || (client = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY));
+}
+function showMessage(text, ok=false) {
+  const el=document.getElementById('message');
+  el.style.color=ok ? '#39d98a' : '#ff6b6b';
+  el.textContent=text;
+}
+function clearLegacyPasswords() {
+  localStorage.removeItem('userPassword');
+  try {
+    const users=JSON.parse(localStorage.getItem('users') || '[]');
+    if (Array.isArray(users)) {
+      users.forEach(u=>{delete u.userPassword; delete u.password;});
+      localStorage.setItem('users', JSON.stringify(users));
     }
+  } catch (_) { localStorage.removeItem('users'); }
+}
+function cacheProfile(user, profile) {
+  // Compatibility cache only; authorization must use Supabase sessions and RLS.
+  const values={userID:user.id, userName:profile.full_name, userRole:profile.role,
+    userEmail:user.email, userPhone:profile.whatsapp, userAge:profile.age,
+    userWeight:profile.weight, userHeight:profile.height, isLoggedIn:'true'};
+  Object.entries(values).forEach(([k,v])=>localStorage.setItem(k,v ?? ''));
+}
+clearLegacyPasswords();
 
+async function forgotPassword() {
+  alert('Password recovery is not connected yet. Contact your trainer or administrator.');
+}
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const button=this.querySelector('[type="submit"]');
+  if(button.disabled) return;
+  button.disabled=true; showMessage('Signing in...',true);
+  localStorage.setItem('isLoggedIn','false');
+  try {
+    const sb=getClient();
+    const {data,error}=await sb.auth.signInWithPassword({
+      email:document.getElementById('email').value.trim().toLowerCase(),
+      password:document.getElementById('password').value
+    });
+    if(error) throw error;
+    const result=await sb.from('profiles').select('id,full_name,role,weight,height,age,whatsapp')
+      .eq('id',data.user.id).single();
+    if(result.error || !result.data) {
+      await sb.auth.signOut();
+      throw new Error('Signed in, but profile could not be loaded. Check the profiles trigger and SELECT policy. '+(result.error?.message || ''));
+    }
+    if(result.data.role !== selectedRole) {
+      await sb.auth.signOut();
+      throw new Error('This account is registered as '+result.data.role+'. Select the matching account type.');
+    }
+    cacheProfile(data.user,result.data);
+    showMessage('Login successful!',true);
+    window.location.href=result.data.role==='trainer' ? 'test4.html' : 'test3.html';
+  } catch(error) { showMessage(error.message || 'Sign-in failed. Please try again.'); }
+  finally { button.disabled=false; }
+});
 </script>
 
 </body>

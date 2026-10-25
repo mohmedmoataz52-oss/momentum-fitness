@@ -1144,7 +1144,8 @@
     </div>
 
 
-    <script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
 
 
         /* =========================================
@@ -1235,311 +1236,79 @@
         }
 
 
-        /* =========================================
-           GENERATE UNIQUE ID
-        ========================================= */
 
-        function generateID(role) {
-
-            const prefix =
-                role === "athlete"
-                    ? "ATH"
-                    : "TRN";
-
-
-            const number =
-                Math.floor(
-                    1000 + Math.random() * 9000
-                );
-
-
-            return prefix + "-" + number;
-        }
-
-
-        /* =========================================
-           CREATE ACCOUNT
-        ========================================= */
-
-        document
-            .getElementById("registerForm")
-            .addEventListener(
-                "submit",
-                function (e) {
-
-                    e.preventDefault();
-
-
-                    const name =
-                        document
-                            .getElementById("name")
-                            .value
-                            .trim();
-
-
-                    const age =
-                        document
-                            .getElementById("age")
-                            .value;
-
-
-                    const phone =
-                        document
-                            .getElementById("phone")
-                            .value
-                            .trim();
-
-
-                    const weight =
-                        document
-                            .getElementById("weight")
-                            .value;
-
-
-                    const height =
-                        document
-                            .getElementById("height")
-                            .value;
-
-
-                    const email =
-                        document
-                            .getElementById("email")
-                            .value
-                            .trim()
-                            .toLowerCase();
-
-
-                    const password =
-                        document
-                            .getElementById("password")
-                            .value;
-
-
-                    const confirmPassword =
-                        document
-                            .getElementById("confirmPassword")
-                            .value;
-
-
-                    const message =
-                        document
-                            .getElementById("message");
-
-
-                    /* PASSWORD LENGTH */
-
-                    if (password.length < 8) {
-
-                        message.style.color =
-                            "#ff6b6b";
-
-                        message.textContent =
-                            "Password must be at least 8 characters.";
-
-                        return;
-                    }
-
-
-                    /* PASSWORD MATCH */
-
-                    if (
-                        password !==
-                        confirmPassword
-                    ) {
-
-                        message.style.color =
-                            "#ff6b6b";
-
-                        message.textContent =
-                            "Passwords do not match.";
-
-                        return;
-                    }
-
-
-                    /* GET USERS */
-
-                    let users =
-                        JSON.parse(
-                            localStorage.getItem(
-                                "users"
-                            ) || "[]"
-                        );
-
-
-                    /* CHECK EMAIL */
-
-                    const exists =
-                        users.some(
-                            function (user) {
-
-                                return (
-                                    String(
-                                        user.userEmail
-                                    )
-                                    .toLowerCase()
-                                    === email
-                                );
-
-                            }
-                        );
-
-
-                    if (exists) {
-
-                        message.style.color =
-                            "#ff6b6b";
-
-                        message.textContent =
-                            "This email is already registered.";
-
-                        return;
-                    }
-
-
-                    /* UNIQUE ID */
-
-                    let userID;
-
-
-                    do {
-
-                        userID =
-                            generateID(
-                                selectedRole
-                            );
-
-                    }
-
-                    while (
-                        users.some(
-                            user =>
-                                user.userID ===
-                                userID
-                        )
-                    );
-
-
-                    /* NEW USER */
-
-                    const newUser = {
-
-                        userID: userID,
-
-                        userName: name,
-
-                        userAge: age,
-
-                        userWeight: weight,
-
-                        userHeight: height,
-
-                        userEmail: email,
-
-                        userPhone: phone,
-
-                        userPassword: password,
-
-                        userRole: selectedRole
-
-                    };
-
-
-                    /* SAVE */
-
-                    users.push(newUser);
-
-
-                    localStorage.setItem(
-                        "users",
-                        JSON.stringify(users)
-                    );
-
-
-                    /* CURRENT USER */
-
-                    localStorage.setItem(
-                        "userID",
-                        userID
-                    );
-
-                    localStorage.setItem(
-                        "userName",
-                        name
-                    );
-
-                    localStorage.setItem(
-                        "userAge",
-                        age
-                    );
-
-                    localStorage.setItem(
-                        "userWeight",
-                        weight
-                    );
-
-                    localStorage.setItem(
-                        "userHeight",
-                        height
-                    );
-
-                    localStorage.setItem(
-                        "userEmail",
-                        email
-                    );
-
-                    localStorage.setItem(
-                        "userPhone",
-                        phone
-                    );
-
-                    localStorage.setItem(
-                        "userPassword",
-                        password
-                    );
-
-                    localStorage.setItem(
-                        "userRole",
-                        selectedRole
-                    );
-
-                    localStorage.setItem(
-                        "isLoggedIn",
-                        "false"
-                    );
-
-
-                    /* SUCCESS */
-
-                    message.style.color =
-                        "#39d98a";
-
-
-                    message.innerHTML =
-                        "Account created successfully!<br>" +
-                        "Your ID: <strong>" +
-                        userID +
-                        "</strong>";
-
-
-                    /* GO TO LOGIN */
-
-                    setTimeout(
-                        function () {
-
-                            window.location.href =
-                                "test.html?role=" +
-                                selectedRole;
-
-                        },
-                        1800
-                    );
-
-                }
-            );
-
-    </script>
+// Fill these two PUBLIC project settings in BOTH pages before uploading.
+const SUPABASE_URL = "https://xcgbxurbnsytecrdupct.supabase.co";
+const SUPABASE_PUBLIC_KEY = "sb_publishable_PAd7gf0Q-N9H4PqgqqaVNg_EfE583xO";
+let client;
+function getClient() {
+  if (!SUPABASE_URL.startsWith('https://') || SUPABASE_PUBLIC_KEY.startsWith('YOUR_'))
+    throw new Error('Supabase is not configured. Add your Project URL and public key to this file.');
+  if (!window.supabase) throw new Error('Could not load Supabase. Check your connection and reload.');
+  return client || (client = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY));
+}
+function showMessage(text, ok=false) {
+  const el=document.getElementById('message');
+  el.style.color=ok ? '#39d98a' : '#ff6b6b';
+  el.textContent=text;
+}
+function clearLegacyPasswords() {
+  localStorage.removeItem('userPassword');
+  try {
+    const users=JSON.parse(localStorage.getItem('users') || '[]');
+    if (Array.isArray(users)) {
+      users.forEach(u=>{delete u.userPassword; delete u.password;});
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+  } catch (_) { localStorage.removeItem('users'); }
+}
+function cacheProfile(user, profile) {
+  // Compatibility cache only; authorization must use Supabase sessions and RLS.
+  const values={userID:user.id, userName:profile.full_name, userRole:profile.role,
+    userEmail:user.email, userPhone:profile.whatsapp, userAge:profile.age,
+    userWeight:profile.weight, userHeight:profile.height, isLoggedIn:'true'};
+  Object.entries(values).forEach(([k,v])=>localStorage.setItem(k,v ?? ''));
+}
+clearLegacyPasswords();
+
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const button=this.querySelector('[type="submit"]');
+  if(button.disabled) return;
+  const value=id=>document.getElementById(id).value.trim();
+  const password=document.getElementById('password').value;
+  if(password.length<8) return showMessage('Password must be at least 8 characters.');
+  if(password!==document.getElementById('confirmPassword').value)
+    return showMessage('Passwords do not match.');
+  const age=Number(value('age')),weight=Number(value('weight')),height=Number(value('height'));
+  if(!Number.isInteger(age)||age<=0||!Number.isFinite(weight)||weight<=0||!Number.isFinite(height)||height<=0)
+    return showMessage('Please enter valid age, weight, and height.');
+  button.disabled=true; showMessage('Creating account...',true);
+  try {
+    const sb=getClient();
+    const {data,error}=await sb.auth.signUp({email:value('email').toLowerCase(),password,
+      options:{data:{full_name:value('name'),role:selectedRole,age,weight,height,whatsapp:value('phone')}}});
+    if(error) throw error;
+    if(!data.user) throw new Error('No account was returned. Please try again.');
+    // Supabase can hide duplicate registrations; never display a synthetic ID as a new account.
+    if(Array.isArray(data.user.identities) && data.user.identities.length===0)
+      return showMessage('If this email is already registered, sign in or recover your password.');
+    if(!data.session) {
+      showMessage('Check your email to confirm registration, then return here to sign in.',true);
+      return;
+    }
+    // Verify the trigger-created profile before reporting a fully usable account.
+    const profile=await sb.from('profiles').select('id').eq('id',data.user.id).single();
+    await sb.auth.signOut();
+    localStorage.setItem('isLoggedIn','false');
+    if(profile.error || !profile.data)
+      throw new Error('Auth account created, but profile verification failed. Do not register again; check the trigger and SELECT policy. '+(profile.error?.message || ''));
+    showMessage('Account created! Your ID: '+data.user.id+'. Redirecting to sign in...',true);
+    setTimeout(()=>{window.location.href='test.html?role='+selectedRole;},1800);
+  } catch(error) { showMessage(error.message || 'Registration failed. Please try again.'); }
+  finally { button.disabled=false; }
+});
+</script>
 
 </body>
 
