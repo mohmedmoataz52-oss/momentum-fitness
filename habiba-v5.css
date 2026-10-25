@@ -1,0 +1,111 @@
+/* =========================================================
+   HABIBA v5 — shared polish for ALL pages
+   1) Hero typography: one elegant, larger scale everywhere
+   2) iOS / Chrome-iOS parity: hero photo can never over-zoom
+   3) Ticker strip: bigger, more elegant, consistent
+   ========================================================= */
+
+:root{
+  --serif:"Marcellus","Cormorant Garamond",Georgia,serif;
+  --sans:"Jost","Poppins",Arial,sans-serif;
+  --arabic:"Tajawal","Jost",sans-serif;
+}
+
+/* ---- 1. HERO TYPE: consistent + larger, responsive with clamp() ---- */
+.hero-content h1,
+.hero h1,
+.bundles-hero .hero-copy h1{
+  font-family:var(--serif) !important;
+  font-weight:400 !important;
+  letter-spacing:.5px;
+  line-height:1.08;
+  font-size:clamp(34px, 5vw, 58px) !important;
+}
+.hero-content p,
+.hero p,
+.bundles-hero .hero-copy p{
+  font-family:var(--sans);
+  font-size:clamp(14px, 1.6vw, 18px) !important;
+  line-height:1.7;
+}
+.hero-kicker,
+.hero .eyebrow,
+.bundles-hero .eyebrow{
+  font-family:var(--sans);
+  font-size:clamp(10px, 1.1vw, 12px) !important;
+  letter-spacing:2.6px;
+}
+
+@media (max-width:650px){
+  .hero-content h1,
+  .hero h1,
+  .bundles-hero .hero-copy h1{
+    font-size:clamp(30px, 9.2vw, 40px) !important;
+  }
+  .hero-content p,
+  .hero p,
+  .bundles-hero .hero-copy p{
+    font-size:14.5px !important;
+  }
+  .hero-kicker,
+  .hero .eyebrow,
+  .bundles-hero .eyebrow{
+    font-size:10px !important;
+    letter-spacing:2.2px;
+  }
+}
+
+/* ---- 2. iOS / CHROME-iOS FIX --------------------------------------
+   Chrome on iOS runs on WebKit (same engine as Safari), so:
+   - leftover scale() animations keep the photo visually zoomed,
+   - vh units include the collapsing URL bar (background "grows").
+   Solution: kill all transforms on hero photos, clip with the
+   -webkit mask trick, and rely on svh fallbacks (already in pages)
+   plus a px fallback for old iOS. --------------------------------------------------- */
+.hero,
+.bundles-hero,
+.hero-slide{
+  overflow:hidden;
+  -webkit-mask-image:-webkit-radial-gradient(white, black);
+          mask-image:radial-gradient(white, black);
+}
+.hero-img,
+.hero-photo,
+.bundles-hero .hero-photo{
+  transform:none !important;
+  -webkit-transform:none !important;
+  transition:none !important;
+  animation:none !important;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+/* old iOS without svh: stable pixel height instead of a growing vh */
+@supports not (height: 100svh){
+  @media (max-width:650px){
+    .hero{ height:420px !important; max-height:420px !important; }
+    .bundles-hero{ height:240px !important; }
+  }
+}
+/* touch devices: never allow fixed-attachment backgrounds (iOS zooms them) */
+@media (hover:none) and (pointer:coarse){
+  *{ background-attachment:scroll !important; }
+}
+
+/* ---- 3. TICKER STRIP: bigger + elegant + consistent ---- */
+.bundles-ticker{
+  padding:15px 10px !important;
+  font-family:var(--arabic) !important;
+  font-size:clamp(14px, 3.6vw, 17px) !important;
+  font-weight:700 !important;
+  letter-spacing:1.5px !important;
+  line-height:1.6;
+}
+.bundles-ticker span{
+  animation-duration:var(--ticker-speed,18s);
+}
+@media (max-width:650px){
+  .bundles-ticker{ padding:13px 8px !important; }
+}
