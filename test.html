@@ -2,22 +2,592 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="robots" content="noindex,follow">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="stylesheet" href="assets/css/backgrounds.aed14f2179ed.css">
-<link rel="preconnect" href="https://xcgbxurbnsytecrdupct.supabase.co">
-
-    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>MoMentum - Sign In</title>
 
     <link rel="stylesheet"
-        href="assets/vendor/fontawesome.fa52c790d103.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <link rel="stylesheet" href="assets/css/test-1.39336a298884.css">
-<link rel="stylesheet" href="assets/css/momentum-ui.179e81653248.css">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: #07131c;
+        }
+
+
+        /* ================================
+           FULL SCREEN PAGE
+        ================================= */
+
+        .page {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(3, 13, 19, .08) 0%,
+                    rgba(3, 13, 19, .08) 35%,
+                    rgba(3, 13, 19, .30) 52%,
+                    rgba(3, 13, 19, .82) 75%,
+                    #07131c 100%
+                ),
+                url("https://static.vecteezy.com/system/resources/thumbnails/037/235/157/small_2x/ai-generated-gym-with-many-equipments-free-photo.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+        /* ================================
+           TOP LOGO
+        ================================= */
+
+        .logo {
+            position: absolute;
+            top: 34px;
+            left: 55px;
+
+            display: flex;
+            align-items: center;
+
+            z-index: 20;
+
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo i {
+            color: #39d98a;
+            font-size: 27px;
+            margin-right: 10px;
+        }
+
+        .logo .white {
+            color: #ffffff;
+        }
+
+        .logo .green {
+            color: #39d98a;
+        }
+
+
+        /* ================================
+           LEFT HERO
+        ================================= */
+
+        .hero {
+            position: absolute;
+
+            left: 55px;
+            top: 50%;
+
+            transform: translateY(-35%);
+
+            width: 500px;
+
+            z-index: 10;
+        }
+
+        .hero h2 {
+            font-size: 54px;
+            line-height: 1.05;
+
+            font-weight: 800;
+
+            margin-bottom: 22px;
+
+            text-shadow:
+                0 5px 25px rgba(0, 0, 0, .65);
+        }
+
+        .hero h2 span {
+            color: #39d98a;
+        }
+
+        .hero p {
+            width: 440px;
+
+            color: #e3eaed;
+
+            font-size: 17px;
+            line-height: 1.7;
+
+            text-shadow:
+                0 3px 15px rgba(0, 0, 0, .8);
+        }
+
+
+        /* ================================
+           LOGIN AREA
+        ================================= */
+
+        .login-area {
+            position: absolute;
+
+            top: 50%;
+            right: 7%;
+
+            transform: translateY(-50%);
+
+            width: 420px;
+
+            z-index: 20;
+        }
+
+
+        /* ================================
+           WELCOME
+        ================================= */
+
+        .login-area h1 {
+            font-size: 46px;
+            line-height: 1.1;
+
+            margin-bottom: 10px;
+
+            font-weight: 800;
+        }
+
+        .login-area h1 span {
+            color: #39d98a;
+        }
+
+        .subtitle {
+            color: #a5b1b7;
+
+            font-size: 15px;
+            line-height: 1.6;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* ================================
+           ROLE
+        ================================= */
+
+        .role-title {
+            color: #8f9ca3;
+
+            font-size: 13px;
+
+            margin-bottom: 9px;
+        }
+
+        .roles {
+            display: flex;
+            gap: 10px;
+
+            margin-bottom: 20px;
+        }
+
+        .role-btn {
+            flex: 1;
+
+            height: 47px;
+
+            border: 1px solid #3a505b;
+            border-radius: 10px;
+
+            background: rgba(7, 25, 34, .78);
+
+            color: #b2bdc2;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+        .role-btn i {
+            margin-right: 7px;
+        }
+
+        .role-btn:hover {
+            border-color: #39d98a;
+            color: #ffffff;
+        }
+
+        .role-btn.active {
+            background: #39d98a;
+            border-color: #39d98a;
+
+            color: #06151c;
+
+            box-shadow:
+                0 8px 25px rgba(57, 217, 138, .12);
+        }
+
+
+        /* ================================
+           INPUTS
+        ================================= */
+
+        .input-box {
+            position: relative;
+
+            width: 100%;
+
+            margin-bottom: 15px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 55px;
+
+            padding: 0 48px;
+
+            border: 1px solid #354c57;
+            border-radius: 10px;
+
+            outline: none;
+
+            background: rgba(7, 25, 34, .88);
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            transition: .25s;
+        }
+
+        .input-box input::placeholder {
+            color: #71818a;
+        }
+
+        .input-box input:focus {
+            border-color: #39d98a;
+
+            box-shadow:
+                0 0 0 3px rgba(57, 217, 138, .08);
+        }
+
+        .input-box > i:first-child {
+            position: absolute;
+
+            left: 16px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #39d98a;
+
+            z-index: 2;
+        }
+
+
+        /* ================================
+           PASSWORD EYE
+        ================================= */
+
+        .password-box input {
+            padding-right: 52px;
+        }
+
+        .password-box .eye {
+            position: absolute;
+
+            left: auto !important;
+            right: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 21px;
+
+            color: #71818a;
+
+            cursor: pointer;
+
+            text-align: center;
+
+            z-index: 5;
+
+            transition: .2s;
+        }
+
+        .password-box .eye:hover {
+            color: #39d98a;
+        }
+
+
+        /* ================================
+           OPTIONS
+        ================================= */
+
+        .options {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin: 5px 0 22px;
+
+            font-size: 13px;
+        }
+
+        .remember {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #8999a2;
+
+            cursor: pointer;
+        }
+
+        .remember input {
+            accent-color: #39d98a;
+
+            cursor: pointer;
+        }
+
+        .forgot {
+            color: #39d98a;
+
+            cursor: pointer;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ================================
+           SIGN IN
+        ================================= */
+
+        .login-btn {
+            width: 100%;
+            height: 55px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: #39d98a;
+
+            color: #06151c;
+
+            font-size: 16px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+        .login-btn:hover {
+            background: #51e99d;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px rgba(57, 217, 138, .22);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+
+        /* ================================
+           MESSAGE
+        ================================= */
+
+        #message {
+            min-height: 20px;
+
+            margin-top: 15px;
+
+            font-size: 14px;
+        }
+
+
+        /* ================================
+           CREATE ACCOUNT
+        ================================= */
+
+        .create-account {
+            margin-top: 19px;
+
+            color: #8999a2;
+
+            font-size: 14px;
+        }
+
+        .create-account a {
+            color: #39d98a;
+
+            text-decoration: none;
+
+            font-weight: 700;
+        }
+
+        .create-account a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ================================
+           TABLET
+        ================================= */
+
+        @media (max-width: 1050px) {
+
+            .login-area {
+                right: 5%;
+                width: 390px;
+            }
+
+            .hero {
+                left: 40px;
+                width: 400px;
+            }
+
+            .hero h2 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                width: 370px;
+                font-size: 15px;
+            }
+
+            .logo {
+                left: 40px;
+            }
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 750px) {
+
+            body {
+                overflow-y: auto;
+            }
+
+            .page {
+                min-height: 100vh;
+
+                background:
+                    linear-gradient(
+                        rgba(3, 13, 19, .72),
+                        rgba(3, 13, 19, .94)
+                    ),
+                    url("gym.jpg");
+
+                background-size: cover;
+                background-position: center;
+            }
+
+            .logo {
+                position: relative;
+
+                top: auto;
+                left: auto;
+
+                padding: 28px 25px 0;
+
+                font-size: 27px;
+            }
+
+            .logo i {
+                font-size: 24px;
+            }
+
+            .hero {
+                position: relative;
+
+                top: auto;
+                left: auto;
+
+                transform: none;
+
+                width: auto;
+
+                margin: 70px 25px 45px;
+            }
+
+            .hero h2 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                width: auto;
+
+                font-size: 15px;
+            }
+
+            .login-area {
+                position: relative;
+
+                top: auto;
+                right: auto;
+
+                transform: none;
+
+                width: auto;
+
+                margin: 0 25px 50px;
+            }
+
+            .login-area h1 {
+                font-size: 37px;
+            }
+        }
+
+
+        @media (max-width: 420px) {
+
+            .hero {
+                margin-top: 55px;
+            }
+
+            .hero h2 {
+                font-size: 34px;
+            }
+
+            .login-area h1 {
+                font-size: 34px;
+            }
+
+            .role-btn {
+                font-size: 13px;
+            }
+        }
+
+    </style>
+<link rel="stylesheet" href="momentum-ui.css?v=20261026">
 </head>
 
 
@@ -219,8 +789,179 @@
 </div>
 
 
-<script defer src="assets/vendor/supabase.bee24fc29228.js"></script>
-<script defer src="assets/js/test-1.3b18a06a3c8f.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+
+
+    /* ================================
+       SELECTED ROLE
+    ================================= */
+
+    let selectedRole = "athlete";
+
+
+    function selectRole(role) {
+
+        selectedRole = role;
+
+
+        document
+            .getElementById("athleteBtn")
+            .classList.toggle(
+                "active",
+                role === "athlete"
+            );
+
+
+        document
+            .getElementById("trainerBtn")
+            .classList.toggle(
+                "active",
+                role === "trainer"
+            );
+
+
+        document.getElementById("createLink").href =
+            "test2.html?role=" + role;
+    }
+
+
+    /* ================================
+       URL ROLE
+    ================================= */
+
+    const urlParams =
+        new URLSearchParams(window.location.search);
+
+    const urlRole =
+        urlParams.get("role");
+
+
+    if (
+        urlRole === "trainer" ||
+        urlRole === "athlete"
+    ) {
+
+        selectRole(urlRole);
+
+    }
+
+
+    /* ================================
+       PASSWORD SHOW / HIDE
+    ================================= */
+
+    function togglePassword() {
+
+        const password =
+            document.getElementById("password");
+
+        const eye =
+            document.getElementById("passwordEye");
+
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            eye.classList.remove("fa-eye");
+
+            eye.classList.add("fa-eye-slash");
+
+        } else {
+
+            password.type = "password";
+
+            eye.classList.remove("fa-eye-slash");
+
+            eye.classList.add("fa-eye");
+
+        }
+    }
+
+
+
+// Fill these two PUBLIC project settings in BOTH pages before uploading.
+const SUPABASE_URL = "https://xcgbxurbnsytecrdupct.supabase.co";
+const SUPABASE_PUBLIC_KEY = "sb_publishable_PAd7gf0Q-N9H4PqgqqaVNg_EfE583xO";
+let client;
+function getClient() {
+  if (!SUPABASE_URL.startsWith('https://') || SUPABASE_PUBLIC_KEY.startsWith('YOUR_'))
+    throw new Error('Supabase is not configured. Add your Project URL and public key to this file.');
+  if (!window.supabase) throw new Error('Could not load Supabase. Check your connection and reload.');
+  return client || (client = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY));
+}
+function showMessage(text, ok=false) {
+  const el=document.getElementById('message');
+  el.style.color=ok ? '#39d98a' : '#ff6b6b';
+  el.textContent=text;
+}
+function clearLegacyPasswords() {
+  localStorage.removeItem('userPassword');
+  try {
+    const users=JSON.parse(localStorage.getItem('users') || '[]');
+    if (Array.isArray(users)) {
+      users.forEach(u=>{delete u.userPassword; delete u.password;});
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+  } catch (_) { localStorage.removeItem('users'); }
+}
+function cacheProfile(user, profile) {
+  // Compatibility cache only; authorization must use Supabase sessions and RLS.
+  const values={userID:user.id, userName:profile.full_name, userRole:profile.role,
+    userEmail:user.email, userPhone:profile.whatsapp, userAge:profile.age,
+    userWeight:profile.weight, userHeight:profile.height, isLoggedIn:'true'};
+  Object.entries(values).forEach(([k,v])=>localStorage.setItem(k,v ?? ''));
+}
+clearLegacyPasswords();
+if(new URLSearchParams(location.hash.slice(1)).get('type')==='recovery')location.replace(new URL('reset-password.html',location.href).href+location.hash);
+document.getElementById('forgotLink').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();forgotPassword();}});
+
+let recoverySending=false,recoveryAfter=0;
+async function forgotPassword(){
+ const input=document.getElementById('email'),email=input.value.trim();
+ if(!email||!input.checkValidity()){showMessage('Enter your account email address first.');input.focus();return;}
+ if(recoverySending)return;if(Date.now()<recoveryAfter){showMessage('Please wait a minute before requesting another link.');return;}
+ const link=document.getElementById('forgotLink');recoverySending=true;link.setAttribute('aria-disabled','true');showMessage('Requesting a reset link...',true);
+ try{
+  if(!['https:','http:'].includes(location.protocol))throw Error('Open the deployed website to request a reset link.');
+  const redirectTo=new URL('reset-password.html',location.href).href;
+  const {error}=await getClient().auth.resetPasswordForEmail(email,{redirectTo});if(error)throw error;
+  recoveryAfter=Date.now()+60000;showMessage('If this email has an account, a reset link will arrive. Check your inbox and spam folder.',true);
+ }catch(error){showMessage(/rate|too many/i.test(error.message||'')?'Email sending limit reached. Please try later; repeated clicks will not help.':error.message||'Could not request a reset link. Try again.');}
+ finally{recoverySending=false;link.removeAttribute('aria-disabled');}
+}
+
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const button=this.querySelector('[type="submit"]');
+  if(button.disabled) return;
+  button.disabled=true; showMessage('Signing in...',true);
+  localStorage.setItem('isLoggedIn','false');
+  try {
+    const sb=getClient();
+    const {data,error}=await sb.auth.signInWithPassword({
+      email:document.getElementById('email').value.trim().toLowerCase(),
+      password:document.getElementById('password').value
+    });
+    if(error) throw error;
+    const result=await sb.from('profiles').select('id,full_name,role,weight,height,age,whatsapp')
+      .eq('id',data.user.id).single();
+    if(result.error || !result.data) {
+      await sb.auth.signOut();
+      throw new Error('Signed in, but profile could not be loaded. Check the profiles trigger and SELECT policy. '+(result.error?.message || ''));
+    }
+    if(result.data.role !== selectedRole) {
+      await sb.auth.signOut();
+      throw new Error('This account is registered as '+result.data.role+'. Select the matching account type.');
+    }
+    cacheProfile(data.user,result.data);
+    showMessage('Login successful!',true);
+    window.location.href=result.data.role==='trainer' ? 'test4.html' : 'test3.html';
+  } catch(error) { showMessage(error.message || 'Sign-in failed. Please try again.'); }
+  finally { button.disabled=false; }
+});
+</script>
 
 </body>
 </html>
