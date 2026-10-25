@@ -1243,7 +1243,7 @@ function updateAthletes(){
  visible.sort((a,b)=>sort==='age'?(a.age||0)-(b.age||0):(a.name||'').localeCompare(b.name||''));
  list.innerHTML=visible.map(a=>`<div class="athlete-row" data-id="${escapeHTML(a.id)}" tabindex="0" role="button"><div class="athlete-info"><div class="athlete-photo" style="display:grid;place-items:center;color:#39d98a"><i class="fa-solid fa-user"></i></div><div><div class="athlete-name">${escapeHTML(a.name||'Athlete')}</div><div class="athlete-meta">Age: ${escapeHTML(a.age??'—')} · ${escapeHTML(a.weight??'—')} kg · ${escapeHTML(a.height??'—')} cm</div><div class="athlete-meta" style="overflow-wrap:anywhere">${escapeHTML(a.id)}</div></div></div><div class="progress-circle" style="--progress:0%"><span>—</span></div><div class="progress-bar"><span style="width:0%"></span></div><div class="status">Connected</div><div class="arrow">›</div></div>`).join('');
  list.querySelectorAll('.athlete-row').forEach(row=>{
-  const open=()=>{localStorage.setItem('momentumSelectedAthleteId',row.dataset.id);localStorage.setItem('selectedAthleteId',row.dataset.id);window.location.href='test9.html';};
+  const open=()=>{localStorage.setItem('momentumSelectedAthleteId',row.dataset.id);localStorage.setItem('selectedAthleteId',row.dataset.id);window.location.href='test9.html?athlete='+encodeURIComponent(row.dataset.id);};
   row.addEventListener('click',open);row.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();open();}});
  });
  $('emptyState').style.display=visible.length?'none':'block';

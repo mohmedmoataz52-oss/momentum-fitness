@@ -24,109 +24,165 @@
             --white: #f4f8fb;
         }
 
-        body {
+       body {
             margin: 0;
             min-height: 100vh;
             color: #f4f8fb;
             background:
-                linear-gradient(90deg, rgba(1, 10, 20, 0.82), rgba(1, 10, 20, 0.58)),
+                linear-gradient(90deg,
+                    rgba(1, 10, 20, 0.82),
+                    rgba(1, 10, 20, 0.58)),
                 url("https://i.etsystatic.com/23444619/r/il/db93ac/5875799596/il_fullxfull.5875799596_r7m1.jpg") center center / cover fixed no-repeat;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        /* =========================
+
+         /* =========================
            SIDEBAR
         ========================= */
-        .sidebar {
+
+         .sidebar {
+
             width: 235px;
             min-height: 100vh;
+
             background:
-                linear-gradient(rgba(2, 10, 16, .78), rgba(2, 10, 16, .94)),
-                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover;
+                linear-gradient(
+                    rgba(2, 10, 16, .78),
+                    rgba(2, 10, 16, .94)
+                ),
+                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800")
+                center / cover;
+
             border-right: 1px solid #20313d;
+
             padding: 28px 14px;
+
             position: fixed;
             left: 0;
             top: 0;
             bottom: 0;
-            z-index: 1000;
         }
 
+
         .side-logo {
+
             display: flex;
             align-items: center;
             gap: 12px;
+
             padding: 0 15px 30px;
+          
         }
+
 
         .side-logo i {
+
             color: #24e3a3;
             font-size: 34px;
+            
         }
 
+
         .side-logo h2 {
+
             font-size: 21px;
             letter-spacing: 1px;
         }
 
+
         .side-logo p {
+
             color: #82919d;
             font-size: 8px;
             letter-spacing: 2px;
             margin-top: 4px;
         }
 
+
         .nav {
+
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
+
         .nav-item {
+
             min-height: 55px;
+
             display: flex;
             align-items: center;
+
             gap: 16px;
+
             padding: 0 17px;
+
             border-radius: 12px;
+
             color: #aebbc7;
+
             text-decoration: none;
+
             transition: .25s;
         }
 
+
         .nav-item i {
+
             width: 20px;
+
             text-align: center;
+
             font-size: 18px;
         }
 
+
         .nav-item:hover {
+
             background: rgba(36, 227, 163, .08);
+
             color: #24e3a3;
         }
 
+
         .nav-item.active {
-            background: linear-gradient(90deg, rgba(36, 227, 163, .20), rgba(36, 227, 163, .06));
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(36, 227, 163, .20),
+                    rgba(36, 227, 163, .06)
+                );
+
             color: #24e3a3;
+
             border-left: 3px solid #24e3a3;
         }
 
+
         .side-quote {
+
             position: absolute;
+
             left: 25px;
             right: 25px;
             bottom: 35px;
+
             color: #73818c;
+
             font-size: 13px;
+
             line-height: 1.7;
+
             font-style: italic;
         }
 
-        /* =========================
-           MAIN
-        ========================= */
+        /* MAIN */
+
         .main-content {
-            margin-left: 235px;
+            margin-left: 245px;
             min-height: 100vh;
         }
 
@@ -136,7 +192,9 @@
             padding: 28px 30px;
         }
 
+
         /* HEADER */
+
         header {
             display: flex;
             justify-content: space-between;
@@ -144,20 +202,30 @@
             gap: 15px;
             margin-bottom: 30px;
         }
+.logo{
+    font: size 18px;
+    font-weight:800;
+    letter-spacing:-1.3px;
+    text-decoration:none;
+}
 
-        .logo {
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: -1.3px;
+.logo .white{
+    color:#fff;
+}
+
+.logo .green{
+    color:#39d98a;
+}
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #dce6ef;
             text-decoration: none;
         }
 
-        .logo .white {
-            color: #fff;
-        }
-
-        .logo .green {
-            color: #39d98a;
+        .back-button:hover {
+            color: var(--green);
         }
 
         .brand {
@@ -194,6 +262,7 @@
         }
 
         /* PAGE INTRO */
+
         .page-intro {
             display: flex;
             justify-content: space-between;
@@ -227,6 +296,7 @@
         }
 
         /* SUMMARY */
+
         .summary-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -276,6 +346,7 @@
         }
 
         /* DAYS */
+
         .section-title {
             font-size: 19px;
             margin-bottom: 15px;
@@ -321,6 +392,7 @@
         }
 
         /* WORKOUT PANEL */
+
         .workout-panel {
             padding: 24px;
             background: rgba(7, 19, 28, .97);
@@ -359,6 +431,7 @@
         }
 
         /* EXERCISES */
+
         .exercise-list {
             display: flex;
             flex-direction: column;
@@ -433,6 +506,7 @@
         }
 
         /* REST DAY / EMPTY */
+
         .empty-state {
             text-align: center;
             padding: 55px 20px;
@@ -475,161 +549,131 @@
             margin-top: 2px;
         }
 
-        /* =========================
-           MOMENTUM MOBILE FIXES (New)
-        ========================= */
         @media (max-width: 1050px) {
-            .container { padding: 25px 20px; }
-            .exercise-meta { gap: 10px; }
+            .container {
+                padding: 25px 20px;
+            }
+
+            .exercise-meta {
+                gap: 10px;
+            }
         }
 
-        @media (max-width: 768px) {
-            /* 1. إخفاء السايدبار وتجهيزه للفتح */
+        @media (max-width: 900px) {
             .sidebar {
-                position: fixed !important;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                width: 260px !important;
-                min-height: 100vh !important;
-                background: linear-gradient(rgba(2, 10, 16, .95), rgba(2, 10, 16, .98)), url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800") center / cover !important;
-                transform: translateX(-105%);
-                transition: transform 0.3s ease-in-out;
-                z-index: 1050 !important;
-                padding: 28px 14px !important;
-                display: flex !important;
-                flex-direction: column;
+                transform: translateX(-100%);
             }
 
-            /* كلاس بيضاف بالجافاسكريبت لما تدوس على الزرار */
             .sidebar.open {
-                transform: translateX(0) !important;
+                transform: translateX(0);
             }
 
-            /* 2. إظهار النصوص في السايدبار */
-            .nav {
-                display: flex !important;
-                flex-direction: column !important;
-            }
-            .nav-item {
-                justify-content: flex-start !important;
-                padding: 0 17px !important;
-                min-height: 55px !important;
-            }
-            .nav-item span {
-                display: block !important;
-                opacity: 1 !important;
-            }
-            .side-quote {
-                display: block !important;
+            .main-content {
+                margin-left: 0;
             }
 
-            /* 3. شريط الموبايل العلوي */
-            .momentum-mobile-bar {
-                display: flex !important;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 65px;
-                background: rgba(3, 12, 19, 0.85);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                border-bottom: 1px solid rgba(36, 227, 163, 0.15);
-                z-index: 1000;
-                align-items: center;
-                padding: 0 15px;
-                justify-content: space-between;
-            }
-
-            .momentum-menu-toggle {
-                background: rgba(36, 227, 163, 0.1);
-                border: 1px solid rgba(36, 227, 163, 0.3);
-                color: #24e3a3;
-                width: 42px;
-                height: 42px;
-                border-radius: 10px;
-                font-size: 20px;
+            .mobile-menu-btn {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                cursor: pointer;
             }
 
-            /* 4. طبقة التعتيم ورا السايدبار */
-            .momentum-sidebar-overlay {
-                display: none;
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.7);
-                z-index: 1040;
-                backdrop-filter: blur(3px);
-            }
-            .momentum-sidebar-overlay.show {
+            .sidebar-overlay.show {
                 display: block;
             }
 
-            /* 5. تعديل المساحات للمحتوى الأساسي */
-            .main-content {
-                margin-left: 0 !important;
-                width: 100% !important;
-            }
-
             .container {
-                padding: 85px 15px 30px !important;
+                padding-top: 75px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                padding-left: 13px;
+                padding-right: 13px;
             }
 
-            header {
-                display: none !important; /* إخفاء الهيدر القديم */
+            .brand h1 {
+                font-size: 18px;
             }
 
-            /* 6. ترتيب الكروت والجرايد */
+            .brand>i {
+                font-size: 20px;
+            }
+
+            .date,
+            .back-button span {
+                display: none;
+            }
+
             .page-intro {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 12px !important;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .page-intro h2 {
+                font-size: 25px;
             }
 
             .summary-grid {
-                grid-template-columns: 1fr !important;
-                gap: 10px !important;
+                grid-template-columns: 1fr;
+                gap: 10px;
             }
 
             .summary-card {
-                padding: 15px !important;
+                padding: 15px;
             }
-            .summary-top { margin-bottom: 10px !important; }
-            .summary-value { font-size: 23px !important; }
+
+            .summary-top {
+                margin-bottom: 10px;
+            }
+
+            .summary-value {
+                font-size: 23px;
+            }
 
             .workout-panel {
-                padding: 14px !important;
+                padding: 14px;
             }
+
             .workout-header {
-                flex-direction: column !important;
-                align-items: flex-start !important;
+                align-items: flex-start;
             }
-            .workout-header h3 { font-size: 18px !important; }
-            
+
+            .workout-header h3 {
+                font-size: 18px;
+            }
+
             .exercise {
-                gap: 10px !important;
-                padding: 12px !important;
-                flex-wrap: wrap !important;
+                gap: 10px;
+                padding: 12px;
+                flex-wrap: wrap;
             }
+
             .exercise-icon {
-                width: 40px !important;
-                height: 40px !important;
-                font-size: 17px !important;
+                width: 40px;
+                height: 40px;
+                font-size: 17px;
             }
-            .exercise-info h4 { font-size: 13px !important; }
-            .exercise-info p { font-size: 11px !important; }
+
+            .exercise-info h4 {
+                font-size: 13px;
+            }
+
+            .exercise-info p {
+                font-size: 11px;
+            }
 
             .exercise-meta {
-                width: 100% !important;
-                justify-content: flex-end !important;
-                padding-top: 10px !important;
-                border-top: 1px solid #1d303d !important;
+                width: 100%;
+                justify-content: flex-end;
+                padding-top: 10px;
+                border-top: 1px solid #1d303d;
             }
-            .meta-item { min-width: 60px !important; }
+
+            .meta-item {
+                min-width: 60px;
+            }
         }
     </style>
 </head>
@@ -637,63 +681,110 @@
 <body>
 
     <!-- =========================
-         SIDEBAR
-    ========================= -->
-    <aside class="sidebar">
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
         <div class="side-logo">
+
             <i class="fa-solid fa-dumbbell"></i>
-            <h2>
-                <a href="test3.html" class="logo">
-                    <span class="white">MO</span><span class="green">MENTUM</span>
-                </a>
-            </h2>
+                    <h2><a href="test3.html" class="logo">
+        <span class="white">MO</span><span class="green">MENTUM</span>
+    </a></h2>
+
+
         </div>
 
+
         <nav class="nav">
+
             <a href="test3.html" class="nav-item">
+
                 <i class="fa-solid fa-house"></i>
+
                 <span>Home</span>
+
             </a>
+
+
             <a href="test5.html" class="nav-item ">
+
                 <i class="fa-solid fa-dumbbell"></i>
+
                 <span>Exercises</span>
+
             </a>
+
+
             <a href="progress-photos.html" class="nav-item">
+
                 <i class="fa-solid fa-camera"></i>
+
                 <span>Progress Photos</span>
+
             </a>
+
+
             <a href="work_plan.html" class="nav-item active">
+
                 <i class="fa-solid fa-calendar-days"></i>
+
                 <span>Workout Plan</span>
+
             </a>
+
+
             <a href="diet-plan.html" class="nav-item">
+
                 <i class="fa-solid fa-utensils"></i>
+
                 <span>Diet Plan</span>
+
             </a>
+
+
             <a href="support.html" class="nav-item">
+
                 <i class="fa-solid fa-message"></i>
+
                 <span>Support</span>
+
             </a>
+
+
             <a href="history.html" class="nav-item ">
+
                 <i class="fa-solid fa-chart-column"></i>
+
                 <span>Progress / History</span>
+
             </a>
+
         </nav>
 
+
         <div class="side-quote">
+
             "Small steps<br>
             make big<br>
             changes."
+
         </div>
+
     </aside>
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================= -->
+    <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Open navigation">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
     <main class="main-content">
         <div class="container">
 
             <header>
+                
+
                 <div class="brand">
                     <i class="fa-solid fa-clipboard-list"></i>
                     <h1>
@@ -795,44 +886,63 @@
 
                 <div class="coach-note">
                     <i class="fa-solid fa-circle-info"></i>
-                    <span>This is a read-only page. Your coach manages your workout plan and updates will appear here when a plan is assigned.</span>
+                    <span>This is a read-only page. Your coach manages your workout plan and updates will appear here
+                        when a plan is assigned.</span>
                 </div>
             </section>
 
         </div>
     </main>
 
-    <!-- =========================================================
-         WORK PLAN LOGIC
-    ========================================================= -->
-    <script>
-        const athleteId = localStorage.getItem("athleteId") || "ATH-10001";
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
 
-        let workPlans = [];
-        try {
-            workPlans = JSON.parse(localStorage.getItem("workPlans") || "[]");
-            if (!Array.isArray(workPlans)) workPlans = [];
-        } catch (error) {
-            workPlans = [];
-            console.error("Could not load work plans:", error);
+const sb=window.supabase?.createClient('https://xcgbxurbnsytecrdupct.supabase.co','sb_publishable_PAd7gf0Q-N9H4PqgqqaVNg_EfE583xO');
+async function planAccount(requiredRole=null){
+ if(!sb)throw new Error('Supabase could not load. Check your connection and reload.');
+ const {data,error}=await sb.auth.getUser();
+ if(error||!data.user){location.replace('test.html');throw new Error('Please sign in again.');}
+ const result=await sb.from('profiles').select('id,role,full_name').eq('id',data.user.id).single();
+ if(result.error)throw result.error;
+ if(requiredRole&&result.data.role!==requiredRole){location.replace(result.data.role==='trainer'?'test4.html':'test3.html');throw new Error('Wrong account type.');}
+ return result.data;
+}
+async function planAPI(action,target=null,payload=null,expected_revision=null){
+ const {data,error}=await sb.rpc('momentum_plans',{action,target,payload,expected_revision});
+ if(error)throw new Error(error.message);
+ return data;
+}
+async function planLogout(e){
+ e.preventDefault();if(!confirm('Log out?'))return;
+ try{const {error}=await sb.auth.signOut();if(error)throw error;['isLoggedIn','userRole','userID','athleteId','momentumSelectedAthleteId','selectedAthleteId','momentumPlanPreviewMode','myTrainer'].forEach(k=>localStorage.removeItem(k));location.href='test.html';}
+ catch(error){alert(error.message);}
+}
+
+        function toggleSidebar() {
+            document.querySelector(".sidebar").classList.toggle("open");
+            document.querySelector(".sidebar-overlay").classList.toggle("show");
         }
 
-        const myWorkPlan = workPlans.find(plan =>
-            String(plan.athleteId) === String(athleteId)
-        );
-
+let myWorkPlan=null, selectedDay=1;
         document.getElementById("currentDate").textContent =
             new Date().toLocaleDateString("en-US", {
-                month: "short", day: "numeric", year: "numeric"
+                month: "short",
+                day: "numeric",
+                year: "numeric"
             });
 
         function escapeHTML(value) {
             return String(value ?? "").replace(/[&<>"']/g, character => ({
-                "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
             })[character]);
         }
 
         function selectDay(day) {
+            selectedDay=Number(day);
             document.querySelectorAll(".day-button").forEach((button, index) => {
                 button.classList.toggle("active", index === day - 1);
             });
@@ -845,11 +955,11 @@
 
             document.getElementById("selectedDayLabel").textContent = `Day ${day}`;
             document.getElementById("selectedDayNote").textContent =
-                dayPlan?.name || (day === 7 ? "Rest and recovery" : "No session assigned");
+                dayPlan?.name || "No session assigned";
 
-            title.textContent = `Day ${day} — ${dayPlan?.name || (day === 7 ? "Rest Day" : "Workout")}`;
+            title.textContent = `Day ${day} — ${dayPlan?.name || "Workout"}`;
 
-            if (day === 7 && !dayPlan) {
+            if (dayPlan?.isRest === true) {
                 subtitle.textContent = "Recovery day";
                 count.textContent = "Rest Day";
                 list.innerHTML = `
@@ -890,7 +1000,7 @@
 
                     <div class="exercise-info">
                         <h4>${index + 1}. ${escapeHTML(exercise.name || "Exercise")}</h4>
-                        <p>${escapeHTML(exercise.notes || exercise.description || "Follow your coach's instructions.")}</p>
+                        <p>${escapeHTML([exercise.muscle, exercise.notes, Number(exercise.weight)>0 ? "Target: "+exercise.weight+" kg" : ""].filter(Boolean).join(" · ") || "Follow your coach's instructions.")}</p>
                     </div>
 
                     <div class="exercise-meta">
@@ -929,73 +1039,18 @@
             document.getElementById("totalExercises").textContent = exerciseCount;
         }
 
-        updateSummary();
-        selectDay(1);
-    </script>
-
-    <!-- =========================================================
-         MOBILE MENU SCRIPT (Clean & Working)
-    ========================================================= -->
-    <script>
-        (function () {
-            const sidebar = document.querySelector('.sidebar');
-            if (!sidebar) return;
-
-            // إنشاء الشريط العلوي
-            const bar = document.createElement('header');
-            bar.className = 'momentum-mobile-bar';
-            bar.innerHTML = `
-                <button class="momentum-menu-toggle" type="button" aria-label="Open navigation">☰</button>
-                <div style="color: #fff; font-weight: bold; font-size: 18px; letter-spacing: 1px;">
-                    <span style="color: #24e3a3;">MO</span>MENTUM
-                </div>
-                <div style="width: 42px;"></div> 
-            `;
-
-            // إنشاء طبقة التعتيم
-            const overlay = document.createElement('div');
-            overlay.className = 'momentum-sidebar-overlay';
-
-            document.body.appendChild(overlay);
-            document.body.appendChild(bar);
-
-            const toggle = bar.querySelector('.momentum-menu-toggle');
-
-            function closeMenu() {
-                sidebar.classList.remove('open');
-                overlay.classList.remove('show');
-                toggle.innerHTML = '☰';
-                document.body.style.overflow = '';
-            }
-
-            function openMenu() {
-                sidebar.classList.add('open');
-                overlay.classList.add('show');
-                toggle.innerHTML = '✕';
-                document.body.style.overflow = 'hidden';
-            }
-
-            toggle.addEventListener('click', function () {
-                if (sidebar.classList.contains('open')) {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
-            });
-
-            overlay.addEventListener('click', closeMenu);
-
-            sidebar.querySelectorAll('a').forEach(function (link) {
-                link.addEventListener('click', function () {
-                    if (window.innerWidth <= 768) closeMenu();
-                });
-            });
-
-            window.addEventListener('resize', function () {
-                if (window.innerWidth > 768) closeMenu();
-            });
-        })();
-    </script>
+async function loadWork(){
+ try{
+  await planAccount('athlete');const record=await planAPI('get');
+  myWorkPlan=record?.visibility==='published'?{days:Object.fromEntries(record.workPlan.map((d,i)=>[i+1,{...d,name:d.isRest?'Rest Day':d.focus}]))}:null;
+  document.querySelectorAll('.day-button .day-name').forEach((el,i)=>el.textContent=myWorkPlan?.days[i+1]?.name||'Not assigned');
+  updateSummary();selectDay(selectedDay);
+ }catch(error){myWorkPlan=null;updateSummary();selectDay(selectedDay);document.getElementById('workoutSubtitle').textContent=error.message;}
+}
+updateSummary();selectDay(1);loadWork();window.addEventListener('focus',loadWork);
+    
+</script>
 
 </body>
+
 </html>
