@@ -739,7 +739,7 @@
 
 
                 <span
-                    class="forgot"
+                    id="forgotLink" role="button" tabindex="0" class="forgot"
                     onclick="forgotPassword()">
 
                     Forgot password?
@@ -913,10 +913,24 @@ function cacheProfile(user, profile) {
   Object.entries(values).forEach(([k,v])=>localStorage.setItem(k,v ?? ''));
 }
 clearLegacyPasswords();
+if(new URLSearchParams(location.hash.slice(1)).get('type')==='recovery')location.replace(new URL('reset-password.html',location.href).href+location.hash);
+document.getElementById('forgotLink').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();forgotPassword();}});
 
-async function forgotPassword() {
-  alert('Password recovery is not connected yet. Contact your trainer or administrator.');
+let recoverySending=false,recoveryAfter=0;
+async function forgotPassword(){
+ const input=document.getElementById('email'),email=input.value.trim();
+ if(!email||!input.checkValidity()){showMessage('Enter your account email address first.');input.focus();return;}
+ if(recoverySending)return;if(Date.now()<recoveryAfter){showMessage('Please wait a minute before requesting another link.');return;}
+ const link=document.getElementById('forgotLink');recoverySending=true;link.setAttribute('aria-disabled','true');showMessage('Requesting a reset link...',true);
+ try{
+  if(!['https:','http:'].includes(location.protocol))throw Error('Open the deployed website to request a reset link.');
+  const redirectTo=new URL('reset-password.html',location.href).href;
+  const {error}=await getClient().auth.resetPasswordForEmail(email,{redirectTo});if(error)throw error;
+  recoveryAfter=Date.now()+60000;showMessage('If this email has an account, a reset link will arrive. Check your inbox and spam folder.',true);
+ }catch(error){showMessage(/rate|too many/i.test(error.message||'')?'Email sending limit reached. Please try later; repeated clicks will not help.':error.message||'Could not request a reset link. Try again.');}
+ finally{recoverySending=false;link.removeAttribute('aria-disabled');}
 }
+
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const button=this.querySelector('[type="submit"]');
