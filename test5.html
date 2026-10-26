@@ -2783,6 +2783,7 @@ const sb=window.supabase?.createClient('https://xcgbxurbnsytecrdupct.supabase.co
 const $=id=>document.getElementById(id);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let record=null,history=[],selectedExerciseIndex=0,busy=false,loading=false;
+let publishedPlan=null,historyWarning=false,planWarning=false;
 const banner=document.createElement('p');banner.id='trackingMessage';banner.setAttribute('role','status');banner.style.cssText='color:#39d98a;overflow-wrap:anywhere;margin:12px 0';
 document.querySelector('.page-title').appendChild(banner);
 const daySelect=document.createElement('select');daySelect.id='planDay';daySelect.setAttribute('aria-label','Assigned plan day');
@@ -2882,21 +2883,53 @@ async function change(update){
  }catch(error){record=prior;render();message('Not saved: '+error.message,true);return false;}
  finally{busy=false;lock(false);}
 }
+function updateDayOptions(){
+ const work=publishedPlan?.workPlan||[],diet=publishedPlan?.dietPlan||[];
+ Array.from(daySelect.options).forEach((option,i)=>{
+  const w=work[i],meals=diet[i]?.meals||[];
+  option.textContent='Day '+(i+1)+(w?' · '+(w.isRest?'Rest':w.focus||'Workout'):'')+(meals.length?' · '+meals.length+' meals':'');
+ });
+}
+function readyMessage(){
+ let text=record.revision?'Loaded your saved activity.':'Ready · Choose your assigned day from the list above.';
+ const currentWork=publishedPlan?.workPlan?.[record.day_index-1];
+ const currentMeals=publishedPlan?.dietPlan?.[record.day_index-1]?.meals;
+ if(record.revision&&publishedPlan&&(JSON.stringify(currentWork)!==JSON.stringify(record.snapshot.work)||JSON.stringify(currentMeals||[])!==JSON.stringify(record.snapshot.meals||[])))
+  text+=' Your coach has updated the plan. Today keeps the plan already logged; the updated plan is available in Work Plan / Diet Plan and on the next unlogged day.';
+ if(historyWarning)text+=' Previous sessions could not load; today’s workout and meals remain available.';
+ if(planWarning)text+=' Day labels could not refresh; the daily plan below comes from Supabase.';
+ message(text);
+}
 async function loadDay(day=null){
  if(busy||loading)return;loading=true;lock(true);message('Loading your published plan...');
  try{
   if(!sb)throw new Error('Supabase could not load. Check your connection and reload.');
   const auth=await sb.auth.getUser();if(auth.error||!auth.data.user){location.replace('test.html?role=athlete');throw new Error('Please sign in again.');}
-  if(record&&record.athlete_id!==auth.data.user.id){record=null;history=[];resetViews();}
+  if(record&&record.athlete_id!==auth.data.user.id){record=null;history=[];publishedPlan=null;resetViews();}
   const profile=await sb.from('profiles').select('id,full_name,role').eq('id',auth.data.user.id).single();if(profile.error)throw profile.error;
   if(profile.data.role!=='athlete'){location.replace('test4.html');throw new Error('Use an athlete account.');}
-  const loaded=await api('load',day?{day}:null);
+  // Keep an explicitly chosen day when returning from Work Plan / Diet Plan.
+  // After Cairo midnight let the server select the new day's default.
+  const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Africa/Cairo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+  const part=t=>today.find(p=>p.type===t).value;
+  const date=part('year')+'-'+part('month')+'-'+part('day');
+  const chosen=day??(record?.date===date?record.day_index:null);
+  const loaded=await api('load',chosen?{day:chosen}:null);
   if(!loaded||loaded.athlete_id!==profile.data.id)throw new Error('The signed-in account changed. Reload the page.');
-  history=await api('history');record=loaded;$('headerName').textContent=profile.data.full_name||'Athlete';render();
-  message(record.revision?'Loaded your saved activity.':'Ready · No activity has been recorded yet.');
+  record=loaded;$('headerName').textContent=profile.data.full_name||'Athlete';render();
+  // History and day labels are optional: neither may prevent today's plan rendering.
+  const extras=await Promise.allSettled([
+   api('history'),
+   sb.rpc('momentum_plans',{action:'get',target:null,payload:null,expected_revision:null}).then(({data,error})=>{if(error)throw error;return data;})
+  ]);
+  historyWarning=extras[0].status==='rejected';history=historyWarning?[]:(extras[0].value||[]);
+  planWarning=extras[1].status==='rejected';publishedPlan=planWarning?null:extras[1].value;
+  if(publishedPlan?.visibility!=='published')publishedPlan=null;
+  updateDayOptions();render();readyMessage();
  }catch(error){
   message(error.message+' If tracking is not installed, run momentum_tracking.sql.',true);
   if(!record){$('headerName').textContent='Athlete';$('workoutTitle').textContent='Plan unavailable';$('workoutSubtitle').textContent='Your saved plans and account remain unchanged.';$('exerciseList').innerHTML='';$('mealList').innerHTML='';}
+  else daySelect.value=record.day_index;
  }finally{loading=false;lock(!record);}
 }
 $('plusWeight').addEventListener('click',()=>{const ex=chosenExercise();if(!ex)return;change(state=>{const previous=state.exercise_weights[selectedExerciseIndex]??(Number(ex.weight)||0);state.exercise_weights[selectedExerciseIndex]=Math.min(2000,previous+2.5);});});
@@ -2921,6 +2954,7 @@ $('saveWeight').addEventListener('click',()=>{
 });
 daySelect.addEventListener('change',()=>loadDay(Number(daySelect.value)));
 window.addEventListener('focus',()=>loadDay());
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')loadDay();});
 function resetViews(){
 // Empty defaults while the account is being verified; never display fabricated progress.
 $('headerName').textContent='Loading...';document.querySelector('.mini-chart').innerHTML='';document.querySelector('.weight-line').innerHTML='';
