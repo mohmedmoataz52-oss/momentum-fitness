@@ -2867,7 +2867,7 @@ function renderProgress(){
 function render(){
  daySelect.value=record.day_index;
  $('todayDate').textContent=record.date+' · Cairo';
- $('dayMessage').textContent='Day '+record.day_index+(record.revision>0?' · Today’s logged plan is kept for your history.':' · Choose the matching plan day before your first entry. Day 1 defaults to Monday.');
+ $('dayMessage').textContent='Day '+record.day_index+(record.revision>0?' · Your activity is saved; coach updates sync automatically.':' · Choose the matching plan day before your first entry. Day 1 defaults to Monday.');
  renderWorkout();renderMeals();renderWeightHistory();renderProgress();lock(false);
 }
 async function change(update){
@@ -2892,10 +2892,7 @@ function updateDayOptions(){
 }
 function readyMessage(){
  let text=record.revision?'Loaded your saved activity.':'Ready · Choose your assigned day from the list above.';
- const currentWork=publishedPlan?.workPlan?.[record.day_index-1];
- const currentMeals=publishedPlan?.dietPlan?.[record.day_index-1]?.meals;
- if(record.revision&&publishedPlan&&(JSON.stringify(currentWork)!==JSON.stringify(record.snapshot.work)||JSON.stringify(currentMeals||[])!==JSON.stringify(record.snapshot.meals||[])))
-  text+=' Your coach has updated the plan. Today keeps the plan already logged; the updated plan is available in Work Plan / Diet Plan and on the next unlogged day.';
+ text+=' Published changes sync automatically, including today. Unchanged items keep their logs.';
  if(historyWarning)text+=' Previous sessions could not load; today’s workout and meals remain available.';
  if(planWarning)text+=' Day labels could not refresh; the daily plan below comes from Supabase.';
  message(text);
@@ -2955,6 +2952,12 @@ $('saveWeight').addEventListener('click',()=>{
 daySelect.addEventListener('change',()=>loadDay(Number(daySelect.value)));
 window.addEventListener('focus',()=>loadDay());
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')loadDay();});
+// Refresh while visible and idle; never interrupt a field being edited or a save.
+setInterval(()=>{
+ if(document.visibilityState!=='visible'||busy||loading||!record)return;
+ if(document.activeElement?.matches('input,select,textarea'))return;
+ loadDay();
+},15000);
 function resetViews(){
 // Empty defaults while the account is being verified; never display fabricated progress.
 $('headerName').textContent='Loading...';document.querySelector('.mini-chart').innerHTML='';document.querySelector('.weight-line').innerHTML='';
