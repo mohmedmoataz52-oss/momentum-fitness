@@ -1,0 +1,3 @@
+.momentum-whatsapp-btn{position:fixed;right:22px;bottom:22px;z-index:9999;width:58px;height:58px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#25d366;color:#fff;text-decoration:none;font-size:31px;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s}
+.momentum-whatsapp-btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.4)}
+@media(max-width:480px){.momentum-whatsapp-btn{right:15px;bottom:15px;width:52px;height:52px;font-size:28px}}

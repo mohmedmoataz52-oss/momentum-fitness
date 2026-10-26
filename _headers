@@ -1,0 +1,10 @@
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+/momentum-ui.css
+  Cache-Control: public, max-age=3600, must-revalidate
+/momentum-ui.js
+  Cache-Control: public, max-age=3600, must-revalidate
