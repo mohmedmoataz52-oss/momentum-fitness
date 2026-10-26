@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://momentum-fitness-nine.vercel.app/sitemap.xml

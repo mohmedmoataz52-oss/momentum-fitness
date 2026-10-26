@@ -1,0 +1,7 @@
+تم إعداد canonical وrobots.txt وsitemap.xml للرابط:
+https://momentum-fitness-nine.vercel.app/
+ارفع المحتويات إلى المشروع وأعد النشر. لا تحتاج SQL.
+افتح Google Search Console واختر Add property ثم URL prefix وأدخل الرابط.
+اختر التحقق بواسطة HTML tag وأرسل وسم التحقق لإضافته إلى الموقع.
+بعد إثبات الملكية أرسل sitemap.xml في Sitemaps واطلب Request indexing للرابط الرئيسي.
+الفهرسة ليست فورية أو مضمونة.
